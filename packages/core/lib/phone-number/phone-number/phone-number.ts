@@ -1,6 +1,6 @@
 import AwesomePhone from "awesome-phonenumber";
-import { Equatable } from "../../common/common.module";
-import { PhoneNumberException } from "../exceptions/exceptions.well";
+import { Equatable } from "../../common";
+import { PhoneNumberException } from "../exceptions";
 import { PhoneNumberInterface } from "./phone-number.interface";
 
 /**

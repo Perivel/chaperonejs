@@ -10,7 +10,7 @@ import {
     pathCase,
     snakeCase
 } from 'change-case';
-import { BaseFormatter } from './../base-formatter/base-formatter';
+import { BaseFormatter } from './../base-formatter';
 import { StringFormatterInterface } from './string-formatter.interface';
 
 /**

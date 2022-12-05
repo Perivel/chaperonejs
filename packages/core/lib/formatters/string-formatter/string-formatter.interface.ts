@@ -1,4 +1,4 @@
-import { BaseFormatterInterface } from './../base-formatter/base-formatter.interface';
+import { BaseFormatterInterface } from './../base-formatter';
 
 
 export interface StringFormatterInterface extends BaseFormatterInterface {

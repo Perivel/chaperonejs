@@ -1,4 +1,4 @@
-import { IddentifierInterface } from "../id/id.interface";
+import { IddentifierInterface } from "../id";
 
 /**
  * UUIDInterface

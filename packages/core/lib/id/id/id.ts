@@ -1,6 +1,6 @@
 import { IddentifierInterface } from "./id.interface";
-import { Equatable } from "../../common/common.module";
-import { IdException } from './../exceptions/id.exception';
+import { Equatable } from "../../common";
+import { IdException } from './../exceptions';
 
 /**
  * Id

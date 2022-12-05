@@ -1,4 +1,4 @@
-import { StreetAddressException } from './../exceptions/street-address.exception';
+import { StreetAddressException } from './street-address.exception';
 
 export class StreetException extends StreetAddressException {
 

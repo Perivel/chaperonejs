@@ -1,4 +1,4 @@
-import { Equatable, Serializable } from '@swindle/core';
+import { Equatable, Serializable } from './../../common';
 import { RGBAInterface } from './rgba.interface';
 import { RGBAException } from './rgba.exception';
 

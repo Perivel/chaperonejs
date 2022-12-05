@@ -1,4 +1,4 @@
-import { Equatable } from './../common/common.module';
+import { Equatable } from './../common';
 import { IsoLanguageInterface } from './iso-language.interface';
 import { IsoLanguageException } from './iso-language.exception';
 import languageData from './iso-language.data.json';

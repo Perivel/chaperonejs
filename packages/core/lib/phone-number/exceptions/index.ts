@@ -1,2 +1,2 @@
-// exceptions well
+// exceptions
 export * from './phone-number.exception';

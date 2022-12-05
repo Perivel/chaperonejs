@@ -1,7 +1,7 @@
 import { IANAZone, DateTime } from 'luxon';
 import { TimezoneInterface } from "./timezone.interface";
-import { Equatable } from "./../../common/common.module";
-import { TimezoneException } from "./../exceptions/timezone.exception";
+import { Equatable } from "./../../common";
+import { TimezoneException } from "./../exceptions";
 
 /**
  * Timezone

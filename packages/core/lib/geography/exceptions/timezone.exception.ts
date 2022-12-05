@@ -1,4 +1,4 @@
-import { BaseException } from './../../common/exceptions/base.exception';
+import { BaseException } from './../../common';
 
 /**
  * TimezoneException

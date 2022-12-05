@@ -1,15 +1,14 @@
-import { CountryInterface } from "../country/country.interface";
-import { LocalityInterface } from "../locality/locality.interface";
-import { PostalCodeInterface } from "../postal-code/postal-code.interface";
-import { RegionInterface } from "../region/region.interface";
-import { StreetInterface } from "../street/street.interface";
+import { CountryInterface } from "../country";
+import { LocalityInterface } from "../locality";
+import { PostalCodeInterface } from "../postal-code";
+import { RegionInterface } from "../region";
+import { StreetInterface } from "../street";
 
 /**
  * StreetAddressInterface
  *
  * StreetAddressInterface specifies the functionality of a street address.
  */
-
 
 export interface StreetAddressInterface {
 

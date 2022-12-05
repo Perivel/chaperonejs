@@ -1,5 +1,5 @@
 import { CoordinatesInterface } from "./coordinates.interface";
-import { Equatable } from "../../common/common.module";
+import { Equatable } from "../../common";
 
 /**
  * Coordinates

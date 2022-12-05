@@ -1,17 +1,19 @@
-import { Country } from '../country/country';
-import { CountryException } from '../exceptions/country.exception';
-import { LocalityException } from '../exceptions/locality.exception';
-import { PostalCodeException } from '../exceptions/postal-code.exception';
-import { RegionException } from '../exceptions/region.exception';
-import { StreetException } from '../exceptions/street.exception';
-import { Locality } from '../locality/locality';
-import { PostalCode } from '../postal-code/postal-code';
-import { Region } from '../region/region';
-import { Street } from '../street/street';
+import { Country } from '../country';
+import { 
+    CountryException, 
+    LocalityException, 
+    PostalCodeException, 
+    RegionException, 
+    StreetException
+} from '../exceptions';
+import { Locality } from '../locality';
+import { PostalCode } from '../postal-code';
+import { Region } from '../region';
+import { Street } from '../street';
 import {
     Equatable,
     Serializable
-} from './../../common/common.module';
+} from './../../common';
 import { StreetAddressInterface } from "./street-address.interface";
 
 /**

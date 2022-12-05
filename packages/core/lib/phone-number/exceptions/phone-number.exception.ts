@@ -1,4 +1,4 @@
-import { InvalidArgumentException } from './../../common/common.module';
+import { InvalidArgumentException } from './../../common';
 
 /**
  * PhoneNumberException

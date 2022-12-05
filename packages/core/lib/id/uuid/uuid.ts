@@ -1,7 +1,7 @@
-import { Id } from "./../id/id";
+import { Id } from "./../id";
 import { v1, v3, v4, v5, NIL, validate as isValidUUID, version as uuidVersion } from 'uuid';
 import { UUIDInterface } from "./uuid.interface";
-import { UUIDException } from './../exceptions/exceptions.well';
+import { UUIDException } from './../exceptions';
 
 
 /**
