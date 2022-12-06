@@ -1,6 +1,7 @@
 {
   "name": "@chaperone/core",
   "version": "0.0.0",
+  "type": "module",
   "description": "The core library",
   "author": "PatrickLumenus <patrickaluy@gmail.com>",
   "homepage": "https://github.com/Perivel/chaperonejs",
@@ -18,7 +19,7 @@
     "url": "git+https://github.com/Perivel/chaperonejs.git"
   },
   "scripts": {
-    "test": "node ./__tests__/core.test.js"
+    "build": "rollup -c"
   },
   "bugs": {
     "url": "https://github.com/Perivel/chaperonejs/issues"
@@ -27,7 +28,6 @@
     "awesome-phonenumber": "^3.4.0",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
-    "color-convert": "^2.0.1",
     "colors-convert": "^1.4.1",
     "i18n-iso-countries": "^7.5.0",
     "luxon": "^3.1.0",
