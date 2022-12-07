@@ -5,7 +5,7 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import del from 'rollup-plugin-delete';
 import commonjs from '@rollup/plugin-commonjs';
 import polyfills from "rollup-plugin-polyfill-node";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 
 const deps = [
     'bcryptjs',
@@ -18,6 +18,8 @@ const deps = [
     'sanitize-html',
     'uuid'
 ]
+
+//const deps = Object.keys(dependencies);
 
 export default {
     input: resolve(__dirname, "./lib/core.ts"),

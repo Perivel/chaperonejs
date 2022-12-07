@@ -1,4 +1,7 @@
-import AwesomePhone from "awesome-phonenumber";
+import {
+    ParsedPhoneNumber,
+    parsePhoneNumber
+} from "awesome-phonenumber";
 import { Equatable } from "../../common";
 import { PhoneNumberException } from "../exceptions";
 import { PhoneNumberInterface } from "./phone-number.interface";
@@ -10,20 +13,22 @@ import { PhoneNumberInterface } from "./phone-number.interface";
  */
 
 export class PhoneNumber implements PhoneNumberInterface, Equatable {
-    private _phoneParser: AwesomePhone;
+    private _phoneParser: ParsedPhoneNumber;
 
     /**
      * Creates a Phone Number instance.
      * @param value The phone number value.
-     * @param countryCode The region code of the phone number.
+     * @param regionCode The region code of the phone number.
      * @throws PhoneNumverException when the phone number is not valid.
      */
 
     constructor(value: string, regionCode: string) {
-
+    
         if ((value) && (regionCode)) {
-            this._phoneParser = new AwesomePhone(value, regionCode);
-            if (!this._phoneParser.isValid()) throw new PhoneNumberException();
+            this._phoneParser = parsePhoneNumber(value, { regionCode: regionCode });
+            
+            // make sure the phone number is valid.
+            if (!this._phoneParser.valid) throw new PhoneNumberException();
         }
         else {
             // invlaid phone number.
@@ -40,7 +45,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public canBeInternationallyDialed(): boolean {
-        return this._phoneParser.canBeInternationallyDialled();
+        return this._phoneParser.canBeInternationallyDialled!;
     }
 
     /**
@@ -49,8 +54,8 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      * countryCode() gets the phone number's country code.
      */
 
-    public countryCode(): number {
-        return this._phoneParser.getCountryCode();
+    public countryCode(): string {
+        return this._phoneParser.countryCode!;
     }
 
     /**
@@ -78,7 +83,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public e164(): string {
-        return this._phoneParser.getNumber('e164');
+        return this._phoneParser.number!.e164;
     }
 
     /**
@@ -88,7 +93,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public international(): string {
-        return this._phoneParser.getNumber('international');
+        return this._phoneParser.number!.international;
     }
 
     /**
@@ -98,7 +103,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public isMobile(): boolean {
-        return this._phoneParser.isMobile();
+        return this._phoneParser.typeIsMobile!;
     }
 
     /**
@@ -108,7 +113,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public national(): string {
-        return this._phoneParser.getNumber('national');
+        return this._phoneParser.number!.national;
     }
 
     /**
@@ -118,7 +123,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public rfc3966(): string {
-        return this._phoneParser.getNumber('rfc3966');
+        return this._phoneParser.number!.rfc3966;
     }
 
     /**
@@ -128,7 +133,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public regionCode(): string {
-        return this._phoneParser.getRegionCode();
+        return this._phoneParser.regionCode!;
     }
 
     /**
@@ -138,7 +143,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public significant(): string {
-        return this._phoneParser.getNumber('significant');
+        return this._phoneParser.number!.significant;
     }
 
     /**

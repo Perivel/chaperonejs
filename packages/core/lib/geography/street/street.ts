@@ -1,5 +1,5 @@
 import { StreetInterface } from "./street.interface";
-import { Serializable, Equatable } from './../../common/common.module';
+import { Serializable, Equatable } from './../../common';
 import { StreetException } from './../exceptions/street.exception';
 
 /**

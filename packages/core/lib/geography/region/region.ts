@@ -1,5 +1,5 @@
 import { RegionInterface } from './region.interface';
-import { Equatable, Serializable } from './../../common/common.module';
+import { Equatable, Serializable } from './../../common';
 import { RegionException } from '../exceptions/region.exception';
 
 /**

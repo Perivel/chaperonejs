@@ -1,7 +1,7 @@
 import { DateTime as LuxonDateTime, Duration as LuxonDuration } from 'luxon';
 import { DateTimeInterface } from "./datetime.interface";
 import { Equatable } from "./../../common";
-import { Timezone } from "./../../geography/geography.module";
+import { Timezone } from "./../../geography";
 import { DateException } from '../exceptions';
 import { Duration } from './../duration';
 

@@ -1,5 +1,5 @@
 import { LocalityException } from '../exceptions/locality.exception';
-import { Equatable, Serializable } from './../../common/common.module';
+import { Equatable, Serializable } from './../../common';
 import { LocalityInterface } from './locality.interface';
 
 /**

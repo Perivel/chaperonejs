@@ -16,7 +16,7 @@ export interface PhoneNumberInterface {
      * countryCode() gets the phone number's country code.
      */
 
-    countryCode(): number;
+    countryCode(): string;
 
     /**
      * equals()

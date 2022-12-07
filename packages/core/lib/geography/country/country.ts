@@ -1,7 +1,7 @@
 import { CountryInterface } from './country.interface';
 import * as CountryData from 'i18n-iso-countries'
 import { CountryException } from '../exceptions/country.exception';
-import { Equatable } from '../../common/common.module';
+import { Equatable } from '../../common';
 
 /**
  * Country
