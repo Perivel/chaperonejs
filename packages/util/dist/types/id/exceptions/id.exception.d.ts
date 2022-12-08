@@ -1,4 +1,4 @@
-import { InvalidArgumentException } from './../../common';
+import { InvalidArgumentException } from '../../common';
 /**
  * IdException
  *

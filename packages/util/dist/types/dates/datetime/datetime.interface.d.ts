@@ -1,5 +1,5 @@
 import { DurationInterface } from "../duration";
-import { Timezone } from "./../../geography";
+import { Timezone } from "../../geography";
 export interface DateTimeInterface {
     /**
      * add()

@@ -1,4 +1,4 @@
-import { Equatable } from './../common';
+import { Equatable } from '../common';
 import { CharacterSetInterface } from './character-set.interface';
 import { CharacterSetValue } from './charset-values.type';
 /**

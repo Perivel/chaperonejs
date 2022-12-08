@@ -1,5 +1,5 @@
 import { RegionInterface } from './region.interface';
-import { Equatable, Serializable } from './../../common';
+import { Equatable, Serializable } from '../../common';
 /**
  * Region
  *

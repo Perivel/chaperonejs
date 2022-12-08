@@ -1,5 +1,5 @@
 import { StreetInterface } from "./street.interface";
-import { Serializable, Equatable } from './../../common';
+import { Serializable, Equatable } from '../../common';
 /**
  * Street
  *

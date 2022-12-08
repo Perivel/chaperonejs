@@ -1,7 +1,7 @@
 import { DateTimeInterface } from "./datetime.interface";
-import { Equatable } from "./../../common";
-import { Timezone } from "./../../geography";
-import { Duration } from './../duration';
+import { Equatable } from "../../common";
+import { Timezone } from "../../geography";
+import { Duration } from '../duration';
 /**
  * DateTime
  *
@@ -23,6 +23,15 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      * @throws DateException when the date is invalid.
      */
     static FromDate(dateVal: Date, timezone: Timezone): DateTime;
+    /**
+     * FromIsoString()
+     *
+     * Creates a DateTime object from an ISO string.
+     * @param str the timezone to parse.
+     * @param timezone the timezone.
+     * @returns the generated DateTime object.
+     */
+    static FromIsoString(str: string, timezone: Timezone): DateTime;
     /**
      * Local()
      *

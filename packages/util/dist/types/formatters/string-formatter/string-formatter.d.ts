@@ -1,4 +1,4 @@
-import { BaseFormatter } from './../base-formatter';
+import { BaseFormatter } from '../base-formatter';
 import { StringFormatterInterface } from './string-formatter.interface';
 /**
  * StringFormatter

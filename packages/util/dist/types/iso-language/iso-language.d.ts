@@ -1,4 +1,4 @@
-import { Equatable } from './../common';
+import { Equatable } from '../common';
 import { IsoLanguageInterface } from './iso-language.interface';
 /**
  * IsoLanguage

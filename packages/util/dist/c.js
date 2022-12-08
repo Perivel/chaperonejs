@@ -275,7 +275,7 @@ return new Promise(((n,h)=>{u.hash(a.toString(),l.value(),((a,l)=>{a?h(a):n(new 
  * Timezone
  *
  * Timezone represents a Timezone
- */class A{constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
+ */class _{constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
 /**
      * FromId()
      *
@@ -285,18 +285,18 @@ return new Promise(((n,h)=>{u.hash(a.toString(),l.value(),((a,l)=>{a?h(a):n(new 
 // invalid timezone.
 throw new q;
 // timezone exists.
-const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return new A(l.name,h.toFormat("ZZZZ"),h.offset)}
+const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return new _(l.name,h.toFormat("ZZZZ"),h.offset)}
 /**
      * Local()
      *
      * Creates a Timezone instance representing the local timezone (based on the machine)
      * @returns A Timezone instance representing local time.
-     */static Local(){const a=n.DateTime.local();return new A(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
+     */static Local(){const a=n.DateTime.local();return new _(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
 /**
      * UTC()
      *
      * UTC() sets the timezone to UTC.
-     */static UTC(){const a=n.DateTime.fromJSDate(new Date).setZone("utc");return new A(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
+     */static UTC(){const a=n.DateTime.fromJSDate(new Date).setZone("utc");return new _(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
 /**
      * abbreviation()
      *
@@ -307,7 +307,7 @@ const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return
      *
      * equals() compares the instnace to the suspect to determine if they are equal.
      * @param suspect the suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof A){const n=a;l=this.id()===n.id()&&this.abbreviation()===n.abbreviation()&&this.utcOffset()===n.utcOffset()}return l}
+     */equals(a){let l=!1;if(a instanceof _){const n=a;l=this.id()===n.id()&&this.abbreviation()===n.abbreviation()&&this.utcOffset()===n.utcOffset()}return l}
 /**
      * id()
      *
@@ -322,13 +322,13 @@ const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return
  * Coordinates
  *
  * Coordinates represents a geographic longitude/latitude pair.
- */class _{constructor(a,l){this._long=a,this._lat=l}
+ */class A{constructor(a,l){this._long=a,this._lat=l}
 /**
      * equals()
      *
      * equals() compares the suspect to the instance, to determine if they are equals.
      * @param suspect The suspect to compare.
-     */equals(a){let l=!1;if(a instanceof _){const n=a;l=this.longitude()===n.longitude()&&this.latitude()===n.latitude()}return l}
+     */equals(a){let l=!1;if(a instanceof A){const n=a;l=this.longitude()===n.longitude()&&this.latitude()===n.latitude()}return l}
 /**
      * latitude()
      *
@@ -440,7 +440,7 @@ constructor(a){if(!a){throw new z}this._name=a}
  * PostalCode
  *
  * PostalCode represents an address Postal Code (or Zip Code)
- */class B{
+ */class I{
 /**
      * Creates a Postal Code instance.
      * @param value string
@@ -452,7 +452,7 @@ constructor(a){if(!a){throw new S}this._value=a}
      *
      * equals() compares the PostalCode object to the suspect to determine if they are equal.
      * @param suspect The value being compared.
-     */equals(a){let l=!1;if(a instanceof B){const n=a;l=this.value()===n.value()}return l}serialize(){return this.value()}toString(){return this.serialize()}
+     */equals(a){let l=!1;if(a instanceof I){const n=a;l=this.value()===n.value()}return l}serialize(){return this.value()}toString(){return this.serialize()}
 /**
      * value()
      *
@@ -462,7 +462,7 @@ constructor(a){if(!a){throw new S}this._value=a}
  * StreetAddress
  *
  * StreetAddress represents a a physical street address.
- */class M{
+ */class B{
 /**
      * Creates a new StreetAddress Instance.
      * @param street Street
@@ -493,7 +493,7 @@ constructor(a,l,n,h,e){let i=null;if(!a)throw i=new C,i;if(!l)throw i=new x,i;if
      *
      * @throws StreetException when the street is invalid.
      * @throws LocalityException when the
-     */static FromPrimitives(a,l="",n,h,e,i){const s=new T(a,l),t=new j(n),r=new N(h),u=new B(e),p=new D(i);return new M(s,t,r,u,p)}
+     */static FromPrimitives(a,l="",n,h,e,i){const s=new T(a,l),t=new j(n),r=new N(h),u=new I(e),p=new D(i);return new B(s,t,r,u,p)}
 /**
      * country()
      *
@@ -504,7 +504,7 @@ constructor(a,l,n,h,e){let i=null;if(!a)throw i=new C,i;if(!l)throw i=new x,i;if
      *
      * equals() compares the StreetAddress instance to the suspect to determine if they are equal.
      * @param suspect the suspect being compared.
-     */equals(a){let l=!1;if(a instanceof M){const n=a;l=this.street().equals(n.street())&&this.locality().equals(n.locality())&&this.region().equals(n.region())&&this.postalCode().equals(n.postalCode())&&this.country().equals(n.country())}return l}
+     */equals(a){let l=!1;if(a instanceof B){const n=a;l=this.street().equals(n.street())&&this.locality().equals(n.locality())&&this.region().equals(n.region())&&this.postalCode().equals(n.postalCode())&&this.country().equals(n.country())}return l}
 /**
      * locality()
      *
@@ -529,7 +529,7 @@ constructor(a,l,n,h,e){let i=null;if(!a)throw i=new C,i;if(!l)throw i=new x,i;if
  * DateException
  *
  * DateException represents a generic date error.
- */class I extends c{constructor(a="Date error."){super(a)}}
+ */class M extends c{constructor(a="Date error."){super(a)}}
 /**
  * DurationException
  *
@@ -539,36 +539,44 @@ constructor(a,l,n,h,e){let i=null;if(!a)throw i=new C,i;if(!l)throw i=new x,i;if
  * DateTime
  *
  * DateTime represents a specific date and time.
- */class K{
+ */class P{
 /**
      * Creates a DateTime object.
      * @param value Date
      */
-constructor(a,l,h,e=0,i=0,s=0,t=0,r=A.UTC()){if(this.date=n.DateTime.fromObject({year:a,month:l,day:h,hour:e,minute:i,second:s,millisecond:t},{zone:"utc"}),!this.date.isValid)throw new I;this.tz=r}
+constructor(a,l,h,e=0,i=0,s=0,t=0,r=_.UTC()){if(this.date=n.DateTime.fromObject({year:a,month:l,day:h,hour:e,minute:i,second:s,millisecond:t},{zone:"utc"}),!this.date.isValid)throw new M;this.tz=r}
 /**
      * FromDate()
      *
      * creates a Timestamp instance from a Date object.
      * @param dateVal The date to create a timestamp from
      * @throws DateException when the date is invalid.
-     */static FromDate(a,l){const h=n.DateTime.fromJSDate(a).toUTC();return new K(h.year,h.month,h.day,h.hour,h.minute,h.second,h.millisecond,l)}
+     */static FromDate(a,l){const h=n.DateTime.fromJSDate(a).toUTC();return new P(h.year,h.month,h.day,h.hour,h.minute,h.second,h.millisecond,l)}
+/**
+     * FromIsoString()
+     *
+     * Creates a DateTime object from an ISO string.
+     * @param str the timezone to parse.
+     * @param timezone the timezone.
+     * @returns the generated DateTime object.
+     */static FromIsoString(a,l){const h=n.DateTime.fromISO(a);return new P(h.year,h.month,h.day,h.hour,h.minute,h.second,h.millisecond,l)}
 /**
      * Local()
      *
      * creates a DateTime instance where the timezone is set to the local timezone.
      * @returns A DateTime object where the timezone is set to the local timezone.
-     */static Local(){return K.FromDate(n.DateTime.local().toJSDate(),A.Local())}
+     */static Local(){return P.FromDate(n.DateTime.local().toJSDate(),_.Local())}
 /**
      * Now()
      *
      * Creates a DateTime for the current UTC date and time.
-     */static Now(a=A.UTC()){return K.FromDate(n.DateTime.utc().toJSDate(),a)}
+     */static Now(a=_.UTC()){return P.FromDate(n.DateTime.utc().toJSDate(),a)}
 /**
      * add()
      *
      * add() adds the duration to the datetime.
      * @param duration the duration to add.
-     */add(a){return K.FromDate(this.date.plus(n.Duration.fromObject({years:a.years(),quarters:a.quarters(),months:a.months(),weeks:a.weeks(),days:a.days(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.miliseconds()})).toJSDate(),this.timezone())}
+     */add(a){return P.FromDate(this.date.plus(n.Duration.fromObject({years:a.years(),quarters:a.quarters(),months:a.months(),weeks:a.weeks(),days:a.days(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.miliseconds()})).toJSDate(),this.timezone())}
 /**
      * day()
      *
@@ -586,19 +594,19 @@ constructor(a,l,h,e=0,i=0,s=0,t=0,r=A.UTC()){if(this.date=n.DateTime.fromObject(
      *
      * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
      * @param suspect The suspect to be compared.
-     */isAfter(a){let l=!1;if(a instanceof K){const n=a;l=this.date>n.date}return l}
+     */isAfter(a){let l=!1;if(a instanceof P){const n=a;l=this.date>n.date}return l}
 /**
      * isBefore()
      *
      * isBefore() compares the instance to the suspect, to determine if the instance is before the suspect.
      * @param suspect The suspect to be compared to.
-     */isBefore(a){let l=!1;if(a instanceof K){const n=a;l=this.date<n.date}return l}
+     */isBefore(a){let l=!1;if(a instanceof P){const n=a;l=this.date<n.date}return l}
 /**
      * equals()
      *
      * equals() compares the Created instance to a suspect, to determine if they are equal.
      * @param suspect The Created object to be compared.
-     */equals(a){let l=!1;if(a instanceof K){const n=a;l=this.date.equals(n.date)}return l}
+     */equals(a){let l=!1;if(a instanceof P){const n=a;l=this.date.equals(n.date)}return l}
 /**
      * milisecond()
      *
@@ -627,7 +635,7 @@ constructor(a,l,h,e=0,i=0,s=0,t=0,r=A.UTC()){if(this.date=n.DateTime.fromObject(
      *
      * subtract() subtracts a duration form the date time.
      * @param duration the duratin to subtract.
-     */subtract(a){return K.FromDate(this.date.minus(n.Duration.fromObject({years:a.years(),quarters:a.quarters(),months:a.months(),weeks:a.weeks(),days:a.days(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.miliseconds()})).toJSDate(),this.timezone())}
+     */subtract(a){return P.FromDate(this.date.minus(n.Duration.fromObject({years:a.years(),quarters:a.quarters(),months:a.months(),weeks:a.weeks(),days:a.days(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.miliseconds()})).toJSDate(),this.timezone())}
 /**
      * timezone()
      *
@@ -637,13 +645,13 @@ constructor(a,l,h,e=0,i=0,s=0,t=0,r=A.UTC()){if(this.date=n.DateTime.fromObject(
      * toUtc()
      *
      * toUtc() converts the timestamp to UTC time.
-     */toUtc(){return K.FromDate(this.value(),A.UTC())}
+     */toUtc(){return P.FromDate(this.value(),_.UTC())}
 /**
      * toTimeaone()
      *
      * toTimezone() converts the timestamp to the specified timezone.
      * @param timezone The timezone to convert to.
-     */toTimezone(a){return K.FromDate(this.value(),a)}
+     */toTimezone(a){return P.FromDate(this.value(),a)}
 /**
      * isoString()
      *
@@ -781,7 +789,7 @@ throw new L(this.luxonDuration.invalidReason)}
 // ==========================
 // Overrides
 // ==========================
-toString(){return this.luxonDuration.toISO()}}class P extends g{constructor(a="Invalid Email Address"){super(a)}}
+toString(){return this.luxonDuration.toISO()}}class K extends g{constructor(a="Invalid Email Address"){super(a)}}
 /**
  * EmailAddress
  *
@@ -794,7 +802,7 @@ toString(){return this.luxonDuration.toISO()}}class P extends g{constructor(a="I
      */
 constructor(a){if(!new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").test(a))
 // email is invalid.
-throw new P;{this._value=a;const l=a.indexOf("@");this._username=a.substring(0,l),this._domain=a.substring(l+1)}}
+throw new K;{this._value=a;const l=a.indexOf("@");this._username=a.substring(0,l),this._domain=a.substring(l+1)}}
 /**
      * domainName()
      *
@@ -871,6 +879,18 @@ constructor(a){if(!a)throw new U;this._val=a}
      */
 constructor(a){if(!i.validate(a))throw new R;super(a)}
 /**
+     * _ParseNamespace()
+     *
+     * parses a namespace for v3 and v5 UUIDs.
+     * @param namespace the namespace to parse.
+     * @returns the parsed namespace.
+     * @throws UUIDException when the namespace is not a valid UUID.
+     */static _ParseNamespace(a){let l="";if(a instanceof J)l=a.id();else
+// we validate that the string is a valid UUID.
+try{l=new J(a.toString()).toString()}catch(a){
+// the namespace is not a valid UUID.
+throw new R("Invalid namespace.")}return l}
+/**
      * NIL()
      *
      * Creates the NIL UUID.
@@ -887,9 +907,10 @@ constructor(a){if(!i.validate(a))throw new R;super(a)}
      *
      * Creates a Version 3 UUID (namespace with MD5).
      * @param name the name
-     * @param namespace the namespace
+     * @param namespace a UUID
      * @returns a Version 3 UUID.
-     */static V3(a,l){return new J(i.v3(a,l))}
+     * @throws UUIDException when the namespace is not a valid UUID.
+     */static V3(a,l){return new J(i.v3(a,J._ParseNamespace(l)))}
 /**
      * V4()
      *
@@ -903,7 +924,8 @@ constructor(a){if(!i.validate(a))throw new R;super(a)}
      * @param name the name
      * @param namespace the namespace
      * @returns a Version 5 UUID.
-     */static V5(a,l){return new J(i.v5(a,l))}
+     * @throws UUIDException when the namespace is not a valid UUID.
+     */static V5(a,l){return new J(i.v5(a,J._ParseNamespace(l)))}
 /**
      * equals()
      *
@@ -1051,13 +1073,13 @@ if(this._phoneParser=s.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
      *
      * strips the HTML from a string.
      * @param dirty the string to sanitize.
-     */sanitize(a){return t(a)}toString(){return`Instance of ${X.name}`}}exports.BaseException=c,exports.BaseFormatter=Z,exports.CharacterSet=o,exports.Color=k,exports.ColorException=b,exports.Coordinates=_,exports.Country=D,exports.CountryException=y,exports.DateException=I,exports.DateTime=K,exports.Duration=O,exports.DurationException=L,exports.EmailAddress=G,exports.EmailAddressException=P,exports.HTMLSanitizer=X,exports.Hash=f,exports.Hex=F,exports.HexException=E,exports.Id=H,exports.IdException=U,exports.InvalidArgumentException=g,exports.IsoLanguage=Y,exports.IsoLanguageException=V,exports.Locality=j,exports.LocalityException=x,exports.MethodUndefinedException=class extends c{constructor(a="Method undefined."){super(a)}},exports.NetworkException=
+     */sanitize(a){return t(a)}toString(){return`Instance of ${X.name}`}}exports.BaseException=c,exports.BaseFormatter=Z,exports.CharacterSet=o,exports.Color=k,exports.ColorException=b,exports.Coordinates=A,exports.Country=D,exports.CountryException=y,exports.DateException=M,exports.DateTime=P,exports.Duration=O,exports.DurationException=L,exports.EmailAddress=G,exports.EmailAddressException=K,exports.HTMLSanitizer=X,exports.Hash=f,exports.Hex=F,exports.HexException=E,exports.Id=H,exports.IdException=U,exports.InvalidArgumentException=g,exports.IsoLanguage=Y,exports.IsoLanguageException=V,exports.Locality=j,exports.LocalityException=x,exports.MethodUndefinedException=class extends c{constructor(a="Method undefined."){super(a)}},exports.NetworkException=
 /**
  * NetworkException
  *
  * NetworkException indicates a network exception has occured.
  */
-class extends c{constructor(a="Network Error"){super(a)}},exports.OutOfBoundsException=class extends g{constructor(a="Argument out of bounds."){super(a)}},exports.PhoneNumber=Q,exports.PhoneNumberException=$,exports.PostalCode=B,exports.PostalCodeException=S,exports.RGBA=d,exports.RGBAException=m,exports.Region=N,exports.RegionException=z,exports.Salt=w,exports.Street=T,exports.StreetAddress=M,exports.StreetAddressException=v,exports.StreetException=C,exports.StringFormatter=class extends Z{constructor(){super()}
+class extends c{constructor(a="Network Error"){super(a)}},exports.OutOfBoundsException=class extends g{constructor(a="Argument out of bounds."){super(a)}},exports.PhoneNumber=Q,exports.PhoneNumberException=$,exports.PostalCode=I,exports.PostalCodeException=S,exports.RGBA=d,exports.RGBAException=m,exports.Region=N,exports.RegionException=z,exports.Salt=w,exports.Street=T,exports.StreetAddress=B,exports.StreetAddressException=v,exports.StreetException=C,exports.StringFormatter=class extends Z{constructor(){super()}
 /**
      * camelCase()
      *
@@ -1157,4 +1179,4 @@ class extends c{constructor(a="Network Error"){super(a)}},exports.OutOfBoundsExc
      * casts the input to a string
      * @param input the input to cast.
      */
-castToString(a){return null==a?"":"string"===typeof a?a:a.toString()}},exports.Timezone=A,exports.TimezoneException=q,exports.UUID=J,exports.UUIDException=R;
+castToString(a){return null==a?"":"string"===typeof a?a:a.toString()}},exports.Timezone=_,exports.TimezoneException=q,exports.UUID=J,exports.UUIDException=R;

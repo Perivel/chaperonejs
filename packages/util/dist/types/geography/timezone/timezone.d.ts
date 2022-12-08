@@ -1,5 +1,5 @@
 import { TimezoneInterface } from "./timezone.interface";
-import { Equatable } from "./../../common";
+import { Equatable } from "../../common";
 /**
  * Timezone
  *

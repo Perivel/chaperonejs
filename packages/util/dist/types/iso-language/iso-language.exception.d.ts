@@ -1,4 +1,4 @@
-import { BaseException } from './../common';
+import { BaseException } from '../common';
 /**
  * IsoLanguageException
  *

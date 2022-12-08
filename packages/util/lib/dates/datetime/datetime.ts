@@ -61,6 +61,29 @@ export class DateTime implements DateTimeInterface, Equatable {
     }
 
     /**
+     * FromIsoString()
+     * 
+     * Creates a DateTime object from an ISO string.
+     * @param str the timezone to parse.
+     * @param timezone the timezone.
+     * @returns the generated DateTime object.
+     */
+
+    public static FromIsoString(str: string, timezone: Timezone): DateTime {
+        const parsed = LuxonDateTime.fromISO(str);
+        return new DateTime(
+            parsed.year,
+            parsed.month,
+            parsed.day,
+            parsed.hour,
+            parsed.minute,
+            parsed.second,
+            parsed.millisecond,
+            timezone
+        );
+    }
+
+    /**
      * Local()
      * 
      * creates a DateTime instance where the timezone is set to the local timezone.
@@ -216,7 +239,7 @@ export class DateTime implements DateTimeInterface, Equatable {
      * gets the second
      * @note seconds are zero-based (0-59)
      */
-    
+
     public second(): number {
         return this.date.second;
     }

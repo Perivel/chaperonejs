@@ -3,7 +3,7 @@ import { Locality } from '../locality';
 import { PostalCode } from '../postal-code';
 import { Region } from '../region';
 import { Street } from '../street';
-import { Equatable, Serializable } from './../../common';
+import { Equatable, Serializable } from '../../common';
 import { StreetAddressInterface } from "./street-address.interface";
 /**
  * StreetAddress

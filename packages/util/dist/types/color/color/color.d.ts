@@ -1,4 +1,4 @@
-import { Equatable, Serializable } from './../../common';
+import { Equatable, Serializable } from '../../common';
 import { Hex } from '../hex';
 import { RGBA } from '../rgba';
 import { ColorInterface } from './color.interface';

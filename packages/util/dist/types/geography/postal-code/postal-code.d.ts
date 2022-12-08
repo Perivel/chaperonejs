@@ -1,5 +1,5 @@
 import { PostalCodeInterface } from './postal-code.interface';
-import { Equatable, Serializable } from './../../common';
+import { Equatable, Serializable } from '../../common';
 /**
  * PostalCode
  *

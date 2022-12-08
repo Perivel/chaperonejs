@@ -1,4 +1,4 @@
-import { Id } from "./../id";
+import { Id } from "../id";
 import { UUIDInterface } from "./uuid.interface";
 /**
  * UUID
@@ -12,6 +12,15 @@ export declare class UUID extends Id implements UUIDInterface {
      * @throws UUIDException if the value is invalid.
      */
     constructor(value: string);
+    /**
+     * _ParseNamespace()
+     *
+     * parses a namespace for v3 and v5 UUIDs.
+     * @param namespace the namespace to parse.
+     * @returns the parsed namespace.
+     * @throws UUIDException when the namespace is not a valid UUID.
+     */
+    private static _ParseNamespace;
     /**
      * NIL()
      *
@@ -31,10 +40,11 @@ export declare class UUID extends Id implements UUIDInterface {
      *
      * Creates a Version 3 UUID (namespace with MD5).
      * @param name the name
-     * @param namespace the namespace
+     * @param namespace a UUID
      * @returns a Version 3 UUID.
+     * @throws UUIDException when the namespace is not a valid UUID.
      */
-    static V3(name: string, namespace: string): UUID;
+    static V3(name: string, namespace: UUID | string): UUID;
     /**
      * V4()
      *
@@ -49,8 +59,9 @@ export declare class UUID extends Id implements UUIDInterface {
      * @param name the name
      * @param namespace the namespace
      * @returns a Version 5 UUID.
+     * @throws UUIDException when the namespace is not a valid UUID.
      */
-    static V5(name: string, namespace: string): UUID;
+    static V5(name: string, namespace: UUID | string): UUID;
     /**
      * equals()
      *

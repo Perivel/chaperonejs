@@ -1,4 +1,4 @@
-import { Equatable, Serializable } from './../../common';
+import { Equatable, Serializable } from '../../common';
 import { HexInterface } from './hex.interface';
 /**
  * Hex

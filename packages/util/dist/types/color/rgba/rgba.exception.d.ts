@@ -1,4 +1,4 @@
-import { ColorException } from '././../exceptions';
+import { ColorException } from '../exceptions';
 /**
  * RGBAException
  *
