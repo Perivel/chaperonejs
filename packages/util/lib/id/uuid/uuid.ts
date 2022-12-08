@@ -11,7 +11,7 @@ import { UUIDException } from '../exceptions';
  */
 
 
-export class UUID extends Id implements UUIDInterface{
+export class UUID extends Id implements UUIDInterface {
 
     /**
      * Creates a UUID instance.
@@ -26,6 +26,36 @@ export class UUID extends Id implements UUIDInterface{
         }
 
         super(value);
+    }
+
+    /**
+     * _ParseNamespace()
+     * 
+     * parses a namespace for v3 and v5 UUIDs.
+     * @param namespace the namespace to parse.
+     * @returns the parsed namespace.
+     * @throws UUIDException when the namespace is not a valid UUID.
+     */
+
+    private static _ParseNamespace(namespace: UUIDInterface | string): string {
+        let val = "";
+
+        if (namespace instanceof UUID) {
+            val = namespace.id();
+        }
+        else {
+            // we validate that the string is a valid UUID.
+            try {
+                const uid = new UUID(namespace.toString());
+                val = uid.toString();
+            }
+            catch (e) {
+                // the namespace is not a valid UUID.
+                throw new UUIDException('Invalid namespace.');
+            }
+        }
+
+        return val;
     }
 
     /**
@@ -55,12 +85,13 @@ export class UUID extends Id implements UUIDInterface{
      *
      * Creates a Version 3 UUID (namespace with MD5).
      * @param name the name
-     * @param namespace the namespace
+     * @param namespace a UUID
      * @returns a Version 3 UUID.
+     * @throws UUIDException when the namespace is not a valid UUID.
      */
 
-    public static V3(name: string, namespace: string): UUID {
-        return new UUID(v3(name, namespace));
+    public static V3(name: string, namespace: UUID | string): UUID {
+        return new UUID(v3(name, UUID._ParseNamespace(namespace)));
     }
 
     /**
@@ -81,10 +112,11 @@ export class UUID extends Id implements UUIDInterface{
      * @param name the name
      * @param namespace the namespace
      * @returns a Version 5 UUID.
+     * @throws UUIDException when the namespace is not a valid UUID.
      */
 
-    public static V5(name: string, namespace: string): UUID {
-        return new UUID(v5(name, namespace))
+    public static V5(name: string, namespace: UUID|string): UUID {
+        return new UUID(v5(name, UUID._ParseNamespace(namespace)));
     }
 
     /**
