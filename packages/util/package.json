@@ -26,7 +26,7 @@
   },
   "directories": {
     "lib": "lib",
-    "test": "__tests__"
+    "test:open": "yarn cypress open"
   },
   "files": [
     "lib"
