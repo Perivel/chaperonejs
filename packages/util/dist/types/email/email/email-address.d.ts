@@ -22,12 +22,6 @@ export declare class EmailAddress implements EmailInterface, Equatable {
      */
     domainName(): string;
     /**
-     * email()
-     *
-     * email() gets the value of the email address.
-     */
-    email(): string;
-    /**
      * equals()
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
@@ -41,5 +35,11 @@ export declare class EmailAddress implements EmailInterface, Equatable {
      */
     username(): string;
     toString(): string;
+    /**
+     * email()
+     *
+     * value() gets the value of the email address.
+     */
+    value(): string;
 }
 //# sourceMappingURL=email-address.d.ts.map

@@ -11,16 +11,16 @@ export interface EmailInterface {
      */
     domainName(): string;
     /**
-     * email()
-     *
-     * email() gets the email value.
-     */
-    email(): string;
-    /**
      * username()
      *
      * username() gets the username of the email address.
      */
     username(): string;
+    /**
+     * value()
+     *
+     * gets the value of the email.
+     */
+    value(): string;
 }
 //# sourceMappingURL=email.interface.d.ts.map

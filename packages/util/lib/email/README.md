@@ -20,7 +20,7 @@ creates an `EmailAddress` instance with the provided email address value.
 | **Method** | **Arguments** | **Return Type** | **Description** |
 | ----------- | ----------- | ----------- | ----------- |
 | domainName() | N/A | string | Gets the domain name portion of the Email Address |
-| email() | N/A | string | Gets the value of the Email Address |
 | equals() | (any) suspect | boolean | Determines if the email address and the suspect are equal |
 | toString() | N/A | string | converts the EmailAddress instance to a string |
 | username() | N/A | string | Gets the username portion of the Email Address |
+| value() | N/A | string | Gets the value of the Email Address |

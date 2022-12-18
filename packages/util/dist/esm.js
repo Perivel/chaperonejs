@@ -812,21 +812,21 @@ throw new sa;{this._value=a;const l=a.indexOf("@");this._username=a.substring(0,
      * domainName() gets the domain of the email address.
      */domainName(){return this._domain}
 /**
-     * email()
-     *
-     * email() gets the value of the email address.
-     */email(){return this._value}
-/**
      * equals()
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof ta){const n=a;l=this.email()===n.email()}return l}
+     */equals(a){let l=!1;if(a instanceof ta){const n=a;l=this.value()===n.value()}return l}
 /**
      * username()
      *
      * username() gets the username of the email address.
-     */username(){return this._username}toString(){return this.email()}}
+     */username(){return this._username}toString(){return this.value()}
+/**
+     * email()
+     *
+     * value() gets the value of the email address.
+     */value(){return this._value}}
 /**
  * The BaseFormatter class
  *

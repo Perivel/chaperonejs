@@ -45,16 +45,6 @@ export class EmailAddress implements EmailInterface, Equatable {
     }
 
     /**
-     * email()
-     *
-     * email() gets the value of the email address.
-     */
-
-    public email(): string {
-        return this._value;
-    }
-
-    /**
      * equals()
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
@@ -67,7 +57,7 @@ export class EmailAddress implements EmailInterface, Equatable {
 
         if (suspect instanceof EmailAddress) {
             const other = suspect as EmailAddress;
-            isEqual = this.email() === other.email();
+            isEqual = this.value() === other.value();
         }
 
         return isEqual;
@@ -84,6 +74,17 @@ export class EmailAddress implements EmailInterface, Equatable {
     }
 
     public toString(): string {
-        return this.email();
+        return this.value();
     }
+
+    /**
+     * email()
+     *
+     * value() gets the value of the email address.
+     */
+
+    public value(): string {
+        return this._value;
+    }
+
 }
