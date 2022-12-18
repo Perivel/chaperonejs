@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/util",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "types": "dist/types/core.d.ts",
   "description": "Common utility features for NodeJS projects.",
@@ -25,18 +25,18 @@
     "access": "public"
   },
   "directories": {
-    "lib": "lib",
-    "test:open": "yarn cypress open"
+    "lib": "lib"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Perivel/chaperonejs.git"
   },
   "scripts": {
-    "build": "rollup --bundleConfigAsCjs -c"
+    "build": "rollup --bundleConfigAsCjs -c",
+    "test:open": "yarn cypress open"
   },
   "bugs": {
     "url": "https://github.com/Perivel/chaperonejs/issues"
