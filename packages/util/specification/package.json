@@ -1,12 +1,16 @@
 {
-  "name": "@chaperone/util",
+  "name": "specification",
   "version": "0.1.2",
   "type": "module",
-  "types": "dist/types/core.d.ts",
-  "description": "Common utility features for NodeJS projects.",
+  "description": "A generic Specification pattern",
   "author": "PatrickLumenus <patrickaluy@gmail.com>",
-  "homepage": "https://github.com/Perivel/chaperonejs",
+  "homepage": "https://github.com/Perivel/chaperonejs#readme",
   "license": "MIT",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
   "exports": {
     ".": {
       "browser": {
@@ -21,38 +25,18 @@
       "require": "./dist/c.js"
     }
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "directories": {
-    "lib": "lib"
-  },
   "files": [
-    "dist",
-    "specification/dist",
-    "specification/package.json"
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Perivel/chaperonejs.git"
   },
   "scripts": {
-    "build": "rollup --bundleConfigAsCjs -c",
-    "test:open": "yarn cypress open"
+    "build": "rollup --bundleConfigAsCjs -c"
   },
   "bugs": {
     "url": "https://github.com/Perivel/chaperonejs/issues"
-  },
-  "dependencies": {
-    "awesome-phonenumber": "^4.0.0",
-    "bcryptjs": "^2.4.3",
-    "change-case": "^4.1.2",
-    "colors-convert": "^1.4.1",
-    "i18n-iso-countries": "^7.5.0",
-    "luxon": "^3.1.1",
-    "ramda": "^0.28.0",
-    "sanitize-html": "^2.7.3",
-    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.3",
@@ -60,11 +44,6 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.2.0",
     "@rollup/plugin-typescript": "^10.0.1",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/luxon": "^3.1.0",
-    "@types/node": "^18.11.11",
-    "@types/ramda": "^0.28.20",
-    "@types/uuid": "^9.0.0",
     "cypress": "^12.0.2",
     "rollup": "^3.6.0",
     "rollup-plugin-delete": "^2.0.0",
