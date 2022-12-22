@@ -23,4 +23,3 @@ export declare class Hex implements HexInterface, Equatable, Serializable {
      */
     value(): string;
 }
-//# sourceMappingURL=hex.d.ts.map

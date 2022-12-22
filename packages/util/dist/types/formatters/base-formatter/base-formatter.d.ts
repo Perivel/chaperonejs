@@ -7,4 +7,3 @@ import { BaseFormatterInterface } from './base-formatter.interface';
 export declare abstract class BaseFormatter implements BaseFormatterInterface {
     constructor();
 }
-//# sourceMappingURL=base-formatter.d.ts.map

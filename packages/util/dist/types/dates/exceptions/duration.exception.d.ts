@@ -7,4 +7,3 @@ import { BaseException } from '../../common';
 export declare class DurationException extends BaseException {
     constructor(message?: string);
 }
-//# sourceMappingURL=duration.exception.d.ts.map

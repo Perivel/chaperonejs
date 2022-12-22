@@ -23,4 +23,3 @@ export interface EmailInterface {
      */
     value(): string;
 }
-//# sourceMappingURL=email.interface.d.ts.map

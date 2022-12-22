@@ -16,4 +16,3 @@ export interface TimezoneInterface {
      */
     utcOffset(): number;
 }
-//# sourceMappingURL=timezone.interface.d.ts.map

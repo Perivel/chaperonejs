@@ -19,13 +19,26 @@
       },
       "import": "./dist/esm.js",
       "require": "./dist/c.js"
+    },
+    "./specification": {
+      "browser": {
+        "import": "./specification/dist/esm.js",
+        "require": "./specification/dist/c.js"
+      },
+      "node": {
+        "import": "./specification/dist/esm.js",
+        "require": "./specification/dist/c.js"
+      },
+      "import": "./specification/dist/esm.js",
+      "require": "./specification/dist/c.js"
     }
   },
   "publishConfig": {
     "access": "public"
   },
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "specification": "specification"
   },
   "files": [
     "dist",
@@ -67,6 +80,7 @@
     "@types/uuid": "^9.0.0",
     "cypress": "^12.0.2",
     "rollup": "^3.6.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-polyfill-node": "^0.11.0"
   }

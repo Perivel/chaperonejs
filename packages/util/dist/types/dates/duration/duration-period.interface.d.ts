@@ -9,4 +9,3 @@ export interface DurationPeriod {
     quarters?: number;
     years?: number;
 }
-//# sourceMappingURL=duration-period.interface.d.ts.map

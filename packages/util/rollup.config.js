@@ -7,6 +7,7 @@ import del from 'rollup-plugin-delete';
 import commonjs from '@rollup/plugin-commonjs';
 import polyfills from "rollup-plugin-polyfill-node";
 import terser from "@rollup/plugin-terser";
+//import copy from 'rollup-plugin-copy';
 
 const deps = [
     'bcryptjs',
@@ -40,6 +41,18 @@ export default [
             del({
                 targets: ['./dist']
             }),
+            // copy({
+            //     targets: [
+            //         {
+            //             src: './specification/package.json',
+            //             dest: './dist/specification'
+            //         },
+            //         {
+            //             src: './specification/dist',
+            //             dest: './dist/specification/dist'
+            //         }
+            //     ],
+            // }),
             typescript({
                 declaration: true,
                 declarationDir: 'types/',

@@ -1,11 +1,2 @@
-# `specification`
-
-> TODO: description
-
-## Usage
-
-```
-const specification = require('specification');
-
-// TODO: DEMONSTRATE API
-```
+# @chaperone/util/specification
+An implementation of the specification pattern.

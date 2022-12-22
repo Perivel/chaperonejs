@@ -17,4 +17,3 @@ export interface StreetInterface {
      */
     line2(): string;
 }
-//# sourceMappingURL=street.interface.d.ts.map

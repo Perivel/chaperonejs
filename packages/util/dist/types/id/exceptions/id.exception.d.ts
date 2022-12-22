@@ -7,4 +7,3 @@ import { InvalidArgumentException } from '../../common';
 export declare class IdException extends InvalidArgumentException {
     constructor(message?: string);
 }
-//# sourceMappingURL=id.exception.d.ts.map

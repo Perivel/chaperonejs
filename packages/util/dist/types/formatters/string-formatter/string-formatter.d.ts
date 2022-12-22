@@ -115,4 +115,3 @@ export declare class StringFormatter extends BaseFormatter implements StringForm
      */
     private castToString;
 }
-//# sourceMappingURL=string-formatter.d.ts.map

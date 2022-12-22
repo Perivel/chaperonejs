@@ -7,4 +7,3 @@ export * from './locality';
 export * from './region';
 export * from './postal-code';
 export * from './street-address';
-//# sourceMappingURL=index.d.ts.map

@@ -17,4 +17,3 @@ export interface CountryInterface {
      */
     name(): string;
 }
-//# sourceMappingURL=country.interface.d.ts.map

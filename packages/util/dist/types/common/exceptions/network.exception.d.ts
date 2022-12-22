@@ -7,4 +7,3 @@ import { BaseException } from './base.exception';
 export declare class NetworkException extends BaseException {
     constructor(message?: string);
 }
-//# sourceMappingURL=network.exception.d.ts.map

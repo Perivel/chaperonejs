@@ -11,4 +11,3 @@ export interface RegionInterface {
      */
     name(): string;
 }
-//# sourceMappingURL=region.interface.d.ts.map

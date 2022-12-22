@@ -39,4 +39,3 @@ export declare class CharacterSet implements CharacterSetInterface, Equatable {
     value(): CharacterSetValue;
     toString(): string;
 }
-//# sourceMappingURL=character-set.d.ts.map

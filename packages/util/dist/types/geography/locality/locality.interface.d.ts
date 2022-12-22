@@ -11,4 +11,3 @@ export interface LocalityInterface {
      */
     name(): string;
 }
-//# sourceMappingURL=locality.interface.d.ts.map

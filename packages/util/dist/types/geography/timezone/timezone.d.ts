@@ -57,4 +57,3 @@ export declare class Timezone implements TimezoneInterface, Equatable {
     utcOffset(): number;
     toString(): string;
 }
-//# sourceMappingURL=timezone.d.ts.map

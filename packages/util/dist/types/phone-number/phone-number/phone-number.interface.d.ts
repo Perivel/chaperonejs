@@ -69,4 +69,3 @@ export interface PhoneNumberInterface {
      */
     value(): string;
 }
-//# sourceMappingURL=phone-number.interface.d.ts.map

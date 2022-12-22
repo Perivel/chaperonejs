@@ -91,4 +91,3 @@ export declare class Color implements ColorInterface, Equatable, Serializable {
     serialize(): string;
     toString(): string;
 }
-//# sourceMappingURL=color.d.ts.map

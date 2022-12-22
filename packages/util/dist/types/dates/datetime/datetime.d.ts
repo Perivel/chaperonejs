@@ -162,4 +162,3 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      */
     year(): number;
 }
-//# sourceMappingURL=datetime.d.ts.map

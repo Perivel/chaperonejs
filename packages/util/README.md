@@ -1,11 +1,2 @@
-# `core`
-
-> TODO: description
-
-## Usage
-
-```
-const core = require('core');
-
-// TODO: DEMONSTRATE API
-```
+# @chaperone/utils
+Common utilities for Typescript NodeJS applications.

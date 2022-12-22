@@ -113,4 +113,3 @@ export interface DurationInterface {
      */
     years(): number;
 }
-//# sourceMappingURL=duration.interface.d.ts.map

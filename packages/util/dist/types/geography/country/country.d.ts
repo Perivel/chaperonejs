@@ -35,4 +35,3 @@ export declare class Country implements CountryInterface, Equatable {
     equals(suspect: any): boolean;
     toString(): string;
 }
-//# sourceMappingURL=country.d.ts.map

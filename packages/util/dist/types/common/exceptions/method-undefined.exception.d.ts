@@ -8,4 +8,3 @@ import { BaseException } from './base.exception';
 export declare class MethodUndefinedException extends BaseException {
     constructor(message?: string);
 }
-//# sourceMappingURL=method-undefined.exception.d.ts.map

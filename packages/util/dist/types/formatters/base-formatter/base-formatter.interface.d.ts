@@ -5,4 +5,3 @@
  */
 export interface BaseFormatterInterface {
 }
-//# sourceMappingURL=base-formatter.interface.d.ts.map

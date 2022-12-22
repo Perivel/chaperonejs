@@ -14,4 +14,3 @@ export interface ColorInterface {
      */
     rgba(): RGBAInterface;
 }
-//# sourceMappingURL=color.interface.d.ts.map

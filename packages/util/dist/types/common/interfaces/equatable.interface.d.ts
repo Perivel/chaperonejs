@@ -6,4 +6,3 @@
 export interface Equatable {
     equals(suspect: any): boolean;
 }
-//# sourceMappingURL=equatable.interface.d.ts.map

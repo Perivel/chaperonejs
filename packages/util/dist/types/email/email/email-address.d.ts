@@ -42,4 +42,3 @@ export declare class EmailAddress implements EmailInterface, Equatable {
      */
     value(): string;
 }
-//# sourceMappingURL=email-address.d.ts.map

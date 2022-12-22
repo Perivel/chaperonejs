@@ -101,4 +101,3 @@ export interface StringFormatterInterface extends BaseFormatterInterface {
      */
     snakeCase(input: any): string;
 }
-//# sourceMappingURL=string-formatter.interface.d.ts.map

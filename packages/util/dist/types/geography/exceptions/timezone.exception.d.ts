@@ -7,4 +7,3 @@ import { BaseException } from '../../common';
 export declare class TimezoneException extends BaseException {
     constructor(message?: string);
 }
-//# sourceMappingURL=timezone.exception.d.ts.map

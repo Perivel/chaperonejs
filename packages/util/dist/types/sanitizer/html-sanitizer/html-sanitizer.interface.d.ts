@@ -12,4 +12,3 @@ export interface HTMLSanitizerInterface {
      */
     sanitize(dirty: string): string;
 }
-//# sourceMappingURL=html-sanitizer.interface.d.ts.map

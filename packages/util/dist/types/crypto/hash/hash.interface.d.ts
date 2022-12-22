@@ -6,4 +6,3 @@ export interface HashInterface {
      */
     value(): string;
 }
-//# sourceMappingURL=hash.interface.d.ts.map

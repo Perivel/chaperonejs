@@ -7,4 +7,3 @@ import { BaseException } from '../../common';
 export declare class DateException extends BaseException {
     constructor(message?: string);
 }
-//# sourceMappingURL=date.exception.d.ts.map

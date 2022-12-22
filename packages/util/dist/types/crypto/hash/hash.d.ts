@@ -34,4 +34,3 @@ export declare class Hash implements HashInterface, Equatable {
      */
     value(): string;
 }
-//# sourceMappingURL=hash.d.ts.map

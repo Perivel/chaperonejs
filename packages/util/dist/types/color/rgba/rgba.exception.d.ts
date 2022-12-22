@@ -7,4 +7,3 @@ import { ColorException } from '../exceptions';
 export declare class RGBAException extends ColorException {
     constructor(message?: string);
 }
-//# sourceMappingURL=rgba.exception.d.ts.map

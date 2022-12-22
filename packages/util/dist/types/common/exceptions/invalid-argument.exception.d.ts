@@ -7,4 +7,3 @@ import { BaseException } from './base.exception';
 export declare class InvalidArgumentException extends BaseException {
     constructor(message?: string);
 }
-//# sourceMappingURL=invalid-argument.exception.d.ts.map

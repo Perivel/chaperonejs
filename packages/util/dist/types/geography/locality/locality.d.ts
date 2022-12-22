@@ -27,4 +27,3 @@ export declare class Locality implements LocalityInterface, Serializable, Equata
     serialize(): string;
     toString(): string;
 }
-//# sourceMappingURL=locality.d.ts.map

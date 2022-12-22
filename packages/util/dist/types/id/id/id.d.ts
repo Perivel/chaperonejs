@@ -28,4 +28,3 @@ export declare abstract class Id implements IddentifierInterface, Equatable {
     id(): any;
     toString(): string;
 }
-//# sourceMappingURL=id.d.ts.map
