@@ -1,7 +1,8 @@
 {
   "name": "specification",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "type": "module",
+  "types": "./dist/types/index.d.ts",
   "description": "A generic Specification pattern",
   "author": "PatrickLumenus <patrickaluy@gmail.com>",
   "homepage": "https://github.com/Perivel/chaperonejs#readme",
