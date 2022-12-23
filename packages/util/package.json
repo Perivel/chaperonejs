@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/util",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "types": "dist/types/core.d.ts",
   "description": "Common utility features for NodeJS projects.",
@@ -55,7 +55,9 @@
   "files": [
     "dist",
     "specification/dist",
-    "specification/package.json"
+    "specification/package.json",
+    "factory/dist",
+    "factory/package.json"
   ],
   "repository": {
     "type": "git",
