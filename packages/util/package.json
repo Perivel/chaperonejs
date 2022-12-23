@@ -31,6 +31,18 @@
       },
       "import": "./specification/dist/esm.js",
       "require": "./specification/dist/c.js"
+    },
+    "./factory": {
+      "browser": {
+        "import": "./factory/dist/esm.js",
+        "require": "./factory/dist/c.js"
+      },
+      "node": {
+        "import": "./factory/dist/esm.js",
+        "require": "./factory/dist/c.js"
+      },
+      "import": "./factory/dist/esm.js",
+      "require": "./factory/dist/c.js"
     }
   },
   "publishConfig": {
