@@ -30,7 +30,7 @@ export class Coordinates implements CoordinatesInterface, Equatable {
 
         if (suspect instanceof Coordinates) {
             const other = suspect as Coordinates;
-            isEqual = (this.longitude() === other.longitude()) && (this.latitude() === other.latitude());
+            isEqual = (this.longitude === other.longitude) && (this.latitude === other.latitude);
         }
 
         return isEqual;
@@ -39,24 +39,24 @@ export class Coordinates implements CoordinatesInterface, Equatable {
     /**
      * latitude()
      *
-     * latitude() gets the latitude.
+     * gets the latitude.
      */
 
-    public latitude(): number {
+    public get latitude(): number {
         return this._lat;
     }
 
     /**
      * longitude()
      *
-     * longitude() gets teh longitude.
+     * gets teh longitude.
      */
 
-    public longitude(): number {
+    public get longitude(): number {
         return this._long;
     }
 
     public toString(): string {
-        return `${this.latitude()}, ${this.longitude()}`;
+        return `${this.latitude}, ${this.longitude}`;
     }
 }

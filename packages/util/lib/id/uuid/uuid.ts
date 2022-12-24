@@ -41,7 +41,7 @@ export class UUID extends Id implements UUIDInterface {
         let val = "";
 
         if (namespace instanceof UUID) {
-            val = namespace.id();
+            val = namespace.value;
         }
         else {
             // we validate that the string is a valid UUID.
@@ -131,20 +131,20 @@ export class UUID extends Id implements UUIDInterface {
 
         if (suspect instanceof UUID) {
             const other = suspect as UUID;
-            isEqual = this.id() === other.id();
+            isEqual = this.value === other.value;
         }
 
         return isEqual;
     }
 
     /**
-     * id()
+     * value
      *
-     * id() gets the value of the id.
+     * gets the value of the id.
      */
 
-    public id(): string {
-        return super.id() as string;
+    public get value(): string {
+        return super.value as string;
     }
 
     /**
@@ -153,7 +153,7 @@ export class UUID extends Id implements UUIDInterface {
      * gets teh version of the UUID.
      */
 
-    public version(): number {
-        return uuidVersion(this.id());
+    public get version(): number {
+        return uuidVersion(this.value);
     }
 }

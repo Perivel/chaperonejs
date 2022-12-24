@@ -41,14 +41,14 @@ import { PostalCodeException } from '../exceptions/postal-code.exception';
 
         if (suspect instanceof PostalCode) {
             const otherPostal = suspect as PostalCode;
-            isEqual = this.value() === otherPostal.value();
+            isEqual = this.value === otherPostal.value;
         }
 
         return isEqual;
     }
 
     public serialize(): string {
-        return this.value();
+        return this.value;
     }
 
     public toString(): string {
@@ -56,12 +56,12 @@ import { PostalCodeException } from '../exceptions/postal-code.exception';
     }
 
     /**
-     * value()
+     * value
      *
-     * value() gets the postal code value.
+     * gets the postal code value.
      */
 
-    public value(): string {
+    public get value(): string {
         return this._value;
     }
 }

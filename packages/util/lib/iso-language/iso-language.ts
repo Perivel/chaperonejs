@@ -46,22 +46,22 @@ export class IsoLanguage implements IsoLanguageInterface, Equatable {
     }
 
     /**
-     * alpha2()
+     * alpha2
      * 
      * Gets the alpha2 value.
      */
 
-    public alpha2(): string | null {
+    public get alpha2(): string | null {
         return this._alpha2;
     }
 
     /**
-     * alpha3b()
+     * alpha3b
      * 
      * gets the alpha3b value.
      */
 
-    public alpha3b(): string | null {
+    public get alpha3b(): string | null {
         return this._alpha3b;
     }
 
@@ -71,7 +71,7 @@ export class IsoLanguage implements IsoLanguageInterface, Equatable {
      * gets the alpha3t value.
      */
 
-    public alpha3t(): string | null {
+    public get alpha3t(): string | null {
         return this._alpha3t;
     }
 
@@ -88,10 +88,10 @@ export class IsoLanguage implements IsoLanguageInterface, Equatable {
         if (suspect instanceof IsoLanguage) {
             const other = suspect as IsoLanguage;
             isEqual = (
-                (this.name() === other.name()) &&
-                (this.alpha2() === other.alpha2()) &&
-                (this.alpha3b() === other.alpha3b()) &&
-                (this.alpha3t() === other.alpha3t())
+                (this.name === other.name) &&
+                (this.alpha2 === other.alpha2) &&
+                (this.alpha3b === other.alpha3b) &&
+                (this.alpha3t === other.alpha3t)
             );
         }
 
@@ -99,16 +99,16 @@ export class IsoLanguage implements IsoLanguageInterface, Equatable {
     }
 
     /**
-     * name()
+     * name
      * 
      * gets the language name.
      */
     
-    public name(): string {
+    public get name(): string {
         return this._name;
     }
 
     public toString(): string {
-        return this.name();
+        return this.name;
     }
 }

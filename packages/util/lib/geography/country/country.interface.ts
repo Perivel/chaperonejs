@@ -7,18 +7,18 @@
 export interface CountryInterface {
 
     /**
-     * code()
+     * code
      *
-     * code() gets the country code.
+     * gets the country code.
      */
 
-    code(): string;
+    readonly code: string;
 
     /**
-     * name()
+     * name
      *
-     * name() gets the country's common name.
+     * gets the country's common name.
      */
 
-    name(): string;
+    readonly name: string;
 }

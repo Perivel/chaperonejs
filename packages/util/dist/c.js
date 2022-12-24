@@ -1,4 +1,4 @@
-"use strict";var a=require("colors-convert"),l=require("bcryptjs"),n=require("luxon"),h=require("i18n-iso-countries"),e=require("change-case"),i=require("uuid"),s=require("awesome-phonenumber"),t=require("sanitize-html");function r(a){var l=Object.create(null);return a&&Object.keys(a).forEach((function(n){if("default"!==n){var h=Object.getOwnPropertyDescriptor(a,n);Object.defineProperty(l,n,h.get?h:{enumerable:!0,get:function(){return a[n]}})}})),l.default=a,Object.freeze(l)}var u=r(l),p=r(h);
+"use strict";var a=require("colors-convert"),l=require("bcryptjs"),n=require("luxon"),h=require("i18n-iso-countries"),e=require("change-case"),i=require("uuid"),t=require("awesome-phonenumber"),s=require("sanitize-html");function r(a){var l=Object.create(null);return a&&Object.keys(a).forEach((function(n){if("default"!==n){var h=Object.getOwnPropertyDescriptor(a,n);Object.defineProperty(l,n,h.get?h:{enumerable:!0,get:function(){return a[n]}})}})),l.default=a,Object.freeze(l)}var u=r(l),p=r(h);
 /**
  * CharacterSet
  *
@@ -18,17 +18,17 @@ class o{constructor(a){this._value=a}
      * @returns A CharacterSet set to UTF-8.
      */static UTF8(){return new o("UTF-8")}
 /**
+     * value
+     *
+     * gets the value of the Character Set.
+     */get value(){return this._value}
+/**
      * equals()
      *
      * determines if the instance and the suspect are equal.
      * @param suspect the suspect to compare.
      * @returns TRUE if the instance and the suspect are equal. FALSE otherwise.
-     */equals(a){let l=!1;if(a instanceof o){const n=a;l=this.value()===n.value()}return l}
-/**
-     * value()
-     *
-     * gets the value of the Character Set.
-     */value(){return this._value}toString(){return this.value()}}
+     */equals(a){let l=!1;if(a instanceof o){const n=a;l=this.value===n.value}return l}toString(){return this.value}}
 /**
  * BaseException
  *
@@ -66,12 +66,12 @@ class b extends c{constructor(a="Color Error"){super(a)}}
      * @param value the hex value.
      * @throws HexException when the hex value is invalid.
      */
-constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals(a){let l=!1;if(a instanceof F){const n=a;l=this.value()===n.value()}return l}serialize(){return this.value()}toString(){return this.serialize()}
+constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals(a){let l=!1;if(a instanceof F){const n=a;l=this.value===n.value}return l}serialize(){return this.value}toString(){return this.serialize()}
 /**
      * value()
      *
      * gets the value.
-     */value(){return this._value}}
+     */get value(){return this._value}}
 /**
  * RGBAException
  *
@@ -96,53 +96,53 @@ throw new m;
 // valid RGBA.
 this._a=h,this._b=n,this._g=l,this._r=a}
 /**
-     * a()
+     * a
      *
      * gets the alpha value.
-     */a(){return this._a}
+     */get a(){return this._a}
 /**
      * b()
      *
      * gets the blue value.
-     */b(){return this._b}equals(a){let l=!1;if(a instanceof d){const n=a;l=this.r()===n.r()&&this.g()===n.g()&&this.b()===n.b()&&this.a()===n.a()}return l}
+     */get b(){return this._b}equals(a){let l=!1;if(a instanceof d){const n=a;l=this.r===n.r&&this.g===n.g&&this.b===n.b&&this.a===n.a}return l}
 /**
      * g()
      *
      * gets the green value.
-     */g(){return this._g}
+     */get g(){return this._g}
 /**
-     * r()
+     * r
      *
      * gets the red value.
-     */r(){return this._r}serialize(){return JSON.stringify({r:this.r().toString(),g:this.g().toString(),b:this.b().toString(),a:this.a().toString()})}
+     */get r(){return this._r}serialize(){return JSON.stringify({r:this.r.toString(),g:this.g.toString(),b:this.b.toString(),a:this.a.toString()})}
 /**
      * setA()
      *
      * sets the alpha value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setA(a){return new d(this.r(),this.g(),this.b(),a)}
+     */setA(a){return new d(this.r,this.g,this.b,a)}
 /**
      * setB()
      *
      * sets the b value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setB(a){return new d(this.r(),this.g(),a,this.a())}
+     */setB(a){return new d(this.r,this.g,a,this.a)}
 /**
      * setG()
      *
      * sets the g value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setG(a){return new d(this.r(),a,this.b(),this.a())}
+     */setG(a){return new d(this.r,a,this.b,this.a)}
 /**
      * setR()
      *
      * sets the r value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setR(a){return new d(a,this.g(),this.b(),this.a())}toString(){return this.serialize()}}
+     */setR(a){return new d(a,this.g,this.b,this.a)}toString(){return this.serialize()}}
 /**
  * Color
  *
@@ -152,7 +152,7 @@ this._a=h,this._b=n,this._g=l,this._r=a}
      * Creates a Color value.
      * @param value the value of the color.
      */
-constructor(l){if(l instanceof d)this._rgba=l,this._hex=new F(a.rgbaToHex({r:this._rgba.r(),g:this._rgba.g(),b:this._rgba.b(),a:this._rgba.a()}));else{this._hex=l;const n=a.hexToRgba(this._hex.value());this._rgba=new d(n.r,n.g,n.b,n.a)}}
+constructor(l){if(l instanceof d)this._rgba=l,this._hex=new F(a.rgbaToHex({r:this._rgba.r,g:this._rgba.g,b:this._rgba.b,a:this._rgba.a}));else{this._hex=l;const n=a.hexToRgba(this._hex.value);this._rgba=new d(n.r,n.g,n.b,n.a)}}
 /**
      * Black()
      *
@@ -205,17 +205,17 @@ constructor(l){if(l instanceof d)this._rgba=l,this._hex=new F(a.rgbaToHex({r:thi
      * creates a Color instance set to white.
      * @param a the alpha value, defaults to 1.0
      * @returns a color value set to White.
-     */static White(a=1){return k.FromRGBA(255,255,255,a)}equals(a){let l=!1;if(a instanceof k){const n=a;l=this.rgba().equals(n.rgba())&&this.hex().equals(n.hex())}return l}
+     */static White(a=1){return k.FromRGBA(255,255,255,a)}equals(a){let l=!1;if(a instanceof k){const n=a;l=this.rgba.equals(n.rgba)&&this.hex.equals(n.hex)}return l}
 /**
      * hex()
      *
      * gets the hex value of the color.
-     */hex(){return this._hex}
+     */get hex(){return this._hex}
 /**
      * rgba()
      *
      * gets the RGBA value of the color.
-     */rgba(){return this._rgba}serialize(){return JSON.stringify({hex:this.hex().serialize(),rgba:this.rgba().serialize()})}toString(){return this.serialize()}}
+     */get rgba(){return this._rgba}serialize(){return JSON.stringify({hex:this.hex.serialize(),rgba:this.rgba.serialize()})}toString(){return this.serialize()}}
 /**
  * Salt
  *
@@ -234,12 +234,12 @@ constructor(l){if(l instanceof d)this._rgba=l,this._hex=new F(a.rgbaToHex({r:thi
      * compares the suspect to the instance to determine if they are equal.
      * @param suspect the suspect to compare
      * @returns true if the suspect and the instance are equal
-     */equals(a){let l=!1;return a instanceof w&&(l=a.value()===this.value()),l}
+     */equals(a){let l=!1;return a instanceof w&&(l=a.value===this.value),l}
 /**
-     * value()
+     * value
      *
      * gets the value of the salt.
-     */value(){return this._value}toString(){return this.value()}}
+     */get value(){return this._value}toString(){return this.value}}
 /**
  * Hash
  *
@@ -254,18 +254,18 @@ constructor(l){if(l instanceof d)this._rgba=l,this._hex=new F(a.rgbaToHex({r:thi
      * @returns a hashed version of the data
      */static async Create(a,l){
 //return new Hash(await Bcrypt.hash(data, salt.value()));
-return new Promise(((n,h)=>{u.hash(a.toString(),l.value(),((a,l)=>{a?h(a):n(new f(l))}))}))}
+return new Promise(((n,h)=>{u.hash(a.toString(),l.value,((a,l)=>{a?h(a):n(new f(l))}))}))}
+/**
+      * value
+      *
+      * gets the value of the hash.
+      */get value(){return this._value}
 /**
      * equals()
      *
      * compares the instance to the suspect, to determine if they are equal.
      * @param suspect the suspect to compare
-     */equals(a){let l=!1;return a instanceof f&&(l=this.value()===a.value()),l}toString(){return this.value()}
-/**
-     * value()
-     *
-     * gets the value of the hash.
-     */value(){return this._value}}class y extends c{constructor(a="Country Error"){super(a)}}class v extends g{constructor(a="Street Address Error"){super(a)}}class x extends v{constructor(a="Invalid Locality"){super(a)}}class S extends v{constructor(a="Invalid Postal Code"){super(a)}}class z extends v{constructor(a="Invalid Region"){super(a)}}class C extends v{constructor(a="Invalid Street"){super(a)}}
+     */equals(a){let l=!1;return a instanceof f&&(l=this.value===a.value),l}toString(){return this.value}}class y extends c{constructor(a="Country Error"){super(a)}}class v extends g{constructor(a="Street Address Error"){super(a)}}class x extends v{constructor(a="Invalid Locality"){super(a)}}class S extends v{constructor(a="Invalid Postal Code"){super(a)}}class z extends v{constructor(a="Invalid Region"){super(a)}}class C extends v{constructor(a="Invalid Street"){super(a)}}
 /**
  * TimezoneException
  *
@@ -298,26 +298,26 @@ const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return
      * UTC() sets the timezone to UTC.
      */static UTC(){const a=n.DateTime.fromJSDate(new Date).setZone("utc");return new _(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
 /**
-     * abbreviation()
+     * abbreviation
      *
-     * abbreviation() gets the timezone abbreviation()
-     */abbreviation(){return this._abbreviation}
+     * gets the timezone abbreviation()
+     */get abbreviation(){return this._abbreviation}
 /**
      * equals()
      *
      * equals() compares the instnace to the suspect to determine if they are equal.
      * @param suspect the suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof _){const n=a;l=this.id()===n.id()&&this.abbreviation()===n.abbreviation()&&this.utcOffset()===n.utcOffset()}return l}
+     */equals(a){let l=!1;if(a instanceof _){const n=a;l=this.id===n.id&&this.abbreviation===n.abbreviation&&this.utcOffset===n.utcOffset}return l}
 /**
-     * id()
+     * id
      *
-     * id() gets the Olson timezone id.
-     */id(){return this._id}
+     * gets the Olson timezone id.
+     */get id(){return this._id}
 /**
-     * utcOffset()
+     * utcOffset
      *
-     * utcOffset() gets the UTC offset of the timezone.
-     */utcOffset(){return this._offset}toString(){return this.id()}}
+     * gets the UTC offset of the timezone.
+     */get utcOffset(){return this._offset}toString(){return this.id}}
 /**
  * Coordinates
  *
@@ -328,17 +328,17 @@ const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return
      *
      * equals() compares the suspect to the instance, to determine if they are equals.
      * @param suspect The suspect to compare.
-     */equals(a){let l=!1;if(a instanceof A){const n=a;l=this.longitude()===n.longitude()&&this.latitude()===n.latitude()}return l}
+     */equals(a){let l=!1;if(a instanceof A){const n=a;l=this.longitude===n.longitude&&this.latitude===n.latitude}return l}
 /**
      * latitude()
      *
-     * latitude() gets the latitude.
-     */latitude(){return this._lat}
+     * gets the latitude.
+     */get latitude(){return this._lat}
 /**
      * longitude()
      *
-     * longitude() gets teh longitude.
-     */longitude(){return this._long}toString(){return`${this.latitude()}, ${this.longitude()}`}}
+     * gets teh longitude.
+     */get longitude(){return this._long}toString(){return`${this.latitude}, ${this.longitude}`}}
 /**
  * Country
  *
@@ -353,21 +353,21 @@ constructor(a){const l=a.toUpperCase(),n=p.getName(l,"en");if(!n)
 // invalid country
 throw new y;this._code=l,this._name=n}
 /**
-     * code()
+     * code
      *
-     * code() gets the country code.
-     */code(){return this._code}
+     * gets the country code.
+     */get code(){return this._code}
 /**
-     * name()
+     * name
      *
-     * name() gets the country's common name.
-     */name(){return this._name}
+     * gets the country's common name.
+     */get name(){return this._name}
 /**
      * equals()
      *
      * equals() compares the Country to the suspect to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof D){const n=a;l=this.code()===n.code()}return l}toString(){return this.name()}}
+     */equals(a){let l=!1;if(a instanceof D){const n=a;l=this.code===n.code}return l}toString(){return this.name}}
 /**
  * Street
  *
@@ -383,17 +383,17 @@ constructor(a,l=""){if(!a){throw new C}this._line1=a,this._line2=l}
 /**
      * Determines if two streets are equal.
      * @param suspect The value being compared.
-     */equals(a){let l=!1;if(a instanceof T){const n=a;l=this.line1()===n.line1()&&this.line2()==this.line2()}return l}
+     */equals(a){let l=!1;if(a instanceof T){const n=a;l=this.line1===n.line1&&this.line2==this.line2}return l}
 /**
-     * line1()
+     * line1
      *
-     * line1() gets the line1 value of the street address.
-     */line1(){return this._line1}
+     * gets the line1 value of the street address.
+     */get line1(){return this._line1}
 /**
-     * line2()
+     * line2
      *
-     * line2() gets the line2 value of the street.
-     */line2(){return this._line2}serialize(){return JSON.stringify({line_1:this.line1(),line2:this.line2()})}toString(){return this.serialize()}}
+     * gets the line2 value of the street.
+     */get line2(){return this._line2}serialize(){return JSON.stringify({line_1:this.line1,line2:this.line2})}toString(){return this.serialize()}}
 /**
  * Locality
  *
@@ -408,12 +408,12 @@ constructor(a){if(!a){throw new x}this._name=a}
 /**
      * Compares the instance to the suspect to determine if they are equal.
      * @param suspect The suspect to compare.
-     */equals(a){let l=!1;if(a instanceof j){const n=a;l=this.name()===n.name()}return l}
+     */equals(a){let l=!1;if(a instanceof j){const n=a;l=this.name===n.name}return l}
 /**
-     * name()
+     * name
      *
-     * name() gets the locality name.
-     */name(){return this._name}serialize(){return this.name()}toString(){return this.serialize()}}
+     * gets the locality name.
+     */get name(){return this._name}serialize(){return this.name}toString(){return this.serialize()}}
 /**
  * Region
  *
@@ -430,12 +430,12 @@ constructor(a){if(!a){throw new z}this._name=a}
      *
      * equals() compares the suspect and the instance to determine if they are equal.
      * @param suspect the suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof N){const n=a;l=this.name()===n.name()}return l}
+     */equals(a){let l=!1;if(a instanceof N){const n=a;l=this.name===n.name}return l}
 /**
      * name()
      *
-     * name() gets the name of the region.
-     */name(){return this._name}serialize(){return this.name()}toString(){return this.serialize()}}
+     * gets the name of the region.
+     */get name(){return this._name}serialize(){return this.name}toString(){return this.serialize()}}
 /**
  * PostalCode
  *
@@ -452,12 +452,12 @@ constructor(a){if(!a){throw new S}this._value=a}
      *
      * equals() compares the PostalCode object to the suspect to determine if they are equal.
      * @param suspect The value being compared.
-     */equals(a){let l=!1;if(a instanceof I){const n=a;l=this.value()===n.value()}return l}serialize(){return this.value()}toString(){return this.serialize()}
+     */equals(a){let l=!1;if(a instanceof I){const n=a;l=this.value===n.value}return l}serialize(){return this.value}toString(){return this.serialize()}
 /**
-     * value()
+     * value
      *
-     * value() gets the postal code value.
-     */value(){return this._value}}
+     * gets the postal code value.
+     */get value(){return this._value}}
 /**
  * StreetAddress
  *
@@ -493,38 +493,38 @@ constructor(a,l,n,h,e){let i=null;if(!a)throw i=new C,i;if(!l)throw i=new x,i;if
      *
      * @throws StreetException when the street is invalid.
      * @throws LocalityException when the
-     */static FromPrimitives(a,l="",n,h,e,i){const s=new T(a,l),t=new j(n),r=new N(h),u=new I(e),p=new D(i);return new B(s,t,r,u,p)}
+     */static FromPrimitives(a,l="",n,h,e,i){const t=new T(a,l),s=new j(n),r=new N(h),u=new I(e),p=new D(i);return new B(t,s,r,u,p)}
 /**
-     * country()
+     * country
      *
-     * country() gets the address country.
-     */country(){return this._country}
+     * gets the address country.
+     */get country(){return this._country}
 /**
      * equals()
      *
      * equals() compares the StreetAddress instance to the suspect to determine if they are equal.
      * @param suspect the suspect being compared.
-     */equals(a){let l=!1;if(a instanceof B){const n=a;l=this.street().equals(n.street())&&this.locality().equals(n.locality())&&this.region().equals(n.region())&&this.postalCode().equals(n.postalCode())&&this.country().equals(n.country())}return l}
+     */equals(a){let l=!1;if(a instanceof B){const n=a;l=this.street.equals(n.street)&&this.locality.equals(n.locality)&&this.region.equals(n.region)&&this.postalCode.equals(n.postalCode)&&this.country.equals(n.country)}return l}
 /**
-     * locality()
+     * locality
      *
-     * locality() gets the address locality.
-     */locality(){return this._locality}
+     * gets the address locality.
+     */get locality(){return this._locality}
 /**
-     * postalCode()
+     * postalCode
      *
-     * postalCode() gets the address postal code.
-     */postalCode(){return this._postal}
+     * gets the address postal code.
+     */get postalCode(){return this._postal}
 /**
-    * region()
+    * region
     *
-    * region() gets the address region.
-    */region(){return this._region}serialize(){return JSON.stringify({street:this.street().serialize(),locality:this.locality().serialize(),region:this.region().serialize(),postal_code:this.postalCode().serialize(),country:this.country().toString()})}
+    * gets the address region.
+    */get region(){return this._region}serialize(){return JSON.stringify({street:this.street.serialize(),locality:this.locality.serialize(),region:this.region.serialize(),postal_code:this.postalCode.serialize(),country:this.country.toString()})}
 /**
-     * street()
+     * street
      *
-     * street() gets the address street.
-     */street(){return this._street}toString(){return this.serialize()}}
+     * gets the address street.
+     */get street(){return this._street}toString(){return this.serialize()}}
 /**
  * DateException
  *
@@ -544,7 +544,7 @@ constructor(a,l,n,h,e){let i=null;if(!a)throw i=new C,i;if(!l)throw i=new x,i;if
      * Creates a DateTime object.
      * @param value Date
      */
-constructor(a,l,h,e=0,i=0,s=0,t=0,r=_.UTC()){if(this.date=n.DateTime.fromObject({year:a,month:l,day:h,hour:e,minute:i,second:s,millisecond:t},{zone:"utc"}),!this.date.isValid)throw new M;this.tz=r}
+constructor(a,l,h,e=0,i=0,t=0,s=0,r=_.UTC()){if(this.date=n.DateTime.fromObject({year:a,month:l,day:h,hour:e,minute:i,second:t,millisecond:s},{zone:"utc"}),!this.date.isValid)throw new M;this.tz=r}
 /**
      * FromDate()
      *
@@ -576,19 +576,19 @@ constructor(a,l,h,e=0,i=0,s=0,t=0,r=_.UTC()){if(this.date=n.DateTime.fromObject(
      *
      * add() adds the duration to the datetime.
      * @param duration the duration to add.
-     */add(a){return P.FromDate(this.date.plus(n.Duration.fromObject({years:a.years(),quarters:a.quarters(),months:a.months(),weeks:a.weeks(),days:a.days(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.miliseconds()})).toJSDate(),this.timezone())}
+     */add(a){return P.FromDate(this.date.plus(n.Duration.fromObject({years:a.years,quarters:a.quarters,months:a.months,weeks:a.weeks,days:a.days,hours:a.hours,minutes:a.minutes,seconds:a.seconds,milliseconds:a.miliseconds})).toJSDate(),this.timezone)}
 /**
-     * day()
+     * day
      *
-     * day() gets the day of the month of the DateTime.
+     * gets the day of the month of the DateTime.
      * @returns a number between 1 and 31
-     */day(){return this.date.day}
+     */get day(){return this.date.day}
 /**
-     * hour()
+     * hour
      *
      * gets the hour.
      * @note hours are zero-based (0-23)
-     */hour(){return this.date.hour}
+     */get hour(){return this.date.hour}
 /**
      * isAfter()
      *
@@ -608,67 +608,66 @@ constructor(a,l,h,e=0,i=0,s=0,t=0,r=_.UTC()){if(this.date=n.DateTime.fromObject(
      * @param suspect The Created object to be compared.
      */equals(a){let l=!1;if(a instanceof P){const n=a;l=this.date.equals(n.date)}return l}
 /**
-     * milisecond()
+     * milisecond
      *
      * gets the milisecond (0-999)
-     */milisecond(){return this.date.millisecond}
+     */get milisecond(){return this.date.millisecond}
 /**
-     * minute()
+     * minute
      *
      * gets the minute.
      * @note minutes are zero-based (0-59)
-     */minute(){return this.date.minute}
+     */get minute(){return this.date.minute}
 /**
-     * month()
+     * month
      *
-     * month() gets the month part of the DateTime.
+     * gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
-     */month(){return this.date.month}
+     */get month(){return this.date.month}
 /**
-     * second()
+     * second
      *
      * gets the second
      * @note seconds are zero-based (0-59)
-     */second(){return this.date.second}
+     */get second(){return this.date.second}
 /**
      * subtract()
      *
      * subtract() subtracts a duration form the date time.
      * @param duration the duratin to subtract.
-     */subtract(a){return P.FromDate(this.date.minus(n.Duration.fromObject({years:a.years(),quarters:a.quarters(),months:a.months(),weeks:a.weeks(),days:a.days(),hours:a.hours(),minutes:a.minutes(),seconds:a.seconds(),milliseconds:a.miliseconds()})).toJSDate(),this.timezone())}
+     */subtract(a){return P.FromDate(this.date.minus(n.Duration.fromObject({years:a.years,quarters:a.quarters,months:a.months,weeks:a.weeks,days:a.days,hours:a.hours,minutes:a.minutes,seconds:a.seconds,milliseconds:a.miliseconds})).toJSDate(),this.timezone)}
 /**
      * timezone()
      *
-     * timezone() gets the timestamp timezone.
-     */timezone(){return this.tz}toString(){return this.isoString()}
+     * gets the timestamp timezone.
+     */get timezone(){return this.tz}toString(){return this.isoString()}
 /**
      * toUtc()
      *
      * toUtc() converts the timestamp to UTC time.
-     */toUtc(){return P.FromDate(this.value(),_.UTC())}
+     */toUtc(){return P.FromDate(this.value,_.UTC())}
 /**
      * toTimeaone()
      *
      * toTimezone() converts the timestamp to the specified timezone.
      * @param timezone The timezone to convert to.
-     */toTimezone(a){return P.FromDate(this.value(),a)}
+     */toTimezone(a){return P.FromDate(this.value,a)}
 /**
      * isoString()
      *
      * isoString() gets a UTC string for a DateTime.
-     */isoString(){return this.date.setZone(this.timezone().id()).toISO()}
+     */isoString(){return this.date.setZone(this.timezone.id).toISO()}
 /**
-     * value()
+     * value
      *
-     * value() gets the value of the DateTime
-     */value(){return this.date.setZone(this.timezone().id()).toJSDate()}
+     * gets the value of the DateTime
+     */get value(){return this.date.setZone(this.timezone.id).toJSDate()}
 /**
-     * year()
+     * year
      *
-     * year() gets the year portion of the DateTime.
-     *
+     * gets the year portion of the DateTime.
      * @returns number
-     */year(){return this.date.year}}
+     */get year(){return this.date.year}}
 /**
  * Duration
  *
@@ -679,7 +678,7 @@ constructor(a,l,h,e=0,i=0,s=0,t=0,r=_.UTC()){if(this.date=n.DateTime.fromObject(
      * @param an object specifying information about the Duration.
      * @throws DurationException when the Duration is invalid.
      */
-constructor({years:a=0,quarters:l=0,months:h=0,weeks:e=0,days:i=0,hours:s=0,minutes:t=0,seconds:r=0,miliseconds:u=0}){if(this.luxonDuration=n.Duration.fromObject({years:a,quarters:l,months:h,weeks:e,days:i,hours:s,minutes:t,seconds:r,milliseconds:u},{conversionAccuracy:"longterm"}),!this.luxonDuration.isValid)
+constructor({years:a=0,quarters:l=0,months:h=0,weeks:e=0,days:i=0,hours:t=0,minutes:s=0,seconds:r=0,miliseconds:u=0}){if(this.luxonDuration=n.Duration.fromObject({years:a,quarters:l,months:h,weeks:e,days:i,hours:t,minutes:s,seconds:r,milliseconds:u},{conversionAccuracy:"longterm"}),!this.luxonDuration.isValid)
 // not valid.
 throw new L(this.luxonDuration.invalidReason)}
 /**
@@ -691,10 +690,10 @@ throw new L(this.luxonDuration.invalidReason)}
      * @returns a duration containing the difference between DateTimes a and b.
      */static FromDateTimeDifference(a,l){const h=n.DateTime.fromISO(a.toString()),e=n.DateTime.fromISO(l.toString()),i=a.isAfter(l)?h.diff(e):e.diff(h);return new O({years:i.years,quarters:i.quarters,months:i.months,weeks:i.weeks,days:i.days,hours:i.hours,minutes:i.minutes,seconds:i.seconds,miliseconds:i.milliseconds})}
 /**
-     * days()
+     * days
      *
      * gets the number of days in the duration.
-     */days(){return this.luxonDuration.days}
+     */get days(){return this.luxonDuration.days}
 /**
      * equals()
      *
@@ -702,10 +701,10 @@ throw new L(this.luxonDuration.invalidReason)}
      * @param suspect the suspect to compare.
      */equals(a){let l=!1;if(a instanceof O){const n=a;l=this.luxonDuration.equals(n.luxonDuration)}return l}
 /**
-     * hours()
+     * hours
      *
-     * hours() gets the number of hours in the duration.
-     */hours(){return this.luxonDuration.hours}
+     * gets the number of hours in the duration.
+     */get hours(){return this.luxonDuration.hours}
 /**
      * inDays()
      *
@@ -752,40 +751,40 @@ throw new L(this.luxonDuration.invalidReason)}
      * inYears() converts the duration to years.
      */inYears(){return this.luxonDuration.as("years")}
 /**
-     * miliseconds()
+     * miliseconds
      *
-     * miliseconds() gets the miliseconds of the duration.
-     */miliseconds(){return this.luxonDuration.milliseconds}
+     * gets the miliseconds of the duration.
+     */get miliseconds(){return this.luxonDuration.milliseconds}
 /**
-     * minutes()
+     * minutes
      *
-     * minutes() gets the minutes of the duration.
-     */minutes(){return this.luxonDuration.minutes}
+     * gets the minutes of the duration.
+     */get minutes(){return this.luxonDuration.minutes}
 /**
-     * months()
+     * months
      *
-     * months() gets the months of the duration.
-     */months(){return this.luxonDuration.months}
+     * gets the months of the duration.
+     */get months(){return this.luxonDuration.months}
 /**
-     * quarters()
+     * quarters
      *
-     * quarters() gets the quarters in the duration.
-     */quarters(){return this.luxonDuration.quarters}
+     * gets the quarters in the duration.
+     */get quarters(){return this.luxonDuration.quarters}
 /**
-     * seconds()
+     * seconds
      *
-     * seconds() gets the seconds of the duration.
-     */seconds(){return this.luxonDuration.seconds}
+     * gets the seconds of the duration.
+     */get seconds(){return this.luxonDuration.seconds}
 /**
-     * weeks()
+     * weeks
      *
-     * weeks() gets the weeks.
-     */weeks(){return this.luxonDuration.weeks}
+     * gets the weeks.
+     */get weeks(){return this.luxonDuration.weeks}
 /**
-     * years()
+     * years
      *
-     * years() gets the years in the duration.
-     */years(){return this.luxonDuration.years}
+     * gets the years in the duration.
+     */get years(){return this.luxonDuration.years}
 // ==========================
 // Overrides
 // ==========================
@@ -804,26 +803,26 @@ constructor(a){if(!new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[
 // email is invalid.
 throw new K;{this._value=a;const l=a.indexOf("@");this._username=a.substring(0,l),this._domain=a.substring(l+1)}}
 /**
-     * domainName()
+     * domainName
      *
-     * domainName() gets the domain of the email address.
-     */domainName(){return this._domain}
+     * gets the domain of the email address.
+     */get domainName(){return this._domain}
 /**
      * equals()
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof G){const n=a;l=this.value()===n.value()}return l}
+     */equals(a){let l=!1;if(a instanceof G){const n=a;l=this.value===n.value}return l}
 /**
-     * username()
+     * username
      *
-     * username() gets the username of the email address.
-     */username(){return this._username}toString(){return this.value()}
+     * gets the username of the email address.
+     */get username(){return this._username}toString(){return this.value}
 /**
-     * email()
+     * value
      *
-     * value() gets the value of the email address.
-     */value(){return this._value}}
+     * gets the value of the email address.
+     */get value(){return this._value}}
 /**
  * The BaseFormatter class
  *
@@ -861,12 +860,12 @@ constructor(a){if(!a)throw new U;this._val=a}
      *
      * equals() compares the suspect to the intance, to determine if they are equal.
      * @param suspect The suspect to compare.
-     */equals(a){let l=!1;if(a instanceof H){const n=a;l=this.id()===n.id()}return l}
+     */equals(a){let l=!1;if(a instanceof H){const n=a;l=this.value===n.value}return l}
 /**
-     * id()
+     * value
      *
-     * id() gets the value of the ID.
-     */id(){return this._val}toString(){return this.id().toString()}}
+     * gets the value of the ID.
+     */get value(){return this._val}toString(){return this.value.toString()}}
 /**
  * UUID
  *
@@ -885,7 +884,7 @@ constructor(a){if(!i.validate(a))throw new R;super(a)}
      * @param namespace the namespace to parse.
      * @returns the parsed namespace.
      * @throws UUIDException when the namespace is not a valid UUID.
-     */static _ParseNamespace(a){let l="";if(a instanceof J)l=a.id();else
+     */static _ParseNamespace(a){let l="";if(a instanceof J)l=a.value;else
 // we validate that the string is a valid UUID.
 try{l=new J(a.toString()).toString()}catch(a){
 // the namespace is not a valid UUID.
@@ -931,17 +930,17 @@ throw new R("Invalid namespace.")}return l}
      *
      * equals() compares the suspect to the instance, to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof J){const n=a;l=this.id()===n.id()}return l}
+     */equals(a){let l=!1;if(a instanceof J){const n=a;l=this.value===n.value}return l}
 /**
-     * id()
+     * value
      *
-     * id() gets the value of the id.
-     */id(){return super.id()}
+     * gets the value of the id.
+     */get value(){return super.value}
 /**
      * version()
      *
      * gets teh version of the UUID.
-     */version(){return i.version(this.id())}}
+     */get version(){return i.version(this.value)}}
 /**
  * IsoLanguageException
  *
@@ -962,31 +961,31 @@ throw new V;
 // data is found.
 this._name=n.English,this._alpha2=n.alpha2,this._alpha3b=n["alpha3-b"],this._alpha3t=n["alpha3-t"]}
 /**
-     * alpha2()
+     * alpha2
      *
      * Gets the alpha2 value.
-     */alpha2(){return this._alpha2}
+     */get alpha2(){return this._alpha2}
 /**
-     * alpha3b()
+     * alpha3b
      *
      * gets the alpha3b value.
-     */alpha3b(){return this._alpha3b}
+     */get alpha3b(){return this._alpha3b}
 /**
      * alpha3t()
      *
      * gets the alpha3t value.
-     */alpha3t(){return this._alpha3t}
+     */get alpha3t(){return this._alpha3t}
 /**
      * equals()
      *
      * compares the instance to the subject to determine if they are equal.
      * @param suspect the suspect to compare.
-     */equals(a){let l=!1;if(a instanceof Y){const n=a;l=this.name()===n.name()&&this.alpha2()===n.alpha2()&&this.alpha3b()===n.alpha3b()&&this.alpha3t()===n.alpha3t()}return l}
+     */equals(a){let l=!1;if(a instanceof Y){const n=a;l=this.name===n.name&&this.alpha2===n.alpha2&&this.alpha3b===n.alpha3b&&this.alpha3t===n.alpha3t}return l}
 /**
-     * name()
+     * name
      *
      * gets the language name.
-     */name(){return this._name}toString(){return this.name()}}
+     */get name(){return this._name}toString(){return this.name}}
 /**
  * PhoneNumberException
  *
@@ -1007,65 +1006,64 @@ constructor(a,l){if(!a||!l)
 // invlaid phone number.
 throw new $;
 // make sure the phone number is valid.
-if(this._phoneParser=s.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.valid)throw new $}
+if(this._phoneParser=t.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.valid)throw new $}
 /**
-     * canBeInternationallyDialed()
+     * canBeInternationallyDialed
      *
-     * canBeInternationallyDialed() determines if the phone number can be internationally dialed.
-     *
+     * determines if the phone number can be internationally dialed.
      * @returns TRUE if the number can be internationally dialed. Otherwise, it returns FALSE.
-     */canBeInternationallyDialed(){return this._phoneParser.canBeInternationallyDialled}
+     */get canBeInternationallyDialed(){return this._phoneParser.canBeInternationallyDialled}
 /**
-     * countryCode()
+     * countryCode
      *
-     * countryCode() gets the phone number's country code.
-     */countryCode(){return this._phoneParser.countryCode}
+     * gets the phone number's country code.
+     */get countryCode(){return this._phoneParser.countryCode}
 /**
      * equals()
      *
      * equals() compares the phone number to the suspect, to determine if they are equal.
      * @param suspect the suspect being confirmed.
-     */equals(a){let l=!1;if(a instanceof Q){const n=a;l=this.value()===n.value()}return l}
+     */equals(a){let l=!1;if(a instanceof Q){const n=a;l=this.value===n.value}return l}
 /**
-     * e164()
+     * e164
      *
-     * e164() gets the phone number in e164 format.
-     */e164(){return this._phoneParser.number.e164}
+     * gets the phone number in e164 format.
+     */get e164(){return this._phoneParser.number.e164}
 /**
-     * international()
+     * international
      *
-     * international() gets the international number.
-     */international(){return this._phoneParser.number.international}
+     * gets the international number.
+     */get international(){return this._phoneParser.number.international}
 /**
-     * isMobile()
+     * isMobile
      *
-     * isMobile() determines if a phone number is mobile.
-     */isMobile(){return this._phoneParser.typeIsMobile}
+     * determines if a phone number is mobile.
+     */get isMobile(){return this._phoneParser.typeIsMobile}
 /**
-     * national()
+     * national
      *
-     * national() gets the national phone number.
-     */national(){return this._phoneParser.number.national}
+     * gets the national phone number.
+     */get national(){return this._phoneParser.number.national}
 /**
-     * rfc3966()
+     * rfc3966
      *
-     * rfc3966() gets the rfc3966 number.
-     */rfc3966(){return this._phoneParser.number.rfc3966}
+     * gets the rfc3966 number.
+     */get rfc3966(){return this._phoneParser.number.rfc3966}
 /**
-     * regionCode()
+     * regionCode
      *
-     * regionCode() gets the phone number's region code.
-     */regionCode(){return this._phoneParser.regionCode}
+     * gets the phone number's region code.
+     */get regionCode(){return this._phoneParser.regionCode}
 /**
-     * significant()
+     * significant
      *
-     * significant() gets the significant number of the phone number.
-     */significant(){return this._phoneParser.number.significant}
+     * gets the significant number of the phone number.
+     */get significant(){return this._phoneParser.number.significant}
 /**
-     * value()
+     * value
      *
-     * value() gets the phone number, in international format.
-     */value(){return this.international()}toString(){return this.value()}}class X{constructor(){
+     * gets the phone number, in international format.
+     */get value(){return this.international}toString(){return this.value}}class X{constructor(){
 
 }
 /**
@@ -1073,7 +1071,7 @@ if(this._phoneParser=s.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
      *
      * strips the HTML from a string.
      * @param dirty the string to sanitize.
-     */sanitize(a){return t(a)}toString(){return`Instance of ${X.name}`}}exports.BaseException=c,exports.BaseFormatter=Z,exports.CharacterSet=o,exports.Color=k,exports.ColorException=b,exports.Coordinates=A,exports.Country=D,exports.CountryException=y,exports.DateException=M,exports.DateTime=P,exports.Duration=O,exports.DurationException=L,exports.EmailAddress=G,exports.EmailAddressException=K,exports.HTMLSanitizer=X,exports.Hash=f,exports.Hex=F,exports.HexException=E,exports.Id=H,exports.IdException=U,exports.InvalidArgumentException=g,exports.IsoLanguage=Y,exports.IsoLanguageException=V,exports.Locality=j,exports.LocalityException=x,exports.MethodUndefinedException=class extends c{constructor(a="Method undefined."){super(a)}},exports.NetworkException=
+     */sanitize(a){return s(a)}toString(){return`Instance of ${X.name}`}}exports.BaseException=c,exports.BaseFormatter=Z,exports.CharacterSet=o,exports.Color=k,exports.ColorException=b,exports.Coordinates=A,exports.Country=D,exports.CountryException=y,exports.DateException=M,exports.DateTime=P,exports.Duration=O,exports.DurationException=L,exports.EmailAddress=G,exports.EmailAddressException=K,exports.HTMLSanitizer=X,exports.Hash=f,exports.Hex=F,exports.HexException=E,exports.Id=H,exports.IdException=U,exports.InvalidArgumentException=g,exports.IsoLanguage=Y,exports.IsoLanguageException=V,exports.Locality=j,exports.LocalityException=x,exports.MethodUndefinedException=class extends c{constructor(a="Method undefined."){super(a)}},exports.NetworkException=
 /**
  * NetworkException
  *

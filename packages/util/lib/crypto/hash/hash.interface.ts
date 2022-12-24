@@ -3,10 +3,10 @@
 export interface HashInterface {
 
     /**
-     * value()
+     * value
      *
      * gets the value of the hash.
      */
 
-    value(): string;
+    readonly value: string;
 }

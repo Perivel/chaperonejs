@@ -69,12 +69,12 @@ export class Duration implements DurationInterface, Equatable {
     }
 
     /**
-     * days()
+     * days
      *
      * gets the number of days in the duration.
      */
 
-    public days(): number {
+    get days(): number {
         return this.luxonDuration.days;
     }
 
@@ -97,12 +97,12 @@ export class Duration implements DurationInterface, Equatable {
     }
 
     /**
-     * hours()
+     * hours
      *
-     * hours() gets the number of hours in the duration.
+     * gets the number of hours in the duration.
      */
 
-    public hours(): number {
+    get hours(): number {
         return this.luxonDuration.hours;
     }
 
@@ -197,72 +197,72 @@ export class Duration implements DurationInterface, Equatable {
     }
 
     /**
-     * miliseconds()
+     * miliseconds
      *
-     * miliseconds() gets the miliseconds of the duration.
+     * gets the miliseconds of the duration.
      */
 
-    public miliseconds(): number {
+    public get miliseconds(): number {
         return this.luxonDuration.milliseconds;
     }
 
     /**
-     * minutes()
+     * minutes
      *
-     * minutes() gets the minutes of the duration.
+     * gets the minutes of the duration.
      */
 
-    public minutes(): number {
+    public get minutes(): number {
         return this.luxonDuration.minutes;
     }
 
     /**
-     * months()
+     * months
      *
-     * months() gets the months of the duration.
+     * gets the months of the duration.
      */
 
-    public months(): number {
+    public get months(): number {
         return this.luxonDuration.months;
     }
 
     /**
-     * quarters()
+     * quarters
      *
-     * quarters() gets the quarters in the duration.
+     * gets the quarters in the duration.
      */
 
-    public quarters(): number {
+    public get quarters(): number {
         return this.luxonDuration.quarters;
     }
 
     /**
-     * seconds()
+     * seconds
      *
-     * seconds() gets the seconds of the duration.
+     * gets the seconds of the duration.
      */
 
-    public seconds(): number {
+    public get seconds(): number {
         return this.luxonDuration.seconds;
     }
 
     /**
-     * weeks()
+     * weeks
      *
-     * weeks() gets the weeks.
+     * gets the weeks.
      */
 
-    public weeks(): number {
+    public get weeks(): number {
         return this.luxonDuration.weeks;
     }
 
     /**
-     * years()
+     * years
      *
-     * years() gets the years in the duration.
+     * gets the years in the duration.
      */
 
-    public years(): number {
+    public get years(): number {
         return this.luxonDuration.years;
     }
 

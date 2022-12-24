@@ -29,7 +29,7 @@ export class Hash implements HashInterface, Equatable {
     public static async Create(data: string|Buffer, salt: Salt): Promise<Hash> {
         //return new Hash(await Bcrypt.hash(data, salt.value()));
         return new Promise((resolve, reject) => {
-            Bcrypt.hash(data.toString(), salt.value(), (error, hash) => {
+            Bcrypt.hash(data.toString(), salt.value, (error, hash) => {
                 if (error) {
                     reject(error);
                 }
@@ -38,6 +38,16 @@ export class Hash implements HashInterface, Equatable {
                 }
             });
         });
+    }
+
+    /**
+      * value
+      *
+      * gets the value of the hash.
+      */
+
+    get value(): string {
+        return this._value;
     }
 
     /**
@@ -51,23 +61,13 @@ export class Hash implements HashInterface, Equatable {
         let isEqual = false;
 
         if (suspect instanceof Hash) {
-            isEqual = this.value() === (suspect as Hash).value();
+            isEqual = this.value === (suspect as Hash).value;
         }
 
         return isEqual;
     }
 
     public toString(): string {
-        return this.value();
-    }
-
-     /**
-      * value()
-      *
-      * gets the value of the hash.
-      */
-
-    public value(): string {
-        return this._value;
+        return this.value;
     }
 }

@@ -7,10 +7,10 @@
 export interface IddentifierInterface {
 
     /**
-     * id()
+     * value
      *
-     * value() gets the value of the ID.
+     * gets the value of the ID.
      */
 
-    id(): any;
+    value: any;
 }

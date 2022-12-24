@@ -25,15 +25,15 @@ export class Color implements ColorInterface, Equatable, Serializable {
         if (value instanceof RGBA) {
             this._rgba = value as RGBA;
             this._hex = new Hex(rgbaToHex({
-                r: this._rgba.r(),
-                g: this._rgba.g(),
-                b: this._rgba.b(),
-                a: this._rgba.a()
+                r: this._rgba.r,
+                g: this._rgba.g,
+                b: this._rgba.b,
+                a: this._rgba.a
             }));
         }
         else {
             this._hex = value as Hex;
-            const rgba = hexToRgba(this._hex.value());
+            const rgba = hexToRgba(this._hex.value);
             this._rgba = new RGBA(rgba.r, rgba.g, rgba.b, rgba.a);
         }
         
@@ -134,7 +134,7 @@ export class Color implements ColorInterface, Equatable, Serializable {
 
         if (suspect instanceof Color) {
             const other = suspect as Color;
-            isEqual = this.rgba().equals(other.rgba()) && this.hex().equals(other.hex());
+            isEqual = this.rgba.equals(other.rgba) && this.hex.equals(other.hex);
         }
 
         return isEqual;
@@ -146,7 +146,7 @@ export class Color implements ColorInterface, Equatable, Serializable {
      * gets the hex value of the color.
      */
 
-    public hex(): Hex {
+    get hex(): Hex {
         return this._hex;
     }
 
@@ -156,14 +156,14 @@ export class Color implements ColorInterface, Equatable, Serializable {
      * gets the RGBA value of the color.
      */
 
-    public rgba(): RGBA {
+    get rgba(): RGBA {
         return this._rgba;
     }
 
     public serialize(): string {
         return JSON.stringify({
-            hex: this.hex().serialize(),
-            rgba: this.rgba().serialize(),
+            hex: this.hex.serialize(),
+            rgba: this.rgba.serialize(),
         });
     }
 

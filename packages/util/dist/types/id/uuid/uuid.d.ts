@@ -70,15 +70,15 @@ export declare class UUID extends Id implements UUIDInterface {
      */
     equals(suspect: any): boolean;
     /**
-     * id()
+     * value
      *
-     * id() gets the value of the id.
+     * gets the value of the id.
      */
-    id(): string;
+    get value(): string;
     /**
      * version()
      *
      * gets teh version of the UUID.
      */
-    version(): number;
+    get version(): number;
 }

@@ -24,6 +24,12 @@ export declare class CharacterSet implements CharacterSetInterface, Equatable {
      */
     static UTF8(): CharacterSet;
     /**
+     * value
+     *
+     * gets the value of the Character Set.
+     */
+    get value(): CharacterSetValue;
+    /**
      * equals()
      *
      * determines if the instance and the suspect are equal.
@@ -31,11 +37,5 @@ export declare class CharacterSet implements CharacterSetInterface, Equatable {
      * @returns TRUE if the instance and the suspect are equal. FALSE otherwise.
      */
     equals(suspect: any): boolean;
-    /**
-     * value()
-     *
-     * gets the value of the Character Set.
-     */
-    value(): CharacterSetValue;
     toString(): string;
 }

@@ -4,21 +4,21 @@ export interface TimezoneInterface {
      * TimezoneInterface
      */
 
-    abbreviation(): string;
+    readonly abbreviation: string;
 
     /**
      * id()
      *
-     * id() gets the timezone id.
+     * gets the timezone id.
      */
 
-    id(): string;
+    readonly id: string;
 
     /**
      * utcOffset()
      *
-     * utcOffset() gets the UTC offset.
+     * gets the UTC offset.
      */
 
-    utcOffset(): number;
+    readonly utcOffset: number;
 }

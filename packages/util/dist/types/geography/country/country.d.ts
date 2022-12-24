@@ -15,17 +15,17 @@ export declare class Country implements CountryInterface, Equatable {
      */
     constructor(code: string);
     /**
-     * code()
+     * code
      *
-     * code() gets the country code.
+     * gets the country code.
      */
-    code(): string;
+    get code(): string;
     /**
-     * name()
+     * name
      *
-     * name() gets the country's common name.
+     * gets the country's common name.
      */
-    name(): string;
+    get name(): string;
     /**
      * equals()
      *

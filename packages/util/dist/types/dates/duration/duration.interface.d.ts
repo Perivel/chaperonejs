@@ -5,17 +5,17 @@
  */
 export interface DurationInterface {
     /**
-     * days()
+     * days
      *
      * gets the number of days in the duration.
      */
-    days(): number;
+    readonly days: number;
     /**
-     * hours()
+     * hours
      *
-     * hours() gets the number of hours in the duration.
+     * gets the number of hours in the duration.
      */
-    hours(): number;
+    readonly hours: number;
     /**
      * inDays()
      *
@@ -71,45 +71,45 @@ export interface DurationInterface {
      */
     inYears(): number;
     /**
-     * miliseconds()
+     * miliseconds
      *
-     * miliseconds() gets the miliseconds of the duration.
+     * gets the miliseconds of the duration.
      */
-    miliseconds(): number;
+    readonly miliseconds: number;
     /**
-     * minutes()
+     * minutes
      *
-     * minutes() gets the minutes of the duration.
+     * gets the minutes of the duration.
      */
-    minutes(): number;
+    readonly minutes: number;
     /**
-     * months()
+     * months
      *
-     * months() gets the months of the duration.
+     * gets the months of the duration.
      */
-    months(): number;
+    readonly months: number;
     /**
-     * quarters()
+     * quarters
      *
-     * quarters() gets the quarters in the duration.
+     * gets the quarters in the duration.
      */
-    quarters(): number;
+    readonly quarters: number;
     /**
-     * seconds()
+     * seconds
      *
-     * seconds() gets the seconds of the duration.
+     * gets the seconds of the duration.
      */
-    seconds(): number;
+    readonly seconds: number;
     /**
-     * weeks()
+     * weeks
      *
-     * weeks() gets the weeks.
+     * gets the weeks.
      */
-    weeks(): number;
+    readonly weeks: number;
     /**
-     * years()
+     * years
      *
-     * years() gets the years in the duration.
+     * gets the years in the duration.
      */
-    years(): number;
+    readonly years: number;
 }

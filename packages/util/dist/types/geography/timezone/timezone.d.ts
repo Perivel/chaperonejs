@@ -31,11 +31,11 @@ export declare class Timezone implements TimezoneInterface, Equatable {
      */
     static UTC(): Timezone;
     /**
-     * abbreviation()
+     * abbreviation
      *
-     * abbreviation() gets the timezone abbreviation()
+     * gets the timezone abbreviation()
      */
-    abbreviation(): string;
+    get abbreviation(): string;
     /**
      * equals()
      *
@@ -44,16 +44,16 @@ export declare class Timezone implements TimezoneInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * id()
+     * id
      *
-     * id() gets the Olson timezone id.
+     * gets the Olson timezone id.
      */
-    id(): string;
+    get id(): string;
     /**
-     * utcOffset()
+     * utcOffset
      *
-     * utcOffset() gets the UTC offset of the timezone.
+     * gets the UTC offset of the timezone.
      */
-    utcOffset(): number;
+    get utcOffset(): number;
     toString(): string;
 }

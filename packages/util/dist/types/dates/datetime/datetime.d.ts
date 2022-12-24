@@ -53,19 +53,19 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      */
     add(duration: Duration): DateTime;
     /**
-     * day()
+     * day
      *
-     * day() gets the day of the month of the DateTime.
+     * gets the day of the month of the DateTime.
      * @returns a number between 1 and 31
      */
-    day(): number;
+    get day(): number;
     /**
-     * hour()
+     * hour
      *
      * gets the hour.
      * @note hours are zero-based (0-23)
      */
-    hour(): number;
+    get hour(): number;
     /**
      * isAfter()
      *
@@ -88,32 +88,32 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * milisecond()
+     * milisecond
      *
      * gets the milisecond (0-999)
      */
-    milisecond(): number;
+    get milisecond(): number;
     /**
-     * minute()
+     * minute
      *
      * gets the minute.
      * @note minutes are zero-based (0-59)
      */
-    minute(): number;
+    get minute(): number;
     /**
-     * month()
+     * month
      *
-     * month() gets the month part of the DateTime.
+     * gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
      */
-    month(): number;
+    get month(): number;
     /**
-     * second()
+     * second
      *
      * gets the second
      * @note seconds are zero-based (0-59)
      */
-    second(): number;
+    get second(): number;
     /**
      * subtract()
      *
@@ -124,9 +124,9 @@ export declare class DateTime implements DateTimeInterface, Equatable {
     /**
      * timezone()
      *
-     * timezone() gets the timestamp timezone.
+     * gets the timestamp timezone.
      */
-    timezone(): Timezone;
+    get timezone(): Timezone;
     toString(): string;
     /**
      * toUtc()
@@ -148,17 +148,16 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      */
     isoString(): string;
     /**
-     * value()
+     * value
      *
-     * value() gets the value of the DateTime
+     * gets the value of the DateTime
      */
-    value(): Date;
+    get value(): Date;
     /**
-     * year()
+     * year
      *
-     * year() gets the year portion of the DateTime.
-     *
+     * gets the year portion of the DateTime.
      * @returns number
      */
-    year(): number;
+    get year(): number;
 }

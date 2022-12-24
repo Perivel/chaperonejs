@@ -16,7 +16,7 @@ describe('Hash equality', async () => {
   const data = "Some Data to Hash";
   const salt = await Salt.Generate();
   const hash = await Hash.Create(data, salt);
-  const sameHash = new Hash(hash.value());
+  const sameHash = new Hash(hash.value);
   const differentHash = Hash.Create("abc", salt);
 
   it('should be equal', () => {

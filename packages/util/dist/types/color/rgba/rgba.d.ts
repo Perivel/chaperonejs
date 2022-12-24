@@ -20,30 +20,30 @@ export declare class RGBA implements RGBAInterface, Equatable, Serializable {
      */
     constructor(r: number, g: number, b: number, a?: number);
     /**
-     * a()
+     * a
      *
      * gets the alpha value.
      */
-    a(): number;
+    get a(): number;
     /**
      * b()
      *
      * gets the blue value.
      */
-    b(): number;
+    get b(): number;
     equals(suspect: any): boolean;
     /**
      * g()
      *
      * gets the green value.
      */
-    g(): number;
+    get g(): number;
     /**
-     * r()
+     * r
      *
      * gets the red value.
      */
-    r(): number;
+    get r(): number;
     serialize(): string;
     /**
      * setA()

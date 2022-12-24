@@ -1,8 +1,8 @@
 export interface SaltInterface {
     /**
-     * value()
+     * value
      *
      * gets the value of the salt.
      */
-    value(): string;
+    readonly value: string;
 }

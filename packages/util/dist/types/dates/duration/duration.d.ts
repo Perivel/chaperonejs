@@ -25,11 +25,11 @@ export declare class Duration implements DurationInterface, Equatable {
      */
     static FromDateTimeDifference(a: DateTimeInterface, b: DateTimeInterface): Duration;
     /**
-     * days()
+     * days
      *
      * gets the number of days in the duration.
      */
-    days(): number;
+    get days(): number;
     /**
      * equals()
      *
@@ -38,11 +38,11 @@ export declare class Duration implements DurationInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * hours()
+     * hours
      *
-     * hours() gets the number of hours in the duration.
+     * gets the number of hours in the duration.
      */
-    hours(): number;
+    get hours(): number;
     /**
      * inDays()
      *
@@ -98,46 +98,46 @@ export declare class Duration implements DurationInterface, Equatable {
      */
     inYears(): number;
     /**
-     * miliseconds()
+     * miliseconds
      *
-     * miliseconds() gets the miliseconds of the duration.
+     * gets the miliseconds of the duration.
      */
-    miliseconds(): number;
+    get miliseconds(): number;
     /**
-     * minutes()
+     * minutes
      *
-     * minutes() gets the minutes of the duration.
+     * gets the minutes of the duration.
      */
-    minutes(): number;
+    get minutes(): number;
     /**
-     * months()
+     * months
      *
-     * months() gets the months of the duration.
+     * gets the months of the duration.
      */
-    months(): number;
+    get months(): number;
     /**
-     * quarters()
+     * quarters
      *
-     * quarters() gets the quarters in the duration.
+     * gets the quarters in the duration.
      */
-    quarters(): number;
+    get quarters(): number;
     /**
-     * seconds()
+     * seconds
      *
-     * seconds() gets the seconds of the duration.
+     * gets the seconds of the duration.
      */
-    seconds(): number;
+    get seconds(): number;
     /**
-     * weeks()
+     * weeks
      *
-     * weeks() gets the weeks.
+     * gets the weeks.
      */
-    weeks(): number;
+    get weeks(): number;
     /**
-     * years()
+     * years
      *
-     * years() gets the years in the duration.
+     * gets the years in the duration.
      */
-    years(): number;
+    get years(): number;
     toString(): string;
 }

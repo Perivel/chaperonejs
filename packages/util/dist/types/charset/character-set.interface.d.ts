@@ -1,9 +1,9 @@
 import { CharacterSetValue } from './charset-values.type';
 export interface CharacterSetInterface {
     /**
-     * value()
+     * value
      *
      * gets the value of the Character Set.
      */
-    value(): CharacterSetValue;
+    readonly value: CharacterSetValue;
 }

@@ -40,24 +40,24 @@ import { LocalityInterface } from './locality.interface';
 
         if (suspect instanceof Locality) {
             const otherLocality = suspect as Locality;
-            isEqual = this.name() === otherLocality.name();
+            isEqual = this.name === otherLocality.name;
         }
 
         return isEqual;
     }
 
     /**
-     * name()
+     * name
      *
-     * name() gets the locality name.
+     * gets the locality name.
      */
 
-    public name(): string {
+    public get name(): string {
         return this._name;
     }
 
     public serialize(): string {
-        return this.name();
+        return this.name;
     }
 
     public toString(): string {

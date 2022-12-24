@@ -41,6 +41,16 @@ export class CharacterSet implements CharacterSetInterface, Equatable {
     }
 
     /**
+     * value
+     * 
+     * gets the value of the Character Set.
+     */
+    
+    get value(): CharacterSetValue {
+        return this._value;
+    }
+
+    /**
      * equals()
      * 
      * determines if the instance and the suspect are equal.
@@ -53,23 +63,13 @@ export class CharacterSet implements CharacterSetInterface, Equatable {
 
         if (suspect instanceof CharacterSet) {
             const other = suspect as CharacterSet;
-            isEqual = this.value() === other.value();
+            isEqual = this.value === other.value;
         }
 
         return isEqual;
     }
 
-    /**
-     * value()
-     * 
-     * gets the value of the Character Set.
-     */
-    
-    public value(): CharacterSetValue {
-        return this._value;
-    }
-
     public toString(): string {
-        return this.value();
+        return this.value;
     }
 }

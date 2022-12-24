@@ -43,6 +43,18 @@
       },
       "import": "./factory/dist/esm.js",
       "require": "./factory/dist/c.js"
+    },
+    "./repository": {
+      "browser": {
+        "import": "./repository/dist/esm.js",
+        "require": "./repository/dist/c.js"
+      },
+      "node": {
+        "import": "./repository/dist/esm.js",
+        "require": "./repository/dist/c.js"
+      },
+      "import": "./repository/dist/esm.js",
+      "require": "./repository/dist/c.js"
     }
   },
   "publishConfig": {
@@ -57,7 +69,9 @@
     "specification/dist",
     "specification/package.json",
     "factory/dist",
-    "factory/package.json"
+    "factory/package.json",
+    "repository/dist",
+    "repository/package.json"
   ],
   "repository": {
     "type": "git",

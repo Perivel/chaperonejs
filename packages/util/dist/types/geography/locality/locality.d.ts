@@ -19,11 +19,11 @@ export declare class Locality implements LocalityInterface, Serializable, Equata
      */
     equals(suspect: any): boolean;
     /**
-     * name()
+     * name
      *
-     * name() gets the locality name.
+     * gets the locality name.
      */
-    name(): string;
+    get name(): string;
     serialize(): string;
     toString(): string;
 }

@@ -81,13 +81,13 @@ export declare class Color implements ColorInterface, Equatable, Serializable {
      *
      * gets the hex value of the color.
      */
-    hex(): Hex;
+    get hex(): Hex;
     /**
      * rgba()
      *
      * gets the RGBA value of the color.
      */
-    rgba(): RGBA;
+    get rgba(): RGBA;
     serialize(): string;
     toString(): string;
 }

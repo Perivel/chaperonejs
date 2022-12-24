@@ -5,21 +5,21 @@
  */
 export interface EmailInterface {
     /**
-     * domainName()
+     * domainName
      *
-     * domainName() gets the domain of the email address.
+     * gets the domain of the email address.
      */
-    domainName(): string;
+    readonly domainName: string;
     /**
-     * username()
+     * username
      *
-     * username() gets the username of the email address.
+     * gets the username of the email address.
      */
-    username(): string;
+    readonly username: string;
     /**
-     * value()
+     * value
      *
      * gets the value of the email.
      */
-    value(): string;
+    readonly value: string;
 }

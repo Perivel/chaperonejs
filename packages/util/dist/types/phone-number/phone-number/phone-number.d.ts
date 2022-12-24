@@ -15,19 +15,18 @@ export declare class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
     constructor(value: string, regionCode: string);
     /**
-     * canBeInternationallyDialed()
+     * canBeInternationallyDialed
      *
-     * canBeInternationallyDialed() determines if the phone number can be internationally dialed.
-     *
+     * determines if the phone number can be internationally dialed.
      * @returns TRUE if the number can be internationally dialed. Otherwise, it returns FALSE.
      */
-    canBeInternationallyDialed(): boolean;
+    get canBeInternationallyDialed(): boolean;
     /**
-     * countryCode()
+     * countryCode
      *
-     * countryCode() gets the phone number's country code.
+     * gets the phone number's country code.
      */
-    countryCode(): string;
+    get countryCode(): string;
     /**
      * equals()
      *
@@ -36,52 +35,52 @@ export declare class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * e164()
+     * e164
      *
-     * e164() gets the phone number in e164 format.
+     * gets the phone number in e164 format.
      */
-    e164(): string;
+    get e164(): string;
     /**
-     * international()
+     * international
      *
-     * international() gets the international number.
+     * gets the international number.
      */
-    international(): string;
+    get international(): string;
     /**
-     * isMobile()
+     * isMobile
      *
-     * isMobile() determines if a phone number is mobile.
+     * determines if a phone number is mobile.
      */
-    isMobile(): boolean;
+    get isMobile(): boolean;
     /**
-     * national()
+     * national
      *
-     * national() gets the national phone number.
+     * gets the national phone number.
      */
-    national(): string;
+    get national(): string;
     /**
-     * rfc3966()
+     * rfc3966
      *
-     * rfc3966() gets the rfc3966 number.
+     * gets the rfc3966 number.
      */
-    rfc3966(): string;
+    get rfc3966(): string;
     /**
-     * regionCode()
+     * regionCode
      *
-     * regionCode() gets the phone number's region code.
+     * gets the phone number's region code.
      */
-    regionCode(): string;
+    get regionCode(): string;
     /**
-     * significant()
+     * significant
      *
-     * significant() gets the significant number of the phone number.
+     * gets the significant number of the phone number.
      */
-    significant(): string;
+    get significant(): string;
     /**
-     * value()
+     * value
      *
-     * value() gets the phone number, in international format.
+     * gets the phone number, in international format.
      */
-    value(): string;
+    get value(): string;
     toString(): string;
 }

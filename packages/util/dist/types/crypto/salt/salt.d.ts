@@ -25,10 +25,10 @@ export declare class Salt implements Equatable, SaltInterface {
      */
     equals(suspect: any): boolean;
     /**
-     * value()
+     * value
      *
      * gets the value of the salt.
      */
-    value(): string;
+    get value(): string;
     toString(): string;
 }

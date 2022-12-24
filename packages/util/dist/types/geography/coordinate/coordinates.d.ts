@@ -19,14 +19,14 @@ export declare class Coordinates implements CoordinatesInterface, Equatable {
     /**
      * latitude()
      *
-     * latitude() gets the latitude.
+     * gets the latitude.
      */
-    latitude(): number;
+    get latitude(): number;
     /**
      * longitude()
      *
-     * longitude() gets teh longitude.
+     * gets teh longitude.
      */
-    longitude(): number;
+    get longitude(): number;
     toString(): string;
 }

@@ -1,18 +1,18 @@
 export interface PhoneNumberInterface {
     /**
-     * canBeInternationallyDialed()
+     * canBeInternationallyDialed
      *
-     * canBeInternationallyDialed() determines if the phone number can be internationally dialed.
+     * determines if the phone number can be internationally dialed.
      *
      * @returns TRUE if the number can be internationally dialed. Otherwise, it returns FALSE.
      */
-    canBeInternationallyDialed(): boolean;
+    readonly canBeInternationallyDialed: boolean;
     /**
-     * countryCode()
+     * countryCode
      *
-     * countryCode() gets the phone number's country code.
+     * gets the phone number's country code.
      */
-    countryCode(): string;
+    readonly countryCode: string;
     /**
      * equals()
      *
@@ -21,51 +21,51 @@ export interface PhoneNumberInterface {
      */
     equals(suspect: any): boolean;
     /**
-     * e164()
+     * e164
      *
-     * e164() gets the e164 phone number format.
+     * gets the e164 phone number format.
      */
-    e164(): string;
+    readonly e164: string;
     /**
-     * international()
+     * international
      *
-     * international() gets the international number.
+     * gets the international number.
      */
-    international(): string;
+    readonly international: string;
     /**
-     * isMobile()
+     * isMobile
      *
-     * isMobile() determines if a phone number is mobile.
+     * determines if a phone number is mobile.
      */
-    isMobile(): boolean;
+    readonly isMobile: boolean;
     /**
-     * national()
+     * national
      *
-     * national() gets the national phone number.
+     * gets the national phone number.
      */
-    national(): string;
+    readonly national: string;
     /**
-     * rfc3966()
+     * rfc3966
      *
-     * rfc3966() gets the rfc3966 number.
+     * gets the rfc3966 number.
      */
-    rfc3966(): string;
+    readonly rfc3966: string;
     /**
-     * regionCode()
+     * regionCode
      *
-     * regionCode() gets the phone number's region code.
+     * gets the phone number's region code.
      */
-    regionCode(): string;
+    readonly regionCode: string;
     /**
-     * significant()
+     * significant
      *
-     * significant() gets the significant number of the phone number.
+     * gets the significant number of the phone number.
      */
-    significant(): string;
+    readonly significant: string;
     /**
-     * value()
+     * value
      *
-     * value() gets the raw phone number.
+     * gets the raw phone number.
      */
-    value(): string;
+    readonly value: string;
 }

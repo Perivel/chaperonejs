@@ -33,14 +33,14 @@ export class Hex implements HexInterface, Equatable, Serializable {
 
         if (suspect instanceof Hex) {
             const other = suspect as Hex;
-            isEqual = this.value() === other.value();
+            isEqual = this.value === other.value;
         }
 
         return isEqual;
     }
 
     public serialize(): string {
-        return this.value();
+        return this.value;
     }
 
     public toString(): string {
@@ -53,7 +53,7 @@ export class Hex implements HexInterface, Equatable, Serializable {
      * gets the value.
      */
 
-    public value(): string {
+    get value(): string {
         return this._value;
     }
 }

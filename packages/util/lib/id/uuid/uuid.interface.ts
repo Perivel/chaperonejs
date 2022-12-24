@@ -9,10 +9,10 @@ import { IddentifierInterface } from "../id";
 export interface UUIDInterface extends IddentifierInterface {
 
     /**
-     * version()
+     * version
      *
      * gets teh version of the UUID.
      */
 
-    version(): number;
+    readonly version: number;
 }

@@ -33,22 +33,22 @@ export class Country implements CountryInterface, Equatable {
     }
 
     /**
-     * code()
+     * code
      *
-     * code() gets the country code.
+     * gets the country code.
      */
 
-    public code(): string {
+    public get code(): string {
         return this._code;
     }
 
     /**
-     * name()
+     * name
      *
-     * name() gets the country's common name.
+     * gets the country's common name.
      */
 
-    public name(): string {
+    public get name(): string {
         return this._name;
     }
 
@@ -64,13 +64,13 @@ export class Country implements CountryInterface, Equatable {
 
         if (suspect instanceof Country) {
             const otherCountry = suspect as Country;
-            isEqual = this.code() === otherCountry.code();
+            isEqual = this.code === otherCountry.code;
         }
 
         return isEqual;
     }
 
     public toString(): string {
-        return this.name();
+        return this.name;
     }
 }

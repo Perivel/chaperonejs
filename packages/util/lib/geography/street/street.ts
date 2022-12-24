@@ -40,36 +40,36 @@ export class Street implements StreetInterface, Serializable, Equatable {
 
         if (suspect instanceof Street) {
             const otherStreet = suspect as Street;
-            isEqual = ((this.line1() === otherStreet.line1()) && (this.line2() === this.line2()));
+            isEqual = ((this.line1 === otherStreet.line1) && (this.line2 === this.line2));
         }
 
         return isEqual;
     }
 
     /**
-     * line1()
+     * line1
      *
-     * line1() gets the line1 value of the street address.
+     * gets the line1 value of the street address.
      */
 
-    public line1(): string {
+    public get line1(): string {
         return this._line1;
     }
 
     /**
-     * line2()
+     * line2
      *
-     * line2() gets the line2 value of the street.
+     * gets the line2 value of the street.
      */
 
-    public line2(): string {
+    public get line2(): string {
         return this._line2;
     }
 
     public serialize(): string {
         return JSON.stringify({
-            line_1: this.line1(),
-            line2: this.line2(),
+            line_1: this.line1,
+            line2: this.line2,
         });
     }
 

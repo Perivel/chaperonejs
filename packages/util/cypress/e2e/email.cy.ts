@@ -5,9 +5,9 @@ describe("Creating a Valid Email Address.", () => {
 
   it('should be a valid email object', () => {
     expect(email).to.be.an('object');
-    expect(email.domainName()).to.equal("gmail.com");
-    expect(email.username()).to.equal('example');
-    expect(email.value()).to.equal('example@gmail.com');
+    expect(email.domainName).to.equal("gmail.com");
+    expect(email.username).to.equal('example');
+    expect(email.value).to.equal('example@gmail.com');
   })
 });
 

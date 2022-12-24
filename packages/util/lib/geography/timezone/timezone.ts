@@ -71,12 +71,12 @@ export class Timezone implements TimezoneInterface, Equatable {
     }
 
     /**
-     * abbreviation()
+     * abbreviation
      *
-     * abbreviation() gets the timezone abbreviation()
+     * gets the timezone abbreviation()
      */
 
-    public abbreviation(): string {
+    public get abbreviation(): string {
         return this._abbreviation;
     }
 
@@ -95,9 +95,9 @@ export class Timezone implements TimezoneInterface, Equatable {
         if (suspect instanceof Timezone) {
             const other = suspect as Timezone;
             isEqual = (
-                this.id() === other.id() &&
-                this.abbreviation() === other.abbreviation() &&
-                this.utcOffset() === other.utcOffset()
+                (this.id === other.id) &&
+                (this.abbreviation === other.abbreviation) &&
+                (this.utcOffset === other.utcOffset)
             );
         }
 
@@ -105,26 +105,26 @@ export class Timezone implements TimezoneInterface, Equatable {
     }
 
     /**
-     * id()
+     * id
      *
-     * id() gets the Olson timezone id.
+     * gets the Olson timezone id.
      */
 
-    public id(): string {
+    public get id(): string {
         return this._id;
     }
 
     /**
-     * utcOffset()
+     * utcOffset
      *
-     * utcOffset() gets the UTC offset of the timezone.
+     * gets the UTC offset of the timezone.
      */
 
-    public utcOffset(): number {
+    public get utcOffset(): number {
         return this._offset;
     }
 
     public toString(): string {
-        return this.id();
+        return this.id;
     }
 }

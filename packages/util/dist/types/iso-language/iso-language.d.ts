@@ -16,23 +16,23 @@ export declare class IsoLanguage implements IsoLanguageInterface, Equatable {
      */
     constructor(nameOrCode: string);
     /**
-     * alpha2()
+     * alpha2
      *
      * Gets the alpha2 value.
      */
-    alpha2(): string | null;
+    get alpha2(): string | null;
     /**
-     * alpha3b()
+     * alpha3b
      *
      * gets the alpha3b value.
      */
-    alpha3b(): string | null;
+    get alpha3b(): string | null;
     /**
      * alpha3t()
      *
      * gets the alpha3t value.
      */
-    alpha3t(): string | null;
+    get alpha3t(): string | null;
     /**
      * equals()
      *
@@ -41,10 +41,10 @@ export declare class IsoLanguage implements IsoLanguageInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * name()
+     * name
      *
      * gets the language name.
      */
-    name(): string;
+    get name(): string;
     toString(): string;
 }

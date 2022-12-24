@@ -8,12 +8,12 @@
 export interface CoordinatesInterface {
 
     /**
-     * latitude()
+     * latitude
      *
-     * latitude() gets the latitude.
+     * latitude gets the latitude.
      */
 
-    latitude(): number;
+    readonly latitude: number;
 
     /**
      * longitude()
@@ -21,5 +21,5 @@ export interface CoordinatesInterface {
      * longitude() gets teh longitude.
      */
 
-    longitude(): number;
+    readonly longitude: number;
 }

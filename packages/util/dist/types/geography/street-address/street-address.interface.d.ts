@@ -10,33 +10,33 @@ import { StreetInterface } from "../street";
  */
 export interface StreetAddressInterface {
     /**
-     * country()
+     * country
      *
      * country() gets the address country.
      */
-    country(): CountryInterface;
+    readonly country: CountryInterface;
     /**
-     * locality()
+     * locality
      *
-     * locality() gets the address locality.
+     * gets the address locality.
      */
-    locality(): LocalityInterface;
+    readonly locality: LocalityInterface;
     /**
-     * postalCode()
+     * postalCode
      *
-     * postalCode() gets the address postal code.
+     * gets the address postal code.
      */
-    postalCode(): PostalCodeInterface;
+    readonly postalCode: PostalCodeInterface;
     /**
-     * region()
+     * region
      *
-     * region gets the address region.
+     * gets the address region.
      */
-    region(): RegionInterface;
+    readonly region: RegionInterface;
     /**
-     * street()
+     * street
      *
-     * street() gets the street.
+     * gets the street.
      */
-    street(): StreetInterface;
+    readonly street: StreetInterface;
 }

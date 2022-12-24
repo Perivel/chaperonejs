@@ -35,12 +35,12 @@ export class EmailAddress implements EmailInterface, Equatable {
     }
 
     /**
-     * domainName()
+     * domainName
      * 
-     * domainName() gets the domain of the email address.
+     * gets the domain of the email address.
      */
 
-    public domainName(): string {
+    public get domainName(): string {
         return this._domain;
     }
 
@@ -57,33 +57,33 @@ export class EmailAddress implements EmailInterface, Equatable {
 
         if (suspect instanceof EmailAddress) {
             const other = suspect as EmailAddress;
-            isEqual = this.value() === other.value();
+            isEqual = this.value === other.value;
         }
 
         return isEqual;
     }
 
     /**
-     * username()
+     * username
      * 
-     * username() gets the username of the email address.
+     * gets the username of the email address.
      */
 
-    public username(): string {
+    public get username(): string {
         return this._username;
     }
 
     public toString(): string {
-        return this.value();
+        return this.value;
     }
 
     /**
-     * email()
+     * value
      *
-     * value() gets the value of the email address.
+     * gets the value of the email address.
      */
 
-    public value(): string {
+    public get value(): string {
         return this._value;
     }
 

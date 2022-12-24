@@ -39,23 +39,23 @@ export class Salt implements Equatable, SaltInterface {
         let isEqual = false;
 
         if (suspect instanceof Salt) {
-            isEqual = (suspect as Salt).value() === this.value();
+            isEqual = (suspect as Salt).value === this.value;
         }
 
         return isEqual;
     }
 
     /**
-     * value()
+     * value
      *
      * gets the value of the salt.
      */
 
-    public value(): string {
+    get value(): string {
         return this._value;
     }
 
     public toString(): string {
-        return this.value();
+        return this.value;
     }
 }

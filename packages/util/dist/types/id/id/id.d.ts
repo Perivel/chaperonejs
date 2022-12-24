@@ -21,10 +21,10 @@ export declare abstract class Id implements IddentifierInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * id()
+     * value
      *
-     * id() gets the value of the ID.
+     * gets the value of the ID.
      */
-    id(): any;
+    get value(): any;
     toString(): string;
 }

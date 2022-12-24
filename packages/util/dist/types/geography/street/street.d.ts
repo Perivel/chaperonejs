@@ -21,17 +21,17 @@ export declare class Street implements StreetInterface, Serializable, Equatable 
      */
     equals(suspect: any): boolean;
     /**
-     * line1()
+     * line1
      *
-     * line1() gets the line1 value of the street address.
+     * gets the line1 value of the street address.
      */
-    line1(): string;
+    get line1(): string;
     /**
-     * line2()
+     * line2
      *
-     * line2() gets the line2 value of the street.
+     * gets the line2 value of the street.
      */
-    line2(): string;
+    get line2(): string;
     serialize(): string;
     toString(): string;
 }

@@ -20,6 +20,12 @@ export declare class Hash implements HashInterface, Equatable {
      */
     static Create(data: string | Buffer, salt: Salt): Promise<Hash>;
     /**
+      * value
+      *
+      * gets the value of the hash.
+      */
+    get value(): string;
+    /**
      * equals()
      *
      * compares the instance to the suspect, to determine if they are equal.
@@ -27,10 +33,4 @@ export declare class Hash implements HashInterface, Equatable {
      */
     equals(suspect: any): boolean;
     toString(): string;
-    /**
-     * value()
-     *
-     * gets the value of the hash.
-     */
-    value(): string;
 }

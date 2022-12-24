@@ -113,37 +113,37 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     public add(duration: Duration): DateTime {
         return DateTime.FromDate(this.date.plus(LuxonDuration.fromObject({
-            years: duration.years(),
-            quarters: duration.quarters(),
-            months: duration.months(),
-            weeks: duration.weeks(),
-            days: duration.days(),
-            hours: duration.hours(),
-            minutes: duration.minutes(),
-            seconds: duration.seconds(),
-            milliseconds: duration.miliseconds()
-        })).toJSDate(), this.timezone());
+            years: duration.years,
+            quarters: duration.quarters,
+            months: duration.months,
+            weeks: duration.weeks,
+            days: duration.days,
+            hours: duration.hours,
+            minutes: duration.minutes,
+            seconds: duration.seconds,
+            milliseconds: duration.miliseconds
+        })).toJSDate(), this.timezone);
     }
 
     /**
-     * day()
+     * day
      *
-     * day() gets the day of the month of the DateTime.
+     * gets the day of the month of the DateTime.
      * @returns a number between 1 and 31
      */
 
-    public day(): number {
+    public get day(): number {
         return this.date.day;
     }
 
     /**
-     * hour()
+     * hour
      * 
      * gets the hour.
      * @note hours are zero-based (0-23)
      */
 
-    public hour(): number {
+    public get hour(): number {
         return this.date.hour;
     }
 
@@ -202,45 +202,45 @@ export class DateTime implements DateTimeInterface, Equatable {
     }
 
     /**
-     * milisecond()
+     * milisecond
      * 
      * gets the milisecond (0-999)
      */
 
-    public milisecond(): number {
+    public get milisecond(): number {
         return this.date.millisecond;
     }
 
     /**
-     * minute()
+     * minute
      * 
      * gets the minute.
      * @note minutes are zero-based (0-59)
      */
 
-    public minute(): number {
+    public get minute(): number {
         return this.date.minute;
     }
 
     /**
-     * month()
+     * month
      *
-     * month() gets the month part of the DateTime.
+     * gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
      */
 
-    public month(): number {
+    public get month(): number {
         return this.date.month;
     }
 
     /**
-     * second()
+     * second
      * 
      * gets the second
      * @note seconds are zero-based (0-59)
      */
 
-    public second(): number {
+    public get second(): number {
         return this.date.second;
     }
 
@@ -253,25 +253,25 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     public subtract(duration: Duration): DateTime {
         return DateTime.FromDate(this.date.minus(LuxonDuration.fromObject({
-            years: duration.years(),
-            quarters: duration.quarters(),
-            months: duration.months(),
-            weeks: duration.weeks(),
-            days: duration.days(),
-            hours: duration.hours(),
-            minutes: duration.minutes(),
-            seconds: duration.seconds(),
-            milliseconds: duration.miliseconds()
-        })).toJSDate(), this.timezone());
+            years: duration.years,
+            quarters: duration.quarters,
+            months: duration.months,
+            weeks: duration.weeks,
+            days: duration.days,
+            hours: duration.hours,
+            minutes: duration.minutes,
+            seconds: duration.seconds,
+            milliseconds: duration.miliseconds
+        })).toJSDate(), this.timezone);
     }
 
     /**
      * timezone()
      *
-     * timezone() gets the timestamp timezone.
+     * gets the timestamp timezone.
      */
 
-    public timezone(): Timezone {
+    public get timezone(): Timezone {
         return this.tz;
     }
 
@@ -286,7 +286,7 @@ export class DateTime implements DateTimeInterface, Equatable {
      */
 
     public toUtc(): DateTime {
-        return DateTime.FromDate(this.value(), Timezone.UTC());
+        return DateTime.FromDate(this.value, Timezone.UTC());
     }
 
     /**
@@ -297,7 +297,7 @@ export class DateTime implements DateTimeInterface, Equatable {
      */
 
     public toTimezone(timezone: Timezone): DateTime {
-        return DateTime.FromDate(this.value(), timezone);
+        return DateTime.FromDate(this.value, timezone);
     }
 
     /**
@@ -307,28 +307,27 @@ export class DateTime implements DateTimeInterface, Equatable {
      */
 
     public isoString(): string {
-        return this.date.setZone(this.timezone().id()).toISO();
+        return this.date.setZone(this.timezone.id).toISO();
     }
 
     /**
-     * value()
+     * value
      *
-     * value() gets the value of the DateTime
+     * gets the value of the DateTime
      */
 
-    public value(): Date {
-        return this.date.setZone(this.timezone().id()).toJSDate();
+    public get value(): Date {
+        return this.date.setZone(this.timezone.id).toJSDate();
     }
 
     /**
-     * year()
+     * year
      *
-     * year() gets the year portion of the DateTime.
-     *
+     * gets the year portion of the DateTime.
      * @returns number
      */
 
-    public year(): number {
+    public get year(): number {
         return this.date.year;
     }
 }

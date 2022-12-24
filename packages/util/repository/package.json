@@ -1,0 +1,53 @@
+{
+  "name": "repository",
+  "version": "1.0.0",
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "description": "A generic repository.",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "homepage": "https://github.com/Perivel/chaperonejs#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "exports": {
+    ".": {
+      "browser": {
+        "import": "./dist/esm.js",
+        "require": "./dist/c.js"
+      },
+      "node": {
+        "import": "./dist/esm.js",
+        "require": "./dist/c.js"
+      },
+      "import": "./dist/esm.js",
+      "require": "./dist/c.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Perivel/chaperonejs.git"
+  },
+  "scripts": {
+    "build": "rollup --bundleConfigAsCjs -c"
+  },
+  "bugs": {
+    "url": "https://github.com/Perivel/chaperonejs/issues"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.3",
+    "@rollup/plugin-json": "^5.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.2.0",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "cypress": "^12.0.2",
+    "rollup": "^3.6.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-polyfill-node": "^0.11.0"
+  }
+}

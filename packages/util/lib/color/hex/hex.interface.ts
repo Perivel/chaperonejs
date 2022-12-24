@@ -8,5 +8,5 @@ export interface HexInterface {
      * gets the value.
      */
 
-    value(): string;
+    readonly value: string;
 }

@@ -23,9 +23,9 @@ export declare class PostalCode implements PostalCodeInterface, Serializable, Eq
     serialize(): string;
     toString(): string;
     /**
-     * value()
+     * value
      *
-     * value() gets the postal code value.
+     * gets the postal code value.
      */
-    value(): string;
+    get value(): string;
 }

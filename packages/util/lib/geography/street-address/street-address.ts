@@ -114,12 +114,12 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
     }
 
     /**
-     * country()
+     * country
      *
-     * country() gets the address country.
+     * gets the address country.
      */
 
-    public country(): Country {
+    public get country(): Country {
         return this._country;
     }
 
@@ -136,11 +136,11 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
         if (suspect instanceof StreetAddress) {
             const otherAddress = suspect as StreetAddress;
             isEqual = (
-                this.street().equals(otherAddress.street()) &&
-                this.locality().equals(otherAddress.locality()) &&
-                this.region().equals(otherAddress.region()) &&
-                this.postalCode().equals(otherAddress.postalCode()) &&
-                this.country().equals(otherAddress.country())
+                this.street.equals(otherAddress.street) &&
+                this.locality.equals(otherAddress.locality) &&
+                this.region.equals(otherAddress.region) &&
+                this.postalCode.equals(otherAddress.postalCode) &&
+                this.country.equals(otherAddress.country)
             );
         }
 
@@ -148,52 +148,52 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
     }
 
     /**
-     * locality()
+     * locality
      *
-     * locality() gets the address locality.
+     * gets the address locality.
      */
 
-    public locality(): Locality {
+    public get locality(): Locality {
         return this._locality;
     }
 
     /**
-     * postalCode()
+     * postalCode
      *
-     * postalCode() gets the address postal code.
+     * gets the address postal code.
      */
 
-    public postalCode(): PostalCode {
+    public get postalCode(): PostalCode {
         return this._postal;
     }
 
     /**
-    * region()
+    * region
     *
-    * region() gets the address region.
+    * gets the address region.
     */
 
-    public region(): Region {
+    public get region(): Region {
         return this._region;
     }
 
     public serialize(): string {
         return JSON.stringify({
-            street: this.street().serialize(),
-            locality: this.locality().serialize(),
-            region: this.region().serialize(),
-            postal_code: this.postalCode().serialize(),
-            country: this.country().toString()
+            street: this.street.serialize(),
+            locality: this.locality.serialize(),
+            region: this.region.serialize(),
+            postal_code: this.postalCode.serialize(),
+            country: this.country.toString()
         });
     }
 
     /**
-     * street()
+     * street
      *
-     * street() gets the address street.
+     * gets the address street.
      */
 
-    public street(): Street {
+    public get street(): Street {
         return this._street;
     }
 

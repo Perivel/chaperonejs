@@ -5,7 +5,7 @@ describe("Creating a Salt", async () => {
 
   it('should create a valid salt', () => {
     expect(manualSalt.toString()).to.equal('salt');
-    expect(manualSalt.value()).to.equal("salt");
+    expect(manualSalt.value).to.equal("salt");
     expect(manualSalt.equals(new Salt("salt"))).to.equal(true);
   })
 

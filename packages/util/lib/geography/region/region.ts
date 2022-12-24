@@ -40,7 +40,7 @@ import { RegionException } from '../exceptions/region.exception';
 
         if (suspect instanceof Region) {
             const otherRegion = suspect as Region;
-            isEqual = this.name() === otherRegion.name();
+            isEqual = this.name === otherRegion.name;
         }
 
         return isEqual;
@@ -49,15 +49,15 @@ import { RegionException } from '../exceptions/region.exception';
     /**
      * name()
      *
-     * name() gets the name of the region.
+     * gets the name of the region.
      */
 
-    public name(): string {
+    public get name(): string {
         return this._name;
     }
 
     public serialize(): string {
-        return this.name();
+        return this.name;
     }
 
     public toString(): string {

@@ -5,9 +5,9 @@
  */
 export interface LocalityInterface {
     /**
-     * name()
+     * name
      *
-     * name() gets the name of the locality.
+     * gets the name of the locality.
      */
-    name(): string;
+    readonly name: string;
 }

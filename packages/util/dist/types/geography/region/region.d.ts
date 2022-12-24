@@ -23,9 +23,9 @@ export declare class Region implements RegionInterface, Serializable, Equatable 
     /**
      * name()
      *
-     * name() gets the name of the region.
+     * gets the name of the region.
      */
-    name(): string;
+    get name(): string;
     serialize(): string;
     toString(): string;
 }

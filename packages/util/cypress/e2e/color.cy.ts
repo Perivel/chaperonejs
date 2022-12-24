@@ -38,15 +38,15 @@ describe('Creating hex values', () => {
     const redHex = new Hex('#FF0000FF');
     const red = Color.Red();
     const blue = Color.Blue();
-    expect(red.hex().equals(redHex)).to.be.true;
-    expect(red.hex().value()).to.equal("#FFOOOOFF");
-    expect(red.hex().equals(blue)).to.be.false;
+    expect(red.hex.equals(redHex)).to.be.true;
+    expect(red.hex.value).to.equal("#FFOOOOFF");
+    expect(red.hex.equals(blue)).to.be.false;
   });
 });
 
 describe('Creating RGBA colors', () => {
   it('should create an RGBA value', () => {
     const redRGB = new RGBA(255, 0, 0);
-    expect(Color.Red().rgba().equals(redRGB)).to.be.true;
+    expect(Color.Red().rgba.equals(redRGB)).to.be.true;
   });
 });

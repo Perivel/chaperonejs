@@ -37,23 +37,23 @@ export abstract class Id implements IddentifierInterface, Equatable {
 
         if (suspect instanceof Id) {
             const other = suspect as Id;
-            isEqual = this.id() === other.id();
+            isEqual = this.value === other.value;
         }
 
         return isEqual;
     }
 
     /**
-     * id()
+     * value
      *
-     * id() gets the value of the ID.
+     * gets the value of the ID.
      */
 
-    public id(): any {
+    public get value(): any {
         return this._val;
     }
 
     public toString(): string {
-        return this.id().toString();
+        return this.value.toString();
     }
 }

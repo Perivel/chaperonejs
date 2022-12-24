@@ -16,11 +16,11 @@ export declare class EmailAddress implements EmailInterface, Equatable {
      */
     constructor(value: string);
     /**
-     * domainName()
+     * domainName
      *
-     * domainName() gets the domain of the email address.
+     * gets the domain of the email address.
      */
-    domainName(): string;
+    get domainName(): string;
     /**
      * equals()
      *
@@ -29,16 +29,16 @@ export declare class EmailAddress implements EmailInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
-     * username()
+     * username
      *
-     * username() gets the username of the email address.
+     * gets the username of the email address.
      */
-    username(): string;
+    get username(): string;
     toString(): string;
     /**
-     * email()
+     * value
      *
-     * value() gets the value of the email address.
+     * gets the value of the email address.
      */
-    value(): string;
+    get value(): string;
 }

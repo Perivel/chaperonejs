@@ -20,6 +20,10 @@ N/A
 | ASCII() | N/A | CharacterSet | Creates an ASCII CharacterSet instance |
 | UTF8() | N/A | CharacterSet | Creates a UTF-8 CharacterSet instance |
 
+# Properties
+| **Nme** | **Arguments** | **Description** |
+| ----------- | ----------- |
+| value | Gets the value
 
 # Methods
 | **Method** | **Arguments** | **Return Type** | **Description** | **Errors** |

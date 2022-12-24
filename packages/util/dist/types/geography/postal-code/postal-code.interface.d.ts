@@ -5,9 +5,9 @@
  */
 export interface PostalCodeInterface {
     /**
-     * value()
+     * value
      *
-     * value() gets the value.
+     * gets the value.
      */
-    value(): string;
+    readonly value: string;
 }

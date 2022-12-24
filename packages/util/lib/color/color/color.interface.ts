@@ -5,18 +5,18 @@ import { RGBAInterface } from "../rgba";
 export interface ColorInterface {
 
     /**
-     * hex()
+     * hex
      * 
      * gets the hex value of the color.
      */
 
-    hex(): HexInterface;
+    readonly hex: HexInterface;
 
     /**
-     * rgba()
+     * rgba
      * 
      * gets the RGBA value of the color.
      */
 
-    rgba(): RGBAInterface;
+    readonly rgba: RGBAInterface;
 }

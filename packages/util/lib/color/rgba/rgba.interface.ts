@@ -3,36 +3,36 @@
 export interface RGBAInterface {
 
     /**
-     * a()
+     * a
      * 
      * gets the alpha value.
      */
 
-    a(): number;
+    readonly a: number;
 
     /**
-     * b()
+     * b
      * 
      * gets the blue value.
      */
 
-    b(): number;
+    readonly b: number;
 
     /**
-     * g()
+     * g
      * 
      * gets the green value.
      */
 
-    g(): number;
+    readonly g: number;
 
     /**
-     * r()
+     * r
      * 
      * gets the red value.
      */
 
-    r(): number;
+    readonly r: number;
 
     /**
      * setA()

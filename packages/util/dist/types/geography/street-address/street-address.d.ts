@@ -49,11 +49,11 @@ export declare class StreetAddress implements StreetAddressInterface, Equatable,
      */
     static FromPrimitives(street_line_1: string, street_line_2: string | undefined, locality_name: string, region_name: string, postal_code: string, country_code: string): StreetAddress;
     /**
-     * country()
+     * country
      *
-     * country() gets the address country.
+     * gets the address country.
      */
-    country(): Country;
+    get country(): Country;
     /**
      * equals()
      *
@@ -62,29 +62,29 @@ export declare class StreetAddress implements StreetAddressInterface, Equatable,
      */
     equals(suspect: any): boolean;
     /**
-     * locality()
+     * locality
      *
-     * locality() gets the address locality.
+     * gets the address locality.
      */
-    locality(): Locality;
+    get locality(): Locality;
     /**
-     * postalCode()
+     * postalCode
      *
-     * postalCode() gets the address postal code.
+     * gets the address postal code.
      */
-    postalCode(): PostalCode;
+    get postalCode(): PostalCode;
     /**
-    * region()
+    * region
     *
-    * region() gets the address region.
+    * gets the address region.
     */
-    region(): Region;
+    get region(): Region;
     serialize(): string;
     /**
-     * street()
+     * street
      *
-     * street() gets the address street.
+     * gets the address street.
      */
-    street(): Street;
+    get street(): Street;
     toString(): string;
 }

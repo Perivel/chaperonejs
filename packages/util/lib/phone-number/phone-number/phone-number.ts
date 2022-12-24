@@ -37,24 +37,23 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
     }
 
     /**
-     * canBeInternationallyDialed()
+     * canBeInternationallyDialed
      *
-     * canBeInternationallyDialed() determines if the phone number can be internationally dialed.
-     *
+     * determines if the phone number can be internationally dialed.
      * @returns TRUE if the number can be internationally dialed. Otherwise, it returns FALSE.
      */
 
-    public canBeInternationallyDialed(): boolean {
+    public get canBeInternationallyDialed(): boolean {
         return this._phoneParser.canBeInternationallyDialled!;
     }
 
     /**
-     * countryCode()
+     * countryCode
      *
-     * countryCode() gets the phone number's country code.
+     * gets the phone number's country code.
      */
 
-    public countryCode(): string {
+    public get countryCode(): string {
         return this._phoneParser.countryCode!;
     }
 
@@ -70,93 +69,93 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
         if (suspect instanceof PhoneNumber) {
             const otherPhone = suspect as PhoneNumber;
-            isEqual = this.value() === otherPhone.value();
+            isEqual = this.value === otherPhone.value;
         }
 
         return isEqual;
     }
 
     /**
-     * e164()
+     * e164
      *
-     * e164() gets the phone number in e164 format.
+     * gets the phone number in e164 format.
      */
 
-    public e164(): string {
+    public get e164(): string {
         return this._phoneParser.number!.e164;
     }
 
     /**
-     * international()
+     * international
      *
-     * international() gets the international number.
+     * gets the international number.
      */
 
-    public international(): string {
+    public get international(): string {
         return this._phoneParser.number!.international;
     }
 
     /**
-     * isMobile()
+     * isMobile
      *
-     * isMobile() determines if a phone number is mobile.
+     * determines if a phone number is mobile.
      */
 
-    public isMobile(): boolean {
+    public get isMobile(): boolean {
         return this._phoneParser.typeIsMobile!;
     }
 
     /**
-     * national()
+     * national
      *
-     * national() gets the national phone number.
+     * gets the national phone number.
      */
 
-    public national(): string {
+    public get national(): string {
         return this._phoneParser.number!.national;
     }
 
     /**
-     * rfc3966()
+     * rfc3966
      *
-     * rfc3966() gets the rfc3966 number.
+     * gets the rfc3966 number.
      */
 
-    public rfc3966(): string {
+    public get rfc3966(): string {
         return this._phoneParser.number!.rfc3966;
     }
 
     /**
-     * regionCode()
+     * regionCode
      *
-     * regionCode() gets the phone number's region code.
+     * gets the phone number's region code.
      */
 
-    public regionCode(): string {
+    public get regionCode(): string {
         return this._phoneParser.regionCode!;
     }
 
     /**
-     * significant()
+     * significant
      *
-     * significant() gets the significant number of the phone number.
+     * gets the significant number of the phone number.
      */
 
-    public significant(): string {
+    public get significant(): string {
         return this._phoneParser.number!.significant;
     }
 
     /**
-     * value()
+     * value
      *
-     * value() gets the phone number, in international format.
+     * gets the phone number, in international format.
      */
 
-    public value(): string {
-        return this.international();
+    public get value(): string {
+        return this.international;
     }
 
     public toString(): string {
-        return this.value();
+        return this.value;
     }
 }

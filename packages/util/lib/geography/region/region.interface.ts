@@ -8,10 +8,10 @@
  export interface RegionInterface {
 
     /**
-     * name()
+     * name
      *
-     * name() gets the region name.
+     * gets the region name.
      */
 
-    name(): string;
+    name: string;
 }

@@ -21,5 +21,5 @@ export declare class Hex implements HexInterface, Equatable, Serializable {
      *
      * gets the value.
      */
-    value(): string;
+    get value(): string;
 }

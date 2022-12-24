@@ -10,15 +10,15 @@ describe('Creating a Duration instance', () => {
   });
 
   it('should exist', () => {
-    expect(duration.years()).to.equal(1);
-    expect(duration.quarters()).to.equal(0);
-    expect(duration.months()).to.equal(6);
-    expect(duration.weeks()).to.equal(0);
-    expect(duration.days()).to.equal(0);
-    expect(duration.hours()).to.equal(0);
-    expect(duration.minutes()).to.equal(0);
-    expect(duration.seconds()).to.equal(0);
-    expect(duration.miliseconds()).to.equal(0);
+    expect(duration.years).to.equal(1);
+    expect(duration.quarters).to.equal(0);
+    expect(duration.months).to.equal(6);
+    expect(duration.weeks).to.equal(0);
+    expect(duration.days).to.equal(0);
+    expect(duration.hours).to.equal(0);
+    expect(duration.minutes).to.equal(0);
+    expect(duration.seconds).to.equal(0);
+    expect(duration.miliseconds).to.equal(0);
     expect(duration.inYears()).to.equal(1.5);
     expect(duration.inQuarters()).to.equal(6);
     expect(duration.inMonths()).to.equal(18);
