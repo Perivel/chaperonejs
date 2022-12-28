@@ -1,4 +1,5 @@
 export * from './comparator.type';
+export * from './comparison-result.type';
 export * from './type.type';
 export * from './fns/async-fn';
 export * from './fns/sync-fn.type';
