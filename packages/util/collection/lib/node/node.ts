@@ -11,13 +11,14 @@ import { NodeInterface } from './node.interface';
 export class Node<T> implements NodeInterface<T>, Comparable<T> {
 
     readonly value: T;
-    public next: Node<T>|null;
+    private _next: Node<T>|null;
+
     private compare: Comparator<T>;
 
 
     constructor(value: T, next: Node<T>|null = null, comparatorFn: Comparator<T>|null = null) {
         this.value = value;
-        this.next = next;
+        this._next = next;
         
         if (comparatorFn) {
             this.compare = comparatorFn;
@@ -38,6 +39,18 @@ export class Node<T> implements NodeInterface<T>, Comparable<T> {
                 }
             };
         }
+    }
+
+    public get hasNext(): boolean {
+        return this.next !== null;
+    }
+
+    public get next(): Node<T>|null {
+        return this._next;
+    }
+
+    public set next(value: Node<T>|null) {
+        this._next = value;
     }
 
     public compareTo(suspect: T): ComparisonResult {

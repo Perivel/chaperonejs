@@ -20,22 +20,20 @@ export interface CollectionInterface<T> {
     contains(item: T): boolean;
 
     /**
+     * clear()
+     * 
+     * clears the collection.
+     */
+
+    clear(): void;
+
+    /**
      * isEmpty
      * 
      * indicates if the collection is empty.
      */
     
     readonly isEmpty: boolean;
-
-    /**
-     * remove()
-     * 
-     * removes the first instance of the item.
-     * @param item the item to remove.
-     * @returns the item, or null if it was not found.
-     */
-
-    remove(item: T): T|null;
 
     /**
      *  gets the size of the collection.

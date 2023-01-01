@@ -1,4 +1,6 @@
 // collection
 export * from './collection';
 export * from './node';
-export * from './linked-list';
+export * from './list';
+export * from './stack';
+export * from './queue';
