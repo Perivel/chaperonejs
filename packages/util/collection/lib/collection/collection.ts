@@ -50,7 +50,7 @@ export abstract class Collection<T> implements CollectionInterface<T> {
      * 
      * determines if the collection is empty.
      */
-    
+
   public get isEmpty(): boolean {
     return this.size === 0.0;
   }
@@ -64,4 +64,12 @@ export abstract class Collection<T> implements CollectionInterface<T> {
   protected setSize(newSize: number): void {
     this._size = newSize;
   }
+
+  /**
+     * toArray()
+     * 
+     * converts the collection to an array.
+     */
+
+  public abstract toArray(): Array<T>;
 }

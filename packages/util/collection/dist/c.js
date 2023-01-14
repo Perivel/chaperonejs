@@ -110,7 +110,7 @@ e?
 // we are in the tail of the list.
 e.next=t.next:
 // we are at the head of the list.
-this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s++,i)}}
+this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s++,i)}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}}
 /**
  * ArrayList
  *
@@ -149,7 +149,7 @@ this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s
      * @param index the index of the item to remove.
      * @returns the item that was removed.
      * @throws OutOfBoundsException when the index is out of bounds.
-     */remove(e){if(!this.isEmpty&&e>=0&&e<this.size){const t=this.items.splice(e,1);return this.setSize(this.size-1),t[0]}throw new t.OutOfBoundsException}}
+     */remove(e){if(!this.isEmpty&&e>=0&&e<this.size){const t=this.items.splice(e,1);return this.setSize(this.size-1),t[0]}throw new t.OutOfBoundsException}toArray(){return this.items.map((t=>t))}}
 /**
  * StackException
  *
@@ -219,7 +219,7 @@ throw new a}
      * peek()
      *
      * returns the next value in the queue without removing it.
-     */peek(){if(this.head)return this.head.value;throw new a}remove(){return this.dequeue()}},exports.Queue=class extends e{constructor(t=null){super(),this.head=null,this.tail=null,this.compareFn=t}
+     */peek(){if(this.head)return this.head.value;throw new a}remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.Queue=class extends e{constructor(t=null){super(),this.head=null,this.tail=null,this.compareFn=t}
 /**
      * add()
      *
@@ -272,7 +272,7 @@ throw new a}
      * alias to dequeue()
      * @returns the removed value.
      * @throws QueueException when the queue is empty.
-     */remove(){return this.dequeue()}},exports.QueueException=a,exports.Stack=class extends e{constructor(t=null){super(),this.top=null,this.compareFn=t}
+     */remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.QueueException=a,exports.Stack=class extends e{constructor(t=null){super(),this.top=null,this.compareFn=t}
 /**
      * add()
      *
@@ -326,4 +326,4 @@ throw new o;{const t=this.top.value;return this.top=this.top.next,this.setSize(t
      *
      * alias to pop()
      * @throws StackException when the stack is empty.
-     */remove(){return this.pop()}},exports.StackException=o;
+     */remove(){return this.pop()}toArray(){const t=[];let e=this.top;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.StackException=o;

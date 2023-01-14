@@ -89,4 +89,5 @@ export declare class LinkedList<T> extends List<T> implements LinkedListInterfac
      * @returns the removed item.
      */
     private reemoveValue;
+    toArray(): T[];
 }

@@ -41,4 +41,10 @@ export declare abstract class Collection<T> implements CollectionInterface<T> {
      * @param newSize the new size to set
      */
     protected setSize(newSize: number): void;
+    /**
+       * toArray()
+       *
+       * converts the collection to an array.
+       */
+    abstract toArray(): Array<T>;
 }

@@ -139,4 +139,8 @@ export class ArrayList<T> extends List<T> implements ArrayListInterface<T>, Iter
             throw new OutOfBoundsException();
         }
     }
+
+    public toArray(): T[] {
+        return this.items.map(item => item);
+    }
 }

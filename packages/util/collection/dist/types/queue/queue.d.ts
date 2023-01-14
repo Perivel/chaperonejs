@@ -70,4 +70,5 @@ export declare class Queue<T> extends Collection<T> implements QueueInterface<T>
      * @throws QueueException when the queue is empty.
      */
     remove(): T;
+    toArray(): T[];
 }

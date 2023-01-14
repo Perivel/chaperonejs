@@ -1,0 +1,29 @@
+{
+  "name": "@chaperone/system",
+  "version": "0.1.8",
+  "description": "System utilities for NodeJS",
+  "author": "PatrickLumenus <patrickaluy@gmail.com>",
+  "homepage": "https://github.com/Perivel/chaperonejs#readme",
+  "license": "MIT",
+  "main": "lib/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Perivel/chaperonejs.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/system.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Perivel/chaperonejs/issues"
+  },
+  "dependencies": {
+    "@chaperone/util": "^0.1.8"
+  }
+}

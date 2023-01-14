@@ -24,12 +24,12 @@ import{BaseException as t,ComparisonResult as e,OutOfBoundsException as s}from"@
  * CollectionException
  *
  * A generic collection error.
- */class h extends t{constructor(t="Collection error"){super(t)}}
+ */class r extends t{constructor(t="Collection error"){super(t)}}
 /**
  * Node
  *
  * A Generic Node.
- */class r{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(t){let s;switch(this.compare(this.value,t)){case-1:s=e.Less;break;case 1:s=e.Greater;break;default:s=e.Same}return s}}class n extends i{constructor(){super()}}
+ */class h{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(t){let s;switch(this.compare(this.value,t)){case-1:s=e.Less;break;case 1:s=e.Greater;break;default:s=e.Same}return s}}class n extends i{constructor(){super()}}
 /**
  * LinkedList
  *
@@ -40,7 +40,7 @@ import{BaseException as t,ComparisonResult as e,OutOfBoundsException as s}from"@
      *
      * adds the value to the list.
      * @param value the value to add to the list.
-     */add(t){const e=new r(t,null,this.comparator);this.head?this.addToEnd(this.head,e):this.head=e,this.setSize(this.size+1)}
+     */add(t){const e=new h(t,null,this.comparator);this.head?this.addToEnd(this.head,e):this.head=e,this.setSize(this.size+1)}
 /**
      * addToEnd()
      *
@@ -110,7 +110,7 @@ e?
 // we are in the tail of the list.
 e.next=t.next:
 // we are at the head of the list.
-this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s++,i)}}
+this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s++,i)}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}}
 /**
  * ArrayList
  *
@@ -149,12 +149,12 @@ this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s
      * @param index the index of the item to remove.
      * @returns the item that was removed.
      * @throws OutOfBoundsException when the index is out of bounds.
-     */remove(t){if(!this.isEmpty&&t>=0&&t<this.size){const e=this.items.splice(t,1);return this.setSize(this.size-1),e[0]}throw new s}}
+     */remove(t){if(!this.isEmpty&&t>=0&&t<this.size){const e=this.items.splice(t,1);return this.setSize(this.size-1),e[0]}throw new s}toArray(){return this.items.map((t=>t))}}
 /**
  * StackException
  *
  * A stack error.
- */class u extends h{constructor(t="Stack exception"){super(t)}}
+ */class u extends r{constructor(t="Stack exception"){super(t)}}
 /**
  * Stack
  *
@@ -207,18 +207,18 @@ throw new u;{const t=this.top.value;return this.top=this.top.next,this.setSize(t
      *
      * adds an item to the top of the stack.
      * @param item the item to add to the stack.
-     */push(t){const e=new r(t,this.top,this.compareFn);this.top=e,this.setSize(this.size+1)}
+     */push(t){const e=new h(t,this.top,this.compareFn);this.top=e,this.setSize(this.size+1)}
 /**
      * remove()
      *
      * alias to pop()
      * @throws StackException when the stack is empty.
-     */remove(){return this.pop()}}
+     */remove(){return this.pop()}toArray(){const t=[];let e=this.top;for(;null!==e;)t.push(e.value),e=e.next;return t}}
 /**
  * QueueException
  *
  * A queue error
- */class c extends h{constructor(t="Queue error"){super(t)}}
+ */class c extends r{constructor(t="Queue error"){super(t)}}
 /**
  * Queue
  *
@@ -264,7 +264,7 @@ throw new c}
      *
      * adds the value to the queue
      * @param value the value to add to the queue.
-     */enqueue(t){const e=new r(t,null,this.compareFn);this.tail&&(this.tail.next=e),this.tail=e,this.head||(this.head=e),this.setSize(this.size+1)}
+     */enqueue(t){const e=new h(t,null,this.compareFn);this.tail&&(this.tail.next=e),this.tail=e,this.head||(this.head=e),this.setSize(this.size+1)}
 /**
      * peek()
      *
@@ -276,12 +276,12 @@ throw new c}
      * alias to dequeue()
      * @returns the removed value.
      * @throws QueueException when the queue is empty.
-     */remove(){return this.dequeue()}}
+     */remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}}
 /**
  * PriorityNode
  *
  * A node with a priority.
- */class p extends r{constructor(t,e,s=null,i=null){super(t,s,i),this.priority=e}get next(){return super.next}set next(t){super.next=t}}
+ */class p extends h{constructor(t,e,s=null,i=null){super(t,s,i),this.priority=e}get next(){return super.next}set next(t){super.next=t}}
 /**
  * PriorityQueue
  *
@@ -324,4 +324,4 @@ throw new c}
      * peek()
      *
      * returns the next value in the queue without removing it.
-     */peek(){if(this.head)return this.head.value;throw new c}remove(){return this.dequeue()}}export{o as ArrayList,i as Collection,h as CollectionException,a as LinkedList,n as List,r as Node,p as PriorityNode,x as PriorityQueue,d as Queue,c as QueueException,l as Stack,u as StackException};
+     */peek(){if(this.head)return this.head.value;throw new c}remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}}export{o as ArrayList,i as Collection,r as CollectionException,a as LinkedList,n as List,h as Node,p as PriorityNode,x as PriorityQueue,d as Queue,c as QueueException,l as Stack,u as StackException};

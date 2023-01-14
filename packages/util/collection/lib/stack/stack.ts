@@ -138,4 +138,15 @@ export class Stack<T> extends Collection<T> implements StackInterface<T> {
     public remove(): T {
         return this.pop();
     }
+
+    public toArray(): T[] {
+        const arr: T[] = [];
+        let node: Node<T> | null = this.top;
+
+        while(node !== null) {
+            arr.push(node.value);
+            node = node.next;
+        }
+        return arr;
+    }
 }

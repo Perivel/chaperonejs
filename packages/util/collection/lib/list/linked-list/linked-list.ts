@@ -222,4 +222,16 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
       return this.reemoveValue(currentNode.next!, currentNode, currentIndex++, targetIndex);
     }
   }
+
+  public toArray(): T[] {
+      const arr: T[] = [];
+      let node: Node<T>|null = this.head;
+
+      while(node !== null) {
+        arr.push(node.value);
+        node = node.next;
+      }
+
+      return arr;
+  }
 }

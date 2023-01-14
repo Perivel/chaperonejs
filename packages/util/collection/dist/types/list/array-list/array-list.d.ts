@@ -51,4 +51,5 @@ export declare class ArrayList<T> extends List<T> implements ArrayListInterface<
      * @throws OutOfBoundsException when the index is out of bounds.
      */
     remove(index: number): T;
+    toArray(): T[];
 }

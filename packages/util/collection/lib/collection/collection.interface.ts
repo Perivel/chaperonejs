@@ -40,4 +40,12 @@ export interface CollectionInterface<T> {
      */
     
     size: number;
+
+    /**
+     * toArray()
+     * 
+     * converts the collection to an array.
+     */
+    
+    toArray(): Array<T>;
 }

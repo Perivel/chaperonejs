@@ -133,4 +133,16 @@ export class PriorityQueue<T> extends Collection<T> implements PriorityQueueInte
     public remove(): T {
         return this.dequeue();
     }
+
+    public toArray(): T[] {
+        const arr: T[] = [];
+        let node: PriorityNode<T> | null = this.head;
+
+        while(node !== null) {
+            arr.push(node.value);
+            node = node.next;
+        }
+
+        return arr;
+    }
 }

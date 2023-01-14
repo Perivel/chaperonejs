@@ -68,4 +68,5 @@ export declare class Stack<T> extends Collection<T> implements StackInterface<T>
      * @throws StackException when the stack is empty.
      */
     remove(): T;
+    toArray(): T[];
 }

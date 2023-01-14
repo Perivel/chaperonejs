@@ -54,4 +54,5 @@ export declare class PriorityQueue<T> extends Collection<T> implements PriorityQ
      */
     peek(): T;
     remove(): T;
+    toArray(): T[];
 }
