@@ -1,10 +1,9 @@
-import { copyFile, writeFile, rm, rename, readlink, symlink, unlink } from 'fs/promises';
+import { readlink, symlink, unlink } from 'fs/promises';
 import { Path } from '../path';
-import { FileSystemEntry, FileSystemEntryNotFoundException, FileSystemEntryOptions } from './../file-system-entry';
+import { FileSystemEntry, FileSystemEntryNotFoundException } from './../file-system-entry';
 import { LinkType } from './enums';
 import { CreateLinkOptions } from './create-link-options.interface';
 import { LinkInterface } from './link.interface';
-import { CopyLinkOptions } from './copy-link-options.interface';
 import { LinkAlreadyExistsException, LinkException, LinkNotFoundException } from './exceptions';
 import { DeleteLinkOptions } from './delete-link-options.interface';
 

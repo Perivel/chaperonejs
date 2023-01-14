@@ -1,4 +1,4 @@
-import { DateTime } from '@swindle/core';
+import { DateTime } from '@chaperone/util';
 
 /**
  * FileSystemEntryStats

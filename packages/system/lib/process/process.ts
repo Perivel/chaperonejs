@@ -1,4 +1,4 @@
-import { Equatable } from '@swindle/core';
+import { Equatable } from '@chaperone/util';
 import {
     exec,
     spawn,

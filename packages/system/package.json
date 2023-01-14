@@ -24,6 +24,6 @@
     "url": "https://github.com/Perivel/chaperonejs/issues"
   },
   "dependencies": {
-    "@chaperone/util": "^0.1.8"
+    "@chaperone/util": "^0.1.9"
   }
 }

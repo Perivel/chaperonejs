@@ -206,7 +206,7 @@ export class Path implements PathInterface {
 
     private static _BuildPath(segments: Array<string | Path>, stack: Stack<string>): void {
         if (segments.length > 0) {
-            const isHead = stack.isEmpty();
+            const isHead = stack.isEmpty;
             const results = Path._NormalizeSegment(segments[0]);
             results.forEach(res => {
                 if (typeof res === 'string') {

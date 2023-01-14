@@ -2,10 +2,9 @@ import {
     DateTime,
     Equatable,
     Serializable,
-    TimestampedResource,
     MethodUndefinedException,
     Timezone
-} from '@swindle/core';
+} from '@chaperone/util';
 import { constants as FSConstants } from 'fs';
 import { access, stat } from 'fs/promises';
 import { FileSystemEntryStats } from './file-sysgtem-entry-stats.interface';
@@ -19,7 +18,7 @@ import { Path } from '../path';
  * A generic object or entry in the file system.
  */
 
-export class FileSystemEntry implements TimestampedResource, Equatable, Serializable {
+export class FileSystemEntry implements Equatable, Serializable {
 
     private _created: DateTime | null;
     private _updated: DateTime | null;
@@ -195,10 +194,7 @@ export class FileSystemEntry implements TimestampedResource, Equatable, Serializ
     public async stats(): Promise<FileSystemEntryStats> {
         if (!this._stats) {
             try {
-                const data = await stat(this.path().toString(), {
-                    bigint: false,
-                    throwIfNoEntry: true
-                });
+                const data = await stat(this.path().toString(), { bigint: false });
                 this._stats = {
                     dev: data.dev,
                     ino: data.ino,

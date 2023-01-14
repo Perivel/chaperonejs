@@ -1,4 +1,4 @@
-import { BaseException } from '@swindle/core';
+import { BaseException } from '@chaperone/util';
 
 /**
  * SystemException

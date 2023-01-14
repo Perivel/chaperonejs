@@ -1,4 +1,4 @@
-import { Equatable } from '@swindle/core';
+import { Equatable } from '@chaperone/util';
 import { File } from '../file';
 import { FileStreamInterface } from './file-stream.interface';
 
