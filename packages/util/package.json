@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/util",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "type": "module",
   "types": "dist/types/core.d.ts",
   "description": "Common utility features for NodeJS projects.",
@@ -67,6 +67,18 @@
       },
       "import": "./collection/dist/esm.js",
       "require": "./collection/dist/c.js"
+    },
+    "./container": {
+      "browser": {
+        "import": "./container/dist/esm.js",
+        "require": "./container/dist/c.js"
+      },
+      "node": {
+        "import": "./container/dist/esm.js",
+        "require": "./container/dist/c.js"
+      },
+      "import": "./container/dist/esm.js",
+      "require": "./container/dist/c.js"
     }
   },
   "publishConfig": {
@@ -85,7 +97,9 @@
     "repository/dist",
     "repository/package.json",
     "collection/dist",
-    "collection/package.json"
+    "collection/package.json",
+    "container/dist",
+    "container/package.json"
   ],
   "repository": {
     "type": "git",
