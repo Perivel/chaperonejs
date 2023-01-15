@@ -56,7 +56,7 @@ export class Path implements PathInterface {
     public static FromSegments(...segments: Array<string | Path>): Path {
         const parsedSegments = new Stack<string>();
         Path._BuildPath(segments, parsedSegments);
-        return new Path(parsedSegments.toArray().join(Path.Separator));
+        return new Path(parsedSegments.toArray().reverse().join(Path.Separator));
     }
 
     /**
@@ -200,7 +200,8 @@ export class Path implements PathInterface {
      * _BuildPathString()
      * 
      * Creates a valid path string from the provided segments.
-     * @param segments the segments of a 
+     * @param segments the segments to process.
+     * @note The built path will be in reverse order.
      * @note This function needs to be redone to improve performance.
      */
 

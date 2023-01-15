@@ -1,4 +1,3 @@
-import { SyncFn } from '@swindle/core';
 import { SendHandle, Serializable } from 'child_process';
 
 /**

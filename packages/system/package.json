@@ -18,12 +18,29 @@
     "url": "git+https://github.com/Perivel/chaperonejs.git"
   },
   "scripts": {
-    "test": "node ./__tests__/system.test.js"
+    "build": "rollup --bundleConfigAsCjs -c"
   },
   "bugs": {
     "url": "https://github.com/Perivel/chaperonejs/issues"
   },
   "dependencies": {
     "@chaperone/util": "^0.1.9"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.3",
+    "@rollup/plugin-json": "^5.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.2.0",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/luxon": "^3.1.0",
+    "@types/node": "^18.11.18",
+    "@types/ramda": "^0.28.20",
+    "@types/uuid": "^9.0.0",
+    "cypress": "^12.0.2",
+    "rollup": "^3.6.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-polyfill-node": "^0.11.0"
   }
 }
