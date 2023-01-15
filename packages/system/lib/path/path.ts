@@ -1,5 +1,5 @@
 import path, * as NodePath from 'path';
-import { Stack } from '@chaperone/util/collection';
+import { Stack, Queue } from '@chaperone/util/collection';
 import { PathInterface } from './path.interface';
 import { PathException } from './exceptions';
 import { PathInstruction } from './path-instruction.enum';
@@ -172,7 +172,7 @@ export class Path implements PathInterface {
      * Current solution produces incorrect responses. For now, we will just make this function always return
      * TRUE when the path is not empty.. And then modify it at a later version.
      */
-    
+
     private isValidPath(suspect: string): boolean {
         // make sure the path is not an empty string.
         if (suspect.length === 0) {
@@ -201,19 +201,22 @@ export class Path implements PathInterface {
      * 
      * Creates a valid path string from the provided segments.
      * @param segments the segments of a 
-     * @returns 
+     * @note This function needs to be redone to improve performance.
      */
 
     private static _BuildPath(segments: Array<string | Path>, stack: Stack<string>): void {
         if (segments.length > 0) {
             const isHead = stack.isEmpty;
             const results = Path._NormalizeSegment(segments[0]);
-            results.forEach(res => {
-                if (typeof res === 'string') {
-                    stack.push(res);
+            let seg: PathInstruction | string;
+
+            while (!results.isEmpty) {
+                seg = results.remove();
+                if (typeof seg === 'string') {
+                    stack.push(seg);
                 }
                 else {
-                    switch (res) {
+                    switch (seg) {
                         case PathInstruction.BackStep:
                             if (!isHead) {
                                 stack.pop();
@@ -237,7 +240,7 @@ export class Path implements PathInterface {
                             }
                     }
                 }
-            });
+            }
 
             segments.shift();
             Path._BuildPath(segments, stack);
@@ -245,22 +248,53 @@ export class Path implements PathInterface {
     }
 
     /**
-     * _Norma.izeSegment()
+     * _NormalizeSegment()
      * 
      * Attempts to normalize a path segment.
      * @param dirty the dirty segment to normalize.
      */
 
-    private static _NormalizeSegment(dirty: string | Path): Array<string | PathInstruction> {
-        const isWindows = process.platform === 'win32';
-        let candidate = dirty.toString();
-        const normalized: Array<string | PathInstruction> = [];
+    private static _NormalizeSegment(dirty: string | Path): Queue<string | PathInstruction> {
+        /*
+         * Our goal here is to convert a path segment into a series of PathInstructions for which a Path can be constructed.
+         * The dirty input can be a string or a Path instance, in which the value can be a single path segment, such as a file or folder name,
+         * or a path pattern in and of itself.
+         * 
+         * Path segments can fall into one of the following categories.
+         * 1. A Home Directory instruction (~, /, //, \, \\): We convert these into a PathInstruction.HomeDirectory instruction.
+         * 2. A Current Working Directory instruction (./, .\): We convert this into a PathInstruction.CurrentDirectoryInstruction
+         * 3. A Backstep instruction (../, ..\): We convert this into a PathInstruction.Backstep instruction.
+         * 4. A regular string: We assume a regular string to just be a file or directory name. So, we just add it to the instruction set as is.
+         * 
+         * Note:
+         * Since the input segments can be either a path segment or a path string in and of itself, we use the following RegExp to split the path into its segments.
+         * 
+         * /(\/|\\)/gm
+         * 
+         * This RegExp splits the string using the "\" and "/" characters. As such expressions like "\\" will be converted into an empty string. And, expressions like 
+         * "./" will be converted to ".".
+        */
 
-        // A segment can fall into the following forms:
-        // 1. '~'m '\', '\\', etc... : These usually symbolize the home directory, and should be converted to the platform-specific formats.
-        // 2. './': the current directory. In this case, it is sufficient to return an empty string.
+        let candidate = dirty.toString().split(/(\/|\\)/gm);
+        const instructions = new Queue<string | PathInstruction>();
 
-
-        return normalized;
+        candidate.forEach(segment => {
+            if (segment === '..') {
+                // backstep
+                instructions.add(PathInstruction.BackStep);
+            }
+            else if (segment == '') {
+                // current directory.
+                instructions.add(PathInstruction.CurrentDirectory);
+            }
+            else if (['~', '/', '\\'].includes(segment)) {
+                // home directory.
+                instructions.add(PathInstruction.HomeDirectory);
+            }
+            else {
+                instructions.add(segment);
+            }
+        });
+        return instructions;
     }
 }
