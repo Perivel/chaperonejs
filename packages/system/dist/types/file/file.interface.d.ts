@@ -1,0 +1,5 @@
+/**
+ * FileInterface
+ */
+export interface FileInterface {
+}
