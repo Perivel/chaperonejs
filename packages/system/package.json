@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/system",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "System utilities for NodeJS",
   "type": "module",
   "types": "dist/types/core.d.ts",
