@@ -1,9 +1,9 @@
 {
   "name": "@chaperone/system",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "System utilities for NodeJS",
   "type": "module",
-  "types": "dist/types/core.d.ts",
+  "types": "dist/types/index.d.ts",
   "author": "PatrickLumenus <patrickaluy@gmail.com>",
   "homepage": "https://github.com/Perivel/chaperonejs#readme",
   "license": "MIT",
@@ -22,14 +22,14 @@
     ".": {
       "browser": {
         "import": "./dist/esm.js",
-        "require": "./dist/c.js"
+        "require": "./dist/c.cjs"
       },
       "node": {
         "import": "./dist/esm.js",
-        "require": "./dist/c.js"
+        "require": "./dist/c.cjs"
       },
       "import": "./dist/esm.js",
-      "require": "./dist/c.js"
+      "require": "./dist/c.cjs"
     }
   },
   "repository": {
