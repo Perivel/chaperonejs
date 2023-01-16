@@ -25,7 +25,7 @@ export default [
         },
         {
             format: 'cjs',
-            file: resolve('dist/c.js')
+            file: resolve('dist/c.cjs')
         }],
         plugins: [
             del({
