@@ -1,5 +1,6 @@
 import { Comparator, ComparisonResult, OutOfBoundsException } from '@chaperone/util';
 import { List } from "../list";
+import { ListIterator } from './../list-iterator';
 import { Node } from "../../node";
 import { LinkedListInterface } from "./linked-list.interface";
 
@@ -21,35 +22,8 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
     this.iteratorNode = null;
   }
   
-  public [Symbol.iterator](): Iterator<T, T, T|undefined> {
-    return {
-      next: (value: T): IteratorResult<T, any> => {
-        if (!this.iteratorNode) {
-          this.iteratorNode = this.head;
-        }
-
-        let result: IteratorResult<T, any>;
-        
-        if (this.isEmpty) {
-          result = {
-            done: true,
-            value: null
-          }
-        }
-        else {
-          result = {
-            done: !this.iteratorNode!.hasNext,
-            value: this.iteratorNode!.value
-          }
-        }
-        
-        if (this.iteratorNode!.hasNext) {
-          this.iteratorNode = this.iteratorNode!.next;
-        }
-
-        return result;
-      }
-    };
+  public [Symbol.iterator](): Iterator<T, T|undefined, T|undefined> {
+    return new ListIterator(this.toArray());
   }
 
   /**

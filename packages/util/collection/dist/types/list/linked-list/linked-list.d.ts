@@ -11,7 +11,7 @@ export declare class LinkedList<T> extends List<T> implements LinkedListInterfac
     private readonly comparator;
     private iteratorNode;
     constructor(comparator?: Comparator<T> | null);
-    [Symbol.iterator](): Iterator<T, T, T | undefined>;
+    [Symbol.iterator](): Iterator<T, T | undefined, T | undefined>;
     /**
      * add()
      *

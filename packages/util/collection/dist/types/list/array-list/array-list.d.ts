@@ -11,7 +11,7 @@ export declare class ArrayList<T> extends List<T> implements ArrayListInterface<
     private readonly comparator;
     private _iteratorPos;
     constructor(values?: T[], comparator?: Comparator<T> | null);
-    [Symbol.iterator](): Iterator<T, T, T | undefined>;
+    [Symbol.iterator](): Iterator<T, T | undefined, T | undefined>;
     /**
      * add()
      *

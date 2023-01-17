@@ -1,6 +1,6 @@
 import { Comparator, OutOfBoundsException } from '@chaperone/util';
-import { timeStamp } from 'console';
 import { List } from './../list';
+import { ListIterator } from './../list-iterator';
 import { ArrayListInterface } from './array-list.interface';
 
 /**
@@ -43,24 +43,8 @@ export class ArrayList<T> extends List<T> implements ArrayListInterface<T>, Iter
         }
     }
 
-    public [Symbol.iterator](): Iterator<T, T, T|undefined> {
-        return {
-            next: (value: T): IteratorResult<T,any> => {
-                if (this._iteratorPos < this.size) {
-                    return {
-                        done: false,
-                        value: this.items[this._iteratorPos++]
-                    }
-                }
-                else {
-                    this._iteratorPos = 0;
-                    return {
-                        done: true,
-                        value: null
-                    }
-                }
-            }
-        }
+    public [Symbol.iterator](): Iterator<T, T|undefined, T|undefined> {
+        return new ListIterator(this.toArray());
     }
 
     /**
