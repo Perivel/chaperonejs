@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/util",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "type": "module",
   "types": "dist/types/core.d.ts",
   "description": "Common utility features for NodeJS projects.",
@@ -10,75 +10,75 @@
   "exports": {
     ".": {
       "browser": {
-        "import": "./dist/esm.js",
-        "require": "./dist/c.js"
+        "import": "./dist/esm.mjs",
+        "require": "./dist/c.cjs"
       },
       "node": {
-        "import": "./dist/esm.js",
-        "require": "./dist/c.js"
+        "import": "./dist/esm.mjs",
+        "require": "./dist/c.cjs"
       },
-      "import": "./dist/esm.js",
-      "require": "./dist/c.js"
+      "import": "./dist/esm.mjs",
+      "require": "./dist/c.cjs"
     },
     "./specification": {
       "browser": {
-        "import": "./specification/dist/esm.js",
-        "require": "./specification/dist/c.js"
+        "import": "./specification/dist/esm.mjs",
+        "require": "./specification/dist/c.cjs"
       },
       "node": {
-        "import": "./specification/dist/esm.js",
-        "require": "./specification/dist/c.js"
+        "import": "./specification/dist/esm.mjs",
+        "require": "./specification/dist/c.cjs"
       },
-      "import": "./specification/dist/esm.js",
-      "require": "./specification/dist/c.js"
+      "import": "./specification/dist/esm.mjs",
+      "require": "./specification/dist/c.cjs"
     },
     "./factory": {
       "browser": {
-        "import": "./factory/dist/esm.js",
-        "require": "./factory/dist/c.js"
+        "import": "./factory/dist/esm.mjs",
+        "require": "./factory/dist/c.cjs"
       },
       "node": {
-        "import": "./factory/dist/esm.js",
-        "require": "./factory/dist/c.js"
+        "import": "./factory/dist/esm.mjs",
+        "require": "./factory/dist/c.cjs"
       },
-      "import": "./factory/dist/esm.js",
-      "require": "./factory/dist/c.js"
+      "import": "./factory/dist/esm.mjs",
+      "require": "./factory/dist/c.cjs"
     },
     "./repository": {
       "browser": {
-        "import": "./repository/dist/esm.js",
-        "require": "./repository/dist/c.js"
+        "import": "./repository/dist/esm.mjs",
+        "require": "./repository/dist/c.cjs"
       },
       "node": {
-        "import": "./repository/dist/esm.js",
-        "require": "./repository/dist/c.js"
+        "import": "./repository/dist/esm.mjs",
+        "require": "./repository/dist/c.cjs"
       },
-      "import": "./repository/dist/esm.js",
-      "require": "./repository/dist/c.js"
+      "import": "./repository/dist/esm.mjs",
+      "require": "./repository/dist/c.cjs"
     },
     "./collection": {
       "browser": {
-        "import": "./collection/dist/esm.js",
-        "require": "./collection/dist/c.js"
+        "import": "./collection/dist/esm.mjs",
+        "require": "./collection/dist/c.cjs"
       },
       "node": {
-        "import": "./collection/dist/esm.js",
-        "require": "./collection/dist/c.js"
+        "import": "./collection/dist/esm.mjs",
+        "require": "./collection/dist/c.cjs"
       },
-      "import": "./collection/dist/esm.js",
-      "require": "./collection/dist/c.js"
+      "import": "./collection/dist/esm.mjs",
+      "require": "./collection/dist/c.cjs"
     },
     "./container": {
       "browser": {
-        "import": "./container/dist/esm.js",
-        "require": "./container/dist/c.js"
+        "import": "./container/dist/esm.mjs",
+        "require": "./container/dist/c.cjs"
       },
       "node": {
-        "import": "./container/dist/esm.js",
-        "require": "./container/dist/c.js"
+        "import": "./container/dist/esm.mjs",
+        "require": "./container/dist/c.cjs"
       },
-      "import": "./container/dist/esm.js",
-      "require": "./container/dist/c.js"
+      "import": "./container/dist/esm.mjs",
+      "require": "./container/dist/c.cjs"
     }
   },
   "publishConfig": {
