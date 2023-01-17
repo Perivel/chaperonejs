@@ -7,7 +7,6 @@
   "author": "Patrick Luy <pluy@perivel.com>",
   "homepage": "https://github.com/Perivel/chaperonejs#readme",
   "license": "MIT",
-  "main": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -15,15 +14,15 @@
   "exports": {
     ".": {
       "browser": {
-        "import": "./dist/esm.js",
-        "require": "./dist/c.js"
+        "import": "./dist/esm.mjs",
+        "require": "./dist/c.cjs"
       },
       "node": {
-        "import": "./dist/esm.js",
-        "require": "./dist/c.js"
+        "import": "./dist/esm.mjs",
+        "require": "./dist/c.cjs"
       },
-      "import": "./dist/esm.js",
-      "require": "./dist/c.js"
+      "import": "./dist/esm.mjs",
+      "require": "./dist/c.cjs"
     }
   },
   "files": [

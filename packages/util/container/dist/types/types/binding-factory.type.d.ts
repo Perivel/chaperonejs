@@ -4,4 +4,4 @@ import { ContainerInterface } from "../container/container.interface";
  *
  * BindingFactory type.
  */
-export type BindingFactory<T> = (container: ContainerInterface) => T;
+export declare type BindingFactory<T> = (container: ContainerInterface) => T;

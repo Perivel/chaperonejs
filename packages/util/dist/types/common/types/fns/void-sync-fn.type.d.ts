@@ -3,4 +3,4 @@
  *
  * A synchonus void function type.
  */
-export type VoidSyncFn = () => void;
+export declare type VoidSyncFn = () => void;

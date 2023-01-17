@@ -3,4 +3,4 @@
  *
  * A synchronous function type.
  */
-export type SyncFn<T> = (...args: any) => T;
+export declare type SyncFn<T> = (...args: any) => T;

@@ -1125,7 +1125,7 @@ if(this._phoneParser=z(a,{regionCode:l}),!this._phoneParser.valid)throw new da}
      * countryCode
      *
      * gets the phone number's country code.
-     */get countryCode(){return this._phoneParser.countryCode}
+     */get countryCode(){return this._phoneParser.countryCode.toString()}
 /**
      * equals()
      *

@@ -21,7 +21,7 @@ export default [
         external: deps,
         output: [{
             format: 'esm',
-            file: resolve('dist/esm.js'),
+            file: resolve('dist/esm.mjs'),
         },
         {
             format: 'cjs',

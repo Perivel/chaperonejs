@@ -1023,7 +1023,7 @@ if(this._phoneParser=t.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
      * countryCode
      *
      * gets the phone number's country code.
-     */get countryCode(){return this._phoneParser.countryCode}
+     */get countryCode(){return this._phoneParser.countryCode.toString()}
 /**
      * equals()
      *

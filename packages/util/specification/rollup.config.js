@@ -21,11 +21,11 @@ export default [
         external: deps,
         output: [{
             format: 'esm',
-            file: resolve('dist/esm.js'),
+            file: resolve('dist/esm.mjs'),
         },
         {
             format: 'cjs',
-            file: resolve('dist/c.js')
+            file: resolve('dist/c.cjs')
         }],
         plugins: [
             del({

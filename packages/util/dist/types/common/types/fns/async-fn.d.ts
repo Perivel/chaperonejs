@@ -3,4 +3,4 @@
  *
  * An asynchronous function type.
  */
-export type AsyncFn<T> = (...args: any) => Promise<T>;
+export declare type AsyncFn<T> = (...args: any) => Promise<T>;

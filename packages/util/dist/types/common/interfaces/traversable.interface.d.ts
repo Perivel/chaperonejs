@@ -3,7 +3,7 @@
  *
  * A function to be invoked on each traversible value.
  */
-export type TraverseFn<T> = (current: T, next: T | null, previous: T | null) => void;
+export declare type TraverseFn<T> = (current: T, next: T | null, previous: T | null) => void;
 /**
  * The Traversable Interface.
  *

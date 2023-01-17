@@ -3,4 +3,4 @@
  *
  * An asynchonous Void Function.
  */
-export type VoidAsyncFn = () => Promise<void>;
+export declare type VoidAsyncFn = () => Promise<void>;

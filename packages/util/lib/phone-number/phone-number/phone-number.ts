@@ -54,7 +54,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
      */
 
     public get countryCode(): string {
-        return this._phoneParser.countryCode!;
+        return this._phoneParser.countryCode!.toString();
     }
 
     /**
