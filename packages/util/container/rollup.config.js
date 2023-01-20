@@ -38,7 +38,9 @@ export default [
             }),
             polyfills(),
             nodeResolve(),
-            commonjs(),
+            commonjs({
+                ignoreDynamicRequires: true
+            }),
             json(),
             terser({
                 format: {
