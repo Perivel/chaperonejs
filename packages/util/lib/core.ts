@@ -10,3 +10,4 @@ export * from './id';
 export * from './iso-language';
 export * from './phone-number';
 export * from './sanitizer';
+export * from './random';
