@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { StringFormatter, EmailAddress } from './../../lib/core';
 import {
   camelCase,

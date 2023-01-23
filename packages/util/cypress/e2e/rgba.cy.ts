@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { RGBA, RGBAException } from './../../lib/core';
 
 describe('Creating an RGBA instance.', () => {

@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { IsoLanguage, IsoLanguageException } from './../../lib/core';
 
 describe("Creating an IsoLanguage instance.", () => {

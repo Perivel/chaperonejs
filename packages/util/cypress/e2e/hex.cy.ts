@@ -1,3 +1,5 @@
+
+import { expect } from 'chai';
 import { Hex, HexException } from './../../lib/core';
 
 describe('Testing Hex class', () => {
@@ -6,7 +8,7 @@ describe('Testing Hex class', () => {
 
   it('should be equal', () => {
     expect(red).to.be.an('object');
-    expect(red.value()).to.equal(redVal);
+    expect(red.value).to.equal(redVal);
   })
 
   // instanciate short form hex.

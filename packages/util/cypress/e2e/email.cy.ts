@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { EmailAddress, EmailAddressException } from './../../lib/core';
 
 describe("Creating a Valid Email Address.", () => {

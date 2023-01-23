@@ -1,22 +1,22 @@
 /**
- * ListIterator
+ * RangeIterator
  * 
- * A List Iterator
+ * A Range Iterator
  */
 
-export class ListIterator<T> implements Iterator<T> {
+export class RangeIterator implements Iterator<number> {
 
     private index: number;
     private done: boolean;
-    private values: T[];
+    private values: number[];
 
-    constructor(values: T[]) {
+    constructor(values: number[]) {
         this.values = values;
         this.index = 0;
         this.done = false;
     }
 
-    public next(): IteratorResult<T, T|undefined> {
+    public next(): IteratorResult<number, number|undefined> {
         if (this.done) {
             return {
                 done: this.done,

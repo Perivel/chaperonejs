@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { Salt } from "./../../lib/core";
 
 describe("Creating a Salt", async () => {

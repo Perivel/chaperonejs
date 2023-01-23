@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { Hash, Salt } from './../../lib/core';
 
 describe("Creatng a hash", async () => {

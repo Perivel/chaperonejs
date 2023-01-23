@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { UUID, UUIDException } from './../../lib/core';
 
 describe('Generating a UUID', () => {

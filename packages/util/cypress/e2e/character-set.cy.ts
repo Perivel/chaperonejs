@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { CharacterSet } from './../../lib/core';
 
 describe('Generating CharacterSet instances', () => {
