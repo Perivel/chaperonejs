@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/system",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "System utilities for NodeJS",
   "type": "module",
   "types": "dist/types/index.d.ts",
@@ -42,7 +42,7 @@
     "url": "https://github.com/Perivel/chaperonejs/issues"
   },
   "dependencies": {
-    "@chaperone/util": "^0.1.11"
+    "@chaperone/util": "^0.1.12"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.3",
