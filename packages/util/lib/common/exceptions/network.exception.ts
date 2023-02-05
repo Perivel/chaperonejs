@@ -1,4 +1,4 @@
-import { BaseException } from './base.exception';
+import { BaseException } from "./base.exception";
 
 /**
  * NetworkException
@@ -8,7 +8,7 @@ import { BaseException } from './base.exception';
 
 export class NetworkException extends BaseException {
 
-    constructor(message: string = "Network Error") {
-        super(message);
-    }
+	constructor(message = "Network Error") {
+		super(message);
+	}
 }

@@ -1,4 +1,4 @@
-import { BaseException } from '../../common';
+import { BaseException } from "../../common";
 
 /**
  * ColorException
@@ -8,7 +8,7 @@ import { BaseException } from '../../common';
 
 export class ColorException extends BaseException {
 
-    constructor(message: string = "Color Error") {
-        super(message);
-    }
+	constructor(message = "Color Error") {
+		super(message);
+	}
 }

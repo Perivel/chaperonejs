@@ -1,4 +1,4 @@
-import { BaseException } from './base.exception';
+import { BaseException } from "./base.exception";
 
 /**
  * MethodUndefinedException
@@ -9,7 +9,7 @@ import { BaseException } from './base.exception';
 
 export class MethodUndefinedException extends BaseException {
 
-    constructor(message: string = "Method undefined.") {
-        super(message);
-    }
+	constructor(message = "Method undefined.") {
+		super(message);
+	}
 }

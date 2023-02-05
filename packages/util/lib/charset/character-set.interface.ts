@@ -1,4 +1,4 @@
-import { CharacterSetValue } from './charset-values.type';
+import { CharacterSetValue } from "./charset-values.type";
 
 export interface CharacterSetInterface {
 

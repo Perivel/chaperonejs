@@ -1,4 +1,4 @@
-import { BaseException } from './../exceptions';
+import { BaseException } from "./../exceptions";
 
 /**
  * RangeException
@@ -7,7 +7,7 @@ import { BaseException } from './../exceptions';
  */
 export class RangeException extends BaseException {
 
-    constructor(message: string = "Range Error") {
-        super(message);
-    }
+	constructor(message = "Range Error") {
+		super(message);
+	}
 }

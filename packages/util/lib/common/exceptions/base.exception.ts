@@ -8,7 +8,7 @@
 
 export class BaseException extends Error {
 
-    constructor(message: string = "A domain error occured.") {
-        super(message);
-    }
+	constructor(message = "A domain error occured.") {
+		super(message);
+	}
 }

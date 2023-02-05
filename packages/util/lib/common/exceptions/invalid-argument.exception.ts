@@ -1,4 +1,4 @@
-import { BaseException } from './base.exception';
+import { BaseException } from "./base.exception";
 
 /**
  * InvlaidArguentException
@@ -8,7 +8,7 @@ import { BaseException } from './base.exception';
 
 export class InvalidArgumentException extends BaseException {
 
-    constructor(message: string = "Invalid Argument") {
-        super(message);
-    }
+	constructor(message = "Invalid Argument") {
+		super(message);
+	}
 }
