@@ -8,7 +8,7 @@ import { SystemException } from './../../exceptions';
 
 export class PathException extends SystemException {
 
-    constructor(message: string = "Path Error") {
-        super(message);
+    constructor(message: string = "") {
+        super(`Path Error${message ? ': ' + message : ''}`);
     }
 }

@@ -8,7 +8,7 @@ import { ProcessException } from "./process.exception";
 
 export class ProcessFailedException extends ProcessException {
 
-    constructor(message: string = "Process Failed", readonly code: number|null = null) {
+    constructor(message: string = `Process exited with non-zero code`, readonly code: number = -1) {
         super(message)
     }
 }

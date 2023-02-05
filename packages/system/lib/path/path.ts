@@ -13,7 +13,7 @@ import { PathInstruction } from './path-instruction.enum';
 export class Path implements PathInterface {
 
     private static RESTRICTED = /[\[\]#%&{}<>*?\s\b\0$!'"@|‘“+^`]/g;
-    private static POSIX_RESTRICTED = /[\\:]/g;
+    private static POSIX_RESTRICTED = /[\\:]/g;x
     private static WINDOWS_RESTRICTED = /[\/]/g;
 
     private readonly _value: string;
@@ -223,7 +223,7 @@ export class Path implements PathInterface {
                                 stack.pop();
                             }
                             else {
-                                throw new PathException('Invalid Path Segment');
+                                throw new PathException('Cannot backtrack from root backtrack from root directory.');
                             }
                             break;
                         case PathInstruction.HomeDirectory:
@@ -231,7 +231,7 @@ export class Path implements PathInterface {
                                 stack.push('~');
                             }
                             else {
-                                throw new PathException('Invalid Path Segment');
+                                throw new PathException('You can only specify the home directory in the beginning of the path.');
                             }
                             break;
                         default:

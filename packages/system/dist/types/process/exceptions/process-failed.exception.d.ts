@@ -5,6 +5,6 @@ import { ProcessException } from "./process.exception";
  * An Error indicating a process has failed.
  */
 export declare class ProcessFailedException extends ProcessException {
-    readonly code: number | null;
-    constructor(message?: string, code?: number | null);
+    readonly code: number;
+    constructor(message?: string, code?: number);
 }

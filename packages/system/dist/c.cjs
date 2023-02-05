@@ -463,7 +463,7 @@ throw new qr}
  * PathException
  *
  * A general path error.
- */class Wr extends Br{constructor(t="Path Error"){super(t)}}
+ */class Wr extends Br{constructor(t=""){super("Path Error"+(t?": "+t:""))}}
 // A path instruction
 !function(t){
 // point to the home directory.
@@ -555,7 +555,7 @@ const e="win32"===process.platform;return!Jr.RESTRICTED.test(t)&&((!e||!Jr.WINDO
      * @param segments the segments to process.
      * @note The built path will be in reverse order.
      * @note This function needs to be redone to improve performance.
-     */static _BuildPath(t,e){if(t.length>0){const r=e.isEmpty,n=Jr._NormalizeSegment(t[0]);let i;for(;!n.isEmpty;)if(i=n.remove(),"string"==typeof i)e.push(i);else switch(i){case Pr.BackStep:if(r)throw new Wr("Invalid Path Segment");e.pop();break;case Pr.HomeDirectory:if(!r)throw new Wr("Invalid Path Segment");e.push("~");break;default:
+     */static _BuildPath(t,e){if(t.length>0){const r=e.isEmpty,n=Jr._NormalizeSegment(t[0]);let i;for(;!n.isEmpty;)if(i=n.remove(),"string"==typeof i)e.push(i);else switch(i){case Pr.BackStep:if(r)throw new Wr("Cannot backtrack from root backtrack from root directory.");e.pop();break;case Pr.HomeDirectory:if(!r)throw new Wr("You can only specify the home directory in the beginning of the path.");e.push("~");break;default:
 // here we know it is a Current Directory instruction
 r&&e.push(process.cwd())}t.shift(),Jr._BuildPath(t,e)}}
 /**
@@ -611,7 +611,7 @@ Jr.Separator=l.sep;
  *
  * A Generic FileSystemEntry error.
  */
-class $r extends Br{constructor(t="FileSystem Entry Error"){super(t)}}
+class $r extends Br{constructor(t=""){super("FileSystem Entry Error"+(t?": "+t:""))}}
 /**
  * FileSystemEntryNotFoundException
  *
@@ -701,7 +701,7 @@ throw new Yr})),this._created=null,this._updated=null,this._deleted=null,this._s
  * FileException
  *
  * A Generic File Exception.
- */class Vr extends $r{constructor(t="File Error"){super(t)}}
+ */class Vr extends $r{constructor(t=""){super("File Error"+(t?": "+t:""))}}
 /**
  * FileNotFoundException
  *
@@ -813,7 +813,7 @@ exports.LinkType=void 0,(Cr=exports.LinkType||(exports.LinkType={})).File="file"
  *
  * A General Link error
  */
-class Hr extends $r{constructor(t="Link Error"){super(t)}}
+class Hr extends $r{constructor(t="Link Error"){super("Link Error"+(t?": "+t:""))}}
 /**
  * LinkNotFoundException
  */class Qr extends Hr{constructor(t="Link Not Found"){super(t)}}
@@ -868,7 +868,7 @@ try{await t.unlink(this.path().toString()),this.setDeleted()}catch(t){throw new 
  * DirectoryException
  *
  * A general directory error.
- */class en extends $r{constructor(t="Directory Error"){super(t)}}
+ */class en extends $r{constructor(t=""){super("Directory Error"+(t?": "+t:""))}}
 /**
  * DirectoryNotFoundException
  *
@@ -970,7 +970,7 @@ try{return await h.move(this.path().toString(),r.toString(),{overwrite:n.overwri
 // resolve the new file path.
 const r=Jr.FromSegments(this.path().dirname(),e);
 // rename the file.
-try{return await t.rename(this.path().toString(),r.toString()),new sn(r)}catch(t){throw new en(t.message)}}serialize(){return JSON.stringify({path:this.path().toString(),created_on:this.createdOn().toString(),updated_on:this.updatedOn().toString()})}}class on extends Br{constructor(t="File Stream Error"){super(t)}}
+try{return await t.rename(this.path().toString(),r.toString()),new sn(r)}catch(t){throw new en(t.message)}}serialize(){return JSON.stringify({path:this.path().toString(),created_on:this.createdOn().toString(),updated_on:this.updatedOn().toString()})}}class on extends Br{constructor(t=""){super("File Stream Error"+(t?": "+t:""))}}
 /**
  * FileStreamDataException
  *
@@ -1030,12 +1030,12 @@ un.MAX_BYTES=1073741824;
  *
  * A generic process error
  */
-class ln extends Br{constructor(t="Process Error"){super(t)}}
+class ln extends Br{constructor(t=""){super(t="Process Error"+(t?": "+t:""))}}
 /**
  * ProcessFailedException
  *
  * An Error indicating a process has failed.
- */class fn extends ln{constructor(t="Process Failed",e=null){super(t),this.code=e}}
+ */class fn extends ln{constructor(t="Process exited with non-zero code",e=-1){super(t),this.code=e}}
 /**
  * Process
  *

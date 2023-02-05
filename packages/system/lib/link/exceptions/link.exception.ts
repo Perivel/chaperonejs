@@ -9,6 +9,6 @@ import { FileSystemEntryException } from './../../file-system-entry';
 export class LinkException extends FileSystemEntryException {
 
     constructor(message: string = "Link Error") {
-        super(message);
+        super(`Link Error${ message ? ': ' + message : ''}`);
     }
 }

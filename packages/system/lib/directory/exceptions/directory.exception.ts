@@ -8,7 +8,7 @@ import { FileSystemEntryException } from './../../file-system-entry';
 
 export class DirectoryException extends FileSystemEntryException {
 
-    constructor(message: string = "Directory Error") {
-        super(message);
+    constructor(message: string = "") {
+        super(`Directory Error${message ? ": " + message : ''}`);
     }
 }
