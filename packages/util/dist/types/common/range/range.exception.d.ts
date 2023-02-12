@@ -1,4 +1,4 @@
-import { BaseException } from './../exceptions';
+import { BaseException } from "./../exceptions";
 /**
  * RangeException
  *

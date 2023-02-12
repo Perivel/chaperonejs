@@ -13,7 +13,7 @@ import { PathInstruction } from './path-instruction.enum';
 export class Path implements PathInterface {
 
     private static RESTRICTED = /[\[\]#%&{}<>*?\s\b\0$!'"@|‘“+^`]/g;
-    private static POSIX_RESTRICTED = /[\\:]/g;x
+    private static POSIX_RESTRICTED = /[\\:]/g; x
     private static WINDOWS_RESTRICTED = /[\/]/g;
 
     private readonly _value: string;
@@ -54,9 +54,15 @@ export class Path implements PathInterface {
      */
 
     public static FromSegments(...segments: Array<string | Path>): Path {
-        const parsedSegments = new Stack<string>();
-        Path._BuildPath(segments, parsedSegments);
-        return new Path(parsedSegments.toArray().reverse().join(Path.Separator));
+        try {
+            const parsedSegments = new Stack<string>();
+            Path._BuildPath(segments, parsedSegments);
+            return new Path(parsedSegments.toArray().reverse().join(Path.Separator));
+        }
+        catch(e) {
+            // there was an error building the path.
+            throw e;
+        }
     }
 
     /**
@@ -197,12 +203,13 @@ export class Path implements PathInterface {
     }
 
     /**
-     * _BuildPathString()
+     * _BuildPath()
      * 
      * Creates a valid path string from the provided segments.
      * @param segments the segments to process.
      * @note The built path will be in reverse order.
      * @note This function needs to be redone to improve performance.
+     * @throws PathException when the path is invalid.
      */
 
     private static _BuildPath(segments: Array<string | Path>, stack: Stack<string>): void {
@@ -270,13 +277,16 @@ export class Path implements PathInterface {
          * Note:
          * Since the input segments can be either a path segment or a path string in and of itself, we use the following RegExp to split the path into its segments.
          * 
-         * /(\/|\\)/gm
+         * /(?<!([/\\])[/\\])[/\\](?![/\\])/g
          * 
          * This RegExp splits the string using the "\" and "/" characters. As such expressions like "\\" will be converted into an empty string. And, expressions like 
-         * "./" will be converted to ".".
+         * "./" will be converted to ".". It is worth noting that splitting using this expression will result in some undefined values in places where the path separators would
+         * normally go. For example, the input "path/to/directory" would result in the output ["path", undefined, "to", undefined, "directory"]. Therefore, it is necessary to 
+         * perform additional operations to remove those unwanted values.
         */
 
-        let candidate = dirty.toString().split(/(\/|\\)/gm);
+        let candidate = dirty.toString().split(/(?<!([/\\])[/\\])[/\\](?![/\\])/g);
+        candidate = candidate.filter(seg => seg != undefined);
         const instructions = new Queue<string | PathInstruction>();
 
         candidate.forEach(segment => {
@@ -284,7 +294,7 @@ export class Path implements PathInterface {
                 // backstep
                 instructions.add(PathInstruction.BackStep);
             }
-            else if (segment == '') {
+            else if (segment == '.') {
                 // current directory.
                 instructions.add(PathInstruction.CurrentDirectory);
             }

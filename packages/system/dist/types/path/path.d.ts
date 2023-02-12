@@ -100,12 +100,13 @@ export declare class Path implements PathInterface {
      */
     private isValidPath;
     /**
-     * _BuildPathString()
+     * _BuildPath()
      *
      * Creates a valid path string from the provided segments.
      * @param segments the segments to process.
      * @note The built path will be in reverse order.
      * @note This function needs to be redone to improve performance.
+     * @throws PathException when the path is invalid.
      */
     private static _BuildPath;
     /**

@@ -1,5 +1,5 @@
-import { Equatable } from './../interfaces';
-import { RangeInterface } from './range.interface';
+import { Equatable } from "./../interfaces";
+import { RangeInterface } from "./range.interface";
 /**
  * Range
  *

@@ -1,6 +1,6 @@
-import { Equatable } from '../common';
-import { CharacterSetInterface } from './character-set.interface';
-import { CharacterSetValue } from './charset-values.type';
+import { Equatable } from "../common";
+import { CharacterSetInterface } from "./character-set.interface";
+import { CharacterSetValue } from "./charset-values.type";
 /**
  * CharacterSet
  *

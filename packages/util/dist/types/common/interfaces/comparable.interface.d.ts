@@ -1,4 +1,4 @@
-import { ComparisonResult } from './../types';
+import { ComparisonResult } from "./../types";
 /**
  * Comparable
  *
