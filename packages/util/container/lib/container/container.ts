@@ -18,8 +18,6 @@ import {
 } from './../types';
 import { ContainerInterface } from "./container.interface";
 
-
-
 /**
  * VerdicContainer
  * 
