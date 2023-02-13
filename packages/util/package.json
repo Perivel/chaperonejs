@@ -1,6 +1,6 @@
 {
   "name": "@chaperone/util",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "type": "module",
   "types": "dist/types/core.d.ts",
   "description": "Common utility features for NodeJS projects.",
