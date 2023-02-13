@@ -7,7 +7,6 @@ import { PathInterface } from './path.interface';
 export declare class Path implements PathInterface {
     private static RESTRICTED;
     private static POSIX_RESTRICTED;
-    x: any;
     private static WINDOWS_RESTRICTED;
     private readonly _value;
     /**

@@ -12,8 +12,8 @@ import { PathInstruction } from './path-instruction.enum';
 
 export class Path implements PathInterface {
 
-    private static RESTRICTED = /[\[\]#%&{}<>*?\s\b\0$!'"@|‘“+^`]/g;
-    private static POSIX_RESTRICTED = /[\\:]/g; x
+    private static RESTRICTED = /[\[\]#%&{}<>?\s\b\0$!'"@|‘“+^`]/g;
+    private static POSIX_RESTRICTED = /[\\:]/g;
     private static WINDOWS_RESTRICTED = /[\/]/g;
 
     private readonly _value: string;
