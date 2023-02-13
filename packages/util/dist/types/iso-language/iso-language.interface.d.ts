@@ -24,3 +24,4 @@ export interface IsoLanguageInterface {
      */
     readonly name: string;
 }
+//# sourceMappingURL=iso-language.interface.d.ts.map

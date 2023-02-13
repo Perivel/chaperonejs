@@ -1,21 +1,21 @@
-import{isHex as a,rgbaToHex as l,hexToRgba as n}from"colors-convert";import*as h from"bcryptjs";import{IANAZone as e,DateTime as t,Duration as i}from"luxon";import*as s from"i18n-iso-countries";import{camelCase as r,capitalCase as u,constantCase as p,dotCase as o,headerCase as c,noCase as g,paramCase as b,pascalCase as m,pathCase as F,snakeCase as E}from"change-case";import{validate as d,NIL as k,v1 as y,v3 as f,v4 as w,v5 as v,version as S}from"uuid";import{parsePhoneNumber as z}from"awesome-phonenumber";import C from"sanitize-html";
+import{isHex as a,rgbaToHex as l,hexToRgba as n}from"colors-convert";import*as h from"bcryptjs";import{IANAZone as e,DateTime as t,Duration as i}from"luxon";import*as s from"i18n-iso-countries";import{camelCase as r,capitalCase as u,constantCase as p,dotCase as o,headerCase as c,noCase as g,paramCase as b,pascalCase as m,pathCase as F,snakeCase as E}from"change-case";import{validate as d,NIL as k,v1 as y,v3 as f,v4 as w,v5 as v,version as S}from"uuid";import{parsePhoneNumber as _}from"awesome-phonenumber";import z from"sanitize-html";
 /**
  * CharacterSet
  *
  * A CharacterSet.
- */class _{constructor(a){this._value=a}
+ */class C{_value;constructor(a){this._value=a}
 /**
      * ASCII()
      *
      * Creates a CharacterSet instance set to ASCII.
      * @returns A CharacterSet instance set to ASCII.
-     */static ASCII(){return new _("ASCII")}
+     */static ASCII(){return new C("ASCII")}
 /**
      * UTF8()
      *
      * Creates a CharacterSet instance set to UTF8.
      * @returns A CharacterSet set to UTF-8.
-     */static UTF8(){return new _("UTF-8")}
+     */static UTF8(){return new C("UTF-8")}
 /**
      * value
      *
@@ -27,7 +27,7 @@ import{isHex as a,rgbaToHex as l,hexToRgba as n}from"colors-convert";import*as h
      * determines if the instance and the suspect are equal.
      * @param suspect the suspect to compare.
      * @returns TRUE if the instance and the suspect are equal. FALSE otherwise.
-     */equals(a){let l=!1;if(a instanceof _){const n=a;l=this.value===n.value}return l}toString(){return this.value}}
+     */equals(a){let l=!1;if(a instanceof C){const n=a;l=this.value===n.value}return l}toString(){return this.value}}
 /**
  * BaseException
  *
@@ -100,7 +100,7 @@ import{isHex as a,rgbaToHex as l,hexToRgba as n}from"colors-convert";import*as h
  * Hex
  *
  * A Hex color value.
- */class B{
+ */class B{_value;
 /**
      * Creates a Hex instance.
      * @param value the hex value.
@@ -121,7 +121,7 @@ constructor(l){if(l=l.toUpperCase(),!a(l))throw new T;this._value=l}equals(a){le
  * RGBA
  *
  * An RGBA color representation.
- */class L{
+ */class L{_r;_g;_b;_a;
 /**
      * Creates an RGBA value.
      * @param r the r value.
@@ -187,7 +187,7 @@ this._a=h,this._b=n,this._g=l,this._r=a}
  * Color
  *
  * A Color value.
- */class K{
+ */class K{_rgba;_hex;
 /**
      * Creates a Color value.
      * @param value the value of the color.
@@ -260,7 +260,7 @@ constructor(a){if(a instanceof L)this._rgba=a,this._hex=new B(l({r:this._rgba.r,
  * Salt
  *
  * Represents a salt.
- */class O{constructor(a){this._value=a}
+ */class O{_value;constructor(a){this._value=a}
 /**
      * Generate()
      *
@@ -284,7 +284,7 @@ constructor(a){if(a instanceof L)this._rgba=a,this._hex=new B(l({r:this._rgba.r,
  * Hash
  *
  * A Hash.
- */class G{constructor(a){this._value=a}
+ */class G{_value;constructor(a){this._value=a}
 /**
      * Create()
      *
@@ -315,7 +315,7 @@ return new Promise(((n,e)=>{h.hash(a.toString(),l.value,((a,l)=>{a?e(a):n(new G(
  * Timezone
  *
  * Timezone represents a Timezone
- */class ${constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
+ */class ${_id;_offset;_abbreviation;constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
 /**
      * FromId()
      *
@@ -362,7 +362,7 @@ const l=e.create(a),n=t.fromJSDate(new Date).setZone(l);return new $(l.name,n.to
  * Coordinates
  *
  * Coordinates represents a geographic longitude/latitude pair.
- */class Y{constructor(a,l){this._long=a,this._lat=l}
+ */class Y{_long;_lat;constructor(a,l){this._long=a,this._lat=l}
 /**
      * equals()
      *
@@ -383,7 +383,7 @@ const l=e.create(a),n=t.fromJSDate(new Date).setZone(l);return new $(l.name,n.to
  * Country
  *
  * Country represents a Country in the world.
- */class Q{
+ */class Q{_code;_name;
 /**
      * Creates a Country instance
      * @param code The country code.
@@ -412,7 +412,7 @@ throw new Z;this._code=l,this._name=n}
  * Street
  *
  * Street represents an address street.
- */class X{
+ */class X{_line1;_line2;
 /**
      * Creates a Street Instance.
      * @param line1 String
@@ -438,7 +438,7 @@ constructor(a,l=""){if(!a){throw new V}this._line1=a,this._line2=l}
  * Locality
  *
  * Locality represents an Address Locality, or a City or Town.
- */class aa{
+ */class aa{_name;
 /**
      * Creates a Locality instance.
      * @param name The name of the locality.
@@ -458,7 +458,7 @@ constructor(a){if(!a){throw new R}this._name=a}
  * Region
  *
  * Region represents an Address Region (a state or province).
- */class la{
+ */class la{_name;
 /**
      * Creates a Region instnace
      * @param name The nsme of the region
@@ -480,7 +480,7 @@ constructor(a){if(!a){throw new J}this._name=a}
  * PostalCode
  *
  * PostalCode represents an address Postal Code (or Zip Code)
- */class na{
+ */class na{_value;
 /**
      * Creates a Postal Code instance.
      * @param value string
@@ -502,7 +502,7 @@ constructor(a){if(!a){throw new H}this._value=a}
  * StreetAddress
  *
  * StreetAddress represents a a physical street address.
- */class ha{
+ */class ha{_street;_locality;_region;_postal;_country;
 /**
      * Creates a new StreetAddress Instance.
      * @param street Street
@@ -579,7 +579,7 @@ constructor(a,l,n,h,e){let t=null;if(!a)throw t=new V,t;if(!l)throw t=new R,t;if
  * DateTime
  *
  * DateTime represents a specific date and time.
- */class ia{
+ */class ia{date;tz;
 /**
      * Creates a DateTime object.
      * @param value Date
@@ -712,7 +712,7 @@ constructor(a,l,n,h=0,e=0,i=0,s=0,r=$.UTC()){if(this.date=t.fromObject({year:a,m
  * Duration
  *
  * Duration represents a duration. A duration is a period in time, such as "1 day", "2 weeks", or "5 months".
- */class sa{
+ */class sa{luxonDuration;
 /**
      * creates a Duration object.
      * @param an object specifying information about the Duration.
@@ -833,7 +833,7 @@ toString(){return this.luxonDuration.toISO()}}class ra extends x{constructor(a="
  * EmailAddress
  *
  * EmailAddress provides functionality for handling email addresses.
- */class ua{
+ */class ua{_value;_domain;_username;
 /**
      * Creates an instance of an email address.
      * @param value The value of the email address.
@@ -987,7 +987,7 @@ castToString(a){return null==a?"":"string"===typeof a?a:a.toString()}}
  * Id
  *
  * Id represents a generic ID.
- */class ba{
+ */class ba{_val;
 /**
      * Creates a new Id instance.
      * @param value The value of the id.
@@ -1089,12 +1089,12 @@ throw new ga("Invalid namespace.")}return l}
  * IsoLanguage
  *
  * A utility class representing ISO Language data.
- */class da{
+ */class da{_name;_alpha2;_alpha3b;_alpha3t;
 /**
      * Creates a new instance of IsoLanguage.
      * @param nameOrCode The language name or ISO code.
      */
-constructor(a){const l=a.toLocaleLowerCase().trim(),n=Ea.find((a=>{var n,h;return a.English.toLocaleLowerCase()===l||(null===(n=a.alpha2)||void 0===n?void 0:n.toLocaleLowerCase())===l||a["alpha3-b"].toLowerCase()===l||(null===(h=a["alpha3-t"])||void 0===h?void 0:h.toLocaleLowerCase())===l}));if(!n)
+constructor(a){const l=a.toLocaleLowerCase().trim(),n=Ea.find((a=>a.English.toLocaleLowerCase()===l||a.alpha2?.toLocaleLowerCase()===l||a["alpha3-b"].toLowerCase()===l||a["alpha3-t"]?.toLocaleLowerCase()===l));if(!n)
 // no data found.
 throw new Fa;
 // data is found.
@@ -1134,7 +1134,7 @@ this._name=n.English,this._alpha2=n.alpha2,this._alpha3b=n["alpha3-b"],this._alp
  * PhoneNumber
  *
  * PhoneNumber represents a phone number.
- */class ya{
+ */class ya{_phoneParser;
 /**
      * Creates a Phone Number instance.
      * @param value The phone number value.
@@ -1145,7 +1145,7 @@ constructor(a,l){if(!a||!l)
 // invlaid phone number.
 throw new ka;
 // make sure the phone number is valid.
-if(this._phoneParser=z(a,{regionCode:l}),!this._phoneParser.valid)throw new ka}
+if(this._phoneParser=_(a,{regionCode:l}),!this._phoneParser.valid)throw new ka}
 /**
      * canBeInternationallyDialed
      *
@@ -1210,12 +1210,12 @@ if(this._phoneParser=z(a,{regionCode:l}),!this._phoneParser.valid)throw new ka}
      *
      * strips the HTML from a string.
      * @param dirty the string to sanitize.
-     */sanitize(a){return C(a)}toString(){return`Instance of ${fa.name}`}}
+     */sanitize(a){return z(a)}toString(){return`Instance of ${fa.name}`}}
 /**
  * Currency
  *
  * A representation of currency.
- */class wa{constructor(a,l,n,h=2){this.symbol=a,this.name=l,this.decimalPlaces=h,this.abreviation=n}
+ */class wa{symbol;name;decimalPlaces;abreviation;constructor(a,l,n,h=2){this.symbol=a,this.name=l,this.decimalPlaces=h,this.abreviation=n}
 /**
      * USD()
      */static USD(){return new wa("$","United States Dollar","USD",2)}equals(a){let l=!1;if(a instanceof wa){const n=a;l=this.decimalPlaces===n.decimalPlaces&&this.symbol===n.symbol&&this.name===n.name&&this.abreviation===n.abreviation}return l}serialize(){return JSON.stringify({symbol:this.symbol,name:this.name,abreviation:this.abreviation,decimal_places:this.decimalPlaces})}toString(){return this.name}}
@@ -1228,7 +1228,7 @@ if(this._phoneParser=z(a,{regionCode:l}),!this._phoneParser.valid)throw new ka}
  * Money
  *
  * A class representing monetary values.
- */class Sa{constructor(a,l=wa.USD()){this._amountInCents=this._toInteger(a,l.decimalPlaces),this._currency=l}get amount(){return this._toDecimal(this.amountInCents,this.currency.decimalPlaces)}get amountInCents(){return this._amountInCents}get currency(){return this._currency}
+ */class Sa{_amountInCents;_currency;constructor(a,l=wa.USD()){this._amountInCents=this._toInteger(a,l.decimalPlaces),this._currency=l}get amount(){return this._toDecimal(this.amountInCents,this.currency.decimalPlaces)}get amountInCents(){return this._amountInCents}get currency(){return this._currency}
 /**
      * add()
      *
@@ -1270,4 +1270,4 @@ if(this._phoneParser=z(a,{regionCode:l}),!this._phoneParser.valid)throw new ka}
      * @param value the decimal value to convert.
      * @param numPlaces the number of decimal places.
      * @returns the converted integer value.
-     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}export{q as BaseException,pa as BaseFormatter,_ as CharacterSet,K as Color,N as ColorException,I as ComparisonResult,Y as Coordinates,Q as Country,Z as CountryException,wa as Currency,ea as DateException,ia as DateTime,sa as Duration,ta as DurationException,ua as EmailAddress,ra as EmailAddressException,fa as HTMLSanitizer,G as Hash,B as Hex,T as HexException,ba as Id,ca as IdException,x as InvalidArgumentException,da as IsoLanguage,Fa as IsoLanguageException,aa as Locality,R as LocalityException,A as MethodUndefinedException,Sa as Money,va as MoneyException,M as NetworkException,D as OutOfBoundsException,ya as PhoneNumber,ka as PhoneNumberException,na as PostalCode,H as PostalCodeException,L as RGBA,P as RGBAException,j as Random,la as Region,J as RegionException,O as Salt,X as Street,ha as StreetAddress,U as StreetAddressException,V as StreetException,oa as StringFormatter,$ as Timezone,W as TimezoneException,ma as UUID,ga as UUIDException};
+     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}export{q as BaseException,pa as BaseFormatter,C as CharacterSet,K as Color,N as ColorException,I as ComparisonResult,Y as Coordinates,Q as Country,Z as CountryException,wa as Currency,ea as DateException,ia as DateTime,sa as Duration,ta as DurationException,ua as EmailAddress,ra as EmailAddressException,fa as HTMLSanitizer,G as Hash,B as Hex,T as HexException,ba as Id,ca as IdException,x as InvalidArgumentException,da as IsoLanguage,Fa as IsoLanguageException,aa as Locality,R as LocalityException,A as MethodUndefinedException,Sa as Money,va as MoneyException,M as NetworkException,D as OutOfBoundsException,ya as PhoneNumber,ka as PhoneNumberException,na as PostalCode,H as PostalCodeException,L as RGBA,P as RGBAException,j as Random,la as Region,J as RegionException,O as Salt,X as Street,ha as StreetAddress,U as StreetAddressException,V as StreetException,oa as StringFormatter,$ as Timezone,W as TimezoneException,ma as UUID,ga as UUIDException};

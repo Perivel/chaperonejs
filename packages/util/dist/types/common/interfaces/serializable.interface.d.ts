@@ -11,3 +11,4 @@ export interface Serializable {
      */
     serialize(): string;
 }
+//# sourceMappingURL=serializable.interface.d.ts.map

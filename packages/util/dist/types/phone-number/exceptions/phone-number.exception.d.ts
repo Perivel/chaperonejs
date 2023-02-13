@@ -7,3 +7,4 @@ import { InvalidArgumentException } from '../../common';
 export declare class PhoneNumberException extends InvalidArgumentException {
     constructor(message?: string);
 }
+//# sourceMappingURL=phone-number.exception.d.ts.map

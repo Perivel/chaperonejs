@@ -17,3 +17,4 @@ export interface CountryInterface {
      */
     readonly name: string;
 }
+//# sourceMappingURL=country.interface.d.ts.map

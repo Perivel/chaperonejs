@@ -7,3 +7,4 @@ import { IdException } from './id.exception';
 export declare class UUIDException extends IdException {
     constructor(message?: string);
 }
+//# sourceMappingURL=uuid.exception.d.ts.map

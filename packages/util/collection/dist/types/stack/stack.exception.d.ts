@@ -7,3 +7,4 @@ import { CollectionException } from './../collection';
 export declare class StackException extends CollectionException {
     constructor(message?: string);
 }
+//# sourceMappingURL=stack.exception.d.ts.map

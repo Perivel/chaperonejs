@@ -3,3 +3,4 @@ export interface RangeInterface {
     readonly stop: number;
     readonly step: number;
 }
+//# sourceMappingURL=range.interface.d.ts.map

@@ -12,3 +12,4 @@ export interface UUIDInterface extends IddentifierInterface {
      */
     readonly version: number;
 }
+//# sourceMappingURL=uuid.interface.d.ts.map

@@ -56,3 +56,4 @@ export declare class PriorityQueue<T> extends Collection<T> implements PriorityQ
     remove(): T;
     toArray(): T[];
 }
+//# sourceMappingURL=priority-queue.d.ts.map

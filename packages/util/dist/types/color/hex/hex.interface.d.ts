@@ -6,3 +6,4 @@ export interface HexInterface {
      */
     readonly value: string;
 }
+//# sourceMappingURL=hex.interface.d.ts.map

@@ -82,3 +82,4 @@ export declare class UUID extends Id implements UUIDInterface {
      */
     get version(): number;
 }
+//# sourceMappingURL=uuid.d.ts.map

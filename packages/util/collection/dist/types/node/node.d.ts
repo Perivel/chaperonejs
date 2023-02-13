@@ -15,3 +15,4 @@ export declare class Node<T> implements NodeInterface<T>, Comparable<T> {
     set next(value: Node<T> | null);
     compareTo(suspect: T): ComparisonResult;
 }
+//# sourceMappingURL=node.d.ts.map

@@ -3,3 +3,4 @@ export * from './and-not-specification';
 export * from './or-specification';
 export * from './or-not-specification';
 export * from './composite-specification';
+//# sourceMappingURL=index.d.ts.map

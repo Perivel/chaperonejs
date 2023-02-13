@@ -7,3 +7,4 @@ import { BaseException } from './../common';
 export declare class MoneyException extends BaseException {
     constructor(message?: string);
 }
+//# sourceMappingURL=money.exception.d.ts.map

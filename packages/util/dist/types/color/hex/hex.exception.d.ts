@@ -7,3 +7,4 @@ import { ColorException } from '../exceptions';
 export declare class HexException extends ColorException {
     constructor(message?: string);
 }
+//# sourceMappingURL=hex.exception.d.ts.map

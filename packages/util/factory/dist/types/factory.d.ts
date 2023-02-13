@@ -7,3 +7,4 @@ import { AbstractFactoryInterface } from './abstract-factory.interfacce';
 export declare abstract class Factory implements AbstractFactoryInterface {
     constructor();
 }
+//# sourceMappingURL=factory.d.ts.map

@@ -36,3 +36,4 @@ export declare class AndSpecification implements SpecificationInterface {
      */
     orNot(other: SpecificationInterface): SpecificationInterface;
 }
+//# sourceMappingURL=and-specification.d.ts.map

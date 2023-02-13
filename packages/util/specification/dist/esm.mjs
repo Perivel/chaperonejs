@@ -1,7 +1,7 @@
 /**
  * OrSpecification
  */
-class t{constructor(t,i){this._left=t,this._right=i}
+class t{_left;_right;constructor(t,i){this._left=t,this._right=i}
 /**
      * isSatisfiedBy()
      *
@@ -13,11 +13,11 @@ class t{constructor(t,i){this._left=t,this._right=i}
 /**
      * and()
      * @param other the other specification
-     */and(t){return new s(this,t)}
+     */and(t){return new r(this,t)}
 /**
      * andNot()
      * @param other the other specification.
-     */andNot(t){return new r(this,t)}
+     */andNot(t){return new s(this,t)}
 /**
      * or()
      * @param other The other specification.
@@ -28,7 +28,7 @@ class t{constructor(t,i){this._left=t,this._right=i}
      */orNot(t){return new i(this,t)}}
 /**
  * OrNotSpecification
- */class i{constructor(t,i){this._left=t,this._right=i}
+ */class i{_left;_right;constructor(t,i){this._left=t,this._right=i}
 /**
      * isSatisfiedBy()
      *
@@ -40,11 +40,11 @@ class t{constructor(t,i){this._left=t,this._right=i}
 /**
      * and()
      * @param other the other specification
-     */and(t){return new s(this,t)}
+     */and(t){return new r(this,t)}
 /**
      * andNot()
      * @param other the other specification.
-     */andNot(t){return new r(this,t)}
+     */andNot(t){return new s(this,t)}
 /**
      * or()
      * @param other The other specification.
@@ -55,7 +55,7 @@ class t{constructor(t,i){this._left=t,this._right=i}
      */orNot(t){return new i(this,t)}}
 /**
  * AndSpecification
- */class s{constructor(t,i){this._left=t,this._right=i}
+ */class r{_left;_right;constructor(t,i){this._left=t,this._right=i}
 /**
      * isSatisfiedBy()
      *
@@ -67,11 +67,11 @@ class t{constructor(t,i){this._left=t,this._right=i}
 /**
      * and()
      * @param other the other specification
-     */and(t){return new s(this,t)}
+     */and(t){return new r(this,t)}
 /**
      * andNot()
      * @param other the other specification.
-     */andNot(t){return new r(this,t)}
+     */andNot(t){return new s(this,t)}
 /**
      * or()
      * @param other The other specification.
@@ -82,7 +82,7 @@ class t{constructor(t,i){this._left=t,this._right=i}
      */orNot(t){return new i(this,t)}}
 /**
  * AndNotSpecification
- */class r{constructor(t,i){this._left=t,this._right=i}
+ */class s{_left;_right;constructor(t,i){this._left=t,this._right=i}
 /**
      * isSatisfiedBy()
      *
@@ -94,11 +94,11 @@ class t{constructor(t,i){this._left=t,this._right=i}
 /**
      * and()
      * @param other the other specification
-     */and(t){return new s(this,t)}
+     */and(t){return new r(this,t)}
 /**
      * andNot()
      * @param other the other specification.
-     */andNot(t){return new r(this,t)}
+     */andNot(t){return new s(this,t)}
 /**
      * or()
      * @param other The other specification.
@@ -115,11 +115,11 @@ class t{constructor(t,i){this._left=t,this._right=i}
 /**
      * and()
      * @param other the other specification
-     */and(t){return new s(this,t)}
+     */and(t){return new r(this,t)}
 /**
      * andNot()
      * @param other the other specification.
-     */andNot(t){return new r(this,t)}
+     */andNot(t){return new s(this,t)}
 /**
      * or()
      * @param other The other specification.
@@ -127,4 +127,4 @@ class t{constructor(t,i){this._left=t,this._right=i}
 /**
      * orNot()
      * @param other the other specification.
-     */orNot(t){return new i(this,t)}}export{r as AndNotSpecification,e as CompositeSpecification,i as OrNotSpecification,t as OrSpecification};
+     */orNot(t){return new i(this,t)}}export{s as AndNotSpecification,e as CompositeSpecification,i as OrNotSpecification,t as OrSpecification};

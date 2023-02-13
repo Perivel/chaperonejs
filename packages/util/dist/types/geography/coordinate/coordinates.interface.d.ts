@@ -17,3 +17,4 @@ export interface CoordinatesInterface {
      */
     readonly longitude: number;
 }
+//# sourceMappingURL=coordinates.interface.d.ts.map

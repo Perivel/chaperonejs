@@ -52,3 +52,4 @@ export interface RGBAInterface {
      */
     setR(x: any): RGBAInterface;
 }
+//# sourceMappingURL=rgba.interface.d.ts.map

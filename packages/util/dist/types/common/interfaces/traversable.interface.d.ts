@@ -18,3 +18,4 @@ export interface Traversable<T> {
      */
     traverse(predicate: TraverseFn<T>): void;
 }
+//# sourceMappingURL=traversable.interface.d.ts.map

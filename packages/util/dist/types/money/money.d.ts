@@ -65,3 +65,4 @@ export declare class Money implements MoneyInterface, Equatable, Serializable {
     private _toInteger;
     toString(): string;
 }
+//# sourceMappingURL=money.d.ts.map

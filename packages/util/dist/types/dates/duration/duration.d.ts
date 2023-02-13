@@ -141,3 +141,4 @@ export declare class Duration implements DurationInterface, Equatable {
     get years(): number;
     toString(): string;
 }
+//# sourceMappingURL=duration.d.ts.map

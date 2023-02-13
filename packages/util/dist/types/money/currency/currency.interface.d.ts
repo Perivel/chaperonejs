@@ -4,3 +4,4 @@ export interface CurrencyInterface {
     readonly decimalPlaces: number;
     readonly abreviation: string;
 }
+//# sourceMappingURL=currency.interface.d.ts.map

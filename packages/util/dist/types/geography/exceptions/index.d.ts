@@ -5,3 +5,4 @@ export * from './region.exception';
 export * from './street-address.exception';
 export * from './street.exception';
 export * from './timezone.exception';
+//# sourceMappingURL=index.d.ts.map

@@ -34,3 +34,4 @@ export declare class Hash implements HashInterface, Equatable {
     equals(suspect: any): boolean;
     toString(): string;
 }
+//# sourceMappingURL=hash.d.ts.map

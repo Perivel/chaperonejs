@@ -36,3 +36,4 @@ export declare abstract class CompositeSpecification implements SpecificationInt
      */
     orNot(other: SpecificationInterface): SpecificationInterface;
 }
+//# sourceMappingURL=composite-specification.d.ts.map

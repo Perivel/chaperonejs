@@ -25,3 +25,4 @@ export interface RepositoryInterface {
      */
     size(): Promise<number>;
 }
+//# sourceMappingURL=repository.interface.d.ts.map

@@ -7,3 +7,4 @@ import { BaseException } from "../../common";
 export declare class ColorException extends BaseException {
     constructor(message?: string);
 }
+//# sourceMappingURL=color.exception.d.ts.map

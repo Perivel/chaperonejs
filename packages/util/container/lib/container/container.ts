@@ -34,7 +34,6 @@ export class Container implements ContainerInterface {
     // This is used to track circular dependencies
     private readonly instanciationMap: Set<string>;
 
-
     constructor(parser: ModuleParser = new DefaultModuleParser()) {
         this.instances = new Map<string, any>();
         this.bindings = new Map<string, BindingFactory<any>>();

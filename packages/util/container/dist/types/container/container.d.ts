@@ -2,7 +2,7 @@ import { ModuleParser } from './../module-parser';
 import { BindingFactory, DependencyToken, ConcreteDependencyToken } from './../types';
 import { ContainerInterface } from "./container.interface";
 /**
- * VerdicContainer
+ * Container
  *
  * A simple Dependency Container.
  */

@@ -79,3 +79,4 @@ export declare class RGBA implements RGBAInterface, Equatable, Serializable {
     setR(x: any): RGBA;
     toString(): string;
 }
+//# sourceMappingURL=rgba.d.ts.map

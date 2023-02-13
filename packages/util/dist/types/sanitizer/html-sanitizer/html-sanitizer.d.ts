@@ -10,3 +10,4 @@ export declare class HTMLSanitizer implements HTMLSanitizerInterface {
     sanitize(dirty: string): string;
     toString(): string;
 }
+//# sourceMappingURL=html-sanitizer.d.ts.map

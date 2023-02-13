@@ -11,3 +11,4 @@ export interface LocalityInterface {
      */
     readonly name: string;
 }
+//# sourceMappingURL=locality.interface.d.ts.map

@@ -30,3 +30,4 @@ export declare class Coordinates implements CoordinatesInterface, Equatable {
     get longitude(): number;
     toString(): string;
 }
+//# sourceMappingURL=coordinates.d.ts.map

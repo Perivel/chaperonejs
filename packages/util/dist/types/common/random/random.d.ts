@@ -36,3 +36,4 @@ export declare class Random implements RandomInterface {
      */
     static Integer(min: number, max: number): number;
 }
+//# sourceMappingURL=random.d.ts.map

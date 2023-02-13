@@ -34,7 +34,12 @@ export default [
             typescript({
                 declaration: true,
                 declarationDir: 'types/',
-                rootDir: 'lib'
+                rootDir: 'lib',
+                target: 'ESNext',
+                module: 'ESNext',
+                outDir: './dist',
+                rootDir: './lib',
+                moduleResolution: 'node',
             }),
             polyfills(),
             nodeResolve(),

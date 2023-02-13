@@ -48,3 +48,4 @@ export declare abstract class Collection<T> implements CollectionInterface<T> {
        */
     abstract toArray(): Array<T>;
 }
+//# sourceMappingURL=collection.d.ts.map

@@ -6,3 +6,4 @@ export interface SaltInterface {
      */
     readonly value: string;
 }
+//# sourceMappingURL=salt.interface.d.ts.map

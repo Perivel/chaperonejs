@@ -42,3 +42,4 @@ export declare class Range implements Equatable, RangeInterface, Iterable<number
     private _createDescendingRangeArray;
     private _createRnageArray;
 }
+//# sourceMappingURL=range.d.ts.map

@@ -8,3 +8,4 @@ export declare enum ComparisonResult {
     Same = 1,
     Greater = 2
 }
+//# sourceMappingURL=comparison-result.type.d.ts.map

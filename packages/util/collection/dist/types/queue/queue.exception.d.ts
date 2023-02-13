@@ -7,3 +7,4 @@ import { CollectionException } from './../collection';
 export declare class QueueException extends CollectionException {
     constructor(message?: string);
 }
+//# sourceMappingURL=queue.exception.d.ts.map

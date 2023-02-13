@@ -19,3 +19,4 @@ export declare class Currency implements CurrencyInterface, Equatable, Serializa
     serialize(): string;
     toString(): string;
 }
+//# sourceMappingURL=currency.d.ts.map

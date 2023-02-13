@@ -11,3 +11,4 @@ export declare class PriorityNode<T> extends Node<T> {
     get next(): PriorityNode<T> | null;
     set next(value: PriorityNode<T> | null);
 }
+//# sourceMappingURL=priority-node.d.ts.map

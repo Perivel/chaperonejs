@@ -6,3 +6,4 @@ export interface NodeInterface<T> {
     next: NodeInterface<T> | null;
     hasNext: boolean;
 }
+//# sourceMappingURL=node.interface.d.ts.map

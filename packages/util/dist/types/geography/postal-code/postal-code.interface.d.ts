@@ -11,3 +11,4 @@ export interface PostalCodeInterface {
      */
     readonly value: string;
 }
+//# sourceMappingURL=postal-code.interface.d.ts.map

@@ -32,3 +32,4 @@ export declare class Salt implements Equatable, SaltInterface {
     get value(): string;
     toString(): string;
 }
+//# sourceMappingURL=salt.d.ts.map

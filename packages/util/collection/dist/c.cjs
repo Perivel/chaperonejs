@@ -3,7 +3,7 @@
  * Collection
  *
  * A Generic collection class
- */class e{constructor(){this._size=0}get size(){return this._size}
+ */class e{_size;constructor(){this._size=0}get size(){return this._size}
 /**
        * clear()
        *
@@ -29,17 +29,17 @@
  * Node
  *
  * A Generic Node.
- */class i{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(e){let s;switch(this.compare(this.value,e)){case-1:s=t.ComparisonResult.Less;break;case 1:s=t.ComparisonResult.Greater;break;default:s=t.ComparisonResult.Same}return s}}class n extends e{constructor(){super()}}
+ */class i{value;_next;compare;constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(e){let s;switch(this.compare(this.value,e)){case-1:s=t.ComparisonResult.Less;break;case 1:s=t.ComparisonResult.Greater;break;default:s=t.ComparisonResult.Same}return s}}class r extends e{constructor(){super()}}
 /**
  * ListIterator
  *
  * A List Iterator
- */class r{constructor(t){this.values=t,this.index=0,this.done=!1}next(){if(this.done)return{done:this.done,value:void 0};if(this.index===this.values.length)return this.done=!0,{done:this.done,value:void 0};const t=this.values[this.index];return this.index+=1,{done:!1,value:t}}}
+ */class n{index;done;values;constructor(t){this.values=t,this.index=0,this.done=!1}next(){if(this.done)return{done:this.done,value:void 0};if(this.index===this.values.length)return this.done=!0,{done:this.done,value:void 0};const t=this.values[this.index];return this.index+=1,{done:!1,value:t}}}
 /**
  * LinkedList
  *
  * A Linked List.
- */class h extends n{constructor(t=null){super(),this.head=null,this.comparator=t,this.iteratorNode=null}[Symbol.iterator](){return new r(this.toArray())}
+ */class h extends r{head;comparator;iteratorNode;constructor(t=null){super(),this.head=null,this.comparator=t,this.iteratorNode=null}[Symbol.iterator](){return new n(this.toArray())}
 /**
      * add()
      *
@@ -120,7 +120,7 @@ this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s
  * ArrayList
  *
  * An Array List.
- */class o extends n{constructor(t=[],e=null){super(),this.items=t,this.setSize(t.length),this._iteratorPos=0,this.comparator=e||((t,e)=>{const s=t,i=e;return s.length<i.length?-1:s.length>i.length?1:0})}[Symbol.iterator](){return new r(this.toArray())}
+ */class o extends r{items;comparator;_iteratorPos;constructor(t=[],e=null){super(),this.items=t,this.setSize(t.length),this._iteratorPos=0,this.comparator=e||((t,e)=>{const s=t,i=e;return s.length<i.length?-1:s.length>i.length?1:0})}[Symbol.iterator](){return new n(this.toArray())}
 /**
      * add()
      *
@@ -181,12 +181,12 @@ class u extends s{constructor(t="Queue error"){super(t)}}
  *
  * A node with a priority.
  */
-class l extends i{constructor(t,e,s=null,i=null){super(t,s,i),this.priority=e}get next(){return super.next}set next(t){super.next=t}}
+class l extends i{priority;constructor(t,e,s=null,i=null){super(t,s,i),this.priority=e}get next(){return super.next}set next(t){super.next=t}}
 /**
  * PriorityQueue
  *
  * A priorityQueue.
- */exports.ArrayList=o,exports.Collection=e,exports.CollectionException=s,exports.LinkedList=h,exports.List=n,exports.ListIterator=r,exports.Node=i,exports.PriorityNode=l,exports.PriorityQueue=class extends e{constructor(t=null){super(),this.compareFn=t,this.head=null}
+ */exports.ArrayList=o,exports.Collection=e,exports.CollectionException=s,exports.LinkedList=h,exports.List=r,exports.ListIterator=n,exports.Node=i,exports.PriorityNode=l,exports.PriorityQueue=class extends e{head;compareFn;constructor(t=null){super(),this.compareFn=t,this.head=null}
 /**
      * add()
      *
@@ -224,7 +224,7 @@ throw new u}
      * peek()
      *
      * returns the next value in the queue without removing it.
-     */peek(){if(this.head)return this.head.value;throw new u}remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.Queue=class extends e{constructor(t=null){super(),this.head=null,this.tail=null,this.compareFn=t}
+     */peek(){if(this.head)return this.head.value;throw new u}remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.Queue=class extends e{head;tail;compareFn;constructor(t=null){super(),this.head=null,this.tail=null,this.compareFn=t}
 /**
      * add()
      *
@@ -277,7 +277,7 @@ throw new u}
      * alias to dequeue()
      * @returns the removed value.
      * @throws QueueException when the queue is empty.
-     */remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.QueueException=u,exports.Stack=class extends e{constructor(t=null){super(),this.top=null,this.compareFn=t}
+     */remove(){return this.dequeue()}toArray(){const t=[];let e=this.head;for(;null!==e;)t.push(e.value),e=e.next;return t}},exports.QueueException=u,exports.Stack=class extends e{top;compareFn;constructor(t=null){super(),this.top=null,this.compareFn=t}
 /**
      * add()
      *

@@ -7,3 +7,4 @@ import { BaseException } from "./../exceptions";
 export declare class RangeException extends BaseException {
     constructor(message?: string);
 }
+//# sourceMappingURL=range.exception.d.ts.map

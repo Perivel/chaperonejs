@@ -38,3 +38,4 @@ export interface MoneyInterface {
      */
     divide(divisor: number): MoneyInterface;
 }
+//# sourceMappingURL=money.interface.d.ts.map

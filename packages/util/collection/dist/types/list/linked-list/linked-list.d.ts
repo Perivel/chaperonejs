@@ -91,3 +91,4 @@ export declare class LinkedList<T> extends List<T> implements LinkedListInterfac
     private reemoveValue;
     toArray(): T[];
 }
+//# sourceMappingURL=linked-list.d.ts.map

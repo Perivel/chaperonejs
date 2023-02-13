@@ -48,3 +48,4 @@ export declare class IsoLanguage implements IsoLanguageInterface, Equatable {
     get name(): string;
     toString(): string;
 }
+//# sourceMappingURL=iso-language.d.ts.map

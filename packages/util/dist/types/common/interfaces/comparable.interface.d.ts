@@ -14,3 +14,4 @@ export interface Comparable<T> {
      */
     compareTo(suspect: T): ComparisonResult;
 }
+//# sourceMappingURL=comparable.interface.d.ts.map

@@ -8,7 +8,7 @@ import polyfills from "rollup-plugin-polyfill-node";
 import terser from "@rollup/plugin-terser";
 
 const deps = [
-    
+    'colors-convert'
 ]
 
 //const deps = Object.keys(dependencies);
@@ -34,7 +34,12 @@ export default [
             typescript({
                 declaration: true,
                 declarationDir: 'types/',
-                rootDir: 'lib'
+                rootDir: 'lib',
+                target: 'ESNext',
+                module: 'ESNext',
+                outDir: './dist',
+                rootDir: './lib',
+                moduleResolution: 'node',
             }),
             polyfills(),
             nodeResolve(),

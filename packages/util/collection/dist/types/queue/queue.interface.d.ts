@@ -21,3 +21,4 @@ export interface QueueInterface<T> extends CollectionInterface<T> {
      */
     peek(): T;
 }
+//# sourceMappingURL=queue.interface.d.ts.map

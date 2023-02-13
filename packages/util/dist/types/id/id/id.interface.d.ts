@@ -11,3 +11,4 @@ export interface IddentifierInterface {
      */
     value: any;
 }
+//# sourceMappingURL=id.interface.d.ts.map

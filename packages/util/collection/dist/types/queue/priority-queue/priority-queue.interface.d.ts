@@ -20,3 +20,4 @@ export interface PriorityQueueInterface<T> {
      */
     peek(): T;
 }
+//# sourceMappingURL=priority-queue.interface.d.ts.map

@@ -35,3 +35,4 @@ export declare class Street implements StreetInterface, Serializable, Equatable 
     serialize(): string;
     toString(): string;
 }
+//# sourceMappingURL=street.d.ts.map

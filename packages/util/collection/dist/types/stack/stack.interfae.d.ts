@@ -26,3 +26,4 @@ export interface StackInterface<T> extends CollectionInterface<T> {
      */
     remove(): T;
 }
+//# sourceMappingURL=stack.interfae.d.ts.map

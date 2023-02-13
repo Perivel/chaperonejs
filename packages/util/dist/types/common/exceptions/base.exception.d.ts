@@ -6,3 +6,4 @@
 export declare class BaseException extends Error {
     constructor(message?: string);
 }
+//# sourceMappingURL=base.exception.d.ts.map

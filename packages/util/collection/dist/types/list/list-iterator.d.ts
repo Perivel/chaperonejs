@@ -10,3 +10,4 @@ export declare class ListIterator<T> implements Iterator<T> {
     constructor(values: T[]);
     next(): IteratorResult<T, T | undefined>;
 }
+//# sourceMappingURL=list-iterator.d.ts.map

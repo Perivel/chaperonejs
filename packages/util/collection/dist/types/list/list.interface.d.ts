@@ -16,3 +16,4 @@ export interface ListInterface<T> extends CollectionInterface<T> {
      */
     remove(index: number): T;
 }
+//# sourceMappingURL=list.interface.d.ts.map

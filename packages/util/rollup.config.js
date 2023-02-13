@@ -41,26 +41,18 @@ export default [
             del({
                 targets: ['./dist']
             }),
-            // copy({
-            //     targets: [
-            //         {
-            //             src: './specification/package.json',
-            //             dest: './dist/specification'
-            //         },
-            //         {
-            //             src: './specification/dist',
-            //             dest: './dist/specification/dist'
-            //         }
-            //     ],
-            // }),
             typescript({
                 declaration: true,
                 declarationDir: 'types/',
-                rootDir: 'lib'
+                rootDir: 'lib',
+                target: 'ESNext',
+                module: 'ESNext',
+                outDir: './dist',
+                rootDir: './lib',
+                moduleResolution: 'node',
             }),
             polyfills(),
             nodeResolve(),
-            //ts(),
             commonjs(),
             json(),
             terser({

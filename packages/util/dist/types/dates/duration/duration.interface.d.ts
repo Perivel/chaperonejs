@@ -113,3 +113,4 @@ export interface DurationInterface {
      */
     readonly years: number;
 }
+//# sourceMappingURL=duration.interface.d.ts.map

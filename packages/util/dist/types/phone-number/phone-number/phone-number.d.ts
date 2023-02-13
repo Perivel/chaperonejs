@@ -84,3 +84,4 @@ export declare class PhoneNumber implements PhoneNumberInterface, Equatable {
     get value(): string;
     toString(): string;
 }
+//# sourceMappingURL=phone-number.d.ts.map

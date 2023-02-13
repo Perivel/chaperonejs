@@ -29,3 +29,4 @@ export declare class PostalCode implements PostalCodeInterface, Serializable, Eq
      */
     get value(): string;
 }
+//# sourceMappingURL=postal-code.d.ts.map

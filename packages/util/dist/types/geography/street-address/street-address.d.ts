@@ -88,3 +88,4 @@ export declare class StreetAddress implements StreetAddressInterface, Equatable,
     get street(): Street;
     toString(): string;
 }
+//# sourceMappingURL=street-address.d.ts.map

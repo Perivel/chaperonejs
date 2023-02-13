@@ -70,3 +70,4 @@ export declare class Stack<T> extends Collection<T> implements StackInterface<T>
     remove(): T;
     toArray(): T[];
 }
+//# sourceMappingURL=stack.d.ts.map

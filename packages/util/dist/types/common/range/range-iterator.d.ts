@@ -10,3 +10,4 @@ export declare class RangeIterator implements Iterator<number> {
     constructor(values: number[]);
     next(): IteratorResult<number, number | undefined>;
 }
+//# sourceMappingURL=range-iterator.d.ts.map

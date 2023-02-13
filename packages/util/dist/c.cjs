@@ -4,7 +4,7 @@
  *
  * A CharacterSet.
  */
-class c{constructor(a){this._value=a}
+class c{_value;constructor(a){this._value=a}
 /**
      * ASCII()
      *
@@ -66,7 +66,7 @@ class m extends g{constructor(a="Color Error"){super(a)}}
  * Hex
  *
  * A Hex color value.
- */class F{
+ */class F{_value;
 /**
      * Creates a Hex instance.
      * @param value the hex value.
@@ -87,7 +87,7 @@ constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals
  * RGBA
  *
  * An RGBA color representation.
- */class k{
+ */class k{_r;_g;_b;_a;
 /**
      * Creates an RGBA value.
      * @param r the r value.
@@ -153,7 +153,7 @@ this._a=h,this._b=n,this._g=l,this._r=a}
  * Color
  *
  * A Color value.
- */class y{
+ */class y{_rgba;_hex;
 /**
      * Creates a Color value.
      * @param value the value of the color.
@@ -226,7 +226,7 @@ constructor(l){if(l instanceof k)this._rgba=l,this._hex=new F(a.rgbaToHex({r:thi
  * Salt
  *
  * Represents a salt.
- */class f{constructor(a){this._value=a}
+ */class f{_value;constructor(a){this._value=a}
 /**
      * Generate()
      *
@@ -250,7 +250,7 @@ constructor(l){if(l instanceof k)this._rgba=l,this._hex=new F(a.rgbaToHex({r:thi
  * Hash
  *
  * A Hash.
- */class w{constructor(a){this._value=a}
+ */class w{_value;constructor(a){this._value=a}
 /**
      * Create()
      *
@@ -271,7 +271,7 @@ return new Promise(((n,h)=>{p.hash(a.toString(),l.value,((a,l)=>{a?h(a):n(new w(
      *
      * compares the instance to the suspect, to determine if they are equal.
      * @param suspect the suspect to compare
-     */equals(a){let l=!1;return a instanceof w&&(l=this.value===a.value),l}toString(){return this.value}}class v extends g{constructor(a="Country Error"){super(a)}}class S extends b{constructor(a="Street Address Error"){super(a)}}class x extends S{constructor(a="Invalid Locality"){super(a)}}class C extends S{constructor(a="Invalid Postal Code"){super(a)}}class z extends S{constructor(a="Invalid Region"){super(a)}}class _ extends S{constructor(a="Invalid Street"){super(a)}}
+     */equals(a){let l=!1;return a instanceof w&&(l=this.value===a.value),l}toString(){return this.value}}class v extends g{constructor(a="Country Error"){super(a)}}class x extends b{constructor(a="Street Address Error"){super(a)}}class S extends x{constructor(a="Invalid Locality"){super(a)}}class _ extends x{constructor(a="Invalid Postal Code"){super(a)}}class C extends x{constructor(a="Invalid Region"){super(a)}}class z extends x{constructor(a="Invalid Street"){super(a)}}
 /**
  * TimezoneException
  *
@@ -281,7 +281,7 @@ return new Promise(((n,h)=>{p.hash(a.toString(),l.value,((a,l)=>{a?h(a):n(new w(
  * Timezone
  *
  * Timezone represents a Timezone
- */class D{constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
+ */class D{_id;_offset;_abbreviation;constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
 /**
      * FromId()
      *
@@ -328,7 +328,7 @@ const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return
  * Coordinates
  *
  * Coordinates represents a geographic longitude/latitude pair.
- */class A{constructor(a,l){this._long=a,this._lat=l}
+ */class A{_long;_lat;constructor(a,l){this._long=a,this._lat=l}
 /**
      * equals()
      *
@@ -349,7 +349,7 @@ const l=n.IANAZone.create(a),h=n.DateTime.fromJSDate(new Date).setZone(l);return
  * Country
  *
  * Country represents a Country in the world.
- */class I{
+ */class I{_code;_name;
 /**
      * Creates a Country instance
      * @param code The country code.
@@ -378,14 +378,14 @@ throw new v;this._code=l,this._name=n}
  * Street
  *
  * Street represents an address street.
- */class M{
+ */class M{_line1;_line2;
 /**
      * Creates a Street Instance.
      * @param line1 String
      * @param line2 Strirg
      * @throws StreetException when the street in invalid.
      */
-constructor(a,l=""){if(!a){throw new _}this._line1=a,this._line2=l}
+constructor(a,l=""){if(!a){throw new z}this._line1=a,this._line2=l}
 /**
      * Determines if two streets are equal.
      * @param suspect The value being compared.
@@ -404,13 +404,13 @@ constructor(a,l=""){if(!a){throw new _}this._line1=a,this._line2=l}
  * Locality
  *
  * Locality represents an Address Locality, or a City or Town.
- */class T{
+ */class T{_name;
 /**
      * Creates a Locality instance.
      * @param name The name of the locality.
      * @throws LocalityException when the locality is invalid.
      */
-constructor(a){if(!a){throw new x}this._name=a}
+constructor(a){if(!a){throw new S}this._name=a}
 /**
      * Compares the instance to the suspect to determine if they are equal.
      * @param suspect The suspect to compare.
@@ -424,13 +424,13 @@ constructor(a){if(!a){throw new x}this._name=a}
  * Region
  *
  * Region represents an Address Region (a state or province).
- */class N{
+ */class N{_name;
 /**
      * Creates a Region instnace
      * @param name The nsme of the region
      * @throws RegionException when the region is invalid.
      */
-constructor(a){if(!a){throw new z}this._name=a}
+constructor(a){if(!a){throw new C}this._name=a}
 /**
      * equals()
      *
@@ -446,13 +446,13 @@ constructor(a){if(!a){throw new z}this._name=a}
  * PostalCode
  *
  * PostalCode represents an address Postal Code (or Zip Code)
- */class j{
+ */class j{_value;
 /**
      * Creates a Postal Code instance.
      * @param value string
      * @throws InvalidPostalCodeException when the postal code is invalid.
      */
-constructor(a){if(!a){throw new C}this._value=a}
+constructor(a){if(!a){throw new _}this._value=a}
 /**
      * equals()
      *
@@ -468,7 +468,7 @@ constructor(a){if(!a){throw new C}this._value=a}
  * StreetAddress
  *
  * StreetAddress represents a a physical street address.
- */class B{
+ */class B{_street;_locality;_region;_postal;_country;
 /**
      * Creates a new StreetAddress Instance.
      * @param street Street
@@ -484,7 +484,7 @@ constructor(a){if(!a){throw new C}this._value=a}
      * @throws CountryException when the country is invalid.
      *
      */
-constructor(a,l,n,h,e){let t=null;if(!a)throw t=new _,t;if(!l)throw t=new x,t;if(!n)throw t=new z,t;if(!h)throw t=new C,t;if(!e)throw t=new v,t;this._street=a,this._locality=l,this._region=n,this._postal=h,this._country=e}
+constructor(a,l,n,h,e){let t=null;if(!a)throw t=new z,t;if(!l)throw t=new S,t;if(!n)throw t=new C,t;if(!h)throw t=new _,t;if(!e)throw t=new v,t;this._street=a,this._locality=l,this._region=n,this._postal=h,this._country=e}
 /**
      * FromPrimitives()
      *
@@ -545,7 +545,7 @@ constructor(a,l,n,h,e){let t=null;if(!a)throw t=new _,t;if(!l)throw t=new x,t;if
  * DateTime
  *
  * DateTime represents a specific date and time.
- */class O{
+ */class O{date;tz;
 /**
      * Creates a DateTime object.
      * @param value Date
@@ -678,7 +678,7 @@ constructor(a,l,h,e=0,t=0,i=0,s=0,r=D.UTC()){if(this.date=n.DateTime.fromObject(
  * Duration
  *
  * Duration represents a duration. A duration is a period in time, such as "1 day", "2 weeks", or "5 months".
- */class K{
+ */class K{luxonDuration;
 /**
      * creates a Duration object.
      * @param an object specifying information about the Duration.
@@ -799,7 +799,7 @@ toString(){return this.luxonDuration.toISO()}}class G extends b{constructor(a="I
  * EmailAddress
  *
  * EmailAddress provides functionality for handling email addresses.
- */class Z{
+ */class Z{_value;_domain;_username;
 /**
      * Creates an instance of an email address.
      * @param value The value of the email address.
@@ -854,7 +854,7 @@ class R extends b{constructor(a="Invalid ID"){super(a)}}
  * Id
  *
  * Id represents a generic ID.
- */class J{
+ */class J{_val;
 /**
      * Creates a new Id instance.
      * @param value The value of the id.
@@ -956,12 +956,12 @@ throw new H("Invalid namespace.")}return l}
  * IsoLanguage
  *
  * A utility class representing ISO Language data.
- */class Y{
+ */class Y{_name;_alpha2;_alpha3b;_alpha3t;
 /**
      * Creates a new instance of IsoLanguage.
      * @param nameOrCode The language name or ISO code.
      */
-constructor(a){const l=a.toLocaleLowerCase().trim(),n=$.find((a=>{var n,h;return a.English.toLocaleLowerCase()===l||(null===(n=a.alpha2)||void 0===n?void 0:n.toLocaleLowerCase())===l||a["alpha3-b"].toLowerCase()===l||(null===(h=a["alpha3-t"])||void 0===h?void 0:h.toLocaleLowerCase())===l}));if(!n)
+constructor(a){const l=a.toLocaleLowerCase().trim(),n=$.find((a=>a.English.toLocaleLowerCase()===l||a.alpha2?.toLocaleLowerCase()===l||a["alpha3-b"].toLowerCase()===l||a["alpha3-t"]?.toLocaleLowerCase()===l));if(!n)
 // no data found.
 throw new W;
 // data is found.
@@ -1001,7 +1001,7 @@ this._name=n.English,this._alpha2=n.alpha2,this._alpha3b=n["alpha3-b"],this._alp
  * PhoneNumber
  *
  * PhoneNumber represents a phone number.
- */class X{
+ */class X{_phoneParser;
 /**
      * Creates a Phone Number instance.
      * @param value The phone number value.
@@ -1082,7 +1082,7 @@ if(this._phoneParser=i.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
  * Currency
  *
  * A representation of currency.
- */class la{constructor(a,l,n,h=2){this.symbol=a,this.name=l,this.decimalPlaces=h,this.abreviation=n}
+ */class la{symbol;name;decimalPlaces;abreviation;constructor(a,l,n,h=2){this.symbol=a,this.name=l,this.decimalPlaces=h,this.abreviation=n}
 /**
      * USD()
      */static USD(){return new la("$","United States Dollar","USD",2)}equals(a){let l=!1;if(a instanceof la){const n=a;l=this.decimalPlaces===n.decimalPlaces&&this.symbol===n.symbol&&this.name===n.name&&this.abreviation===n.abreviation}return l}serialize(){return JSON.stringify({symbol:this.symbol,name:this.name,abreviation:this.abreviation,decimal_places:this.decimalPlaces})}toString(){return this.name}}
@@ -1095,7 +1095,7 @@ if(this._phoneParser=i.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
  * Money
  *
  * A class representing monetary values.
- */class ha{constructor(a,l=la.USD()){this._amountInCents=this._toInteger(a,l.decimalPlaces),this._currency=l}get amount(){return this._toDecimal(this.amountInCents,this.currency.decimalPlaces)}get amountInCents(){return this._amountInCents}get currency(){return this._currency}
+ */class ha{_amountInCents;_currency;constructor(a,l=la.USD()){this._amountInCents=this._toInteger(a,l.decimalPlaces),this._currency=l}get amount(){return this._toDecimal(this.amountInCents,this.currency.decimalPlaces)}get amountInCents(){return this._amountInCents}get currency(){return this._currency}
 /**
      * add()
      *
@@ -1137,13 +1137,13 @@ if(this._phoneParser=i.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
      * @param value the decimal value to convert.
      * @param numPlaces the number of decimal places.
      * @returns the converted integer value.
-     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}exports.BaseException=g,exports.BaseFormatter=U,exports.CharacterSet=c,exports.Color=y,exports.ColorException=m,exports.Coordinates=A,exports.Country=I,exports.CountryException=v,exports.Currency=la,exports.DateException=P,exports.DateTime=O,exports.Duration=K,exports.DurationException=L,exports.EmailAddress=Z,exports.EmailAddressException=G,exports.HTMLSanitizer=aa,exports.Hash=w,exports.Hex=F,exports.HexException=E,exports.Id=J,exports.IdException=R,exports.InvalidArgumentException=b,exports.IsoLanguage=Y,exports.IsoLanguageException=W,exports.Locality=T,exports.LocalityException=x,exports.MethodUndefinedException=class extends g{constructor(a="Method undefined."){super(a)}},exports.Money=ha,exports.MoneyException=na,exports.NetworkException=
+     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}exports.BaseException=g,exports.BaseFormatter=U,exports.CharacterSet=c,exports.Color=y,exports.ColorException=m,exports.Coordinates=A,exports.Country=I,exports.CountryException=v,exports.Currency=la,exports.DateException=P,exports.DateTime=O,exports.Duration=K,exports.DurationException=L,exports.EmailAddress=Z,exports.EmailAddressException=G,exports.HTMLSanitizer=aa,exports.Hash=w,exports.Hex=F,exports.HexException=E,exports.Id=J,exports.IdException=R,exports.InvalidArgumentException=b,exports.IsoLanguage=Y,exports.IsoLanguageException=W,exports.Locality=T,exports.LocalityException=S,exports.MethodUndefinedException=class extends g{constructor(a="Method undefined."){super(a)}},exports.Money=ha,exports.MoneyException=na,exports.NetworkException=
 /**
  * NetworkException
  *
  * NetworkException indicates a network exception has occured.
  */
-class extends g{constructor(a="Network Error"){super(a)}},exports.OutOfBoundsException=class extends b{constructor(a="Argument out of bounds."){super(a)}},exports.PhoneNumber=X,exports.PhoneNumberException=Q,exports.PostalCode=j,exports.PostalCodeException=C,exports.RGBA=k,exports.RGBAException=d,exports.Random=class{constructor(){
+class extends g{constructor(a="Network Error"){super(a)}},exports.OutOfBoundsException=class extends b{constructor(a="Argument out of bounds."){super(a)}},exports.PhoneNumber=X,exports.PhoneNumberException=Q,exports.PostalCode=j,exports.PostalCodeException=_,exports.RGBA=k,exports.RGBAException=d,exports.Random=class{constructor(){
 
 }
 /**
@@ -1175,7 +1175,7 @@ class extends g{constructor(a="Network Error"){super(a)}},exports.OutOfBoundsExc
      * @param min the minimum number (inclusive)
      * @param max the maximum number (inclusive)
      * @returns a random integer value between the min and max.
-     */static Integer(a,l){return a=Math.floor(a),l=Math.floor(l),Math.floor(Math.random()*(l-a)+a)}},exports.Region=N,exports.RegionException=z,exports.Salt=f,exports.Street=M,exports.StreetAddress=B,exports.StreetAddressException=S,exports.StreetException=_,exports.StringFormatter=class extends U{constructor(){super()}
+     */static Integer(a,l){return a=Math.floor(a),l=Math.floor(l),Math.floor(Math.random()*(l-a)+a)}},exports.Region=N,exports.RegionException=C,exports.Salt=f,exports.Street=M,exports.StreetAddress=B,exports.StreetAddressException=x,exports.StreetException=z,exports.StringFormatter=class extends U{constructor(){super()}
 /**
      * camelCase()
      *

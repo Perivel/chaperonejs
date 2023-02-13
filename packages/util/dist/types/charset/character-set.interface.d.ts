@@ -7,3 +7,4 @@ export interface CharacterSetInterface {
      */
     readonly value: CharacterSetValue;
 }
+//# sourceMappingURL=character-set.interface.d.ts.map

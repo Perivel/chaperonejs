@@ -40,3 +40,4 @@ export interface StreetAddressInterface {
      */
     readonly street: StreetInterface;
 }
+//# sourceMappingURL=street-address.interface.d.ts.map

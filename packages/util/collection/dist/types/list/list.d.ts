@@ -18,3 +18,4 @@ export declare abstract class List<T> extends Collection<T> implements ListInter
      */
     abstract remove(index: number): T;
 }
+//# sourceMappingURL=list.d.ts.map

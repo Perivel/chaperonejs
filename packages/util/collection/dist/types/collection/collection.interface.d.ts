@@ -36,3 +36,4 @@ export interface CollectionInterface<T> {
      */
     toArray(): Array<T>;
 }
+//# sourceMappingURL=collection.interface.d.ts.map

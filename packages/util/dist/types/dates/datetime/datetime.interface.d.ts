@@ -110,3 +110,4 @@ export interface DateTimeInterface {
      */
     readonly year: number;
 }
+//# sourceMappingURL=datetime.interface.d.ts.map

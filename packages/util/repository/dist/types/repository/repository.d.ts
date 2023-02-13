@@ -27,3 +27,4 @@ export declare abstract class Repository implements RepositoryInterface {
      */
     abstract size(): Promise<number>;
 }
+//# sourceMappingURL=repository.d.ts.map

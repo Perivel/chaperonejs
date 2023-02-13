@@ -36,3 +36,4 @@ export declare class OrNotSpecification implements SpecificationInterface {
      */
     orNot(other: SpecificationInterface): SpecificationInterface;
 }
+//# sourceMappingURL=or-not-specification.d.ts.map

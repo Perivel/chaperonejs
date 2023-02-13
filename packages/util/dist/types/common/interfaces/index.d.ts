@@ -2,3 +2,4 @@ export { Equatable } from './equatable.interface';
 export { Serializable } from './serializable.interface';
 export { TraverseFn, Traversable } from './traversable.interface';
 export { Comparable } from './comparable.interface';
+//# sourceMappingURL=index.d.ts.map

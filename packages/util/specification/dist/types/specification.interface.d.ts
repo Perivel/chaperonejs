@@ -34,3 +34,4 @@ export interface SpecificationInterface {
     */
     orNot(other: SpecificationInterface): SpecificationInterface;
 }
+//# sourceMappingURL=specification.interface.d.ts.map

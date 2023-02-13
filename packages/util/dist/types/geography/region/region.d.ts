@@ -29,3 +29,4 @@ export declare class Region implements RegionInterface, Serializable, Equatable 
     serialize(): string;
     toString(): string;
 }
+//# sourceMappingURL=region.d.ts.map

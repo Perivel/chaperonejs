@@ -72,3 +72,4 @@ export declare class Queue<T> extends Collection<T> implements QueueInterface<T>
     remove(): T;
     toArray(): T[];
 }
+//# sourceMappingURL=queue.d.ts.map
