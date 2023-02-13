@@ -1,5 +1,6 @@
 export interface CurrencyInterface {
     readonly symbol: string;
     readonly name: string;
-    decimalPlaces: number;
+    readonly decimalPlaces: number;
+    readonly abreviation: string;
 }

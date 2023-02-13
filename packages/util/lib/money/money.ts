@@ -1,4 +1,4 @@
-import { Equatable } from './../common';
+import { Equatable, Serializable } from './../common';
 import { Currency } from './currency';
 import { MoneyException } from './money.exception';
 import { MoneyInterface } from './money.interface';
@@ -9,17 +9,17 @@ import { MoneyInterface } from './money.interface';
  * A class representing monetary values.
  */
 
-export class Money implements MoneyInterface, Equatable {
+export class Money implements MoneyInterface, Equatable, Serializable {
     private _amountInCents: number;
     private _currency: Currency;
 
-    constructor(amount: number, currency: Currency) {
-        this._amountInCents = Math.round(amount * Math.pow(10, currency.decimalPlaces));
+    constructor(amount: number, currency: Currency = Currency.USD()) {
+        this._amountInCents = this._toInteger(amount, currency.decimalPlaces);
         this._currency = currency;
     }
 
     get amount(): number {
-        return this.amountInCents / Math.pow(10, this.currency.decimalPlaces);
+        return this._toDecimal(this.amountInCents, this.currency.decimalPlaces);
     }
 
     get amountInCents(): number {
@@ -42,7 +42,8 @@ export class Money implements MoneyInterface, Equatable {
         if (this.currency.symbol !== money.currency.symbol) {
             throw new MoneyException(`Cannot add money with different currencies (${this.currency.symbol} and ${money.currency.symbol})`);
         }
-        return new Money(this.amountInCents + money.amountInCents, this.currency);
+        const newAmount = this._toDecimal(this.amountInCents + money.amountInCents, this.currency.decimalPlaces);
+        return new Money(newAmount, this.currency);
     }
 
     /**
@@ -53,7 +54,13 @@ export class Money implements MoneyInterface, Equatable {
      */
 
     public divide(divisor: number): Money {
-        return new Money(this.amountInCents / divisor, this.currency);
+        if (divisor !== 0) {
+            const newAmount = this._toDecimal(this.amountInCents / divisor, this.currency.decimalPlaces);
+            return new Money(newAmount, this.currency);
+        }
+        else {
+            throw new MoneyException('Cannot divide by zero.');
+        }
     }
 
     public equals(suspect: any): boolean {
@@ -75,7 +82,16 @@ export class Money implements MoneyInterface, Equatable {
      */
 
     public multiply(factor: number): Money {
-        return new Money(this.amountInCents * factor, this.currency);
+        const newAmount = this._toDecimal(this.amountInCents * factor, this.currency.decimalPlaces);
+        return new Money(newAmount, this.currency);
+    }
+
+    public serialize(): string {
+        return JSON.stringify({
+            amount: this.amount,
+            amount_in_cents: this.amountInCents,
+            currency: this.currency.serialize()
+        });
     }
 
     /**
@@ -90,6 +106,37 @@ export class Money implements MoneyInterface, Equatable {
         if (this.currency.symbol !== money.currency.symbol) {
             throw new MoneyException(`Cannot subtract money with different currencies (${this.currency.symbol} and ${money.currency.symbol})`);
         }
-        return new Money(this.amountInCents - money.amountInCents, this.currency);
+        const newAmount = this._toDecimal(this.amountInCents - money.amountInCents, this.currency.decimalPlaces);
+        return new Money(newAmount, this.currency);
+    }
+
+    /**
+     * _toDecimal()
+     * 
+     * converts an integer value to a decimal value.
+     * @param value the integer value to convert.
+     * @param numPlaces the number of decimal places.
+     * @returns the converted decimal value.
+     */
+
+    private _toDecimal(value: number, numPlaces: number = 2.0): number {
+        return value / Math.pow(10, numPlaces);
+    }
+
+    /**
+     * _toInteger()
+     * 
+     * converts a decimal value to an integer value.
+     * @param value the decimal value to convert.
+     * @param numPlaces the number of decimal places.
+     * @returns the converted integer value.
+     */
+
+    private _toInteger(value: number, numPlaces: number = 2.0): number {
+        return Math.round(value * Math.pow(10, numPlaces));
+    }
+
+    public toString(): string {
+        return `${this.currency.symbol}${this.amount} ${this.currency.name}`;
     }
 }

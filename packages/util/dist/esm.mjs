@@ -43,12 +43,12 @@ import{isHex as a,rgbaToHex as l,hexToRgba as n}from"colors-convert";import*as h
  *
  * MethodUndefinedException is an error indicating that a method
  * that was called is undefined.
- */class A extends q{constructor(a="Method undefined."){super(a)}}class M extends x{constructor(a="Argument out of bounds."){super(a)}}
+ */class A extends q{constructor(a="Method undefined."){super(a)}}class D extends x{constructor(a="Argument out of bounds."){super(a)}}
 /**
  * NetworkException
  *
  * NetworkException indicates a network exception has occured.
- */class D extends q{constructor(a="Network Error"){super(a)}}
+ */class M extends q{constructor(a="Network Error"){super(a)}}
 /**
  * ComparisonResult
  *
@@ -116,12 +116,12 @@ constructor(l){if(l=l.toUpperCase(),!a(l))throw new T;this._value=l}equals(a){le
  * RGBAException
  *
  * An RGBA value error.
- */class L extends N{constructor(a="RGBA Error"){super(a)}}
+ */class P extends N{constructor(a="RGBA Error"){super(a)}}
 /**
  * RGBA
  *
  * An RGBA color representation.
- */class P{
+ */class L{
 /**
      * Creates an RGBA value.
      * @param r the r value.
@@ -132,7 +132,7 @@ constructor(l){if(l=l.toUpperCase(),!a(l))throw new T;this._value=l}equals(a){le
      */
 constructor(a,l,n,h=1){if(a=Math.floor(a),l=Math.floor(l),n=Math.floor(n),!(a>=0&&a<=255&&l>=0&&l<=255&&n>=0&&n<=255&&h>=0&&h<=1))
 // invalid.
-throw new L;
+throw new P;
 // valid RGBA.
 this._a=h,this._b=n,this._g=l,this._r=a}
 /**
@@ -144,7 +144,7 @@ this._a=h,this._b=n,this._g=l,this._r=a}
      * b()
      *
      * gets the blue value.
-     */get b(){return this._b}equals(a){let l=!1;if(a instanceof P){const n=a;l=this.r===n.r&&this.g===n.g&&this.b===n.b&&this.a===n.a}return l}
+     */get b(){return this._b}equals(a){let l=!1;if(a instanceof L){const n=a;l=this.r===n.r&&this.g===n.g&&this.b===n.b&&this.a===n.a}return l}
 /**
      * g()
      *
@@ -161,28 +161,28 @@ this._a=h,this._b=n,this._g=l,this._r=a}
      * sets the alpha value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setA(a){return new P(this.r,this.g,this.b,a)}
+     */setA(a){return new L(this.r,this.g,this.b,a)}
 /**
      * setB()
      *
      * sets the b value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setB(a){return new P(this.r,this.g,a,this.a)}
+     */setB(a){return new L(this.r,this.g,a,this.a)}
 /**
      * setG()
      *
      * sets the g value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setG(a){return new P(this.r,a,this.b,this.a)}
+     */setG(a){return new L(this.r,a,this.b,this.a)}
 /**
      * setR()
      *
      * sets the r value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setR(a){return new P(a,this.g,this.b,this.a)}toString(){return this.serialize()}}
+     */setR(a){return new L(a,this.g,this.b,this.a)}toString(){return this.serialize()}}
 /**
  * Color
  *
@@ -192,7 +192,7 @@ this._a=h,this._b=n,this._g=l,this._r=a}
      * Creates a Color value.
      * @param value the value of the color.
      */
-constructor(a){if(a instanceof P)this._rgba=a,this._hex=new B(l({r:this._rgba.r,g:this._rgba.g,b:this._rgba.b,a:this._rgba.a}));else{this._hex=a;const l=n(this._hex.value);this._rgba=new P(l.r,l.g,l.b,l.a)}}
+constructor(a){if(a instanceof L)this._rgba=a,this._hex=new B(l({r:this._rgba.r,g:this._rgba.g,b:this._rgba.b,a:this._rgba.a}));else{this._hex=a;const l=n(this._hex.value);this._rgba=new L(l.r,l.g,l.b,l.a)}}
 /**
      * Black()
      *
@@ -224,7 +224,7 @@ constructor(a){if(a instanceof P)this._rgba=a,this._hex=new B(l({r:this._rgba.r,
      * @param b the b value.
      * @param a the a value.
      * @returns a Color instance set to the RGBA value provided.
-     */static FromRGBA(a,l,n,h=1){const e=new P(a,l,n,h);return new K(e)}
+     */static FromRGBA(a,l,n,h=1){const e=new L(a,l,n,h);return new K(e)}
 /**
      * Green()
      *
@@ -315,7 +315,7 @@ return new Promise(((n,e)=>{h.hash(a.toString(),l.value,((a,l)=>{a?e(a):n(new G(
  * Timezone
  *
  * Timezone represents a Timezone
- */class Y{constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
+ */class ${constructor(a,l,n){this._id=a,this._abbreviation=l,this._offset=n}
 /**
      * FromId()
      *
@@ -325,18 +325,18 @@ return new Promise(((n,e)=>{h.hash(a.toString(),l.value,((a,l)=>{a?e(a):n(new G(
 // invalid timezone.
 throw new W;
 // timezone exists.
-const l=e.create(a),n=t.fromJSDate(new Date).setZone(l);return new Y(l.name,n.toFormat("ZZZZ"),n.offset)}
+const l=e.create(a),n=t.fromJSDate(new Date).setZone(l);return new $(l.name,n.toFormat("ZZZZ"),n.offset)}
 /**
      * Local()
      *
      * Creates a Timezone instance representing the local timezone (based on the machine)
      * @returns A Timezone instance representing local time.
-     */static Local(){const a=t.local();return new Y(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
+     */static Local(){const a=t.local();return new $(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
 /**
      * UTC()
      *
      * UTC() sets the timezone to UTC.
-     */static UTC(){const a=t.fromJSDate(new Date).setZone("utc");return new Y(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
+     */static UTC(){const a=t.fromJSDate(new Date).setZone("utc");return new $(a.zone.name,a.toFormat("ZZZZ"),a.offset)}
 /**
      * abbreviation
      *
@@ -347,7 +347,7 @@ const l=e.create(a),n=t.fromJSDate(new Date).setZone(l);return new Y(l.name,n.to
      *
      * equals() compares the instnace to the suspect to determine if they are equal.
      * @param suspect the suspect to be compared.
-     */equals(a){let l=!1;if(a instanceof Y){const n=a;l=this.id===n.id&&this.abbreviation===n.abbreviation&&this.utcOffset===n.utcOffset}return l}
+     */equals(a){let l=!1;if(a instanceof $){const n=a;l=this.id===n.id&&this.abbreviation===n.abbreviation&&this.utcOffset===n.utcOffset}return l}
 /**
      * id
      *
@@ -362,13 +362,13 @@ const l=e.create(a),n=t.fromJSDate(new Date).setZone(l);return new Y(l.name,n.to
  * Coordinates
  *
  * Coordinates represents a geographic longitude/latitude pair.
- */class ${constructor(a,l){this._long=a,this._lat=l}
+ */class Y{constructor(a,l){this._long=a,this._lat=l}
 /**
      * equals()
      *
      * equals() compares the suspect to the instance, to determine if they are equals.
      * @param suspect The suspect to compare.
-     */equals(a){let l=!1;if(a instanceof $){const n=a;l=this.longitude===n.longitude&&this.latitude===n.latitude}return l}
+     */equals(a){let l=!1;if(a instanceof Y){const n=a;l=this.longitude===n.longitude&&this.latitude===n.latitude}return l}
 /**
      * latitude()
      *
@@ -584,7 +584,7 @@ constructor(a,l,n,h,e){let t=null;if(!a)throw t=new V,t;if(!l)throw t=new R,t;if
      * Creates a DateTime object.
      * @param value Date
      */
-constructor(a,l,n,h=0,e=0,i=0,s=0,r=Y.UTC()){if(this.date=t.fromObject({year:a,month:l,day:n,hour:h,minute:e,second:i,millisecond:s},{zone:"utc"}),!this.date.isValid)throw new ea;this.tz=r}
+constructor(a,l,n,h=0,e=0,i=0,s=0,r=$.UTC()){if(this.date=t.fromObject({year:a,month:l,day:n,hour:h,minute:e,second:i,millisecond:s},{zone:"utc"}),!this.date.isValid)throw new ea;this.tz=r}
 /**
      * FromDate()
      *
@@ -605,12 +605,12 @@ constructor(a,l,n,h=0,e=0,i=0,s=0,r=Y.UTC()){if(this.date=t.fromObject({year:a,m
      *
      * creates a DateTime instance where the timezone is set to the local timezone.
      * @returns A DateTime object where the timezone is set to the local timezone.
-     */static Local(){return ia.FromDate(t.local().toJSDate(),Y.Local())}
+     */static Local(){return ia.FromDate(t.local().toJSDate(),$.Local())}
 /**
      * Now()
      *
      * Creates a DateTime for the current UTC date and time.
-     */static Now(a=Y.UTC()){return ia.FromDate(t.utc().toJSDate(),a)}
+     */static Now(a=$.UTC()){return ia.FromDate(t.utc().toJSDate(),a)}
 /**
      * add()
      *
@@ -685,7 +685,7 @@ constructor(a,l,n,h=0,e=0,i=0,s=0,r=Y.UTC()){if(this.date=t.fromObject({year:a,m
      * toUtc()
      *
      * toUtc() converts the timestamp to UTC time.
-     */toUtc(){return ia.FromDate(this.value,Y.UTC())}
+     */toUtc(){return ia.FromDate(this.value,$.UTC())}
 /**
      * toTimeaone()
      *
@@ -1212,46 +1212,62 @@ if(this._phoneParser=z(a,{regionCode:l}),!this._phoneParser.valid)throw new ka}
      * @param dirty the string to sanitize.
      */sanitize(a){return C(a)}toString(){return`Instance of ${fa.name}`}}
 /**
+ * Currency
+ *
+ * A representation of currency.
+ */class wa{constructor(a,l,n,h=2){this.symbol=a,this.name=l,this.decimalPlaces=h,this.abreviation=n}
+/**
+     * USD()
+     */static USD(){return new wa("$","United States Dollar","USD",2)}equals(a){let l=!1;if(a instanceof wa){const n=a;l=this.decimalPlaces===n.decimalPlaces&&this.symbol===n.symbol&&this.name===n.name&&this.abreviation===n.abreviation}return l}serialize(){return JSON.stringify({symbol:this.symbol,name:this.name,abreviation:this.abreviation,decimal_places:this.decimalPlaces})}toString(){return this.name}}
+/**
  * MoneyException
  *
  * Money error.
- */class wa extends q{constructor(a="Money Error"){super(a)}}
+ */class va extends q{constructor(a="Money Error"){super(a)}}
 /**
  * Money
  *
  * A class representing monetary values.
- */class va{constructor(a,l){this._amountInCents=Math.round(a*Math.pow(10,l.decimalPlaces)),this._currency=l}get amount(){return this.amountInCents/Math.pow(10,this.currency.decimalPlaces)}get amountInCents(){return this._amountInCents}get currency(){return this._currency}
+ */class Sa{constructor(a,l=wa.USD()){this._amountInCents=this._toInteger(a,l.decimalPlaces),this._currency=l}get amount(){return this._toDecimal(this.amountInCents,this.currency.decimalPlaces)}get amountInCents(){return this._amountInCents}get currency(){return this._currency}
 /**
      * add()
      *
      * adds the specified amount of money.
      * @param money the money to add.
      * @returns the new money amount.
-     */add(a){if(this.currency.symbol!==a.currency.symbol)throw new wa(`Cannot add money with different currencies (${this.currency.symbol} and ${a.currency.symbol})`);return new va(this.amountInCents+a.amountInCents,this.currency)}
+     */add(a){if(this.currency.symbol!==a.currency.symbol)throw new va(`Cannot add money with different currencies (${this.currency.symbol} and ${a.currency.symbol})`);const l=this._toDecimal(this.amountInCents+a.amountInCents,this.currency.decimalPlaces);return new Sa(l,this.currency)}
 /**
      * divide()
      *
      * divides the money value by the factor.
      * @param divisor the divisor
-     */divide(a){return new va(this.amountInCents/a,this.currency)}equals(a){let l=!1;if(a instanceof va){const n=a;l=this.currency.equals(n.currency)&&this.amountInCents===n.amountInCents}return l}
+     */divide(a){if(0!==a){const l=this._toDecimal(this.amountInCents/a,this.currency.decimalPlaces);return new Sa(l,this.currency)}throw new va("Cannot divide by zero.")}equals(a){let l=!1;if(a instanceof Sa){const n=a;l=this.currency.equals(n.currency)&&this.amountInCents===n.amountInCents}return l}
 /**
      * multiply()
      *
      * multiplies the money value by the factor.
      * @param factor the factor
-     */multiply(a){return new va(this.amountInCents*a,this.currency)}
+     */multiply(a){const l=this._toDecimal(this.amountInCents*a,this.currency.decimalPlaces);return new Sa(l,this.currency)}serialize(){return JSON.stringify({amount:this.amount,amount_in_cents:this.amountInCents,currency:this.currency.serialize()})}
 /**
      * subtract()
      *
      * subtracts the specified amount of money.
      * @param money the money to subtract.
      * @returns the resulting amount of money.
-     */subtract(a){if(this.currency.symbol!==a.currency.symbol)throw new wa(`Cannot subtract money with different currencies (${this.currency.symbol} and ${a.currency.symbol})`);return new va(this.amountInCents-a.amountInCents,this.currency)}}
+     */subtract(a){if(this.currency.symbol!==a.currency.symbol)throw new va(`Cannot subtract money with different currencies (${this.currency.symbol} and ${a.currency.symbol})`);const l=this._toDecimal(this.amountInCents-a.amountInCents,this.currency.decimalPlaces);return new Sa(l,this.currency)}
 /**
- * Currency
- *
- * A representation of currency.
- */class Sa{constructor(a,l,n=2){this.symbol=a,this.name=l,this.decimalPlaces=n}
+     * _toDecimal()
+     *
+     * converts an integer value to a decimal value.
+     * @param value the integer value to convert.
+     * @param numPlaces the number of decimal places.
+     * @returns the converted decimal value.
+     */_toDecimal(a,l=2){return a/Math.pow(10,l)}
 /**
-     * USD()
-     */static USD(){return new Sa("USD","United States Dollar",2)}equals(a){let l=!1;if(a instanceof Sa){const n=a;l=this.decimalPlaces===n.decimalPlaces&&this.symbol===n.symbol&&this.name===n.name}return l}serialize(){return JSON.stringify({symbol:this.symbol,name:this.name,decimal_places:this.decimalPlaces})}toString(){return this.name}}export{q as BaseException,pa as BaseFormatter,_ as CharacterSet,K as Color,N as ColorException,I as ComparisonResult,$ as Coordinates,Q as Country,Z as CountryException,Sa as Currency,ea as DateException,ia as DateTime,sa as Duration,ta as DurationException,ua as EmailAddress,ra as EmailAddressException,fa as HTMLSanitizer,G as Hash,B as Hex,T as HexException,ba as Id,ca as IdException,x as InvalidArgumentException,da as IsoLanguage,Fa as IsoLanguageException,aa as Locality,R as LocalityException,A as MethodUndefinedException,va as Money,wa as MoneyException,D as NetworkException,M as OutOfBoundsException,ya as PhoneNumber,ka as PhoneNumberException,na as PostalCode,H as PostalCodeException,P as RGBA,L as RGBAException,j as Random,la as Region,J as RegionException,O as Salt,X as Street,ha as StreetAddress,U as StreetAddressException,V as StreetException,oa as StringFormatter,Y as Timezone,W as TimezoneException,ma as UUID,ga as UUIDException};
+     * _toInteger()
+     *
+     * converts a decimal value to an integer value.
+     * @param value the decimal value to convert.
+     * @param numPlaces the number of decimal places.
+     * @returns the converted integer value.
+     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}export{q as BaseException,pa as BaseFormatter,_ as CharacterSet,K as Color,N as ColorException,I as ComparisonResult,Y as Coordinates,Q as Country,Z as CountryException,wa as Currency,ea as DateException,ia as DateTime,sa as Duration,ta as DurationException,ua as EmailAddress,ra as EmailAddressException,fa as HTMLSanitizer,G as Hash,B as Hex,T as HexException,ba as Id,ca as IdException,x as InvalidArgumentException,da as IsoLanguage,Fa as IsoLanguageException,aa as Locality,R as LocalityException,A as MethodUndefinedException,Sa as Money,va as MoneyException,M as NetworkException,D as OutOfBoundsException,ya as PhoneNumber,ka as PhoneNumberException,na as PostalCode,H as PostalCodeException,L as RGBA,P as RGBAException,j as Random,la as Region,J as RegionException,O as Salt,X as Street,ha as StreetAddress,U as StreetAddressException,V as StreetException,oa as StringFormatter,$ as Timezone,W as TimezoneException,ma as UUID,ga as UUIDException};

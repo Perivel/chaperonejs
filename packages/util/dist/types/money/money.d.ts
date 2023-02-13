@@ -1,4 +1,4 @@
-import { Equatable } from './../common';
+import { Equatable, Serializable } from './../common';
 import { Currency } from './currency';
 import { MoneyInterface } from './money.interface';
 /**
@@ -6,10 +6,10 @@ import { MoneyInterface } from './money.interface';
  *
  * A class representing monetary values.
  */
-export declare class Money implements MoneyInterface, Equatable {
+export declare class Money implements MoneyInterface, Equatable, Serializable {
     private _amountInCents;
     private _currency;
-    constructor(amount: number, currency: Currency);
+    constructor(amount: number, currency?: Currency);
     get amount(): number;
     get amountInCents(): number;
     get currency(): Currency;
@@ -36,6 +36,7 @@ export declare class Money implements MoneyInterface, Equatable {
      * @param factor the factor
      */
     multiply(factor: number): Money;
+    serialize(): string;
     /**
      * subtract()
      *
@@ -44,4 +45,23 @@ export declare class Money implements MoneyInterface, Equatable {
      * @returns the resulting amount of money.
      */
     subtract(money: Money): Money;
+    /**
+     * _toDecimal()
+     *
+     * converts an integer value to a decimal value.
+     * @param value the integer value to convert.
+     * @param numPlaces the number of decimal places.
+     * @returns the converted decimal value.
+     */
+    private _toDecimal;
+    /**
+     * _toInteger()
+     *
+     * converts a decimal value to an integer value.
+     * @param value the decimal value to convert.
+     * @param numPlaces the number of decimal places.
+     * @returns the converted integer value.
+     */
+    private _toInteger;
+    toString(): string;
 }
