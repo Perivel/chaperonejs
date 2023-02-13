@@ -29,7 +29,12 @@ import{BaseException as t,ComparisonResult as e,OutOfBoundsException as s}from"@
  * Node
  *
  * A Generic Node.
- */class r{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(t){let s;switch(this.compare(this.value,t)){case-1:s=e.Less;break;case 1:s=e.Greater;break;default:s=e.Same}return s}}class h extends i{constructor(){super()}}class a{constructor(t){this.values=t,this.index=0,this.done=!1}next(){if(this.done)return{done:this.done,value:void 0};if(this.index===this.values.length)return this.done=!0,{done:this.done,value:void 0};const t=this.values[this.index];return this.index+=1,{done:!1,value:t}}}
+ */class r{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(t){let s;switch(this.compare(this.value,t)){case-1:s=e.Less;break;case 1:s=e.Greater;break;default:s=e.Same}return s}}class h extends i{constructor(){super()}}
+/**
+ * ListIterator
+ *
+ * A List Iterator
+ */class a{constructor(t){this.values=t,this.index=0,this.done=!1}next(){if(this.done)return{done:this.done,value:void 0};if(this.index===this.values.length)return this.done=!0,{done:this.done,value:void 0};const t=this.values[this.index];return this.index+=1,{done:!1,value:t}}}
 /**
  * LinkedList
  *

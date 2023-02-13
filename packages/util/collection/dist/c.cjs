@@ -29,7 +29,12 @@
  * Node
  *
  * A Generic Node.
- */class i{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(e){let s;switch(this.compare(this.value,e)){case-1:s=t.ComparisonResult.Less;break;case 1:s=t.ComparisonResult.Greater;break;default:s=t.ComparisonResult.Same}return s}}class n extends e{constructor(){super()}}class r{constructor(t){this.values=t,this.index=0,this.done=!1}next(){if(this.done)return{done:this.done,value:void 0};if(this.index===this.values.length)return this.done=!0,{done:this.done,value:void 0};const t=this.values[this.index];return this.index+=1,{done:!1,value:t}}}
+ */class i{constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(e){let s;switch(this.compare(this.value,e)){case-1:s=t.ComparisonResult.Less;break;case 1:s=t.ComparisonResult.Greater;break;default:s=t.ComparisonResult.Same}return s}}class n extends e{constructor(){super()}}
+/**
+ * ListIterator
+ *
+ * A List Iterator
+ */class r{constructor(t){this.values=t,this.index=0,this.done=!1}next(){if(this.done)return{done:this.done,value:void 0};if(this.index===this.values.length)return this.done=!0,{done:this.done,value:void 0};const t=this.values[this.index];return this.index+=1,{done:!1,value:t}}}
 /**
  * LinkedList
  *

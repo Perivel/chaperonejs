@@ -1,3 +1,8 @@
+/**
+ * ListIterator
+ *
+ * A List Iterator
+ */
 export declare class ListIterator<T> implements Iterator<T> {
     private index;
     private done;
