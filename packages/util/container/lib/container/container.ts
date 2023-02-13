@@ -19,7 +19,7 @@ import {
 import { ContainerInterface } from "./container.interface";
 
 /**
- * VerdicContainer
+ * Container
  * 
  * A simple Dependency Container.
  */

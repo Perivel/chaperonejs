@@ -5,3 +5,4 @@ import { ContainerException } from "./container.exception";
 export declare class ModuleNotFoundException extends ContainerException {
     constructor(message?: string);
 }
+//# sourceMappingURL=module-not-found.exception.d.ts.map

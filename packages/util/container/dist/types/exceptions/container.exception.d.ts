@@ -7,3 +7,4 @@ import { BaseException } from '@chaperone/util';
 export declare class ContainerException extends BaseException {
     constructor(message?: string);
 }
+//# sourceMappingURL=container.exception.d.ts.map

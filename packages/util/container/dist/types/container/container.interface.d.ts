@@ -65,3 +65,4 @@ export interface ContainerInterface {
      */
     parser(): ModuleParserInterface;
 }
+//# sourceMappingURL=container.interface.d.ts.map

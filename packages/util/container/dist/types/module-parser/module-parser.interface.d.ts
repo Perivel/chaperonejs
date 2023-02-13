@@ -41,3 +41,4 @@ export interface ModuleParserInterface {
      */
     submodules(modulePath: string): string;
 }
+//# sourceMappingURL=module-parser.interface.d.ts.map

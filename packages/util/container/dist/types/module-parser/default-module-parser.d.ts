@@ -21,3 +21,4 @@ export declare class DefaultModuleParser extends ModuleParser {
      */
     delimiter(): string;
 }
+//# sourceMappingURL=default-module-parser.d.ts.map

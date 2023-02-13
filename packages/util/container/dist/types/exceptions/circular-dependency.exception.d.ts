@@ -5,3 +5,4 @@ import { ContainerException } from "./container.exception";
 export declare class CircularDependencyException extends ContainerException {
     constructor(message?: string);
 }
+//# sourceMappingURL=circular-dependency.exception.d.ts.map

@@ -46,3 +46,4 @@ export declare abstract class ModuleParser implements ModuleParserInterface {
      */
     submodules(modulePath: string): string;
 }
+//# sourceMappingURL=module-parser.d.ts.map

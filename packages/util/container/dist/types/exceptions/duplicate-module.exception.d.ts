@@ -5,3 +5,4 @@ import { ContainerException } from "./container.exception";
 export declare class DuplicateModuleException extends ContainerException {
     constructor(message?: string);
 }
+//# sourceMappingURL=duplicate-module.exception.d.ts.map

@@ -7,3 +7,4 @@ import { ContainerException } from "./container.exception";
 export declare class DependencyNotFoundException extends ContainerException {
     constructor(message?: string);
 }
+//# sourceMappingURL=dependency-not-found.exception.d.ts.map

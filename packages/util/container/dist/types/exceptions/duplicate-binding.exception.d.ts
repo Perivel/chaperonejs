@@ -7,3 +7,4 @@ import { ContainerException } from "./container.exception";
 export declare class DuplicateBindingException extends ContainerException {
     constructor(message?: string);
 }
+//# sourceMappingURL=duplicate-binding.exception.d.ts.map

@@ -6,3 +6,4 @@ export * from './duplicate-dependency.exception';
 export * from './duplicate-module.exception';
 export * from './invalid-module.exception';
 export * from './module-not-found.exception';
+//# sourceMappingURL=index.d.ts.map
