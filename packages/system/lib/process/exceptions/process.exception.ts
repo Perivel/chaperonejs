@@ -8,8 +8,7 @@ import { SystemException } from './../../exceptions';
 
 export class ProcessException extends SystemException {
 
-    constructor(message: string = "") {
-        message = `Process Error${message ? ': ' + message : ''}`;
+    constructor(message: string = "Process Error") {
         super(message);
     }
 }

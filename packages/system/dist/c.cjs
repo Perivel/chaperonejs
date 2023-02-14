@@ -463,7 +463,7 @@ throw new qr}
  * PathException
  *
  * A general path error.
- */class Wr extends Br{constructor(t=""){super("Path Error"+(t?": "+t:""))}}
+ */class Wr extends Br{constructor(t="Path Error"){super(t)}}
 // A path instruction
 !function(t){
 // point to the home directory.
@@ -616,7 +616,7 @@ Jr.Separator=l.sep;
  *
  * A Generic FileSystemEntry error.
  */
-class $r extends Br{constructor(t=""){super("FileSystem Entry Error"+(t?": "+t:""))}}
+class $r extends Br{constructor(t="FileSystem Entry Error"){super(t)}}
 /**
  * FileSystemEntryNotFoundException
  *
@@ -706,7 +706,7 @@ throw new Yr})),this._created=null,this._updated=null,this._deleted=null,this._s
  * FileException
  *
  * A Generic File Exception.
- */class Vr extends $r{constructor(t=""){super("File Error"+(t?": "+t:""))}}
+ */class Vr extends $r{constructor(t="File Error"){super(t)}}
 /**
  * FileNotFoundException
  *
@@ -818,7 +818,7 @@ exports.LinkType=void 0,(Cr=exports.LinkType||(exports.LinkType={})).File="file"
  *
  * A General Link error
  */
-class Hr extends $r{constructor(t="Link Error"){super("Link Error"+(t?": "+t:""))}}
+class Hr extends $r{constructor(t="Link Error"){super(t)}}
 /**
  * LinkNotFoundException
  */class Qr extends Hr{constructor(t="Link Not Found"){super(t)}}
@@ -873,7 +873,7 @@ try{await t.unlink(this.path().toString()),this.setDeleted()}catch(t){throw new 
  * DirectoryException
  *
  * A general directory error.
- */class en extends $r{constructor(t=""){super("Directory Error"+(t?": "+t:""))}}
+ */class en extends $r{constructor(t="Directory Error"){super(t)}}
 /**
  * DirectoryNotFoundException
  *
@@ -975,7 +975,7 @@ try{return await h.move(this.path().toString(),r.toString(),{overwrite:n.overwri
 // resolve the new file path.
 const r=Jr.FromSegments(this.path().dirname(),e);
 // rename the file.
-try{return await t.rename(this.path().toString(),r.toString()),new sn(r)}catch(t){throw new en(t.message)}}serialize(){return JSON.stringify({path:this.path().toString(),created_on:this.createdOn().toString(),updated_on:this.updatedOn().toString()})}}class on extends Br{constructor(t=""){super("File Stream Error"+(t?": "+t:""))}}
+try{return await t.rename(this.path().toString(),r.toString()),new sn(r)}catch(t){throw new en(t.message)}}serialize(){return JSON.stringify({path:this.path().toString(),created_on:this.createdOn().toString(),updated_on:this.updatedOn().toString()})}}class on extends Br{constructor(t="File Stream Error"){super(t)}}
 /**
  * FileStreamDataException
  *
@@ -1035,7 +1035,7 @@ un.MAX_BYTES=1073741824;
  *
  * A generic process error
  */
-class ln extends Br{constructor(t=""){super(t="Process Error"+(t?": "+t:""))}}
+class ln extends Br{constructor(t="Process Error"){super(t)}}
 /**
  * ProcessFailedException
  *

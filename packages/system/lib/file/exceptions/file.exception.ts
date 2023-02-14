@@ -8,7 +8,7 @@ import { FileSystemEntryException } from './../../file-system-entry';
 
 export class FileException extends FileSystemEntryException {
 
-    constructor(message: string = "") {
-        super(`File Error${message ? ': ' + message : ""}`);
+    constructor(message: string = "File Error") {
+        super(message);
     }
 }

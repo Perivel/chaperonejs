@@ -8,7 +8,7 @@ import polyfills from "rollup-plugin-polyfill-node";
 import terser from "@rollup/plugin-terser";
 
 const deps = [
-    'colors-convert'
+    '@chaperone/util'
 ]
 
 //const deps = Object.keys(dependencies);
