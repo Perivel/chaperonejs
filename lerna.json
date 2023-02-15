@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "useWorkspaces": true,
-  "version": "0.1.17",
+  "version": "0.1.18",
   "npmClient": "yarn",
   "publish": {
     "ignoreChanges": [
