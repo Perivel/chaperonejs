@@ -47,7 +47,7 @@ export class Process implements ProcessInterface, Equatable {
      */
 
     public static Run(cmd: string, options: RunOptions = {
-        cwd: Directory.Current().path(),
+        cwd: process.cwd(),
         env: process.env
     }): Promise<string> {
         // resolve the options.
@@ -84,7 +84,7 @@ export class Process implements ProcessInterface, Equatable {
      */
 
     public static Start(cmd: string, options: StartProcessOptions = {
-        cwd: Directory.Current().path(),
+        cwd: process.cwd(),
         arguments: [],
         fork: false,
         env: process.env,
@@ -98,14 +98,14 @@ export class Process implements ProcessInterface, Equatable {
             resolvedOptions = {
                 arguments: options.arguments ? options.arguments : [],
                 fork: options.fork ? options.fork : false,
-                cwd: options.cwd ? options.cwd : Directory.Current().path(),
+                cwd: options.cwd ? options.cwd : process.cwd(),
                 env: options.env ? options.env : process.env,
                 serializationType: options.serializationType ? options.serializationType : 'json'
             };
         }
         else {
             resolvedOptions = {
-                cwd: Directory.Current().path(),
+                cwd: process.cwd(),
                 arguments: [],
                 fork: false,
                 env: process.env,

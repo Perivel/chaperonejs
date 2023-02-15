@@ -39,7 +39,7 @@ export class FileWriter extends FileStream implements FileWriterInterface {
         this._isClosed = false;
         this._numWrites = 0;
         this._encoding = options.encoding;
-        this._stream = createWriteStream(this.file().path().toString(), {
+        this._stream = createWriteStream(this.file().path.toString(), {
             encoding: this._encoding,
             autoClose: true
         });

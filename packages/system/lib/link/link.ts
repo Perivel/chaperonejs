@@ -1,6 +1,6 @@
 import { readlink, symlink, unlink } from 'fs/promises';
 import { Path } from '../path';
-import { FileSystemEntry, FileSystemEntryNotFoundException } from './../file-system-entry';
+import { FileSystemEntry, FileSystemEntryException, FileSystemEntryNotFoundException, FileSystemEntryStats } from './../file-system-entry';
 import { LinkType } from './enums';
 import { CreateLinkOptions } from './create-link-options.interface';
 import { LinkInterface } from './link.interface';
@@ -24,25 +24,9 @@ export class Link extends FileSystemEntry implements LinkInterface {
      * @throws PathException when the path is invalid.
      */
 
-    constructor(path: Path | string) {
-        try {
-            super(path);
-            this._target = null;
-        }
-        catch (e) {
-            if (e instanceof FileSystemEntryNotFoundException) {
-                throw new LinkNotFoundException();
-            }
-            else {
-                throw e;
-            }
-        }
-
-        super.stats().then(stats => {
-            if (!stats.isSymbolicLink) {
-                throw new LinkNotFoundException();
-            }
-        });
+    private constructor(path: Path | string, stats: FileSystemEntryStats) {
+        super(path, stats);
+        this._target = null;
     }
 
     /**
@@ -55,14 +39,10 @@ export class Link extends FileSystemEntry implements LinkInterface {
 
     public static async Create(path: Path | string, target: Path | string, options?: CreateLinkOptions): Promise<Link> {
         // make sure the file does not already exists.
-        try {
-            new Link(path);
+        const pathExists = await Link.Exists(path);
+        
+        if (pathExists) {
             throw new LinkAlreadyExistsException();
-        }
-        catch (e) {
-            if (e instanceof LinkAlreadyExistsException) {
-                throw e;
-            }
         }
 
         // create the Link.
@@ -88,8 +68,64 @@ export class Link extends FileSystemEntry implements LinkInterface {
             throw new LinkException((e as Error).message);
         }
 
-        return new Link(linkPath);
+        return await Link.ForPath(linkPath);
     }
+
+    /**
+     * Exist()
+     * 
+     * determines if the symbolic specified by the path exists.
+     * @param path the path to check.
+     * @returns TRUE if the directory exists. FALSE otherwise.
+     * @throws DirectoryException if an error occurs performing the operation.
+     */
+
+    public static async Exists(path: string | Path): Promise<boolean> {
+        try {
+            const pathExists = await super.Exists(path);
+            const stats = await Link.GetStats(path);
+            return pathExists && stats.isSymbolicLink;
+        }
+        catch(e) {
+            throw new LinkException((e as Error).message);
+        }
+    }
+
+    /**
+     * ForPath()
+     * 
+     * Creates a reference to a directory specified by the path.
+     * @param path the path to the directory.
+     * @returns An instance of the directory.
+     * @throws DirectoryNotFoundException when the directory is not found.
+     * @throws DirectoryException when the operation fails.
+     */
+
+    public static async ForPath(path: string | Path): Promise<Link> {
+        try {
+            // Make sure the directory exists
+            const exists = await Link.Exists(path);
+
+            if (!exists) {
+                throw new LinkNotFoundException();
+            }
+
+            // get the stats
+            const stats = await Link.GetStats(path);
+
+            // return the reference
+            return new Link(path, stats);
+        }
+        catch(e) {
+            if (e instanceof FileSystemEntryException) {
+                throw new LinkException((e as Error).message);
+            }
+            else {
+                throw e;
+            }
+        }
+    }
+
 
     /**
      * delete()
@@ -103,8 +139,8 @@ export class Link extends FileSystemEntry implements LinkInterface {
 
         // delete the link.
         try {
-            await unlink(this.path().toString());
-            this.setDeleted();
+            await unlink(this.path.toString());
+            super.delete();
         }
         catch (e) {
             throw new LinkException((e as Error).message);
@@ -140,9 +176,9 @@ export class Link extends FileSystemEntry implements LinkInterface {
 
     public serialize(): string {
         return JSON.stringify({
-            path: this.path().toString(),
-            created_on: this.createdOn().toString(),
-            updated_on: this.updatedOn().toString()
+            path: this.path.toString(),
+            created_on: this.createdOn.toString(),
+            updated_on: this.updatedOn.toString()
         });
     }
 
@@ -157,7 +193,7 @@ export class Link extends FileSystemEntry implements LinkInterface {
     public async target(): Promise<Path | null> {
         if (!this._target) {
             try {
-                const targetPath = await readlink(this.path().toString());
+                const targetPath = await readlink(this.path.toString());
                 this._target = new Path(targetPath);
             }
             catch (e) {

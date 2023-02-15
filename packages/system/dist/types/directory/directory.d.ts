@@ -19,7 +19,7 @@ export declare class Directory extends FileSystemEntry implements DirectoryInter
      * @param path the directory path.
      * @throws DirectoryNotFoundExeption when the directory is not found.
      */
-    constructor(path: Path | string);
+    private constructor();
     /**
      * Create()
      *
@@ -29,16 +29,36 @@ export declare class Directory extends FileSystemEntry implements DirectoryInter
      */
     static Create(path: Path | string, options?: CreateDirectoryOptions): Promise<Directory>;
     /**
+     * ForPath()
+     *
+     * Creates a reference to a directory specified by the path.
+     * @param path the path to the directory.
+     * @returns An instance of the directory.
+     * @throws DirectoryNotFoundException when the directory is not found.
+     * @throws DirectoryException when the operation fails.
+     */
+    static ForPath(path: string | Path): Promise<Directory>;
+    /**
      * Current()
      *
      * Gets the current working directory.
      * @returns The current working directory.
      */
-    static Current(): Directory;
+    static Current(): Promise<Directory>;
+    /**
+     * Exist()
+     *
+     * determines if the directory specified by the path exists.
+     * @param path the path to check.
+     * @returns TRUE if the directory exists. FALSE otherwise.
+     * @throws DirectoryException if an error occurs performing the operation.
+     */
+    static Exists(path: string | Path): Promise<boolean>;
     /**
      * contents()
      *
      * gets the contents of the directory.
+     * @thorws DirectoryException when the operation fails.
      */
     contents(): Promise<Array<Link | Directory | File>>;
     /**

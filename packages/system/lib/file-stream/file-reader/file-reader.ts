@@ -30,7 +30,7 @@ export class FileReader extends FileStream implements FileReaderInterface {
         this._isClosed = false;
         this._bytesRead = 0;
         this._fileSize = null;
-        this._stream = createReadStream(this.file().path().toString(), {
+        this._stream = createReadStream(this.file().path.toString(), {
             encoding: this._encoding,
             autoClose: true
         });
@@ -99,7 +99,7 @@ export class FileReader extends FileStream implements FileReaderInterface {
 
     public async hasNext(): Promise<boolean> {
         if (!this._fileSize) {
-            const stats = await this.file().stats();
+            const stats = this.file().stats;
             this._fileSize = stats.size;
         }
         return this._bytesRead < this._fileSize;
@@ -121,7 +121,7 @@ export class FileReader extends FileStream implements FileReaderInterface {
         }
 
         if (!this._fileSize) {
-            const stats = await this.file().stats();
+            const stats = this.file().stats;
             this._fileSize = stats.size;
         }
 

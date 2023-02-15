@@ -5,11 +5,11 @@ import {
     readdir
 } from 'fs/promises';
 import { copy, move } from 'fs-extra';
-import { Copiable, Movable, MoveOptions, Renamable } from '../interfaces';
+import { Copiable, Movable, Renamable } from '../interfaces';
 import { File } from './../file';
 import { Link } from './../Link';
-import { Path, PathInterface } from '../path';
-import { FileSystemEntry, FileSystemEntryNotFoundException, FileSystemEntryOptions } from './../file-system-entry';
+import { Path } from '../path';
+import { FileSystemEntry, FileSystemEntryException, FileSystemEntryStats } from './../file-system-entry';
 import { DirectoryInterface } from './directory.interface';
 import { DirectoryAlreadyExistsException, DirectoryException, DirectoryNotFoundException } from './exceptions';
 import { CreateDirectoryOptions } from './create-directory-options.interface';
@@ -31,24 +31,8 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
      * @throws DirectoryNotFoundExeption when the directory is not found.
      */
 
-    constructor(path: Path | string) {
-        try {
-            super(path);
-        }
-        catch (e) {
-            if (e instanceof FileSystemEntryNotFoundException) {
-                throw new DirectoryNotFoundException();
-            }
-            else {
-                throw e;
-            }
-        }
-
-        super.stats().then(stats => {
-            if (!stats.isDirectory) {
-                throw new DirectoryNotFoundException();
-            }
-        });
+    private constructor(path: Path | string, stats: FileSystemEntryStats) {
+        super(path, stats);
     }
 
     /**
@@ -61,29 +45,59 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
 
     public static async Create(path: Path | string, options?: CreateDirectoryOptions): Promise<Directory> {
         // make sure the file does not already exists.
-        try {
-            new Directory(path);
+        const pathExists = await Directory.Exists(path);
+        
+        if (pathExists) {
             throw new DirectoryAlreadyExistsException();
         }
-        catch (e) {
-            if (e instanceof DirectoryAlreadyExistsException) {
-                throw e;
-            }
-        }
 
-        // create the file.
+        // create the directory.
         const dirPath = path instanceof Path ? path : new Path(path.toString());
         try {
             await mkdir(dirPath.toString(), {
                 recursive: true,
-                mode: ''
+                mode: '0o777'
             });
         }
         catch (e) {
             throw new DirectoryException((e as Error).message);
         }
+        return Directory.ForPath(dirPath);
+    }
 
-        return new Directory(dirPath);
+    /**
+     * ForPath()
+     * 
+     * Creates a reference to a directory specified by the path.
+     * @param path the path to the directory.
+     * @returns An instance of the directory.
+     * @throws DirectoryNotFoundException when the directory is not found.
+     * @throws DirectoryException when the operation fails.
+     */
+
+    public static async ForPath(path: string | Path): Promise<Directory> {
+        try {
+            // Make sure the directory exists
+            const exists = await Directory.Exists(path);
+
+            if (!exists) {
+                throw new DirectoryNotFoundException();
+            }
+
+            // get the stats
+            const stats = await Directory.GetStats(path);
+
+            // return the reference
+            return new Directory(path, stats);
+        }
+        catch(e) {
+            if (e instanceof FileSystemEntryException) {
+                throw new DirectoryException((e as Error).message);
+            }
+            else {
+                throw e;
+            }
+        }
     }
 
     /**
@@ -93,24 +107,45 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
      * @returns The current working directory.
      */
 
-    public static Current(): Directory {
-        return new Directory(process.cwd());
+    public static async Current(): Promise<Directory> {
+        return await Directory.ForPath(process.cwd());
+    }
+
+    /**
+     * Exist()
+     * 
+     * determines if the directory specified by the path exists.
+     * @param path the path to check.
+     * @returns TRUE if the directory exists. FALSE otherwise.
+     * @throws DirectoryException if an error occurs performing the operation.
+     */
+
+    public static async Exists(path: string | Path): Promise<boolean> {
+        try {
+            const pathExists = await super.Exists(path);
+            const stats = await Directory.GetStats(path);
+            return pathExists && stats.isDirectory;
+        }
+        catch(e) {
+            throw new DirectoryException((e as Error).message);
+        }
     }
 
     /**
      * contents()
      * 
      * gets the contents of the directory.
+     * @thorws DirectoryException when the operation fails.
      */
 
     public async contents(): Promise<Array<Link | Directory | File>> {
         try {
-            const contents = await readdir(this.path().toString());
+            const contents = await readdir(this.path.toString());
             return await this.convertToObjects(contents);
             
         }
         catch(e) {
-            throw new DirectoryException();
+            throw new DirectoryException((e as Error).message);
         }
     }
 
@@ -126,16 +161,16 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
         const results = new Array<Directory|File|Link>();
         let obj: File|Directory|Link;
         await Promise.all(paths.map(async path => {
-            const entry = new FileSystemEntry(path);
+            const entry = await FileSystemEntry.ForPath(path);
 
-            if (await entry.isDirectory()) {
-                obj = new Directory(entry.path());
+            if (entry.stats.isDirectory) {
+                obj = await Directory.ForPath(entry.path);
             }
-            else if (await entry.isFile()) {
-                obj = new File(entry.path());
+            else if (entry.isFile) {
+                obj = await File.ForPath(entry.path);
             }
             else {
-                obj = new Link(entry.path());
+                obj = await Link.ForPath(entry.path);
             }
             results.push(obj);
         }));
@@ -161,7 +196,6 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
             resolvedOptions = {
                 recursive: options.recursive,
                 overwrite: options.overwrite,
-
             };
         }
         else {
@@ -173,23 +207,15 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
 
         // make sure the destination and file exists
         const resolvedDestination = to instanceof Path ? to : new Path(to.toString());
-        let directoryExists = false;
-        try {
-            new Directory(resolvedDestination);
-            directoryExists = true;
-        }
-        catch(e) {
-            directoryExists = false;
-        }
+        const destinationInUse = await FileSystemEntry.Exists(resolvedDestination);
 
-        if (directoryExists) {
+        if (destinationInUse) {
             throw new DirectoryAlreadyExistsException();
         }
-        
 
         // copy the directory.
         try {
-            await copy(this.path().toString(), resolvedDestination.toString(), {
+            await copy(this.path.toString(), resolvedDestination.toString(), {
                 recursive: resolvedOptions.recursive,
                 overwrite: resolvedOptions.overwrite,
                 errorOnExist: true,
@@ -230,12 +256,12 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
 
         // delete the file.
         try {
-            await rmdir(this.path().toString(), {
+            await rmdir(this.path.toString(), {
                 recursive: resolvedOptions.recursive,
                 maxRetries: resolvedOptions.maxRetries,
                 retryDelay: resolvedOptions.retryDelay,
             });
-            this.setDeleted();
+            await super.delete();
         }
         catch (e) {
             throw new DirectoryException((e as Error).message);
@@ -278,13 +304,10 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
         }
 
         // make sure the destination is available.
-        let destinationInUse = false;
-        try {
-            new Directory(resolvedDestination);
-            destinationInUse = true;
-        }
-        catch (e) {
-            destinationInUse = false;
+        const destinationInUse = await FileSystemEntry.Exists(resolvedDestination);
+
+        if (destinationInUse) {
+            throw new DirectoryAlreadyExistsException();
         }
 
         if (destinationInUse && !resolvedOptions.overwrite) {
@@ -293,10 +316,10 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
 
         // move the file.
         try {
-            await move(this.path().toString(), resolvedDestination.toString(), {
+            await move(this.path.toString(), resolvedDestination.toString(), {
                 overwrite: resolvedOptions.overwrite,
             });
-            return new Directory(resolvedDestination);
+            return await Directory.ForPath(resolvedDestination);
         }
         catch (e) {
             throw new DirectoryException((e as Error).message);
@@ -312,12 +335,12 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
 
     public async rename(newName: string): Promise<Directory> {
         // resolve the new file path.
-        const resolvedFileName = Path.FromSegments(this.path().dirname(), newName);
+        const resolvedDirectoryName = Path.FromSegments(this.path.dirname(), newName);
 
         // rename the file.
         try {
-            await rename(this.path().toString(), resolvedFileName.toString());
-            return new Directory(resolvedFileName);
+            await rename(this.path.toString(), resolvedDirectoryName.toString());
+            return Directory.ForPath(resolvedDirectoryName);
         }
         catch (e) {
             throw new DirectoryException((e as Error).message);
@@ -326,9 +349,9 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
 
     public serialize(): string {
         return JSON.stringify({
-            path: this.path().toString(),
-            created_on: this.createdOn().toString(),
-            updated_on: this.updatedOn().toString()
+            path: this.path.toString(),
+            created_on: this.createdOn.toString(),
+            updated_on: this.updatedOn.toString()
         });
     }
 }

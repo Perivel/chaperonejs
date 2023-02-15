@@ -48,6 +48,6 @@ export abstract class FileStream implements Equatable, FileStreamInterface {
     }
 
     public toString(): string {
-        return `Stream for file ${this.file().path().toString()}`;
+        return `Stream for file ${this.file().path.toString()}`;
     }
 }

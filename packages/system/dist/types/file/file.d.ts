@@ -17,7 +17,7 @@ export declare class File extends FileSystemEntry implements FileInterface, Mova
      * @throws FileNotFoundException when the file is not found.
      * @throws PathException when the path is invalid.
      */
-    constructor(path: Path | string);
+    private constructor();
     /**
      * Create()
      *
@@ -26,6 +26,25 @@ export declare class File extends FileSystemEntry implements FileInterface, Mova
      * @returns the created FileSystem Entry.
      */
     static Create(path: Path | string, options?: FileSystemEntryOptions): Promise<File>;
+    /**
+     * Exist()
+     *
+     * determines if the file specified by the path exists.
+     * @param path the path to check.
+     * @returns TRUE if the file exists. FALSE otherwise.
+     * @throws FileException if an error occurs performing the operation.
+     */
+    static Exists(path: string | Path): Promise<boolean>;
+    /**
+     * ForPath()
+     *
+     * Creates a reference to a File specified by the path.
+     * @param path the path to the directory.
+     * @returns An instance of the directory.
+     * @throws FileNotFoundException when the file is not found.
+     * @throws FileException when the operation fails.
+     */
+    static ForPath(path: string | Path): Promise<File>;
     /**
      * copy()
      *

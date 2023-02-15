@@ -1,7 +1,8 @@
+import { FILE } from 'dns';
 import { copyFile, writeFile, rm, rename } from 'fs/promises';
 import { Copiable, Movable, Renamable } from '../interfaces';
 import { Path } from '../path';
-import { FileSystemEntry, FileSystemEntryNotFoundException, FileSystemEntryOptions } from './../file-system-entry';
+import { FileSystemEntry, FileSystemEntryException, FileSystemEntryNotFoundException, FileSystemEntryOptions, FileSystemEntryStats } from './../file-system-entry';
 import { CopyFileOptions } from './copy-file-options.interface';
 import { DeleteFileOptions } from './dlete-file-options.interface';
 import { FileAlreadyExistsException, FileException, FileNotFoundException } from './exceptions';
@@ -23,24 +24,8 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
      * @throws PathException when the path is invalid.
      */
 
-    constructor(path: Path | string) {
-        try {
-            super(path);
-        }
-        catch (e) {
-            if (e instanceof FileSystemEntryNotFoundException) {
-                throw new FileNotFoundException();
-            }
-            else {
-                throw e;
-            }
-        }
-
-        super.stats().then(stats => {
-            if (!stats.isFile) {
-                throw new FileNotFoundException();
-            }
-        })
+    private constructor(path: Path | string, stats: FileSystemEntryStats) {
+        super(path, stats);
     }
 
     /**
@@ -53,14 +38,10 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
 
     public static async Create(path: Path | string, options?: FileSystemEntryOptions): Promise<File> {
         // make sure the file does not already exists.
-        try {
-            new File(path);
+        const pathExists = await File.Exists(path);
+        
+        if (pathExists) {
             throw new FileAlreadyExistsException();
-        }
-        catch (e) {
-            if (e instanceof FileAlreadyExistsException) {
-                throw e;
-            }
         }
 
         // create the file.
@@ -71,8 +52,61 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
         catch (e) {
             throw new FileException((e as Error).message);
         }
+        return File.ForPath(filePath);
+    }
 
-        return new File(filePath);
+    /**
+     * Exist()
+     * 
+     * determines if the file specified by the path exists.
+     * @param path the path to check.
+     * @returns TRUE if the file exists. FALSE otherwise.
+     * @throws FileException if an error occurs performing the operation.
+     */
+
+    public static async Exists(path: string | Path): Promise<boolean> {
+        try {
+            const pathExists = await super.Exists(path);
+            const stats = await File.GetStats(path);
+            return pathExists && stats.isFile;
+        }
+        catch(e) {
+            throw new FileException((e as Error).message);
+        }
+    }
+
+    /**
+     * ForPath()
+     * 
+     * Creates a reference to a File specified by the path.
+     * @param path the path to the directory.
+     * @returns An instance of the directory.
+     * @throws FileNotFoundException when the file is not found.
+     * @throws FileException when the operation fails.
+     */
+
+    public static async ForPath(path: string | Path): Promise<File> {
+        try {
+            const exists = await File.Exists(path);
+
+            if (!exists) {
+                throw new FileNotFoundException();
+            }
+
+            // get the stats
+            const stats = await File.GetStats(path);
+
+            // return the reference
+            return new File(path, stats);
+        }
+        catch(e) {
+            if (e instanceof FileSystemEntryException) {
+                throw new FileException((e as Error).message);
+            }
+            else {
+                throw e;
+            }
+        }
     }
 
     /**
@@ -103,28 +137,20 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
         }
 
         // make sure the destination file does not already exist.
-        let destinationInUse = false;
-        try {
-            // this line should fail if the file does not exist.
-            new File(resolvedDestination);
-            destinationInUse = true;
-        }
-        catch (e) {
-            destinationInUse = false;
-        }
+        const destinationInUse = await FileSystemEntry.Exists(resolvedDestination);
 
-        if (destinationInUse && !resolvedOptions.override) {
+        if (destinationInUse) {
             throw new FileAlreadyExistsException();
         }
 
         // make sure the file has not been deleted.
-        if (this.isDeleted()) {
+        if (this.isDeleted) {
             throw new FileException();
         }
 
         // copy the file.
         try {
-            await copyFile(this.path().toString(), resolvedDestination.toString(), resolvedOptions.mode!);
+            await copyFile(this.path.toString(), resolvedDestination.toString(), resolvedOptions.mode!);
         }
         catch (e) {
             throw new FileException((e as Error).message);
@@ -158,11 +184,11 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
 
         // delete the file.
         try {
-            await rm(this.path().toString(), {
+            await rm(this.path.toString(), {
                 force: resolvedOptions.force,
                 recursive: resolvedOptions.recursive
             });
-            this.setDeleted();
+            super.delete();
         }
         catch (e) {
             throw new FileException((e as Error).message);
@@ -203,13 +229,10 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
         }
 
         // make sure the destination is available.
-        let destinationInUse = false;
-        try {
-            new File(resolvedDestination);
-            destinationInUse = true;
-        }
-        catch (e) {
-            destinationInUse = false;
+        const destinationInUse = await FileSystemEntry.Exists(resolvedDestination);
+
+        if (destinationInUse) {
+            throw new FileAlreadyExistsException();
         }
 
         if (destinationInUse && !resolvedOptions.override) {
@@ -218,8 +241,8 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
 
         // move the file.
         try {
-            await rename(this.path().toString(), resolvedDestination.toString());
-            return new File(resolvedDestination);
+            await rename(this.path.toString(), resolvedDestination.toString());
+            return await File.ForPath(resolvedDestination);
         }
         catch (e) {
             throw new FileException((e as Error).message);
@@ -237,12 +260,12 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
 
     public async rename(newName: string): Promise<File> {
         // resolve the new file path.
-        const resolvedFileName = Path.FromSegments(this.path().dirname(), newName);
+        const resolvedFileName = Path.FromSegments(this.path.dirname(), newName);
 
         // rename the file.
         try {
-            await rename(this.path().toString(), resolvedFileName.toString());
-            return new File(resolvedFileName);
+            await rename(this.path.toString(), resolvedFileName.toString());
+            return await File.ForPath(resolvedFileName);
         }
         catch (e) {
             throw new FileException((e as Error).message);
@@ -251,9 +274,9 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
 
     public serialize(): string {
         return JSON.stringify({
-            path: this.path().toString(),
-            created_on: this.createdOn().toString(),
-            updated_on: this.updatedOn().toString()
+            path: this.path.toString(),
+            created_on: this.createdOn.toString(),
+            updated_on: this.updatedOn.toString()
         });
     }
 }

@@ -16,7 +16,7 @@ export declare class Link extends FileSystemEntry implements LinkInterface {
      * @throws FileNotFoundException when the file is not found.
      * @throws PathException when the path is invalid.
      */
-    constructor(path: Path | string);
+    private constructor();
     /**
      * Create()
      *
@@ -25,6 +25,25 @@ export declare class Link extends FileSystemEntry implements LinkInterface {
      * @returns the created FileSystem Entry.
      */
     static Create(path: Path | string, target: Path | string, options?: CreateLinkOptions): Promise<Link>;
+    /**
+     * Exist()
+     *
+     * determines if the symbolic specified by the path exists.
+     * @param path the path to check.
+     * @returns TRUE if the directory exists. FALSE otherwise.
+     * @throws DirectoryException if an error occurs performing the operation.
+     */
+    static Exists(path: string | Path): Promise<boolean>;
+    /**
+     * ForPath()
+     *
+     * Creates a reference to a directory specified by the path.
+     * @param path the path to the directory.
+     * @returns An instance of the directory.
+     * @throws DirectoryNotFoundException when the directory is not found.
+     * @throws DirectoryException when the operation fails.
+     */
+    static ForPath(path: string | Path): Promise<Link>;
     /**
      * delete()
      *
