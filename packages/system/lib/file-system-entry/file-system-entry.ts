@@ -5,7 +5,6 @@ import {
     MethodUndefinedException,
     Timezone
 } from '@chaperone/util';
-import { constants as FSConstants } from 'fs';
 import { access, stat } from 'fs/promises';
 import { FileSystemEntryStats } from './file-sysgtem-entry-stats.interface';
 import { FileSystemEntryOptions } from './file-system-entry-options.interface';
@@ -88,7 +87,7 @@ export class FileSystemEntry implements Equatable, Serializable {
 
     public static async Exists(path: Path | string): Promise<boolean> {
         try {
-            await access(path.toString(), FSConstants.F_OK);
+            await access(path.toString());
             return true;
         }
         catch (_) {

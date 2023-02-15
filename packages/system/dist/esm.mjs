@@ -657,7 +657,7 @@ let e;try{e=await hn.GetStats(t)}catch(t){throw new ln(t.message)}return new hn(
      *
      * determines if the path exists.
      * @returns TRUE if the file exists. False it it does not.
-     */static async Exists(e){try{return await t(e.toString(),d.F_OK),!0}catch(t){return!1}}
+     */static async Exists(e){try{return await t(e.toString()),!0}catch(t){return!1}}
 /**
     * GetStats()
     *
