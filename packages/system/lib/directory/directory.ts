@@ -121,14 +121,15 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
      */
 
     public static async Exists(path: string | Path): Promise<boolean> {
+        let exists: boolean|null = null;
         try {
-            const pathExists = await super.Exists(path);
-            const stats = await Directory.GetStats(path);
-            return pathExists && stats.isDirectory;
+            const stats = await super.GetStats(path);
+            exists = stats.isDirectory;
         }
         catch(e) {
-            throw new DirectoryException((e as Error).message);
+            exists = false;
         }
+        return exists;
     }
 
     /**

@@ -65,14 +65,15 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
      */
 
     public static async Exists(path: string | Path): Promise<boolean> {
+        let exists: boolean|null = null;
         try {
-            const pathExists = await super.Exists(path);
-            const stats = await File.GetStats(path);
-            return pathExists && stats.isFile;
+            const stats = await super.GetStats(path);
+            exists = stats.isFile;
         }
         catch(e) {
-            throw new FileException((e as Error).message);
+            exists = false;
         }
+        return exists;
     }
 
     /**

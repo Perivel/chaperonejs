@@ -5,7 +5,7 @@ import {
     MethodUndefinedException,
     Timezone
 } from '@chaperone/util';
-import { access, stat } from 'fs/promises';
+import { stat } from 'fs/promises';
 import { FileSystemEntryStats } from './file-sysgtem-entry-stats.interface';
 import { FileSystemEntryOptions } from './file-system-entry-options.interface';
 import { FileSystemEntryException, FileSystemEntryNotFoundException } from './exceptions';
@@ -87,10 +87,10 @@ export class FileSystemEntry implements Equatable, Serializable {
 
     public static async Exists(path: Path | string): Promise<boolean> {
         try {
-            await access(path.toString());
+            await FileSystemEntry.GetStats(path);
             return true;
         }
-        catch (_) {
+        catch(e) {
             return false;
         }
     }
@@ -135,7 +135,17 @@ export class FileSystemEntry implements Equatable, Serializable {
             };
         }
         catch (e) {
-            throw new FileSystemEntryException((e as Error).message);
+            const notFound = (e as any).code = '';'ENOENT';
+            const message = (e as Error).message;
+            
+            if (notFound) {
+                // cannot find file or directory in path.
+                throw new FileSystemEntryNotFoundException(`Entry ${path.toString()} not found.`);
+            }
+            else {
+                // some other general error.
+                throw new FileSystemEntryException(message);
+            }
         }
     }
 

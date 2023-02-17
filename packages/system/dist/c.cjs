@@ -132,20 +132,20 @@ t.write=function(t,e,...n){return"function"==typeof n[n.length-1]?r.write(t,e,..
 // We need to handle the optional arg, so we use ...args
 t.writev=function(t,e,...n){return"function"==typeof n[n.length-1]?r.writev(t,e,...n):new Promise(((i,s)=>{r.writev(t,e,...n,((t,e,r)=>{if(t)return s(t);i({bytesWritten:e,buffers:r})}))}))}),
 // fs.realpath.native only available in Node v9.2+
-"function"==typeof r.realpath.native&&(t.realpath.native=e(r.realpath.native))}(p);var W={},J=t=>{const e=process.versions.node.split(".").map((t=>parseInt(t,10)));return t=t.split(".").map((t=>parseInt(t,10))),e[0]>t[0]||e[0]===t[0]&&(e[1]>t[1]||e[1]===t[1]&&e[2]>=t[2])};const $=p,Y=o,G=J("10.12.0"),U=t=>{if("win32"===process.platform){if(/[<>:"|?*]/.test(t.replace(Y.parse(t).root,""))){const e=new Error(`Path contains invalid characters: ${t}`);throw e.code="EINVAL",e}}},V=t=>("number"==typeof t&&(t={mode:t}),{mode:511,...t}),X=t=>{
+"function"==typeof r.realpath.native&&(t.realpath.native=e(r.realpath.native))}(p);var W={},$=t=>{const e=process.versions.node.split(".").map((t=>parseInt(t,10)));return t=t.split(".").map((t=>parseInt(t,10))),e[0]>t[0]||e[0]===t[0]&&(e[1]>t[1]||e[1]===t[1]&&e[2]>=t[2])};const J=p,Y=o,G=$("10.12.0"),U=t=>{if("win32"===process.platform){if(/[<>:"|?*]/.test(t.replace(Y.parse(t).root,""))){const e=new Error(`Path contains invalid characters: ${t}`);throw e.code="EINVAL",e}}},V=t=>("number"==typeof t&&(t={mode:t}),{mode:511,...t}),X=t=>{
 // This replicates the exception of `fs.mkdir` with native the
 // `recusive` option when run on an invalid drive under Windows.
-const e=new Error(`operation not permitted, mkdir '${t}'`);return e.code="EPERM",e.errno=-4048,e.path=t,e.syscall="mkdir",e};W.makeDir=async(t,e)=>{if(U(t),e=V(e),G){const r=Y.resolve(t);return $.mkdir(r,{mode:e.mode,recursive:!0})}const r=async t=>{try{await $.mkdir(t,e.mode)}catch(e){if("EPERM"===e.code)throw e;if("ENOENT"===e.code){if(Y.dirname(t)===t)throw X(t);if(e.message.includes("null bytes"))throw e;return await r(Y.dirname(t)),r(t)}try{if(!(await $.stat(t)).isDirectory())
+const e=new Error(`operation not permitted, mkdir '${t}'`);return e.code="EPERM",e.errno=-4048,e.path=t,e.syscall="mkdir",e};W.makeDir=async(t,e)=>{if(U(t),e=V(e),G){const r=Y.resolve(t);return J.mkdir(r,{mode:e.mode,recursive:!0})}const r=async t=>{try{await J.mkdir(t,e.mode)}catch(e){if("EPERM"===e.code)throw e;if("ENOENT"===e.code){if(Y.dirname(t)===t)throw X(t);if(e.message.includes("null bytes"))throw e;return await r(Y.dirname(t)),r(t)}try{if(!(await J.stat(t)).isDirectory())
 // This error is never exposed to the user
 // it is caught below, and the original error is thrown
-throw new Error("The path is not a directory")}catch{throw e}}};return r(Y.resolve(t))},W.makeDirSync=(t,e)=>{if(U(t),e=V(e),G){const r=Y.resolve(t);return $.mkdirSync(r,{mode:e.mode,recursive:!0})}const r=t=>{try{$.mkdirSync(t,e.mode)}catch(e){if("EPERM"===e.code)throw e;if("ENOENT"===e.code){if(Y.dirname(t)===t)throw X(t);if(e.message.includes("null bytes"))throw e;return r(Y.dirname(t)),r(t)}try{if(!$.statSync(t).isDirectory())
+throw new Error("The path is not a directory")}catch{throw e}}};return r(Y.resolve(t))},W.makeDirSync=(t,e)=>{if(U(t),e=V(e),G){const r=Y.resolve(t);return J.mkdirSync(r,{mode:e.mode,recursive:!0})}const r=t=>{try{J.mkdirSync(t,e.mode)}catch(e){if("EPERM"===e.code)throw e;if("ENOENT"===e.code){if(Y.dirname(t)===t)throw X(t);if(e.message.includes("null bytes"))throw e;return r(Y.dirname(t)),r(t)}try{if(!J.statSync(t).isDirectory())
 // This error is never exposed to the user
 // it is caught below, and the original error is thrown
 throw new Error("The path is not a directory")}catch{throw e}}};return r(Y.resolve(t))};const K=y.fromPromise,{makeDir:H,makeDirSync:Q}=W,Z=K(H);var tt={mkdirs:Z,mkdirsSync:Q,
 // alias
 mkdirp:Z,mkdirpSync:Q,ensureDir:Z,ensureDirSync:Q};const et=z;var rt=function(t,e,r,n){
 // if (!HAS_MILLIS_RES) return fs.utimes(path, atime, mtime, callback)
-et.open(t,"r+",((t,i)=>{if(t)return n(t);et.futimes(i,e,r,(t=>{et.close(i,(e=>{n&&n(t||e)}))}))}))},nt=function(t,e,r){const n=et.openSync(t,"r+");return et.futimesSync(n,e,r),et.closeSync(n)};const it=p,st=o,ot=i,ct=J("10.5.0"),at=t=>ct?it.stat(t,{bigint:!0}):it.stat(t),ut=t=>ct?it.statSync(t,{bigint:!0}):it.statSync(t);function lt(t,e){return Promise.all([at(t),at(e).catch((t=>{if("ENOENT"===t.code)return null;throw t}))]).then((([t,e])=>({srcStat:t,destStat:e})))}function ft(t,e){if(e.ino&&e.dev&&e.ino===t.ino&&e.dev===t.dev){if(ct||e.ino<Number.MAX_SAFE_INTEGER)
+et.open(t,"r+",((t,i)=>{if(t)return n(t);et.futimes(i,e,r,(t=>{et.close(i,(e=>{n&&n(t||e)}))}))}))},nt=function(t,e,r){const n=et.openSync(t,"r+");return et.futimesSync(n,e,r),et.closeSync(n)};const it=p,st=o,ot=i,ct=$("10.5.0"),at=t=>ct?it.stat(t,{bigint:!0}):it.stat(t),ut=t=>ct?it.statSync(t,{bigint:!0}):it.statSync(t);function lt(t,e){return Promise.all([at(t),at(e).catch((t=>{if("ENOENT"===t.code)return null;throw t}))]).then((([t,e])=>({srcStat:t,destStat:e})))}function ft(t,e){if(e.ino&&e.dev&&e.ino===t.ino&&e.dev===t.dev){if(ct||e.ino<Number.MAX_SAFE_INTEGER)
 // definitive answer
 return!0;
 // Use additional heuristics if we can't use 'bigint'.
@@ -196,10 +196,10 @@ if(function(t){return 0==(128&t)}(t))return function(t,e,r){return At(t,128|e,r)
 // The initial srcStat.atime cannot be trusted
 // because it is modified by the read(2) system call
 // (See https://nodejs.org/api/fs.html#fs_stat_time_values)
-Pt.stat(t,((t,n)=>t?r(t):Ct(e,n.atime,n.mtime,r)))}(e,r,(e=>e?n(e):At(r,t,n)))}function At(t,e,r){return Pt.chmod(t,e,r)}function Bt(t,e,r,n){Pt.readdir(t,((i,s)=>i?n(i):Wt(s,t,e,r,n)))}function Wt(t,e,r,n,i){const s=t.pop();return s?function(t,e,r,n,i,s){const o=Dt.join(r,e),c=Dt.join(n,e);Lt.checkPaths(o,c,"copy",((e,a)=>{if(e)return s(e);const{destStat:u}=a;Mt(u,o,c,i,(e=>e?s(e):Wt(t,r,n,i,s)))}))}(t,s,e,r,n,i):i()}var Jt=function(t,e,r,n){"function"!=typeof r||n?"function"==typeof r&&(r={filter:r}):(n=r,r={}),n=n||function(){},(r=r||{}).clobber=!("clobber"in r)||!!r.clobber,// default to true for now
+Pt.stat(t,((t,n)=>t?r(t):Ct(e,n.atime,n.mtime,r)))}(e,r,(e=>e?n(e):At(r,t,n)))}function At(t,e,r){return Pt.chmod(t,e,r)}function Bt(t,e,r,n){Pt.readdir(t,((i,s)=>i?n(i):Wt(s,t,e,r,n)))}function Wt(t,e,r,n,i){const s=t.pop();return s?function(t,e,r,n,i,s){const o=Dt.join(r,e),c=Dt.join(n,e);Lt.checkPaths(o,c,"copy",((e,a)=>{if(e)return s(e);const{destStat:u}=a;Mt(u,o,c,i,(e=>e?s(e):Wt(t,r,n,i,s)))}))}(t,s,e,r,n,i):i()}var $t=function(t,e,r,n){"function"!=typeof r||n?"function"==typeof r&&(r={filter:r}):(n=r,r={}),n=n||function(){},(r=r||{}).clobber=!("clobber"in r)||!!r.clobber,// default to true for now
 r.overwrite="overwrite"in r?!!r.overwrite:r.clobber,// overwrite falls back to clobber
 // Warn about using preserveTimestamps on 32-bit node
-r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;\n\n    see https://github.com/jprichardson/node-fs-extra/issues/269"),Lt.checkPaths(t,e,"copy",((i,s)=>{if(i)return n(i);const{srcStat:o,destStat:c}=s;Lt.checkParentPaths(t,o,e,"copy",(i=>i?n(i):r.filter?Rt(It,c,t,e,r,n):It(c,t,e,r,n)))}))};var $t={copy:(0,y.fromCallback)(Jt)};const Yt=z,Gt=o,Ut=s,Vt="win32"===process.platform;function Xt(t){["unlink","chmod","stat","lstat","rmdir","readdir"].forEach((e=>{t[e]=t[e]||Yt[e],t[e+="Sync"]=t[e]||Yt[e]})),t.maxBusyTries=t.maxBusyTries||3}function Kt(t,e,r){let n=0;"function"==typeof e&&(r=e,e={}),Ut(t,"rimraf: missing path"),Ut.strictEqual(typeof t,"string","rimraf: path should be a string"),Ut.strictEqual(typeof r,"function","rimraf: callback function required"),Ut(e,"rimraf: invalid options argument provided"),Ut.strictEqual(typeof e,"object","rimraf: options should be object"),Xt(e),Ht(t,e,(function i(s){if(s){if(("EBUSY"===s.code||"ENOTEMPTY"===s.code||"EPERM"===s.code)&&n<e.maxBusyTries){n++;
+r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;\n\n    see https://github.com/jprichardson/node-fs-extra/issues/269"),Lt.checkPaths(t,e,"copy",((i,s)=>{if(i)return n(i);const{srcStat:o,destStat:c}=s;Lt.checkParentPaths(t,o,e,"copy",(i=>i?n(i):r.filter?Rt(It,c,t,e,r,n):It(c,t,e,r,n)))}))};var Jt={copy:(0,y.fromCallback)($t)};const Yt=z,Gt=o,Ut=s,Vt="win32"===process.platform;function Xt(t){["unlink","chmod","stat","lstat","rmdir","readdir"].forEach((e=>{t[e]=t[e]||Yt[e],t[e+="Sync"]=t[e]||Yt[e]})),t.maxBusyTries=t.maxBusyTries||3}function Kt(t,e,r){let n=0;"function"==typeof e&&(r=e,e={}),Ut(t,"rimraf: missing path"),Ut.strictEqual(typeof t,"string","rimraf: path should be a string"),Ut.strictEqual(typeof r,"function","rimraf: callback function required"),Ut(e,"rimraf: invalid options argument provided"),Ut.strictEqual(typeof e,"object","rimraf: options should be object"),Xt(e),Ht(t,e,(function i(s){if(s){if(("EBUSY"===s.code||"ENOTEMPTY"===s.code||"EPERM"===s.code)&&n<e.maxBusyTries){n++;
 // try again, with the same exact callback as this one.
 return setTimeout((()=>Ht(t,e,i)),100*n)}
 // already gone
@@ -279,19 +279,19 @@ createFile:Se.createFile,createFileSync:Se.createFileSync,ensureFile:Se.createFi
 // link
 createLink:xe.createLink,createLinkSync:xe.createLinkSync,ensureLink:xe.createLink,ensureLinkSync:xe.createLinkSync,
 // symlink
-createSymlink:Be.createSymlink,createSymlinkSync:Be.createSymlinkSync,ensureSymlink:Be.createSymlink,ensureSymlinkSync:Be.createSymlinkSync};var Je={stringify:function(t,{EOL:e="\n",finalEOL:r=!0,replacer:n=null,spaces:i}={}){const s=r?e:"";return JSON.stringify(t,n,i).replace(/\n/g,e)+s},stripBom:function(t){
+createSymlink:Be.createSymlink,createSymlinkSync:Be.createSymlinkSync,ensureSymlink:Be.createSymlink,ensureSymlinkSync:Be.createSymlinkSync};var $e={stringify:function(t,{EOL:e="\n",finalEOL:r=!0,replacer:n=null,spaces:i}={}){const s=r?e:"";return JSON.stringify(t,n,i).replace(/\n/g,e)+s},stripBom:function(t){
 // we do this because JSON.parse would convert it to a utf8 string if encoding wasn't specified
-return Buffer.isBuffer(t)&&(t=t.toString("utf8")),t.replace(/^\uFEFF/,"")}};let $e;try{$e=z}catch(t){$e=e}const Ye=y,{stringify:Ge,stripBom:Ue}=Je;const Ve=Ye.fromPromise((async function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||$e,n=!("throws"in e)||e.throws;let i,s=await Ye.fromCallback(r.readFile)(t,e);s=Ue(s);try{i=JSON.parse(s,e?e.reviver:null)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}return i}));const Xe=Ye.fromPromise((async function(t,e,r={}){const n=r.fs||$e,i=Ge(e,r);await Ye.fromCallback(n.writeFile)(t,i,r)}));const Ke={readFile:Ve,readFileSync:function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||$e,n=!("throws"in e)||e.throws;try{let n=r.readFileSync(t,e);return n=Ue(n),JSON.parse(n,e.reviver)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}},writeFile:Xe,writeFileSync:function(t,e,r={}){const n=r.fs||$e,i=Ge(e,r);
+return Buffer.isBuffer(t)&&(t=t.toString("utf8")),t.replace(/^\uFEFF/,"")}};let Je;try{Je=z}catch(t){Je=e}const Ye=y,{stringify:Ge,stripBom:Ue}=$e;const Ve=Ye.fromPromise((async function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||Je,n=!("throws"in e)||e.throws;let i,s=await Ye.fromCallback(r.readFile)(t,e);s=Ue(s);try{i=JSON.parse(s,e?e.reviver:null)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}return i}));const Xe=Ye.fromPromise((async function(t,e,r={}){const n=r.fs||Je,i=Ge(e,r);await Ye.fromCallback(n.writeFile)(t,i,r)}));const Ke={readFile:Ve,readFileSync:function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||Je,n=!("throws"in e)||e.throws;try{let n=r.readFileSync(t,e);return n=Ue(n),JSON.parse(n,e.reviver)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}},writeFile:Xe,writeFileSync:function(t,e,r={}){const n=r.fs||Je,i=Ge(e,r);
 // not sure if fs.writeFileSync returns anything, but just in case
 return n.writeFileSync(t,i,r)}};var He={
 // jsonfile exports
-readJson:Ke.readFile,readJsonSync:Ke.readFileSync,writeJson:Ke.writeFile,writeJsonSync:Ke.writeFileSync};const Qe=y.fromCallback,Ze=z,tr=o,er=tt,rr=Ot.pathExists;var nr={outputFile:Qe((function(t,e,r,n){"function"==typeof r&&(n=r,r="utf8");const i=tr.dirname(t);rr(i,((s,o)=>s?n(s):o?Ze.writeFile(t,e,r,n):void er.mkdirs(i,(i=>{if(i)return n(i);Ze.writeFile(t,e,r,n)}))))})),outputFileSync:function(t,...e){const r=tr.dirname(t);if(Ze.existsSync(r))return Ze.writeFileSync(t,...e);er.mkdirsSync(r),Ze.writeFileSync(t,...e)}};const{stringify:ir}=Je,{outputFile:sr}=nr;var or=async function(t,e,r={}){const n=ir(e,r);await sr(t,n,r)};const{stringify:cr}=Je,{outputFileSync:ar}=nr;var ur=function(t,e,r){const n=cr(e,r);ar(t,n,r)};const lr=y.fromPromise,fr=He;fr.outputJson=lr(or),fr.outputJsonSync=ur,
+readJson:Ke.readFile,readJsonSync:Ke.readFileSync,writeJson:Ke.writeFile,writeJsonSync:Ke.writeFileSync};const Qe=y.fromCallback,Ze=z,tr=o,er=tt,rr=Ot.pathExists;var nr={outputFile:Qe((function(t,e,r,n){"function"==typeof r&&(n=r,r="utf8");const i=tr.dirname(t);rr(i,((s,o)=>s?n(s):o?Ze.writeFile(t,e,r,n):void er.mkdirs(i,(i=>{if(i)return n(i);Ze.writeFile(t,e,r,n)}))))})),outputFileSync:function(t,...e){const r=tr.dirname(t);if(Ze.existsSync(r))return Ze.writeFileSync(t,...e);er.mkdirsSync(r),Ze.writeFileSync(t,...e)}};const{stringify:ir}=$e,{outputFile:sr}=nr;var or=async function(t,e,r={}){const n=ir(e,r);await sr(t,n,r)};const{stringify:cr}=$e,{outputFileSync:ar}=nr;var ur=function(t,e,r){const n=cr(e,r);ar(t,n,r)};const lr=y.fromPromise,fr=He;fr.outputJson=lr(or),fr.outputJsonSync=ur,
 // aliases
-fr.outputJSON=fr.outputJson,fr.outputJSONSync=fr.outputJsonSync,fr.writeJSON=fr.writeJson,fr.writeJSONSync=fr.writeJsonSync,fr.readJSON=fr.readJson,fr.readJSONSync=fr.readJsonSync;var hr=fr;const dr=z,pr=o,yr=xt.copySync,mr=se.removeSync,wr=tt.mkdirpSync,Sr=pt;function vr(t,e,r){try{dr.renameSync(t,e)}catch(n){if("EXDEV"!==n.code)throw n;return function(t,e,r){const n={overwrite:r,errorOnExist:!0};return yr(t,e,n),mr(t)}(t,e,r)}}var Er={moveSync:function(t,e,r){const n=(r=r||{}).overwrite||r.clobber||!1,{srcStat:i}=Sr.checkPathsSync(t,e,"move");return Sr.checkParentPathsSync(t,i,e,"move"),wr(pr.dirname(e)),function(t,e,r){if(r)return mr(e),vr(t,e,r);if(dr.existsSync(e))throw new Error("dest already exists.");return vr(t,e,r)}(t,e,n)}};const gr=z,kr=o,br=$t.copy,xr=se.remove,Fr=tt.mkdirp,_r=Ot.pathExists,Or=pt;function Pr(t,e,r,n){gr.rename(t,e,(i=>i?"EXDEV"!==i.code?n(i):function(t,e,r,n){const i={overwrite:r,errorOnExist:!0};br(t,e,i,(e=>e?n(e):xr(t,n)))}(t,e,r,n):n()))}var Dr=function(t,e,r,n){"function"==typeof r&&(n=r,r={});const i=r.overwrite||r.clobber||!1;Or.checkPaths(t,e,"move",((r,s)=>{if(r)return n(r);const{srcStat:o}=s;Or.checkParentPaths(t,o,e,"move",(r=>{if(r)return n(r);Fr(kr.dirname(e),(r=>r?n(r):function(t,e,r,n){if(r)return xr(e,(i=>i?n(i):Pr(t,e,r,n)));_r(e,((i,s)=>i?n(i):s?n(new Error("dest already exists.")):Pr(t,e,r,n)))}(t,e,i,n)))}))}))};var Nr,Tr,Cr,Lr={move:(0,y.fromCallback)(Dr)};!function(t){t.exports={
+fr.outputJSON=fr.outputJson,fr.outputJSONSync=fr.outputJsonSync,fr.writeJSON=fr.writeJson,fr.writeJSONSync=fr.writeJsonSync,fr.readJSON=fr.readJson,fr.readJSONSync=fr.readJsonSync;var hr=fr;const dr=z,pr=o,yr=xt.copySync,mr=se.removeSync,wr=tt.mkdirpSync,Sr=pt;function vr(t,e,r){try{dr.renameSync(t,e)}catch(n){if("EXDEV"!==n.code)throw n;return function(t,e,r){const n={overwrite:r,errorOnExist:!0};return yr(t,e,n),mr(t)}(t,e,r)}}var Er={moveSync:function(t,e,r){const n=(r=r||{}).overwrite||r.clobber||!1,{srcStat:i}=Sr.checkPathsSync(t,e,"move");return Sr.checkParentPathsSync(t,i,e,"move"),wr(pr.dirname(e)),function(t,e,r){if(r)return mr(e),vr(t,e,r);if(dr.existsSync(e))throw new Error("dest already exists.");return vr(t,e,r)}(t,e,n)}};const gr=z,kr=o,br=Jt.copy,xr=se.remove,Fr=tt.mkdirp,_r=Ot.pathExists,Or=pt;function Pr(t,e,r,n){gr.rename(t,e,(i=>i?"EXDEV"!==i.code?n(i):function(t,e,r,n){const i={overwrite:r,errorOnExist:!0};br(t,e,i,(e=>e?n(e):xr(t,n)))}(t,e,r,n):n()))}var Dr=function(t,e,r,n){"function"==typeof r&&(n=r,r={});const i=r.overwrite||r.clobber||!1;Or.checkPaths(t,e,"move",((r,s)=>{if(r)return n(r);const{srcStat:o}=s;Or.checkParentPaths(t,o,e,"move",(r=>{if(r)return n(r);Fr(kr.dirname(e),(r=>r?n(r):function(t,e,r,n){if(r)return xr(e,(i=>i?n(i):Pr(t,e,r,n)));_r(e,((i,s)=>i?n(i):s?n(new Error("dest already exists.")):Pr(t,e,r,n)))}(t,e,i,n)))}))}))};var Nr,Tr,Cr,Lr={move:(0,y.fromCallback)(Dr)};!function(t){t.exports={
 // Export promiseified graceful-fs:
 ...p,
 // Export extra methods:
-...xt,...$t,...de,...We,...hr,...tt,...Er,...Lr,...nr,...Ot,...se};
+...xt,...Jt,...de,...We,...hr,...tt,...Er,...Lr,...nr,...Ot,...se};
 // Export fs.promises as a getter property so that we don't trigger
 // ExperimentalWarning before fs.promises is actually accessed.
 const r=e;Object.getOwnPropertyDescriptor(r,"promises")&&Object.defineProperty(t.exports,"promises",{get:()=>r.promises})}(d);
@@ -477,7 +477,7 @@ t[t.BackStep=2]="BackStep"}(Nr||(Nr={}));
  *
  * A utility class for working with file and directory paths
  */
-class Jr{
+class $r{
 /**
      * Creates a Path instance.
      * @param value the value of the path.
@@ -491,19 +491,19 @@ constructor(t){const e=t.trim();if(!this.isValidPath(e))throw new Wr("Invalid Pa
      * @param segments the segnents of the path to create.
      * @returns the generated Path
      * @throws PathException when the segments are invalid.
-     */static FromSegments(...t){try{const e=new jr;return Jr._BuildPath(t,e),new Jr(e.toArray().reverse().join(Jr.Separator))}catch(t){
+     */static FromSegments(...t){try{const e=new jr;return $r._BuildPath(t,e),new $r(e.toArray().reverse().join($r.Separator))}catch(t){
 // there was an error building the path.
 throw t}}
 /**
      * basename()
      *
      * gets the last portion of the path.
-     */basename(){return new Jr(l.basename(this.toString()))}
+     */basename(){return new $r(l.basename(this.toString()))}
 /**
      * dirname()
      *
      * gets the directory name of the path.
-     */dirname(){return new Jr(l.dirname(this.toString()))}equals(t){let e=!1;if(t instanceof Jr){const r=t;e=this.toString()===r.toString()}return e}
+     */dirname(){return new $r(l.dirname(this.toString()))}equals(t){let e=!1;if(t instanceof $r){const r=t;e=this.toString()===r.toString()}return e}
 /**
      * extension()
      *
@@ -518,12 +518,12 @@ throw t}}
      * normalize()
      *
      * normalizes the given path, resolving '..' and '.' segments.
-     */normalize(){return new Jr(l.normalize(this.toString()))}
+     */normalize(){return new $r(l.normalize(this.toString()))}
 /**
      * segments()
      *
      * returns an array consisting of the file segments.
-     */segments(){return this.toString().split(Jr.Separator)}
+     */segments(){return this.toString().split($r.Separator)}
 /**
      * toNamespacedPath()
      *
@@ -531,7 +531,7 @@ throw t}}
      *
      * This method is meaningful only on Windows systems. On POSIX systems,
      * the method is non-operational and always returns path without modifications.
-     */toNamespacedPath(){return new Jr(l.toNamespacedPath(this.toString()))}toString(){return this._value}
+     */toNamespacedPath(){return new $r(l.toNamespacedPath(this.toString()))}toString(){return this._value}
 // =======================================================================
 // helpers
 // =======================================================================
@@ -549,7 +549,7 @@ isValidPath(t){
 // make sure the path is not an empty string.
 if(0===t.length)return!1;
 // check for restricted characters
-const e="win32"===process.platform;return!Jr.RESTRICTED.test(t)&&((!e||!Jr.WINDOWS_RESTRICTED.test(t))&&!Jr.POSIX_RESTRICTED.test(t))}
+const e="win32"===process.platform;return!$r.RESTRICTED.test(t)&&((!e||!$r.WINDOWS_RESTRICTED.test(t))&&!$r.POSIX_RESTRICTED.test(t))}
 /**
      * _BuildPath()
      *
@@ -558,9 +558,9 @@ const e="win32"===process.platform;return!Jr.RESTRICTED.test(t)&&((!e||!Jr.WINDO
      * @note The built path will be in reverse order.
      * @note This function needs to be redone to improve performance.
      * @throws PathException when the path is invalid.
-     */static _BuildPath(t,e){if(t.length>0){const r=e.isEmpty,n=Jr._NormalizeSegment(t[0]);let i;for(;!n.isEmpty;)if(i=n.remove(),"string"==typeof i)e.push(i);else switch(i){case Nr.BackStep:if(r)throw new Wr("Cannot backtrack from root backtrack from root directory.");e.pop();break;case Nr.HomeDirectory:if(!r)throw new Wr("You can only specify the home directory in the beginning of the path.");e.push("~");break;default:
+     */static _BuildPath(t,e){if(t.length>0){const r=e.isEmpty,n=$r._NormalizeSegment(t[0]);let i;for(;!n.isEmpty;)if(i=n.remove(),"string"==typeof i)e.push(i);else switch(i){case Nr.BackStep:if(r)throw new Wr("Cannot backtrack from root backtrack from root directory.");e.pop();break;case Nr.HomeDirectory:if(!r)throw new Wr("You can only specify the home directory in the beginning of the path.");e.push("~");break;default:
 // here we know it is a Current Directory instruction
-r&&e.push(process.cwd())}t.shift(),Jr._BuildPath(t,e)}}
+r&&e.push(process.cwd())}t.shift(),$r._BuildPath(t,e)}}
 /**
      * _NormalizeSegment()
      *
@@ -594,7 +594,7 @@ r.add(Nr.BackStep):"."==t?
 // current directory.
 r.add(Nr.CurrentDirectory):["~","/","\\"].includes(t)?
 // home directory.
-r.add(Nr.HomeDirectory):r.add(t)})),r}}Jr.RESTRICTED=/[\[\]#%&{}<>?\s\b\0$!'"@|‘“+^`]/g,Jr.POSIX_RESTRICTED=/[\\:]/g,Jr.WINDOWS_RESTRICTED=/[\/]/g,
+r.add(Nr.HomeDirectory):r.add(t)})),r}}$r.RESTRICTED=/[\[\]#%&{}<>?\s\b\0$!'"@|‘“+^`]/g,$r.POSIX_RESTRICTED=/[\\:]/g,$r.WINDOWS_RESTRICTED=/[\/]/g,
 /**
  * Delimiter()
  *
@@ -602,7 +602,7 @@ r.add(Nr.HomeDirectory):r.add(t)})),r}}Jr.RESTRICTED=/[\[\]#%&{}<>?\s\b\0$!'"@|�
  * - Windows: ";"
  * - POSIX: ":"
  */
-Jr.Delimiter=l.delimiter,
+$r.Delimiter=l.delimiter,
 /**
  * Separator
  *
@@ -610,18 +610,18 @@ Jr.Delimiter=l.delimiter,
  * - Windows: \
  * - POSIX: /
  */
-Jr.Separator=l.sep;
+$r.Separator=l.sep;
 /**
  * FileSystemEntryException
  *
  * A Generic FileSystemEntry error.
  */
-class $r extends Br{constructor(t="FileSystem Entry Error"){super(t)}}
+class Jr extends Br{constructor(t="FileSystem Entry Error"){super(t)}}
 /**
  * FileSystemEntryNotFoundException
  *
  * An error indicating a FileSystem Entry was not found.
- */class Yr extends $r{constructor(t="FileSystem Entry Not Found."){super(t)}}
+ */class Yr extends Jr{constructor(t="FileSystem Entry Not Found."){super(t)}}
 /**
  * FileSystemEntry
  *
@@ -633,7 +633,7 @@ class $r extends Br{constructor(t="FileSystem Entry Error"){super(t)}}
      * @throws PathException when the path is invalid.
      * @throws FileSystemEntryNotFoundException when the entry does not exist.
      */
-constructor(t,e){this._path=t instanceof Jr?t:new Jr(t),this.stats=e,this._deleted=null}
+constructor(t,e){this._path=t instanceof $r?t:new $r(t),this.stats=e,this._deleted=null}
 /**
      * ForPath()
      *
@@ -644,7 +644,7 @@ constructor(t,e){this._path=t instanceof Jr?t:new Jr(t),this.stats=e,this._delet
      * @throws FileSystemEntryException when some error occurs.
      */static async ForPath(t){if(!await Gr.Exists(t))throw new Yr;
 // get the stats for the path
-let e;try{e=await Gr.GetStats(t)}catch(t){throw new $r(t.message)}return new Gr(t,e)}
+let e;try{e=await Gr.GetStats(t)}catch(t){throw new Jr(t.message)}return new Gr(t,e)}
 /**
      * Create()
      *
@@ -657,14 +657,14 @@ let e;try{e=await Gr.GetStats(t)}catch(t){throw new $r(t.message)}return new Gr(
      *
      * determines if the path exists.
      * @returns TRUE if the file exists. False it it does not.
-     */static async Exists(e){try{return await t.access(e.toString()),!0}catch(t){return!1}}
+     */static async Exists(t){try{return await Gr.GetStats(t),!0}catch(t){return!1}}
 /**
     * GetStats()
     *
     * gets the stats of the entry.
     * @throws FileSystemEntryException when the operation fails.
     * @returns FileSystemEntryStats containing stats about the entry.
-    */static async GetStats(e){try{const r=await t.stat(e.toString(),{bigint:!1});return{dev:r.dev,ino:r.ino,mode:r.mode,nlink:r.nlink,uid:r.uid,gid:r.gid,rdev:r.rdev,size:r.size,blksize:r.blksize,blocks:r.blocks,atimeMs:r.atimeMs,mtimeMs:r.mtimeMs,ctimeMs:r.ctimeMs,birthtimeMs:r.birthtimeMs,atime:c.DateTime.FromDate(r.atime,c.Timezone.UTC()),mtime:c.DateTime.FromDate(r.mtime,c.Timezone.UTC()),ctime:c.DateTime.FromDate(r.ctime,c.Timezone.UTC()),birthtime:c.DateTime.FromDate(r.birthtime,c.Timezone.UTC()),isBlockDevice:r.isBlockDevice(),isCharacterDevice:r.isCharacterDevice(),isDirectory:r.isDirectory(),isFIFO:r.isFIFO(),isFile:r.isFile(),isSocket:r.isSocket(),isSymbolicLink:r.isSymbolicLink()}}catch(t){throw new $r(t.message)}}get createdOn(){var t;return null===(t=this.stats)||void 0===t?void 0:t.birthtime}get deletedOn(){return this._deleted}get isDeleted(){return null!=this.deletedOn}get isDirectory(){return this.stats.isDirectory}get isFile(){return this.stats.isFile}get isLink(){return this.stats.isSymbolicLink}get path(){return this._path}get updatedOn(){return this.stats.mtime}
+    */static async GetStats(e){try{const r=await t.stat(e.toString(),{bigint:!1});return{dev:r.dev,ino:r.ino,mode:r.mode,nlink:r.nlink,uid:r.uid,gid:r.gid,rdev:r.rdev,size:r.size,blksize:r.blksize,blocks:r.blocks,atimeMs:r.atimeMs,mtimeMs:r.mtimeMs,ctimeMs:r.ctimeMs,birthtimeMs:r.birthtimeMs,atime:c.DateTime.FromDate(r.atime,c.Timezone.UTC()),mtime:c.DateTime.FromDate(r.mtime,c.Timezone.UTC()),ctime:c.DateTime.FromDate(r.ctime,c.Timezone.UTC()),birthtime:c.DateTime.FromDate(r.birthtime,c.Timezone.UTC()),isBlockDevice:r.isBlockDevice(),isCharacterDevice:r.isCharacterDevice(),isDirectory:r.isDirectory(),isFIFO:r.isFIFO(),isFile:r.isFile(),isSocket:r.isSocket(),isSymbolicLink:r.isSymbolicLink()}}catch(t){const r=t.code="",n=t.message;throw r?new Yr(`Entry ${e.toString()} not found.`):new Jr(n)}}get createdOn(){var t;return null===(t=this.stats)||void 0===t?void 0:t.birthtime}get deletedOn(){return this._deleted}get isDeleted(){return null!=this.deletedOn}get isDirectory(){return this.stats.isDirectory}get isFile(){return this.stats.isFile}get isLink(){return this.stats.isSymbolicLink}get path(){return this._path}get updatedOn(){return this.stats.mtime}
 /**
      * delete()
      *
@@ -675,7 +675,7 @@ let e;try{e=await Gr.GetStats(t)}catch(t){throw new $r(t.message)}return new Gr(
  * FileException
  *
  * A Generic File Exception.
- */class Ur extends $r{constructor(t="File Error"){super(t)}}
+ */class Ur extends Jr{constructor(t="File Error"){super(t)}}
 /**
  * FileNotFoundException
  *
@@ -706,7 +706,7 @@ constructor(t,e){super(t,e)}
      * @returns the created FileSystem Entry.
      */static async Create(e,r){if(await Kr.Exists(e))throw new Xr;
 // create the file.
-const n=e instanceof Jr?e:new Jr(e.toString());try{await t.writeFile(n.toString(),"")}catch(t){throw new Ur(t.message)}return Kr.ForPath(n)}
+const n=e instanceof $r?e:new $r(e.toString());try{await t.writeFile(n.toString(),"")}catch(t){throw new Ur(t.message)}return Kr.ForPath(n)}
 /**
      * Exist()
      *
@@ -714,7 +714,7 @@ const n=e instanceof Jr?e:new Jr(e.toString());try{await t.writeFile(n.toString(
      * @param path the path to check.
      * @returns TRUE if the file exists. FALSE otherwise.
      * @throws FileException if an error occurs performing the operation.
-     */static async Exists(t){try{const e=await super.Exists(t),r=await Kr.GetStats(t);return e&&r.isFile}catch(t){throw new Ur(t.message)}}
+     */static async Exists(t){let e=null;try{e=(await super.GetStats(t)).isFile}catch(t){e=!1}return e}
 /**
      * ForPath()
      *
@@ -727,7 +727,7 @@ const n=e instanceof Jr?e:new Jr(e.toString());try{await t.writeFile(n.toString(
 // get the stats
 const e=await Kr.GetStats(t);
 // return the reference
-return new Kr(t,e)}catch(t){throw t instanceof $r?new Ur(t.message):t}}
+return new Kr(t,e)}catch(t){throw t instanceof Jr?new Ur(t.message):t}}
 /**
      * copy()
      *
@@ -737,7 +737,7 @@ return new Kr(t,e)}catch(t){throw t instanceof $r?new Ur(t.message):t}}
      * @throws FileException when the file is deleted.
      */async copy(e,r){
 // resolve the arguments.
-const n=e instanceof Jr?e:new Jr(e);let i;i=r?{mode:r.mode?r.mode:null,override:!!r.override&&r.override}:{mode:null,override:!1};
+const n=e instanceof $r?e:new $r(e);let i;i=r?{mode:r.mode?r.mode:null,override:!!r.override&&r.override}:{mode:null,override:!1};
 // make sure the destination file does not already exist.
 if(await Gr.Exists(n))throw new Xr;
 // make sure the file has not been deleted.
@@ -762,7 +762,7 @@ try{await t.rm(this.path.toString(),{force:r.force,recursive:r.recursive}),super
      * @param to the destination to move the filesystem entry to.
      * @param options move options.
      * @returns the copied FilSystem Entry.
-     */async move(e,r){const n=e instanceof Jr?e:new Jr(e);let i;i=r?{override:!!r.override&&r.override}:{override:!1};
+     */async move(e,r){const n=e instanceof $r?e:new $r(e);let i;i=r?{override:!!r.override&&r.override}:{override:!1};
 // make sure the destination is available.
 const s=await Gr.Exists(n);if(s)throw new Xr;if(s&&!i.override)throw new Xr;
 // move the file.
@@ -776,7 +776,7 @@ try{return await t.rename(this.path.toString(),n.toString()),await Kr.ForPath(n)
      * @throws FileException when the operation encounters an error.
      */async rename(e){
 // resolve the new file path.
-const r=Jr.FromSegments(this.path.dirname(),e);
+const r=$r.FromSegments(this.path.dirname(),e);
 // rename the file.
 try{return await t.rename(this.path.toString(),r.toString()),await Kr.ForPath(r)}catch(t){throw new Ur(t.message)}}serialize(){return JSON.stringify({path:this.path.toString(),created_on:this.createdOn.toString(),updated_on:this.updatedOn.toString()})}}
 // file enums
@@ -804,7 +804,7 @@ exports.LinkType=void 0,(Cr=exports.LinkType||(exports.LinkType={})).File="file"
  *
  * A General Link error
  */
-class Hr extends $r{constructor(t="Link Error"){super(t)}}
+class Hr extends Jr{constructor(t="Link Error"){super(t)}}
 /**
  * LinkNotFoundException
  */class Qr extends Hr{constructor(t="Link Not Found"){super(t)}}
@@ -833,7 +833,7 @@ constructor(t,e){super(t,e),this._target=null}
 // make sure the file does not already exists.
 if(await tn.Exists(e))throw new Zr;
 // create the Link.
-const s=e instanceof Jr?e:new Jr(e.toString()),o=r instanceof Jr?r:new Jr(r);let c;c=n?{type:n.type?n.type:exports.LinkType.File}:{type:exports.LinkType.File};try{await t.symlink(o.toString(),s.toString(),null===(i=c.type)||void 0===i?void 0:i.toString())}catch(t){throw new Hr(t.message)}return await tn.ForPath(s)}
+const s=e instanceof $r?e:new $r(e.toString()),o=r instanceof $r?r:new $r(r);let c;c=n?{type:n.type?n.type:exports.LinkType.File}:{type:exports.LinkType.File};try{await t.symlink(o.toString(),s.toString(),null===(i=c.type)||void 0===i?void 0:i.toString())}catch(t){throw new Hr(t.message)}return await tn.ForPath(s)}
 /**
      * Exist()
      *
@@ -854,7 +854,7 @@ const s=e instanceof Jr?e:new Jr(e.toString()),o=r instanceof Jr?r:new Jr(r);let
 // get the stats
 const e=await tn.GetStats(t);
 // return the reference
-return new tn(t,e)}catch(t){throw t instanceof $r?new Hr(t.message):t}}
+return new tn(t,e)}catch(t){throw t instanceof Jr?new Hr(t.message):t}}
 /**
      * delete()
      *
@@ -875,12 +875,12 @@ try{await t.unlink(this.path.toString()),super.delete()}catch(t){throw new Hr(t.
      * gets the target object of the link.
      * @throws LinkException when the operation fails.
      * @returns the path targeted by the link.
-     */async target(){if(!this._target)try{const e=await t.readlink(this.path.toString());this._target=new Jr(e)}catch(t){throw new Hr(t.message)}return this._target}}
+     */async target(){if(!this._target)try{const e=await t.readlink(this.path.toString());this._target=new $r(e)}catch(t){throw new Hr(t.message)}return this._target}}
 /**
  * DirectoryException
  *
  * A general directory error.
- */class en extends $r{constructor(t="Directory Error"){super(t)}}
+ */class en extends Jr{constructor(t="Directory Error"){super(t)}}
 /**
  * DirectoryNotFoundException
  *
@@ -910,7 +910,7 @@ constructor(t,e){super(t,e)}
      * @returns the created FileSystem Entry.
      */static async Create(e,r){if(await sn.Exists(e))throw new nn;
 // create the directory.
-const n=e instanceof Jr?e:new Jr(e.toString());try{await t.mkdir(n.toString(),{recursive:!0,mode:"0o777"})}catch(t){throw new en(t.message)}return sn.ForPath(n)}
+const n=e instanceof $r?e:new $r(e.toString());try{await t.mkdir(n.toString(),{recursive:!0,mode:"0o777"})}catch(t){throw new en(t.message)}return sn.ForPath(n)}
 /**
      * ForPath()
      *
@@ -923,7 +923,7 @@ const n=e instanceof Jr?e:new Jr(e.toString());try{await t.mkdir(n.toString(),{r
 // get the stats
 const e=await sn.GetStats(t);
 // return the reference
-return new sn(t,e)}catch(t){throw t instanceof $r?new en(t.message):t}}
+return new sn(t,e)}catch(t){throw t instanceof Jr?new en(t.message):t}}
 /**
      * Current()
      *
@@ -937,7 +937,7 @@ return new sn(t,e)}catch(t){throw t instanceof $r?new en(t.message):t}}
      * @param path the path to check.
      * @returns TRUE if the directory exists. FALSE otherwise.
      * @throws DirectoryException if an error occurs performing the operation.
-     */static async Exists(t){try{const e=await super.Exists(t),r=await sn.GetStats(t);return e&&r.isDirectory}catch(t){throw new en(t.message)}}
+     */static async Exists(t){let e=null;try{e=(await super.GetStats(t)).isDirectory}catch(t){e=!1}return e}
 /**
      * contents()
      *
@@ -963,7 +963,7 @@ return new sn(t,e)}catch(t){throw t instanceof $r?new en(t.message):t}}
 // resolve arguments
 let r;r=e?{recursive:e.recursive,overwrite:e.overwrite}:{overwrite:!1,recursive:!1};
 // make sure the destination and file exists
-const n=t instanceof Jr?t:new Jr(t.toString());if(await Gr.Exists(n))throw new nn;
+const n=t instanceof $r?t:new $r(t.toString());if(await Gr.Exists(n))throw new nn;
 // copy the directory.
 try{await h.copy(this.path.toString(),n.toString(),{recursive:r.recursive,overwrite:r.overwrite,errorOnExist:!0})}catch(t){
 // an error occured.
@@ -988,7 +988,7 @@ try{await t.rmdir(this.path.toString(),{recursive:r.recursive,maxRetries:r.maxRe
      * @returns the copied movable object.
      * @throws DirectoryAlreadyExistsException when the destination already exists.
      * @throws DirectoryException when the operation fails.
-     */async move(t,e){const r=t instanceof Jr?t:new Jr(t);let n;n=e?{overwrite:!!e.overwrite&&e.overwrite}:{overwrite:!1};
+     */async move(t,e){const r=t instanceof $r?t:new $r(t);let n;n=e?{overwrite:!!e.overwrite&&e.overwrite}:{overwrite:!1};
 // make sure the destination is available.
 const i=await Gr.Exists(r);if(i)throw new nn;if(i&&!n.overwrite)throw new nn;
 // move the file.
@@ -1000,7 +1000,7 @@ try{return await h.move(this.path.toString(),r.toString(),{overwrite:n.overwrite
      * @param newName the new name of the directory.
      */async rename(e){
 // resolve the new file path.
-const r=Jr.FromSegments(this.path.dirname(),e);
+const r=$r.FromSegments(this.path.dirname(),e);
 // rename the file.
 try{return await t.rename(this.path.toString(),r.toString()),sn.ForPath(r)}catch(t){throw new en(t.message)}}serialize(){return JSON.stringify({path:this.path.toString(),created_on:this.createdOn.toString(),updated_on:this.updatedOn.toString()})}}class on extends Br{constructor(t="File Stream Error"){super(t)}}
 /**
@@ -1141,7 +1141,7 @@ let r,n;return r=e?{arguments:e.arguments?e.arguments:[],fork:!!e.fork&&e.fork,c
      *
      * sends a message to the child process.
      * @throws ProcessException when the message cannot be sent, like if there is no connection to the child/parent process.
-     */sendMessage(t){return new Promise(((e,r)=>{this.canBeMessaged()?this.childProcess.send(t,(t=>{t?r(new ln(t.message)):e()})):r(new ln("Message cannot be sent"))}))}toString(){return this.id().toString()}}exports.Directory=sn,exports.DirectoryAlreadyExistsException=nn,exports.DirectoryException=en,exports.DirectoryNotFoundException=rn,exports.File=Kr,exports.FileAlreadyExistsException=Xr,exports.FileException=Ur,exports.FileNotFoundException=Vr,exports.FileReader=un,exports.FileStream=an,exports.FileStreamDataException=cn,exports.FileStreamException=on,exports.FileSystemEntry=Gr,exports.FileSystemEntryException=$r,exports.FileSystemEntryNotFoundException=Yr,exports.FileWriter=
+     */sendMessage(t){return new Promise(((e,r)=>{this.canBeMessaged()?this.childProcess.send(t,(t=>{t?r(new ln(t.message)):e()})):r(new ln("Message cannot be sent"))}))}toString(){return this.id().toString()}}exports.Directory=sn,exports.DirectoryAlreadyExistsException=nn,exports.DirectoryException=en,exports.DirectoryNotFoundException=rn,exports.File=Kr,exports.FileAlreadyExistsException=Xr,exports.FileException=Ur,exports.FileNotFoundException=Vr,exports.FileReader=un,exports.FileStream=an,exports.FileStreamDataException=cn,exports.FileStreamException=on,exports.FileSystemEntry=Gr,exports.FileSystemEntryException=Jr,exports.FileSystemEntryNotFoundException=Yr,exports.FileWriter=
 /**
  * FileWriter
  *
@@ -1196,4 +1196,4 @@ this._batchWrites&&this._batchIsFull()&&this._flush()}
      *
      * writes a line of data to the file.
      * @param x the data to write to te file.
-     */async writeLine(t){await this.write(`${t}\n`)}},exports.Link=tn,exports.LinkAlreadyExistsException=Zr,exports.LinkException=Hr,exports.LinkNotFoundException=Qr,exports.Path=Jr,exports.PathException=Wr,exports.Process=hn,exports.ProcessException=ln,exports.ProcessFailedException=fn,exports.SystemException=Br;
+     */async writeLine(t){await this.write(`${t}\n`)}},exports.Link=tn,exports.LinkAlreadyExistsException=Zr,exports.LinkException=Hr,exports.LinkNotFoundException=Qr,exports.Path=$r,exports.PathException=Wr,exports.Process=hn,exports.ProcessException=ln,exports.ProcessFailedException=fn,exports.SystemException=Br;
