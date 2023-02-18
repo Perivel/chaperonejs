@@ -56,7 +56,7 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
         try {
             await mkdir(dirPath.toString(), {
                 recursive: true,
-                mode: '0o777'
+                //mode: '0o777'
             });
         }
         catch (e) {

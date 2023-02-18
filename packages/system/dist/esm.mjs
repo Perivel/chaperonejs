@@ -903,7 +903,7 @@ constructor(t,e){super(t,e)}
      * @returns the created FileSystem Entry.
      */static async Create(t,e){if(await kn.Exists(t))throw new bn;
 // create the directory.
-const r=t instanceof an?t:new an(t.toString());try{await a(r.toString(),{recursive:!0,mode:"0o777"})}catch(t){throw new gn(t.message)}return kn.ForPath(r)}
+const r=t instanceof an?t:new an(t.toString());try{await a(r.toString(),{recursive:!0})}catch(t){throw new gn(t.message)}return kn.ForPath(r)}
 /**
      * ForPath()
      *

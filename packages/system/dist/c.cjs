@@ -910,7 +910,7 @@ constructor(t,e){super(t,e)}
      * @returns the created FileSystem Entry.
      */static async Create(e,r){if(await sn.Exists(e))throw new nn;
 // create the directory.
-const n=e instanceof $r?e:new $r(e.toString());try{await t.mkdir(n.toString(),{recursive:!0,mode:"0o777"})}catch(t){throw new en(t.message)}return sn.ForPath(n)}
+const n=e instanceof $r?e:new $r(e.toString());try{await t.mkdir(n.toString(),{recursive:!0})}catch(t){throw new en(t.message)}return sn.ForPath(n)}
 /**
      * ForPath()
      *
