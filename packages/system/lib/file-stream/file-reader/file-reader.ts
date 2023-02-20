@@ -14,10 +14,9 @@ import { FileStreamException, FileStreamDataException } from '../exceptions';
 export class FileReader extends FileStream implements FileReaderInterface {
 
     private readonly _stream: ReadStream;
-    private readonly _encoding: BufferEncoding;
     private _isClosed: boolean;
     private _bytesRead: number;
-    private _fileSize: number | null | bigint;
+    private _fileSize: number | bigint;
 
     /**
      * Creates a FileReader stream.
@@ -25,13 +24,12 @@ export class FileReader extends FileStream implements FileReaderInterface {
      * @param options options for reading a file.
      */
     constructor(file: File, options: FileReaderOptions = { encoding: 'utf-8' }) {
-        super(file);
-        this._encoding = options.encoding;
+        super(file, options.encoding);
         this._isClosed = false;
         this._bytesRead = 0;
-        this._fileSize = null;
-        this._stream = createReadStream(this.file().path.toString(), {
-            encoding: this._encoding,
+        this._fileSize = file.stats.size;
+        this._stream = createReadStream(this.file.path.toString(), {
+            encoding: this.encoding,
             autoClose: true
         });
         this._stream.pause();
@@ -54,7 +52,7 @@ export class FileReader extends FileStream implements FileReaderInterface {
         let contents = '';
         let data: Buffer;
         while (data = this._stream.read()) {
-            contents += data.toString(this.encoding());
+            contents += data.toString(this.encoding);
         }
         return contents;
     }
@@ -70,22 +68,12 @@ export class FileReader extends FileStream implements FileReaderInterface {
         this._isClosed = true;
     }
 
-    /**
-     * encoding()
-     * 
-     * the stream encoding.
-     */
-
-    public encoding(): BufferEncoding {
-        return this._encoding;
-    }
-
     public equals(suspect: any): boolean {
         let isEqual = false;
 
         if (suspect instanceof FileReader) {
             const other = suspect as FileReader;
-            isEqual = super.equals(other as FileStream) && (this.encoding() === other.encoding());
+            isEqual = super.equals(other as FileStream) && (this.encoding === other.encoding);
         }
 
         return isEqual;
@@ -98,10 +86,6 @@ export class FileReader extends FileStream implements FileReaderInterface {
      */
 
     public async hasNext(): Promise<boolean> {
-        if (!this._fileSize) {
-            const stats = this.file().stats;
-            this._fileSize = stats.size;
-        }
         return this._bytesRead < this._fileSize;
     }
 
@@ -120,21 +104,16 @@ export class FileReader extends FileStream implements FileReaderInterface {
             throw new FileStreamException();
         }
 
-        if (!this._fileSize) {
-            const stats = this.file().stats;
-            this._fileSize = stats.size;
-        }
-
         size = size > FileReader.MAX_BYTES ? FileReader.MAX_BYTES : size;
         const data = this._stream.read(size);
 
         if (data) {
             this._bytesRead += size;
-            return (data as Buffer).toString(this.encoding());
+            return (data as Buffer).toString(this.encoding);
         }
         else {
             // no data to read.
-            throw new FileStreamDataException();
+            throw new FileStreamDataException('No data to read');
         }
     }
 }

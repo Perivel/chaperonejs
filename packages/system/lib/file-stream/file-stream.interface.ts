@@ -22,13 +22,7 @@ export interface FileStreamInterface {
      * the source file of the stream.
      */
     
-    file(): FileInterface;
-
-    /**
-     * encoding()
-     * 
-     * the stream encoding.
-     */
+    readonly file: FileInterface;
     
-    encoding(): BufferEncoding;
+    readonly encoding: BufferEncoding;
 }

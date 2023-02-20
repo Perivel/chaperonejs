@@ -16,9 +16,6 @@ export class FileWriter extends FileStream implements FileWriterInterface {
     // the write stream object
     private readonly _stream: WriteStream;
 
-    // the encoding of the stream
-    private readonly _encoding: BufferEncoding;
-
     // flag to indicate whether or not the stream is closed.
     private _isClosed: boolean;
 
@@ -35,12 +32,11 @@ export class FileWriter extends FileStream implements FileWriterInterface {
     private readonly _batchSize: number|null;
 
     constructor(file: File, options: FileWriterOptions = { encoding: 'utf-8', batch: { size: 30 } }) {
-        super(file);
+        super(file, options.encoding);
         this._isClosed = false;
         this._numWrites = 0;
-        this._encoding = options.encoding;
-        this._stream = createWriteStream(this.file().path.toString(), {
-            encoding: this._encoding,
+        this._stream = createWriteStream(this.file.path.toString(), {
+            encoding: this.encoding,
             autoClose: true
         });
         
@@ -103,16 +99,6 @@ export class FileWriter extends FileStream implements FileWriterInterface {
             this._stream.cork();
             this._streamIsCorked = true;
         }
-    }
-
-    /**
-    * encoding()
-    * 
-    * the stream encoding.
-    */
-
-    public encoding(): BufferEncoding {
-        return this._encoding;
     }
 
     /**

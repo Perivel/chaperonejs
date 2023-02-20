@@ -173,6 +173,10 @@ export class FileSystemEntry implements Equatable, Serializable {
         return this.stats.isSymbolicLink;
     }
 
+    public name(): string {
+        return this.path.basename().toString();
+    }
+
     get path(): Path {
         return this._path;
     }
