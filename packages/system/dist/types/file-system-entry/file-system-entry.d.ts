@@ -57,6 +57,7 @@ export declare class FileSystemEntry implements Equatable, Serializable {
     get isDirectory(): boolean;
     get isFile(): boolean;
     get isLink(): boolean;
+    name(): string;
     get path(): Path;
     get updatedOn(): DateTime;
     /**

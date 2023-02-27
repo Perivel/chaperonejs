@@ -13,7 +13,7 @@ import { LinkedListInterface } from "./linked-list.interface";
 export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, Iterable<T> {
   private head: Node<T> | null;
   private readonly comparator: Comparator<T> | null;
-  private iteratorNode: Node<T>|null;
+  private iteratorNode: Node<T> | null;
 
   constructor(comparator: Comparator<T> | null = null) {
     super();
@@ -21,8 +21,8 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
     this.comparator = comparator;
     this.iteratorNode = null;
   }
-  
-  public [Symbol.iterator](): Iterator<T, T|undefined, T|undefined> {
+
+  public [Symbol.iterator](): Iterator<T, T | undefined, T | undefined> {
     return new ListIterator(this.toArray());
   }
 
@@ -105,10 +105,10 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
    * 
    * clears the linked list.
    */
-  
+
   public clear(): void {
-      this.head = null;
-      super.clear();
+    this.head = null;
+    super.clear();
   }
 
   /**
@@ -138,6 +138,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
    * @param target the target index.
    * @returns the value at the specified target index.
    */
+
   private getValue(head: Node<T>, index: number, target: number): T {
     if (index === target) {
       return head.value;
@@ -148,6 +149,63 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
   }
 
   /**
+  * indexOf()
+   * 
+   * gets the index of the first occurance of suspect.
+   * @param suspect the suspect to check for.
+   * @returns the index of the first occurance of the suspect or -1 if it does not exist.
+   */
+
+  public indexOf(suspect: T): number {
+    let index = -1;
+
+    if (!this.isEmpty) {
+      let current = 0;
+      let node = this.head;
+
+      do {
+        if (node!.compareTo(suspect) === ComparisonResult.Same) {
+          index = current;
+        }
+        else {
+          current++;
+          node = node!.next;
+        }
+      }
+      while ((index < 0) && (current < this.size));
+    }
+    return index;
+  }
+
+  /**
+   * lastIndexOf()
+   * 
+   * gets the index of the last occurance of suspect.
+   * @param suspect the suspect to check for.
+   * @returns the index of the last occurance of the suspect or -1 if it does not exist.
+   */
+
+  public lastIndexOf(suspect: T): number {
+    let index = -1;
+
+    if (!this.isEmpty) {
+      let current = 0;
+      let node = this.head;
+
+      do {
+        if (node!.compareTo(suspect) === ComparisonResult.Same) {
+          index = current;
+        }
+        current++;
+        node = node!.next;
+      }
+      while (node !== null)
+    }
+
+    return index;
+  }
+
+  /**
    * remove()
    * 
    * removes the value at the specified index.
@@ -155,7 +213,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
    * @returns the removed items.
    * @throws OutOfBoundsException when the index is out of bounds.
    */
-  
+
   public remove(index: number): T {
     if (!this.isEmpty && (index >= 0) && (index < this.size)) {
       return this.reemoveValue(this.head!, null, 0, index);
@@ -198,14 +256,14 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
   }
 
   public toArray(): T[] {
-      const arr: T[] = [];
-      let node: Node<T>|null = this.head;
+    const arr: T[] = [];
+    let node: Node<T> | null = this.head;
 
-      while(node !== null) {
-        arr.push(node.value);
-        node = node.next;
-      }
+    while (node !== null) {
+      arr.push(node.value);
+      node = node.next;
+    }
 
-      return arr;
+    return arr;
   }
 }

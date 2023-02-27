@@ -1,4 +1,4 @@
-import { Comparator, OutOfBoundsException } from '@chaperone/util';
+import { Comparator, compare, OutOfBoundsException } from '@chaperone/util';
 import { List } from './../list';
 import { ListIterator } from './../list-iterator';
 import { ArrayListInterface } from './array-list.interface';
@@ -15,32 +15,12 @@ export class ArrayList<T> extends List<T> implements ArrayListInterface<T>, Iter
     private readonly comparator: Comparator<T>;
     private _iteratorPos: number;
 
-    constructor(values: T[] = [], comparator: Comparator<T> | null = null) {
+    constructor(values: T[] = [], comparator: Comparator<T> = compare) {
         super();
         this.items = values;
         this.setSize(values.length);
         this._iteratorPos = 0;
-
-        if (comparator) {
-            this.comparator = comparator;
-        }
-        else {
-            // use default comparator.
-            this.comparator = (a, b): number => {
-                const aStr = a as String;
-                const bStr = b as String;
-
-                if (aStr.length < bStr.length) {
-                    return -1;
-                }
-                else if (aStr.length > bStr.length) {
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-            }
-        }
+        this.comparator = comparator;
     }
 
     public [Symbol.iterator](): Iterator<T, T|undefined, T|undefined> {
@@ -102,6 +82,48 @@ export class ArrayList<T> extends List<T> implements ArrayListInterface<T>, Iter
         else {
             throw new OutOfBoundsException();
         }
+    }
+
+    /**
+     * indexOf()
+     * 
+     * gets the index of the first occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the first occurance of the suspect or -1 if it does not exist.
+     */
+
+    public indexOf(suspect: T): number {
+        let index = -1;
+        let current = 0;
+
+        for (current = 0; current < this.size; current++) {
+            if (this.comparator(this.items[current], suspect) === 0) {
+                index = current;
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * lastIndexOf()
+     * 
+     * gets the index of the last occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the last occurance of the suspect or -1 if it does not exist.
+     */
+    
+    public lastIndexOf(suspect: T): number {
+        let index = -1;
+        let current = this.size - 1;
+
+        for (current = this.size - 1; current >= 0; current--) {
+            if (this.comparator(this.items[current], suspect) === 0) {
+                index = current;
+            }
+        }
+
+        return index;
     }
 
     /**

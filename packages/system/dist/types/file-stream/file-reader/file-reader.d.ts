@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { FileStream } from './../file-stream';
 import { File } from './../../file';
 import { FileReaderInterface } from './file-reader.interface';
@@ -10,7 +9,6 @@ import { FileReaderOptions } from './file-reader-options.interface';
  */
 export declare class FileReader extends FileStream implements FileReaderInterface {
     private readonly _stream;
-    private readonly _encoding;
     private _isClosed;
     private _bytesRead;
     private _fileSize;
@@ -34,12 +32,6 @@ export declare class FileReader extends FileStream implements FileReaderInterfac
      * closes the file stream.
      */
     close(): Promise<void>;
-    /**
-     * encoding()
-     *
-     * the stream encoding.
-     */
-    encoding(): BufferEncoding;
     equals(suspect: any): boolean;
     /**
      * hasNext()

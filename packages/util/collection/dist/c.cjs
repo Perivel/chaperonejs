@@ -29,7 +29,7 @@
  * Node
  *
  * A Generic Node.
- */class i{value;_next;compare;constructor(t,e=null,s=null){this.value=t,this._next=e,this.compare=s||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(e){let s;switch(this.compare(this.value,e)){case-1:s=t.ComparisonResult.Less;break;case 1:s=t.ComparisonResult.Greater;break;default:s=t.ComparisonResult.Same}return s}}class r extends e{constructor(){super()}}
+ */class i{value;_next;compare;constructor(e,s=null,i=null){this.value=e,this._next=s,this.compare=i||t.compare}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(e){let s;switch(this.compare(this.value,e)){case-1:s=t.ComparisonResult.Less;break;case 1:s=t.ComparisonResult.Greater;break;default:s=t.ComparisonResult.Same}return s}}class r extends e{constructor(){super()}}
 /**
  * ListIterator
  *
@@ -39,7 +39,7 @@
  * LinkedList
  *
  * A Linked List.
- */class h extends r{head;comparator;iteratorNode;constructor(t=null){super(),this.head=null,this.comparator=t,this.iteratorNode=null}[Symbol.iterator](){return new n(this.toArray())}
+ */class o extends r{head;comparator;iteratorNode;constructor(t=null){super(),this.head=null,this.comparator=t,this.iteratorNode=null}[Symbol.iterator](){return new n(this.toArray())}
 /**
      * add()
      *
@@ -91,6 +91,20 @@
      * @returns the value at the specified target index.
      */getValue(t,e,s){return e===s?t.value:this.getValue(t.next,e++,s)}
 /**
+    * indexOf()
+     *
+     * gets the index of the first occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the first occurance of the suspect or -1 if it does not exist.
+     */indexOf(e){let s=-1;if(!this.isEmpty){let i=0,r=this.head;do{r.compareTo(e)===t.ComparisonResult.Same?s=i:(i++,r=r.next)}while(s<0&&i<this.size)}return s}
+/**
+     * lastIndexOf()
+     *
+     * gets the index of the last occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the last occurance of the suspect or -1 if it does not exist.
+     */lastIndexOf(e){let s=-1;if(!this.isEmpty){let i=0,r=this.head;do{r.compareTo(e)===t.ComparisonResult.Same&&(s=i),i++,r=r.next}while(null!==r)}return s}
+/**
      * remove()
      *
      * removes the value at the specified index.
@@ -120,7 +134,7 @@ this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s
  * ArrayList
  *
  * An Array List.
- */class o extends r{items;comparator;_iteratorPos;constructor(t=[],e=null){super(),this.items=t,this.setSize(t.length),this._iteratorPos=0,this.comparator=e||((t,e)=>{const s=t,i=e;return s.length<i.length?-1:s.length>i.length?1:0})}[Symbol.iterator](){return new n(this.toArray())}
+ */class h extends r{items;comparator;_iteratorPos;constructor(e=[],s=t.compare){super(),this.items=e,this.setSize(e.length),this._iteratorPos=0,this.comparator=s}[Symbol.iterator](){return new n(this.toArray())}
 /**
      * add()
      *
@@ -147,6 +161,20 @@ this.head=t.next,this.setSize(this.size-1),t.value):this.reemoveValue(t.next,t,s
      * @returns the element at the specified index.
      * @throws OutOfBoundsException when the index is out of bounds.
      */get(e){if(!this.isEmpty&&e>=0&&e<this.size)return this.items[e];throw new t.OutOfBoundsException}
+/**
+     * indexOf()
+     *
+     * gets the index of the first occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the first occurance of the suspect or -1 if it does not exist.
+     */indexOf(t){let e=-1,s=0;for(s=0;s<this.size;s++)0===this.comparator(this.items[s],t)&&(e=s);return e}
+/**
+     * lastIndexOf()
+     *
+     * gets the index of the last occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the last occurance of the suspect or -1 if it does not exist.
+     */lastIndexOf(t){let e=-1,s=this.size-1;for(s=this.size-1;s>=0;s--)0===this.comparator(this.items[s],t)&&(e=s);return e}
 /**
      * remove()
      *
@@ -186,7 +214,7 @@ class l extends i{priority;constructor(t,e,s=null,i=null){super(t,s,i),this.prio
  * PriorityQueue
  *
  * A priorityQueue.
- */exports.ArrayList=o,exports.Collection=e,exports.CollectionException=s,exports.LinkedList=h,exports.List=r,exports.ListIterator=n,exports.Node=i,exports.PriorityNode=l,exports.PriorityQueue=class extends e{head;compareFn;constructor(t=null){super(),this.compareFn=t,this.head=null}
+ */exports.ArrayList=h,exports.Collection=e,exports.CollectionException=s,exports.LinkedList=o,exports.List=r,exports.ListIterator=n,exports.Node=i,exports.PriorityNode=l,exports.PriorityQueue=class extends e{head;compareFn;constructor(t=null){super(),this.compareFn=t,this.head=null}
 /**
      * add()
      *

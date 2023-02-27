@@ -56,41 +56,41 @@ this.bufferSize=65536,n=n||{};for(
 var s=Object.keys(n),o=0,c=s.length;o<c;o++){var a=s[o];this[a]=n[a]}this.encoding&&this.setEncoding(this.encoding);if(void 0!==this.start){if("number"!=typeof this.start)throw TypeError("start must be a Number");if(void 0===this.end)this.end=1/0;else if("number"!=typeof this.end)throw TypeError("end must be a Number");if(this.start>this.end)throw new Error("start must be <= end");this.pos=this.start}if(null!==this.fd)return void process.nextTick((function(){i._read()}));t.open(this.path,this.flags,this.mode,(function(t,e){if(t)return i.emit("error",t),void(i.readable=!1);i.fd=e,i.emit("open",e),i._read()}))},WriteStream:function e(r,n){if(!(this instanceof e))return new e(r,n);k.call(this),this.path=r,this.fd=null,this.writable=!0,this.flags="w",this.encoding="binary",this.mode=438,/*=0666*/
 this.bytesWritten=0,n=n||{};for(
 // Mixin options into this
-var i=Object.keys(n),s=0,o=i.length;s<o;s++){var c=i[s];this[c]=n[c]}if(void 0!==this.start){if("number"!=typeof this.start)throw TypeError("start must be a Number");if(this.start<0)throw new Error("start must be >= zero");this.pos=this.start}this.busy=!1,this._queue=[],null===this.fd&&(this._open=t.open,this._queue.push([this._open,this.path,this.flags,this.mode,void 0]),this.flush())}}};var x=function(t){if(null===t||"object"!=typeof t)return t;if(t instanceof Object)var e={__proto__:F(t)};else e=Object.create(null);return Object.getOwnPropertyNames(t).forEach((function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})),e},F=Object.getPrototypeOf||function(t){return t.__proto__};var _,O,P=e,D=g,N=b,T=x,C=i;function L(t,e){Object.defineProperty(t,_,{get:function(){return e}})}
+var i=Object.keys(n),s=0,o=i.length;s<o;s++){var c=i[s];this[c]=n[c]}if(void 0!==this.start){if("number"!=typeof this.start)throw TypeError("start must be a Number");if(this.start<0)throw new Error("start must be >= zero");this.pos=this.start}this.busy=!1,this._queue=[],null===this.fd&&(this._open=t.open,this._queue.push([this._open,this.path,this.flags,this.mode,void 0]),this.flush())}}};var x=function(t){if(null===t||"object"!=typeof t)return t;if(t instanceof Object)var e={__proto__:F(t)};else e=Object.create(null);return Object.getOwnPropertyNames(t).forEach((function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})),e},F=Object.getPrototypeOf||function(t){return t.__proto__};var O,_,P=e,D=g,N=b,T=x,C=i;function L(t,e){Object.defineProperty(t,O,{get:function(){return e}})}
 /* istanbul ignore else - node 0.x polyfill */
-"function"==typeof Symbol&&"function"==typeof Symbol.for?(_=Symbol.for("graceful-fs.queue"),
+"function"==typeof Symbol&&"function"==typeof Symbol.for?(O=Symbol.for("graceful-fs.queue"),
 // This is used in testing by future versions
-O=Symbol.for("graceful-fs.previous")):(_="___graceful-fs.queue",O="___graceful-fs.previous");var I=function(){};
+_=Symbol.for("graceful-fs.previous")):(O="___graceful-fs.queue",_="___graceful-fs.previous");var I=function(){};
 // Once time initialization
-if(C.debuglog?I=C.debuglog("gfs4"):/\bgfs4\b/i.test(process.env.NODE_DEBUG||"")&&(I=function(){var t=C.format.apply(C,arguments);t="GFS4: "+t.split(/\n/).join("\nGFS4: "),console.error(t)}),!P[_]){
+if(C.debuglog?I=C.debuglog("gfs4"):/\bgfs4\b/i.test(process.env.NODE_DEBUG||"")&&(I=function(){var t=C.format.apply(C,arguments);t="GFS4: "+t.split(/\n/).join("\nGFS4: "),console.error(t)}),!P[O]){
 // This queue can be shared by multiple loaded instances
-var R=f[_]||[];L(P,R),
+var R=f[O]||[];L(P,R),
 // Patch fs.close/closeSync to shared queue version, because we need
 // to retry() whenever a close happens *anywhere* in the program.
 // This is essential when multiple graceful-fs instances are
 // in play at the same time.
 P.close=function(t){function e(e,r){return t.call(P,e,(function(t){
 // This function uses the graceful-fs shared queue
-t||A(),"function"==typeof r&&r.apply(this,arguments)}))}return Object.defineProperty(e,O,{value:t}),e}(P.close),P.closeSync=function(t){function e(e){
+t||A(),"function"==typeof r&&r.apply(this,arguments)}))}return Object.defineProperty(e,_,{value:t}),e}(P.close),P.closeSync=function(t){function e(e){
 // This function uses the graceful-fs shared queue
-t.apply(P,arguments),A()}return Object.defineProperty(e,O,{value:t}),e}(P.closeSync),/\bgfs4\b/i.test(process.env.NODE_DEBUG||"")&&process.on("exit",(function(){I(P[_]),s.equal(P[_].length,0)}))}f[_]||L(f,P[_]);var M,z=j(T(P));function j(t){
+t.apply(P,arguments),A()}return Object.defineProperty(e,_,{value:t}),e}(P.closeSync),/\bgfs4\b/i.test(process.env.NODE_DEBUG||"")&&process.on("exit",(function(){I(P[O]),s.equal(P[O].length,0)}))}f[O]||L(f,P[O]);var M,j=z(T(P));function z(t){
 // Everything that references the open() function needs to be in here
-D(t),t.gracefulify=j,t.createReadStream=function(e,r){return new t.ReadStream(e,r)},t.createWriteStream=function(e,r){return new t.WriteStream(e,r)};var e=t.readFile;t.readFile=function(t,r,n){"function"==typeof r&&(n=r,r=null);return function t(r,n,i,s){return e(r,n,(function(e){!e||"EMFILE"!==e.code&&"ENFILE"!==e.code?"function"==typeof i&&i.apply(this,arguments):q([t,[r,n,i],e,s||Date.now(),Date.now()])}))}(t,r,n)};var r=t.writeFile;t.writeFile=function(t,e,n,i){"function"==typeof n&&(i=n,n=null);return function t(e,n,i,s,o){return r(e,n,i,(function(r){!r||"EMFILE"!==r.code&&"ENFILE"!==r.code?"function"==typeof s&&s.apply(this,arguments):q([t,[e,n,i,s],r,o||Date.now(),Date.now()])}))}(t,e,n,i)};var n=t.appendFile;n&&(t.appendFile=function(t,e,r,i){"function"==typeof r&&(i=r,r=null);return function t(e,r,i,s,o){return n(e,r,i,(function(n){!n||"EMFILE"!==n.code&&"ENFILE"!==n.code?"function"==typeof s&&s.apply(this,arguments):q([t,[e,r,i,s],n,o||Date.now(),Date.now()])}))}(t,e,r,i)});var i=t.copyFile;i&&(t.copyFile=function(t,e,r,n){"function"==typeof r&&(n=r,r=0);return function t(e,r,n,s,o){return i(e,r,n,(function(i){!i||"EMFILE"!==i.code&&"ENFILE"!==i.code?"function"==typeof s&&s.apply(this,arguments):q([t,[e,r,n,s],i,o||Date.now(),Date.now()])}))}(t,e,r,n)});var s=t.readdir;t.readdir=function(t,e,r){"function"==typeof e&&(r=e,e=null);var n=o.test(process.version)?function(t,e,r,n){return s(t,i(t,e,r,n))}:function(t,e,r,n){return s(t,e,i(t,e,r,n))};return n(t,e,r);function i(t,e,r,i){return function(s,o){!s||"EMFILE"!==s.code&&"ENFILE"!==s.code?(o&&o.sort&&o.sort(),"function"==typeof r&&r.call(this,s,o)):q([n,[t,e,r],s,i||Date.now(),Date.now()])}}};var o=/^v[0-5]\./;if("v0.8"===process.version.substr(0,4)){var c=N(t);h=c.ReadStream,d=c.WriteStream}var a=t.ReadStream;a&&(h.prototype=Object.create(a.prototype),h.prototype.open=function(){var t=this;y(t.path,t.flags,t.mode,(function(e,r){e?(t.autoClose&&t.destroy(),t.emit("error",e)):(t.fd=r,t.emit("open",r),t.read())}))});var u=t.WriteStream;u&&(d.prototype=Object.create(u.prototype),d.prototype.open=function(){var t=this;y(t.path,t.flags,t.mode,(function(e,r){e?(t.destroy(),t.emit("error",e)):(t.fd=r,t.emit("open",r))}))}),Object.defineProperty(t,"ReadStream",{get:function(){return h},set:function(t){h=t},enumerable:!0,configurable:!0}),Object.defineProperty(t,"WriteStream",{get:function(){return d},set:function(t){d=t},enumerable:!0,configurable:!0});
+D(t),t.gracefulify=z,t.createReadStream=function(e,r){return new t.ReadStream(e,r)},t.createWriteStream=function(e,r){return new t.WriteStream(e,r)};var e=t.readFile;t.readFile=function(t,r,n){"function"==typeof r&&(n=r,r=null);return function t(r,n,i,s){return e(r,n,(function(e){!e||"EMFILE"!==e.code&&"ENFILE"!==e.code?"function"==typeof i&&i.apply(this,arguments):q([t,[r,n,i],e,s||Date.now(),Date.now()])}))}(t,r,n)};var r=t.writeFile;t.writeFile=function(t,e,n,i){"function"==typeof n&&(i=n,n=null);return function t(e,n,i,s,o){return r(e,n,i,(function(r){!r||"EMFILE"!==r.code&&"ENFILE"!==r.code?"function"==typeof s&&s.apply(this,arguments):q([t,[e,n,i,s],r,o||Date.now(),Date.now()])}))}(t,e,n,i)};var n=t.appendFile;n&&(t.appendFile=function(t,e,r,i){"function"==typeof r&&(i=r,r=null);return function t(e,r,i,s,o){return n(e,r,i,(function(n){!n||"EMFILE"!==n.code&&"ENFILE"!==n.code?"function"==typeof s&&s.apply(this,arguments):q([t,[e,r,i,s],n,o||Date.now(),Date.now()])}))}(t,e,r,i)});var i=t.copyFile;i&&(t.copyFile=function(t,e,r,n){"function"==typeof r&&(n=r,r=0);return function t(e,r,n,s,o){return i(e,r,n,(function(i){!i||"EMFILE"!==i.code&&"ENFILE"!==i.code?"function"==typeof s&&s.apply(this,arguments):q([t,[e,r,n,s],i,o||Date.now(),Date.now()])}))}(t,e,r,n)});var s=t.readdir;t.readdir=function(t,e,r){"function"==typeof e&&(r=e,e=null);var n=o.test(process.version)?function(t,e,r,n){return s(t,i(t,e,r,n))}:function(t,e,r,n){return s(t,e,i(t,e,r,n))};return n(t,e,r);function i(t,e,r,i){return function(s,o){!s||"EMFILE"!==s.code&&"ENFILE"!==s.code?(o&&o.sort&&o.sort(),"function"==typeof r&&r.call(this,s,o)):q([n,[t,e,r],s,i||Date.now(),Date.now()])}}};var o=/^v[0-5]\./;if("v0.8"===process.version.substr(0,4)){var c=N(t);h=c.ReadStream,d=c.WriteStream}var a=t.ReadStream;a&&(h.prototype=Object.create(a.prototype),h.prototype.open=function(){var t=this;y(t.path,t.flags,t.mode,(function(e,r){e?(t.autoClose&&t.destroy(),t.emit("error",e)):(t.fd=r,t.emit("open",r),t.read())}))});var u=t.WriteStream;u&&(d.prototype=Object.create(u.prototype),d.prototype.open=function(){var t=this;y(t.path,t.flags,t.mode,(function(e,r){e?(t.destroy(),t.emit("error",e)):(t.fd=r,t.emit("open",r))}))}),Object.defineProperty(t,"ReadStream",{get:function(){return h},set:function(t){h=t},enumerable:!0,configurable:!0}),Object.defineProperty(t,"WriteStream",{get:function(){return d},set:function(t){d=t},enumerable:!0,configurable:!0});
 // legacy names
-var l=h;Object.defineProperty(t,"FileReadStream",{get:function(){return l},set:function(t){l=t},enumerable:!0,configurable:!0});var f=d;function h(t,e){return this instanceof h?(a.apply(this,arguments),this):h.apply(Object.create(h.prototype),arguments)}function d(t,e){return this instanceof d?(u.apply(this,arguments),this):d.apply(Object.create(d.prototype),arguments)}Object.defineProperty(t,"FileWriteStream",{get:function(){return f},set:function(t){f=t},enumerable:!0,configurable:!0});var p=t.open;function y(t,e,r,n){return"function"==typeof r&&(n=r,r=null),function t(e,r,n,i,s){return p(e,r,n,(function(o,c){!o||"EMFILE"!==o.code&&"ENFILE"!==o.code?"function"==typeof i&&i.apply(this,arguments):q([t,[e,r,n,i],o,s||Date.now(),Date.now()])}))}(t,e,r,n)}return t.open=y,t}function q(t){I("ENQUEUE",t[0].name,t[1]),P[_].push(t),B()}
+var l=h;Object.defineProperty(t,"FileReadStream",{get:function(){return l},set:function(t){l=t},enumerable:!0,configurable:!0});var f=d;function h(t,e){return this instanceof h?(a.apply(this,arguments),this):h.apply(Object.create(h.prototype),arguments)}function d(t,e){return this instanceof d?(u.apply(this,arguments),this):d.apply(Object.create(d.prototype),arguments)}Object.defineProperty(t,"FileWriteStream",{get:function(){return f},set:function(t){f=t},enumerable:!0,configurable:!0});var p=t.open;function y(t,e,r,n){return"function"==typeof r&&(n=r,r=null),function t(e,r,n,i,s){return p(e,r,n,(function(o,c){!o||"EMFILE"!==o.code&&"ENFILE"!==o.code?"function"==typeof i&&i.apply(this,arguments):q([t,[e,r,n,i],o,s||Date.now(),Date.now()])}))}(t,e,r,n)}return t.open=y,t}function q(t){I("ENQUEUE",t[0].name,t[1]),P[O].push(t),B()}
 // keep track of the timeout between retry() calls
 // reset the startTime and lastTime to now
 // this resets the start of the 60 second overall timeout as well as the
 // delay between attempts so that we'll retry these jobs sooner
-function A(){for(var t=Date.now(),e=0;e<P[_].length;++e)
+function A(){for(var t=Date.now(),e=0;e<P[O].length;++e)
 // entries that are only a length of 2 are from an older version, don't
 // bother modifying those since they'll be retried anyway.
-P[_][e].length>2&&(P[_][e][3]=t,// startTime
-P[_][e][4]=t);
+P[O][e].length>2&&(P[O][e][3]=t,// startTime
+P[O][e][4]=t);
 // call retry to make sure we're actively processing the queue
 B()}function B(){if(
 // clear the timer and remove it to help prevent unintended concurrency
-clearTimeout(M),M=void 0,0!==P[_].length){var t=P[_].shift(),e=t[0],r=t[1],n=t[2],i=t[3],s=t[4];
+clearTimeout(M),M=void 0,0!==P[O].length){var t=P[O].shift(),e=t[0],r=t[1],n=t[2],i=t[3],s=t[4];
 // if we don't have a startTime we have no way of knowing if we've waited
 // long enough, so go ahead and retry this item now
 if(void 0===i)I("RETRY",e.name,r),e.apply(null,r);else if(Date.now()-i>=6e4){
@@ -104,12 +104,12 @@ var c=Date.now()-s,a=Math.max(s-i,1);
 c>=Math.min(1.2*a,100)?(I("RETRY",e.name,r),e.apply(null,r.concat([i]))):
 // if we can't do this job yet, push it to the end of the queue
 // and let the next iteration check again
-P[_].push(t)}
+P[O].push(t)}
 // schedule our next run if one isn't already scheduled
-void 0===M&&(M=setTimeout(B,0))}}process.env.TEST_GRACEFUL_FS_GLOBAL_PATCH&&!P.__patched&&(z=j(P),P.__patched=!0),function(t){
+void 0===M&&(M=setTimeout(B,0))}}process.env.TEST_GRACEFUL_FS_GLOBAL_PATCH&&!P.__patched&&(j=z(P),P.__patched=!0),function(t){
 // This is adapted from https://github.com/normalize/mz
 // Copyright (c) 2014-2016 Jonathan Ong me@jongleberry.com and Contributors
-const e=y.fromCallback,r=z,n=["access","appendFile","chmod","chown","close","copyFile","fchmod","fchown","fdatasync","fstat","fsync","ftruncate","futimes","lchmod","lchown","link","lstat","mkdir","mkdtemp","open","opendir","readdir","readFile","readlink","realpath","rename","rm","rmdir","stat","symlink","truncate","unlink","utimes","writeFile"].filter((t=>"function"==typeof r[t]));
+const e=y.fromCallback,r=j,n=["access","appendFile","chmod","chown","close","copyFile","fchmod","fchown","fdatasync","fstat","fsync","ftruncate","futimes","lchmod","lchown","link","lstat","mkdir","mkdtemp","open","opendir","readdir","readFile","readlink","realpath","rename","rm","rmdir","stat","symlink","truncate","unlink","utimes","writeFile"].filter((t=>"function"==typeof r[t]));
 // Export all keys:
 Object.keys(r).forEach((e=>{"promises"!==e&&(t[e]=r[e])})),
 // Universalify async methods:
@@ -143,7 +143,7 @@ throw new Error("The path is not a directory")}catch{throw e}}};return r(Y.resol
 // it is caught below, and the original error is thrown
 throw new Error("The path is not a directory")}catch{throw e}}};return r(Y.resolve(t))};const K=y.fromPromise,{makeDir:H,makeDirSync:Q}=W,Z=K(H);var tt={mkdirs:Z,mkdirsSync:Q,
 // alias
-mkdirp:Z,mkdirpSync:Q,ensureDir:Z,ensureDirSync:Q};const et=z;var rt=function(t,e,r,n){
+mkdirp:Z,mkdirpSync:Q,ensureDir:Z,ensureDirSync:Q};const et=j;var rt=function(t,e,r,n){
 // if (!HAS_MILLIS_RES) return fs.utimes(path, atime, mtime, callback)
 et.open(t,"r+",((t,i)=>{if(t)return n(t);et.futimes(i,e,r,(t=>{et.close(i,(e=>{n&&n(t||e)}))}))}))},nt=function(t,e,r){const n=et.openSync(t,"r+");return et.futimesSync(n,e,r),et.closeSync(n)};const it=p,st=o,ot=i,ct=$("10.5.0"),at=t=>ct?it.stat(t,{bigint:!0}):it.stat(t),ut=t=>ct?it.statSync(t,{bigint:!0}):it.statSync(t);function lt(t,e){return Promise.all([at(t),at(e).catch((t=>{if("ENOENT"===t.code)return null;throw t}))]).then((([t,e])=>({srcStat:t,destStat:e})))}function ft(t,e){if(e.ino&&e.dev&&e.ino===t.ino&&e.dev===t.dev){if(ct||e.ino<Number.MAX_SAFE_INTEGER)
 // definitive answer
@@ -161,7 +161,7 @@ function ht(t,e){const r=st.resolve(t).split(st.sep).filter((t=>t)),n=st.resolve
 // It works for all file types including symlinks since it
 // checks the src and dest inodes. It starts from the deepest
 // parent and stops once it reaches the src parent or the root path.
-,checkParentPaths:function t(e,r,n,i,s){const o=st.resolve(st.dirname(e)),c=st.resolve(st.dirname(n));if(c===o||c===st.parse(c).root)return s();const a=(o,a)=>o?"ENOENT"===o.code?s():s(o):ft(r,a)?s(new Error(dt(e,n,i))):t(e,r,c,i,s);ct?it.stat(c,{bigint:!0},a):it.stat(c,a)},checkParentPathsSync:function t(e,r,n,i){const s=st.resolve(st.dirname(e)),o=st.resolve(st.dirname(n));if(o===s||o===st.parse(o).root)return;let c;try{c=ut(o)}catch(t){if("ENOENT"===t.code)return;throw t}if(ft(r,c))throw new Error(dt(e,n,i));return t(e,r,o,i)},isSrcSubdir:ht};const yt=z,mt=o,wt=tt.mkdirsSync,St=nt,vt=pt;function Et(t,e,r,n){if(!n.filter||n.filter(e,r))return function(t,e,r,n){const i=n.dereference?yt.statSync:yt.lstatSync,s=i(e);if(s.isDirectory())return function(t,e,r,n,i){if(!e)return function(t,e,r,n){return yt.mkdirSync(r),bt(e,r,n),kt(r,t)}(t.mode,r,n,i);if(e&&!e.isDirectory())throw new Error(`Cannot overwrite non-directory '${n}' with directory '${r}'.`);return bt(r,n,i)}(s,t,e,r,n);if(s.isFile()||s.isCharacterDevice()||s.isBlockDevice())return function(t,e,r,n,i){return e?function(t,e,r,n){if(n.overwrite)return yt.unlinkSync(r),gt(t,e,r,n);if(n.errorOnExist)throw new Error(`'${r}' already exists`)}(t,r,n,i):gt(t,r,n,i)}(s,t,e,r,n);if(s.isSymbolicLink())return function(t,e,r,n){let i=yt.readlinkSync(e);n.dereference&&(i=mt.resolve(process.cwd(),i));if(t){let t;try{t=yt.readlinkSync(r)}catch(t){
+,checkParentPaths:function t(e,r,n,i,s){const o=st.resolve(st.dirname(e)),c=st.resolve(st.dirname(n));if(c===o||c===st.parse(c).root)return s();const a=(o,a)=>o?"ENOENT"===o.code?s():s(o):ft(r,a)?s(new Error(dt(e,n,i))):t(e,r,c,i,s);ct?it.stat(c,{bigint:!0},a):it.stat(c,a)},checkParentPathsSync:function t(e,r,n,i){const s=st.resolve(st.dirname(e)),o=st.resolve(st.dirname(n));if(o===s||o===st.parse(o).root)return;let c;try{c=ut(o)}catch(t){if("ENOENT"===t.code)return;throw t}if(ft(r,c))throw new Error(dt(e,n,i));return t(e,r,o,i)},isSrcSubdir:ht};const yt=j,mt=o,wt=tt.mkdirsSync,St=nt,vt=pt;function Et(t,e,r,n){if(!n.filter||n.filter(e,r))return function(t,e,r,n){const i=n.dereference?yt.statSync:yt.lstatSync,s=i(e);if(s.isDirectory())return function(t,e,r,n,i){if(!e)return function(t,e,r,n){return yt.mkdirSync(r),bt(e,r,n),kt(r,t)}(t.mode,r,n,i);if(e&&!e.isDirectory())throw new Error(`Cannot overwrite non-directory '${n}' with directory '${r}'.`);return bt(r,n,i)}(s,t,e,r,n);if(s.isFile()||s.isCharacterDevice()||s.isBlockDevice())return function(t,e,r,n,i){return e?function(t,e,r,n){if(n.overwrite)return yt.unlinkSync(r),gt(t,e,r,n);if(n.errorOnExist)throw new Error(`'${r}' already exists`)}(t,r,n,i):gt(t,r,n,i)}(s,t,e,r,n);if(s.isSymbolicLink())return function(t,e,r,n){let i=yt.readlinkSync(e);n.dereference&&(i=mt.resolve(process.cwd(),i));if(t){let t;try{t=yt.readlinkSync(r)}catch(t){
 // dest exists and is a regular file or directory,
 // Windows may throw UNKNOWN error. If dest already exists,
 // fs throws error anyway, so no need to guard against it here.
@@ -180,7 +180,7 @@ if(yt.statSync(r).isDirectory()&&vt.isSrcSubdir(t,i))throw new Error(`Cannot ove
 const r=yt.statSync(t);St(e,r.atime,r.mtime)})(e,r)}(t.mode,e,r),kt(r,t.mode)}function kt(t,e){return yt.chmodSync(t,e)}function bt(t,e,r){yt.readdirSync(t).forEach((n=>function(t,e,r,n){const i=mt.join(e,t),s=mt.join(r,t),{destStat:o}=vt.checkPathsSync(i,s,"copy");return Et(o,i,s,n)}(n,t,e,r)))}var xt={copySync:function(t,e,r){"function"==typeof r&&(r={filter:r}),(r=r||{}).clobber=!("clobber"in r)||!!r.clobber,// default to true for now
 r.overwrite="overwrite"in r?!!r.overwrite:r.clobber,// overwrite falls back to clobber
 // Warn about using preserveTimestamps on 32-bit node
-r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;\n\n    see https://github.com/jprichardson/node-fs-extra/issues/269");const{srcStat:n,destStat:i}=vt.checkPathsSync(t,e,"copy");return vt.checkParentPathsSync(t,n,e,"copy"),function(t,e,r,n){if(n.filter&&!n.filter(e,r))return;const i=mt.dirname(r);yt.existsSync(i)||wt(i);return Et(t,e,r,n)}(i,t,e,r)}};const Ft=y.fromPromise,_t=p;var Ot={pathExists:Ft((function(t){return _t.access(t).then((()=>!0)).catch((()=>!1))})),pathExistsSync:_t.existsSync};const Pt=z,Dt=o,Nt=tt.mkdirs,Tt=Ot.pathExists,Ct=rt,Lt=pt;function It(t,e,r,n,i){const s=Dt.dirname(r);Tt(s,((o,c)=>o?i(o):c?Mt(t,e,r,n,i):void Nt(s,(s=>s?i(s):Mt(t,e,r,n,i)))))}function Rt(t,e,r,n,i,s){Promise.resolve(i.filter(r,n)).then((o=>o?t(e,r,n,i,s):s()),(t=>s(t)))}function Mt(t,e,r,n,i){return n.filter?Rt(zt,t,e,r,n,i):zt(t,e,r,n,i)}function zt(t,e,r,n,i){(n.dereference?Pt.stat:Pt.lstat)(e,((s,o)=>s?i(s):o.isDirectory()?function(t,e,r,n,i,s){if(!e)return function(t,e,r,n,i){Pt.mkdir(r,(s=>{if(s)return i(s);Bt(e,r,n,(e=>e?i(e):At(r,t,i)))}))}(t.mode,r,n,i,s);if(e&&!e.isDirectory())return s(new Error(`Cannot overwrite non-directory '${n}' with directory '${r}'.`));return Bt(r,n,i,s)}(o,t,e,r,n,i):o.isFile()||o.isCharacterDevice()||o.isBlockDevice()?function(t,e,r,n,i,s){return e?function(t,e,r,n,i){if(!n.overwrite)return n.errorOnExist?i(new Error(`'${r}' already exists`)):i();Pt.unlink(r,(s=>s?i(s):jt(t,e,r,n,i)))}(t,r,n,i,s):jt(t,r,n,i,s)}(o,t,e,r,n,i):o.isSymbolicLink()?function(t,e,r,n,i){Pt.readlink(e,((e,s)=>e?i(e):(n.dereference&&(s=Dt.resolve(process.cwd(),s)),t?void Pt.readlink(r,((e,o)=>e?
+r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;\n\n    see https://github.com/jprichardson/node-fs-extra/issues/269");const{srcStat:n,destStat:i}=vt.checkPathsSync(t,e,"copy");return vt.checkParentPathsSync(t,n,e,"copy"),function(t,e,r,n){if(n.filter&&!n.filter(e,r))return;const i=mt.dirname(r);yt.existsSync(i)||wt(i);return Et(t,e,r,n)}(i,t,e,r)}};const Ft=y.fromPromise,Ot=p;var _t={pathExists:Ft((function(t){return Ot.access(t).then((()=>!0)).catch((()=>!1))})),pathExistsSync:Ot.existsSync};const Pt=j,Dt=o,Nt=tt.mkdirs,Tt=_t.pathExists,Ct=rt,Lt=pt;function It(t,e,r,n,i){const s=Dt.dirname(r);Tt(s,((o,c)=>o?i(o):c?Mt(t,e,r,n,i):void Nt(s,(s=>s?i(s):Mt(t,e,r,n,i)))))}function Rt(t,e,r,n,i,s){Promise.resolve(i.filter(r,n)).then((o=>o?t(e,r,n,i,s):s()),(t=>s(t)))}function Mt(t,e,r,n,i){return n.filter?Rt(jt,t,e,r,n,i):jt(t,e,r,n,i)}function jt(t,e,r,n,i){(n.dereference?Pt.stat:Pt.lstat)(e,((s,o)=>s?i(s):o.isDirectory()?function(t,e,r,n,i,s){if(!e)return function(t,e,r,n,i){Pt.mkdir(r,(s=>{if(s)return i(s);Bt(e,r,n,(e=>e?i(e):At(r,t,i)))}))}(t.mode,r,n,i,s);if(e&&!e.isDirectory())return s(new Error(`Cannot overwrite non-directory '${n}' with directory '${r}'.`));return Bt(r,n,i,s)}(o,t,e,r,n,i):o.isFile()||o.isCharacterDevice()||o.isBlockDevice()?function(t,e,r,n,i,s){return e?function(t,e,r,n,i){if(!n.overwrite)return n.errorOnExist?i(new Error(`'${r}' already exists`)):i();Pt.unlink(r,(s=>s?i(s):zt(t,e,r,n,i)))}(t,r,n,i,s):zt(t,r,n,i,s)}(o,t,e,r,n,i):o.isSymbolicLink()?function(t,e,r,n,i){Pt.readlink(e,((e,s)=>e?i(e):(n.dereference&&(s=Dt.resolve(process.cwd(),s)),t?void Pt.readlink(r,((e,o)=>e?
 // dest exists and is a regular file or directory,
 // Windows may throw UNKNOWN error. If dest already exists,
 // fs throws error anyway, so no need to guard against it here.
@@ -188,7 +188,7 @@ r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the p
 // do not copy if src is a subdir of dest since unlinking
 // dest in this case would result in removing src contents
 // and therefore a broken symlink would be created.
-t.isDirectory()&&Lt.isSrcSubdir(o,s)?i(new Error(`Cannot overwrite '${o}' with '${s}'.`)):function(t,e,r){Pt.unlink(e,(n=>n?r(n):Pt.symlink(t,e,r)))}(s,r,i)))):Pt.symlink(s,r,i))))}(t,e,r,n,i):void 0))}function jt(t,e,r,n,i){Pt.copyFile(e,r,(s=>s?i(s):n.preserveTimestamps?function(t,e,r,n){
+t.isDirectory()&&Lt.isSrcSubdir(o,s)?i(new Error(`Cannot overwrite '${o}' with '${s}'.`)):function(t,e,r){Pt.unlink(e,(n=>n?r(n):Pt.symlink(t,e,r)))}(s,r,i)))):Pt.symlink(s,r,i))))}(t,e,r,n,i):void 0))}function zt(t,e,r,n,i){Pt.copyFile(e,r,(s=>s?i(s):n.preserveTimestamps?function(t,e,r,n){
 // Make sure the file is writable before setting the timestamp
 // otherwise open fails with EPERM when invoked with 'r+'
 // (through utimes call)
@@ -199,7 +199,7 @@ if(function(t){return 0==(128&t)}(t))return function(t,e,r){return At(t,128|e,r)
 Pt.stat(t,((t,n)=>t?r(t):Ct(e,n.atime,n.mtime,r)))}(e,r,(e=>e?n(e):At(r,t,n)))}function At(t,e,r){return Pt.chmod(t,e,r)}function Bt(t,e,r,n){Pt.readdir(t,((i,s)=>i?n(i):Wt(s,t,e,r,n)))}function Wt(t,e,r,n,i){const s=t.pop();return s?function(t,e,r,n,i,s){const o=Dt.join(r,e),c=Dt.join(n,e);Lt.checkPaths(o,c,"copy",((e,a)=>{if(e)return s(e);const{destStat:u}=a;Mt(u,o,c,i,(e=>e?s(e):Wt(t,r,n,i,s)))}))}(t,s,e,r,n,i):i()}var $t=function(t,e,r,n){"function"!=typeof r||n?"function"==typeof r&&(r={filter:r}):(n=r,r={}),n=n||function(){},(r=r||{}).clobber=!("clobber"in r)||!!r.clobber,// default to true for now
 r.overwrite="overwrite"in r?!!r.overwrite:r.clobber,// overwrite falls back to clobber
 // Warn about using preserveTimestamps on 32-bit node
-r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;\n\n    see https://github.com/jprichardson/node-fs-extra/issues/269"),Lt.checkPaths(t,e,"copy",((i,s)=>{if(i)return n(i);const{srcStat:o,destStat:c}=s;Lt.checkParentPaths(t,o,e,"copy",(i=>i?n(i):r.filter?Rt(It,c,t,e,r,n):It(c,t,e,r,n)))}))};var Jt={copy:(0,y.fromCallback)($t)};const Yt=z,Gt=o,Ut=s,Vt="win32"===process.platform;function Xt(t){["unlink","chmod","stat","lstat","rmdir","readdir"].forEach((e=>{t[e]=t[e]||Yt[e],t[e+="Sync"]=t[e]||Yt[e]})),t.maxBusyTries=t.maxBusyTries||3}function Kt(t,e,r){let n=0;"function"==typeof e&&(r=e,e={}),Ut(t,"rimraf: missing path"),Ut.strictEqual(typeof t,"string","rimraf: path should be a string"),Ut.strictEqual(typeof r,"function","rimraf: callback function required"),Ut(e,"rimraf: invalid options argument provided"),Ut.strictEqual(typeof e,"object","rimraf: options should be object"),Xt(e),Ht(t,e,(function i(s){if(s){if(("EBUSY"===s.code||"ENOTEMPTY"===s.code||"EPERM"===s.code)&&n<e.maxBusyTries){n++;
+r.preserveTimestamps&&"ia32"===process.arch&&console.warn("fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;\n\n    see https://github.com/jprichardson/node-fs-extra/issues/269"),Lt.checkPaths(t,e,"copy",((i,s)=>{if(i)return n(i);const{srcStat:o,destStat:c}=s;Lt.checkParentPaths(t,o,e,"copy",(i=>i?n(i):r.filter?Rt(It,c,t,e,r,n):It(c,t,e,r,n)))}))};var Jt={copy:(0,y.fromCallback)($t)};const Yt=j,Gt=o,Ut=s,Vt="win32"===process.platform;function Xt(t){["unlink","chmod","stat","lstat","rmdir","readdir"].forEach((e=>{t[e]=t[e]||Yt[e],t[e+="Sync"]=t[e]||Yt[e]})),t.maxBusyTries=t.maxBusyTries||3}function Kt(t,e,r){let n=0;"function"==typeof e&&(r=e,e={}),Ut(t,"rimraf: missing path"),Ut.strictEqual(typeof t,"string","rimraf: path should be a string"),Ut.strictEqual(typeof r,"function","rimraf: callback function required"),Ut(e,"rimraf: invalid options argument provided"),Ut.strictEqual(typeof e,"object","rimraf: options should be object"),Xt(e),Ht(t,e,(function i(s){if(s){if(("EBUSY"===s.code||"ENOTEMPTY"===s.code||"EPERM"===s.code)&&n<e.maxBusyTries){n++;
 // try again, with the same exact callback as this one.
 return setTimeout((()=>Ht(t,e,i)),100*n)}
 // already gone
@@ -240,7 +240,7 @@ r&&r.isDirectory()?re(t,e,null):e.unlinkSync(t)}catch(r){if("ENOENT"===r.code)re
 // PROFOUNDLY annoying habit of not closing handles promptly when
 // files are deleted, resulting in spurious ENOTEMPTY errors.
 const r=Date.now();do{try{return e.rmdirSync(t,e)}catch{}}while(Date.now()-r<500);// give up after 500ms
-}}(t,e);else if("ENOENT"!==n.code)throw n}}var ne=Kt;Kt.sync=ee;const ie=ne;var se={remove:(0,y.fromCallback)(ie),removeSync:ie.sync};const oe=y.fromCallback,ce=z,ae=o,ue=tt,le=se,fe=oe((function(t,e){e=e||function(){},ce.readdir(t,((r,n)=>{if(r)return ue.mkdirs(t,e);n=n.map((e=>ae.join(t,e))),function t(){const r=n.pop();if(!r)return e();le.remove(r,(r=>{if(r)return e(r);t()}))}()}))}));function he(t){let e;try{e=ce.readdirSync(t)}catch{return ue.mkdirsSync(t)}e.forEach((e=>{e=ae.join(t,e),le.removeSync(e)}))}var de={emptyDirSync:he,emptydirSync:he,emptyDir:fe,emptydir:fe};const pe=y.fromCallback,ye=o,me=z,we=tt;var Se={createFile:pe((function(t,e){function r(){me.writeFile(t,"",(t=>{if(t)return e(t);e()}))}me.stat(t,((n,i)=>{// eslint-disable-line handle-callback-err
+}}(t,e);else if("ENOENT"!==n.code)throw n}}var ne=Kt;Kt.sync=ee;const ie=ne;var se={remove:(0,y.fromCallback)(ie),removeSync:ie.sync};const oe=y.fromCallback,ce=j,ae=o,ue=tt,le=se,fe=oe((function(t,e){e=e||function(){},ce.readdir(t,((r,n)=>{if(r)return ue.mkdirs(t,e);n=n.map((e=>ae.join(t,e))),function t(){const r=n.pop();if(!r)return e();le.remove(r,(r=>{if(r)return e(r);t()}))}()}))}));function he(t){let e;try{e=ce.readdirSync(t)}catch{return ue.mkdirsSync(t)}e.forEach((e=>{e=ae.join(t,e),le.removeSync(e)}))}var de={emptyDirSync:he,emptydirSync:he,emptyDir:fe,emptydir:fe};const pe=y.fromCallback,ye=o,me=j,we=tt;var Se={createFile:pe((function(t,e){function r(){me.writeFile(t,"",(t=>{if(t)return e(t);e()}))}me.stat(t,((n,i)=>{// eslint-disable-line handle-callback-err
 if(!n&&i.isFile())return e();const s=ye.dirname(t);me.stat(s,((t,n)=>{if(t)
 // if the directory doesn't exist, make it
 return"ENOENT"===t.code?we.mkdirs(s,(t=>{if(t)return e(t);r()})):e(t);n.isDirectory()?r():
@@ -251,7 +251,7 @@ me.readdir(s,(t=>{if(t)return e(t)}))}))}))})),createFileSync:function(t){let e;
 // This is just to cause an internal ENOTDIR error to be thrown
 me.readdirSync(r)}catch(t){
 // If the stat call above failed because the directory doesn't exist, create it
-if(!t||"ENOENT"!==t.code)throw t;we.mkdirsSync(r)}me.writeFileSync(t,"")}};const ve=y.fromCallback,Ee=o,ge=z,ke=tt,be=Ot.pathExists;var xe={createLink:ve((function(t,e,r){function n(t,e){ge.link(t,e,(t=>{if(t)return r(t);r(null)}))}be(e,((i,s)=>i?r(i):s?r(null):void ge.lstat(t,(i=>{if(i)return i.message=i.message.replace("lstat","ensureLink"),r(i);const s=Ee.dirname(e);be(s,((i,o)=>i?r(i):o?n(t,e):void ke.mkdirs(s,(i=>{if(i)return r(i);n(t,e)}))))}))))})),createLinkSync:function(t,e){if(ge.existsSync(e))return;try{ge.lstatSync(t)}catch(t){throw t.message=t.message.replace("lstat","ensureLink"),t}const r=Ee.dirname(e);return ge.existsSync(r)||ke.mkdirsSync(r),ge.linkSync(t,e)}};const Fe=o,_e=z,Oe=Ot.pathExists;var Pe={symlinkPaths:
+if(!t||"ENOENT"!==t.code)throw t;we.mkdirsSync(r)}me.writeFileSync(t,"")}};const ve=y.fromCallback,Ee=o,ge=j,ke=tt,be=_t.pathExists;var xe={createLink:ve((function(t,e,r){function n(t,e){ge.link(t,e,(t=>{if(t)return r(t);r(null)}))}be(e,((i,s)=>i?r(i):s?r(null):void ge.lstat(t,(i=>{if(i)return i.message=i.message.replace("lstat","ensureLink"),r(i);const s=Ee.dirname(e);be(s,((i,o)=>i?r(i):o?n(t,e):void ke.mkdirs(s,(i=>{if(i)return r(i);n(t,e)}))))}))))})),createLinkSync:function(t,e){if(ge.existsSync(e))return;try{ge.lstatSync(t)}catch(t){throw t.message=t.message.replace("lstat","ensureLink"),t}const r=Ee.dirname(e);return ge.existsSync(r)||ke.mkdirsSync(r),ge.linkSync(t,e)}};const Fe=o,Oe=j,_e=_t.pathExists;var Pe={symlinkPaths:
 /**
  * Function that returns two types of paths, one relative to symlink, and one
  * relative to the current working directory. Checks if path is absolute or
@@ -273,7 +273,7 @@ if(!t||"ENOENT"!==t.code)throw t;we.mkdirsSync(r)}me.writeFileSync(t,"")}};const
  * This preserves the expectations of the original fs.symlink spec and adds
  * the ability to pass in `relative to current working direcotry` paths.
  */
-function(t,e,r){if(Fe.isAbsolute(t))return _e.lstat(t,(e=>e?(e.message=e.message.replace("lstat","ensureSymlink"),r(e)):r(null,{toCwd:t,toDst:t})));{const n=Fe.dirname(e),i=Fe.join(n,t);return Oe(i,((e,s)=>e?r(e):s?r(null,{toCwd:i,toDst:t}):_e.lstat(t,(e=>e?(e.message=e.message.replace("lstat","ensureSymlink"),r(e)):r(null,{toCwd:t,toDst:Fe.relative(n,t)})))))}},symlinkPathsSync:function(t,e){let r;if(Fe.isAbsolute(t)){if(r=_e.existsSync(t),!r)throw new Error("absolute srcpath does not exist");return{toCwd:t,toDst:t}}{const n=Fe.dirname(e),i=Fe.join(n,t);if(r=_e.existsSync(i),r)return{toCwd:i,toDst:t};if(r=_e.existsSync(t),!r)throw new Error("relative srcpath does not exist");return{toCwd:t,toDst:Fe.relative(n,t)}}}};const De=z;var Ne={symlinkType:function(t,e,r){if(r="function"==typeof e?e:r,e="function"!=typeof e&&e)return r(null,e);De.lstat(t,((t,n)=>{if(t)return r(null,"file");e=n&&n.isDirectory()?"dir":"file",r(null,e)}))},symlinkTypeSync:function(t,e){let r;if(e)return e;try{r=De.lstatSync(t)}catch{return"file"}return r&&r.isDirectory()?"dir":"file"}};const Te=y.fromCallback,Ce=o,Le=z,Ie=tt.mkdirs,Re=tt.mkdirsSync,Me=Pe.symlinkPaths,ze=Pe.symlinkPathsSync,je=Ne.symlinkType,qe=Ne.symlinkTypeSync,Ae=Ot.pathExists;var Be={createSymlink:Te((function(t,e,r,n){n="function"==typeof r?r:n,r="function"!=typeof r&&r,Ae(e,((i,s)=>i?n(i):s?n(null):void Me(t,e,((i,s)=>{if(i)return n(i);t=s.toDst,je(s.toCwd,r,((r,i)=>{if(r)return n(r);const s=Ce.dirname(e);Ae(s,((r,o)=>r?n(r):o?Le.symlink(t,e,i,n):void Ie(s,(r=>{if(r)return n(r);Le.symlink(t,e,i,n)}))))}))}))))})),createSymlinkSync:function(t,e,r){if(Le.existsSync(e))return;const n=ze(t,e);t=n.toDst,r=qe(n.toCwd,r);const i=Ce.dirname(e);return Le.existsSync(i)||Re(i),Le.symlinkSync(t,e,r)}};var We={
+function(t,e,r){if(Fe.isAbsolute(t))return Oe.lstat(t,(e=>e?(e.message=e.message.replace("lstat","ensureSymlink"),r(e)):r(null,{toCwd:t,toDst:t})));{const n=Fe.dirname(e),i=Fe.join(n,t);return _e(i,((e,s)=>e?r(e):s?r(null,{toCwd:i,toDst:t}):Oe.lstat(t,(e=>e?(e.message=e.message.replace("lstat","ensureSymlink"),r(e)):r(null,{toCwd:t,toDst:Fe.relative(n,t)})))))}},symlinkPathsSync:function(t,e){let r;if(Fe.isAbsolute(t)){if(r=Oe.existsSync(t),!r)throw new Error("absolute srcpath does not exist");return{toCwd:t,toDst:t}}{const n=Fe.dirname(e),i=Fe.join(n,t);if(r=Oe.existsSync(i),r)return{toCwd:i,toDst:t};if(r=Oe.existsSync(t),!r)throw new Error("relative srcpath does not exist");return{toCwd:t,toDst:Fe.relative(n,t)}}}};const De=j;var Ne={symlinkType:function(t,e,r){if(r="function"==typeof e?e:r,e="function"!=typeof e&&e)return r(null,e);De.lstat(t,((t,n)=>{if(t)return r(null,"file");e=n&&n.isDirectory()?"dir":"file",r(null,e)}))},symlinkTypeSync:function(t,e){let r;if(e)return e;try{r=De.lstatSync(t)}catch{return"file"}return r&&r.isDirectory()?"dir":"file"}};const Te=y.fromCallback,Ce=o,Le=j,Ie=tt.mkdirs,Re=tt.mkdirsSync,Me=Pe.symlinkPaths,je=Pe.symlinkPathsSync,ze=Ne.symlinkType,qe=Ne.symlinkTypeSync,Ae=_t.pathExists;var Be={createSymlink:Te((function(t,e,r,n){n="function"==typeof r?r:n,r="function"!=typeof r&&r,Ae(e,((i,s)=>i?n(i):s?n(null):void Me(t,e,((i,s)=>{if(i)return n(i);t=s.toDst,ze(s.toCwd,r,((r,i)=>{if(r)return n(r);const s=Ce.dirname(e);Ae(s,((r,o)=>r?n(r):o?Le.symlink(t,e,i,n):void Ie(s,(r=>{if(r)return n(r);Le.symlink(t,e,i,n)}))))}))}))))})),createSymlinkSync:function(t,e,r){if(Le.existsSync(e))return;const n=je(t,e);t=n.toDst,r=qe(n.toCwd,r);const i=Ce.dirname(e);return Le.existsSync(i)||Re(i),Le.symlinkSync(t,e,r)}};var We={
 // file
 createFile:Se.createFile,createFileSync:Se.createFileSync,ensureFile:Se.createFile,ensureFileSync:Se.createFileSync,
 // link
@@ -281,17 +281,17 @@ createLink:xe.createLink,createLinkSync:xe.createLinkSync,ensureLink:xe.createLi
 // symlink
 createSymlink:Be.createSymlink,createSymlinkSync:Be.createSymlinkSync,ensureSymlink:Be.createSymlink,ensureSymlinkSync:Be.createSymlinkSync};var $e={stringify:function(t,{EOL:e="\n",finalEOL:r=!0,replacer:n=null,spaces:i}={}){const s=r?e:"";return JSON.stringify(t,n,i).replace(/\n/g,e)+s},stripBom:function(t){
 // we do this because JSON.parse would convert it to a utf8 string if encoding wasn't specified
-return Buffer.isBuffer(t)&&(t=t.toString("utf8")),t.replace(/^\uFEFF/,"")}};let Je;try{Je=z}catch(t){Je=e}const Ye=y,{stringify:Ge,stripBom:Ue}=$e;const Ve=Ye.fromPromise((async function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||Je,n=!("throws"in e)||e.throws;let i,s=await Ye.fromCallback(r.readFile)(t,e);s=Ue(s);try{i=JSON.parse(s,e?e.reviver:null)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}return i}));const Xe=Ye.fromPromise((async function(t,e,r={}){const n=r.fs||Je,i=Ge(e,r);await Ye.fromCallback(n.writeFile)(t,i,r)}));const Ke={readFile:Ve,readFileSync:function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||Je,n=!("throws"in e)||e.throws;try{let n=r.readFileSync(t,e);return n=Ue(n),JSON.parse(n,e.reviver)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}},writeFile:Xe,writeFileSync:function(t,e,r={}){const n=r.fs||Je,i=Ge(e,r);
+return Buffer.isBuffer(t)&&(t=t.toString("utf8")),t.replace(/^\uFEFF/,"")}};let Je;try{Je=j}catch(t){Je=e}const Ye=y,{stringify:Ge,stripBom:Ue}=$e;const Ve=Ye.fromPromise((async function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||Je,n=!("throws"in e)||e.throws;let i,s=await Ye.fromCallback(r.readFile)(t,e);s=Ue(s);try{i=JSON.parse(s,e?e.reviver:null)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}return i}));const Xe=Ye.fromPromise((async function(t,e,r={}){const n=r.fs||Je,i=Ge(e,r);await Ye.fromCallback(n.writeFile)(t,i,r)}));const Ke={readFile:Ve,readFileSync:function(t,e={}){"string"==typeof e&&(e={encoding:e});const r=e.fs||Je,n=!("throws"in e)||e.throws;try{let n=r.readFileSync(t,e);return n=Ue(n),JSON.parse(n,e.reviver)}catch(e){if(n)throw e.message=`${t}: ${e.message}`,e;return null}},writeFile:Xe,writeFileSync:function(t,e,r={}){const n=r.fs||Je,i=Ge(e,r);
 // not sure if fs.writeFileSync returns anything, but just in case
 return n.writeFileSync(t,i,r)}};var He={
 // jsonfile exports
-readJson:Ke.readFile,readJsonSync:Ke.readFileSync,writeJson:Ke.writeFile,writeJsonSync:Ke.writeFileSync};const Qe=y.fromCallback,Ze=z,tr=o,er=tt,rr=Ot.pathExists;var nr={outputFile:Qe((function(t,e,r,n){"function"==typeof r&&(n=r,r="utf8");const i=tr.dirname(t);rr(i,((s,o)=>s?n(s):o?Ze.writeFile(t,e,r,n):void er.mkdirs(i,(i=>{if(i)return n(i);Ze.writeFile(t,e,r,n)}))))})),outputFileSync:function(t,...e){const r=tr.dirname(t);if(Ze.existsSync(r))return Ze.writeFileSync(t,...e);er.mkdirsSync(r),Ze.writeFileSync(t,...e)}};const{stringify:ir}=$e,{outputFile:sr}=nr;var or=async function(t,e,r={}){const n=ir(e,r);await sr(t,n,r)};const{stringify:cr}=$e,{outputFileSync:ar}=nr;var ur=function(t,e,r){const n=cr(e,r);ar(t,n,r)};const lr=y.fromPromise,fr=He;fr.outputJson=lr(or),fr.outputJsonSync=ur,
+readJson:Ke.readFile,readJsonSync:Ke.readFileSync,writeJson:Ke.writeFile,writeJsonSync:Ke.writeFileSync};const Qe=y.fromCallback,Ze=j,tr=o,er=tt,rr=_t.pathExists;var nr={outputFile:Qe((function(t,e,r,n){"function"==typeof r&&(n=r,r="utf8");const i=tr.dirname(t);rr(i,((s,o)=>s?n(s):o?Ze.writeFile(t,e,r,n):void er.mkdirs(i,(i=>{if(i)return n(i);Ze.writeFile(t,e,r,n)}))))})),outputFileSync:function(t,...e){const r=tr.dirname(t);if(Ze.existsSync(r))return Ze.writeFileSync(t,...e);er.mkdirsSync(r),Ze.writeFileSync(t,...e)}};const{stringify:ir}=$e,{outputFile:sr}=nr;var or=async function(t,e,r={}){const n=ir(e,r);await sr(t,n,r)};const{stringify:cr}=$e,{outputFileSync:ar}=nr;var ur=function(t,e,r){const n=cr(e,r);ar(t,n,r)};const lr=y.fromPromise,fr=He;fr.outputJson=lr(or),fr.outputJsonSync=ur,
 // aliases
-fr.outputJSON=fr.outputJson,fr.outputJSONSync=fr.outputJsonSync,fr.writeJSON=fr.writeJson,fr.writeJSONSync=fr.writeJsonSync,fr.readJSON=fr.readJson,fr.readJSONSync=fr.readJsonSync;var hr=fr;const dr=z,pr=o,yr=xt.copySync,mr=se.removeSync,wr=tt.mkdirpSync,Sr=pt;function vr(t,e,r){try{dr.renameSync(t,e)}catch(n){if("EXDEV"!==n.code)throw n;return function(t,e,r){const n={overwrite:r,errorOnExist:!0};return yr(t,e,n),mr(t)}(t,e,r)}}var Er={moveSync:function(t,e,r){const n=(r=r||{}).overwrite||r.clobber||!1,{srcStat:i}=Sr.checkPathsSync(t,e,"move");return Sr.checkParentPathsSync(t,i,e,"move"),wr(pr.dirname(e)),function(t,e,r){if(r)return mr(e),vr(t,e,r);if(dr.existsSync(e))throw new Error("dest already exists.");return vr(t,e,r)}(t,e,n)}};const gr=z,kr=o,br=Jt.copy,xr=se.remove,Fr=tt.mkdirp,_r=Ot.pathExists,Or=pt;function Pr(t,e,r,n){gr.rename(t,e,(i=>i?"EXDEV"!==i.code?n(i):function(t,e,r,n){const i={overwrite:r,errorOnExist:!0};br(t,e,i,(e=>e?n(e):xr(t,n)))}(t,e,r,n):n()))}var Dr=function(t,e,r,n){"function"==typeof r&&(n=r,r={});const i=r.overwrite||r.clobber||!1;Or.checkPaths(t,e,"move",((r,s)=>{if(r)return n(r);const{srcStat:o}=s;Or.checkParentPaths(t,o,e,"move",(r=>{if(r)return n(r);Fr(kr.dirname(e),(r=>r?n(r):function(t,e,r,n){if(r)return xr(e,(i=>i?n(i):Pr(t,e,r,n)));_r(e,((i,s)=>i?n(i):s?n(new Error("dest already exists.")):Pr(t,e,r,n)))}(t,e,i,n)))}))}))};var Nr,Tr,Cr,Lr={move:(0,y.fromCallback)(Dr)};!function(t){t.exports={
+fr.outputJSON=fr.outputJson,fr.outputJSONSync=fr.outputJsonSync,fr.writeJSON=fr.writeJson,fr.writeJSONSync=fr.writeJsonSync,fr.readJSON=fr.readJson,fr.readJSONSync=fr.readJsonSync;var hr=fr;const dr=j,pr=o,yr=xt.copySync,mr=se.removeSync,wr=tt.mkdirpSync,Sr=pt;function vr(t,e,r){try{dr.renameSync(t,e)}catch(n){if("EXDEV"!==n.code)throw n;return function(t,e,r){const n={overwrite:r,errorOnExist:!0};return yr(t,e,n),mr(t)}(t,e,r)}}var Er={moveSync:function(t,e,r){const n=(r=r||{}).overwrite||r.clobber||!1,{srcStat:i}=Sr.checkPathsSync(t,e,"move");return Sr.checkParentPathsSync(t,i,e,"move"),wr(pr.dirname(e)),function(t,e,r){if(r)return mr(e),vr(t,e,r);if(dr.existsSync(e))throw new Error("dest already exists.");return vr(t,e,r)}(t,e,n)}};const gr=j,kr=o,br=Jt.copy,xr=se.remove,Fr=tt.mkdirp,Or=_t.pathExists,_r=pt;function Pr(t,e,r,n){gr.rename(t,e,(i=>i?"EXDEV"!==i.code?n(i):function(t,e,r,n){const i={overwrite:r,errorOnExist:!0};br(t,e,i,(e=>e?n(e):xr(t,n)))}(t,e,r,n):n()))}var Dr=function(t,e,r,n){"function"==typeof r&&(n=r,r={});const i=r.overwrite||r.clobber||!1;_r.checkPaths(t,e,"move",((r,s)=>{if(r)return n(r);const{srcStat:o}=s;_r.checkParentPaths(t,o,e,"move",(r=>{if(r)return n(r);Fr(kr.dirname(e),(r=>r?n(r):function(t,e,r,n){if(r)return xr(e,(i=>i?n(i):Pr(t,e,r,n)));Or(e,((i,s)=>i?n(i):s?n(new Error("dest already exists.")):Pr(t,e,r,n)))}(t,e,i,n)))}))}))};var Nr,Tr,Cr,Lr={move:(0,y.fromCallback)(Dr)};!function(t){t.exports={
 // Export promiseified graceful-fs:
 ...p,
 // Export extra methods:
-...xt,...Jt,...de,...We,...hr,...tt,...Er,...Lr,...nr,...Ot,...se};
+...xt,...Jt,...de,...We,...hr,...tt,...Er,...Lr,...nr,..._t,...se};
 // Export fs.promises as a getter property so that we don't trigger
 // ExperimentalWarning before fs.promises is actually accessed.
 const r=e;Object.getOwnPropertyDescriptor(r,"promises")&&Object.defineProperty(t.exports,"promises",{get:()=>r.promises})}(d);
@@ -326,17 +326,17 @@ class Ir{_size;constructor(){this._size=0}get size(){return this._size}
  * Node
  *
  * A Generic Node.
- */class Mr{value;_next;compare;constructor(t,e=null,r=null){this.value=t,this._next=e,this.compare=r||((t,e)=>(t.length,e.length,t>e?1:t<e?-1:0))}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(t){let e;switch(this.compare(this.value,t)){case-1:e=c.ComparisonResult.Less;break;case 1:e=c.ComparisonResult.Greater;break;default:e=c.ComparisonResult.Same}return e}}
+ */class Mr{value;_next;compare;constructor(t,e=null,r=null){this.value=t,this._next=e,this.compare=r||c.compare}get hasNext(){return null!==this.next}get next(){return this._next}set next(t){this._next=t}compareTo(t){let e;switch(this.compare(this.value,t)){case-1:e=c.ComparisonResult.Less;break;case 1:e=c.ComparisonResult.Greater;break;default:e=c.ComparisonResult.Same}return e}}
 /**
  * StackException
  *
  * A stack error.
- */class zr extends Rr{constructor(t="Stack exception"){super(t)}}
+ */class jr extends Rr{constructor(t="Stack exception"){super(t)}}
 /**
  * Stack
  *
  * A stack.
- */class jr extends Ir{top;compareFn;constructor(t=null){super(),this.top=null,this.compareFn=t
+ */class zr extends Ir{top;compareFn;constructor(t=null){super(),this.top=null,this.compareFn=t
 /**
      * add()
      *
@@ -370,7 +370,7 @@ class Ir{_size;constructor(){this._size=0}get size(){return this._size}
      * @throws StackException when attempting to peek() when the stack is empty.
      */}peek(){if(this.isEmpty)
 // nothing to peek.
-throw new zr;return this.top.value}
+throw new jr;return this.top.value}
 /**
      * pop()
      *
@@ -378,7 +378,7 @@ throw new zr;return this.top.value}
      * @throws StackException when attempting to pop while the stack is empty.
      */pop(){if(this.isEmpty)
 // nothing to pop
-throw new zr;{const t=this.top.value;return this.top=this.top.next,this.setSize(this.size-1),t
+throw new jr;{const t=this.top.value;return this.top=this.top.next,this.setSize(this.size-1),t
 /**
      * push()
      *
@@ -491,7 +491,7 @@ constructor(t){const e=t.trim();if(!this.isValidPath(e))throw new Wr("Invalid Pa
      * @param segments the segnents of the path to create.
      * @returns the generated Path
      * @throws PathException when the segments are invalid.
-     */static FromSegments(...t){try{const e=new jr;return $r._BuildPath(t,e),new $r(e.toArray().reverse().join($r.Separator))}catch(t){
+     */static FromSegments(...t){try{const e=new zr;return $r._BuildPath(t,e),new $r(e.toArray().reverse().join($r.Separator))}catch(t){
 // there was an error building the path.
 throw t}}
 /**
@@ -664,7 +664,7 @@ let e;try{e=await Gr.GetStats(t)}catch(t){throw new Jr(t.message)}return new Gr(
     * gets the stats of the entry.
     * @throws FileSystemEntryException when the operation fails.
     * @returns FileSystemEntryStats containing stats about the entry.
-    */static async GetStats(e){try{const r=await t.stat(e.toString(),{bigint:!1});return{dev:r.dev,ino:r.ino,mode:r.mode,nlink:r.nlink,uid:r.uid,gid:r.gid,rdev:r.rdev,size:r.size,blksize:r.blksize,blocks:r.blocks,atimeMs:r.atimeMs,mtimeMs:r.mtimeMs,ctimeMs:r.ctimeMs,birthtimeMs:r.birthtimeMs,atime:c.DateTime.FromDate(r.atime,c.Timezone.UTC()),mtime:c.DateTime.FromDate(r.mtime,c.Timezone.UTC()),ctime:c.DateTime.FromDate(r.ctime,c.Timezone.UTC()),birthtime:c.DateTime.FromDate(r.birthtime,c.Timezone.UTC()),isBlockDevice:r.isBlockDevice(),isCharacterDevice:r.isCharacterDevice(),isDirectory:r.isDirectory(),isFIFO:r.isFIFO(),isFile:r.isFile(),isSocket:r.isSocket(),isSymbolicLink:r.isSymbolicLink()}}catch(t){const r=t.code="",n=t.message;throw r?new Yr(`Entry ${e.toString()} not found.`):new Jr(n)}}get createdOn(){var t;return null===(t=this.stats)||void 0===t?void 0:t.birthtime}get deletedOn(){return this._deleted}get isDeleted(){return null!=this.deletedOn}get isDirectory(){return this.stats.isDirectory}get isFile(){return this.stats.isFile}get isLink(){return this.stats.isSymbolicLink}get path(){return this._path}get updatedOn(){return this.stats.mtime}
+    */static async GetStats(e){try{const r=await t.stat(e.toString(),{bigint:!1});return{dev:r.dev,ino:r.ino,mode:r.mode,nlink:r.nlink,uid:r.uid,gid:r.gid,rdev:r.rdev,size:r.size,blksize:r.blksize,blocks:r.blocks,atimeMs:r.atimeMs,mtimeMs:r.mtimeMs,ctimeMs:r.ctimeMs,birthtimeMs:r.birthtimeMs,atime:c.DateTime.FromDate(r.atime,c.Timezone.UTC()),mtime:c.DateTime.FromDate(r.mtime,c.Timezone.UTC()),ctime:c.DateTime.FromDate(r.ctime,c.Timezone.UTC()),birthtime:c.DateTime.FromDate(r.birthtime,c.Timezone.UTC()),isBlockDevice:r.isBlockDevice(),isCharacterDevice:r.isCharacterDevice(),isDirectory:r.isDirectory(),isFIFO:r.isFIFO(),isFile:r.isFile(),isSocket:r.isSocket(),isSymbolicLink:r.isSymbolicLink()}}catch(t){const r=t.code="",n=t.message;throw r?new Yr(`Entry ${e.toString()} not found.`):new Jr(n)}}get createdOn(){var t;return null===(t=this.stats)||void 0===t?void 0:t.birthtime}get deletedOn(){return this._deleted}get isDeleted(){return null!=this.deletedOn}get isDirectory(){return this.stats.isDirectory}get isFile(){return this.stats.isFile}get isLink(){return this.stats.isSymbolicLink}name(){return this.path.basename().toString()}get path(){return this._path}get updatedOn(){return this.stats.mtime}
 /**
      * delete()
      *
@@ -1007,12 +1007,7 @@ try{return await t.rename(this.path.toString(),r.toString()),sn.ForPath(r)}catch
  * FileStreamDataException
  *
  * File Stream Data error
- */class cn extends on{constructor(t="Stream Data Error"){super(t)}}class an{constructor(t){this._file=t}
-/**
-     * file()
-     *
-     * the source file of the stream.
-     */file(){return this._file}equals(t){let e=!1;if(t instanceof an){const r=t;e=this.file().equals(r.file())}return e}toString(){return`Stream for file ${this.file().path.toString()}`}}
+ */class cn extends on{constructor(t="Stream Data Error"){super(t)}}class an{constructor(t,e){this.file=t,this.encoding=e}equals(t){let e=!1;if(t instanceof an){const r=t;e=this.file.equals(r.file)}return e}toString(){return`Stream for file ${this.file.path.toString()}`}}
 /**
  * FileReader
  *
@@ -1023,28 +1018,23 @@ try{return await t.rename(this.path.toString(),r.toString()),sn.ForPath(r)}catch
      * @param file the file to read.
      * @param options options for reading a file.
      */
-constructor(t,r={encoding:"utf-8"}){super(t),this._encoding=r.encoding,this._isClosed=!1,this._bytesRead=0,this._fileSize=null,this._stream=e.createReadStream(this.file().path.toString(),{encoding:this._encoding,autoClose:!0}),this._stream.pause()}
+constructor(t,r={encoding:"utf-8"}){super(t,r.encoding),this._isClosed=!1,this._bytesRead=0,this._fileSize=t.stats.size,this._stream=e.createReadStream(this.file.path.toString(),{encoding:this.encoding,autoClose:!0}),this._stream.pause()}
 /**
      * all()
      *
      * reads all the data in the stream.
      * @throws FileStreamException when the stream cannot be read (i.e. It was closed)
-     */all(){if(this._isClosed)throw new on;let t,e="";for(;t=this._stream.read();)e+=t.toString(this.encoding());return e}
+     */all(){if(this._isClosed)throw new on;let t,e="";for(;t=this._stream.read();)e+=t.toString(this.encoding);return e}
 /**
      * close()
      *
      * closes the file stream.
-     */async close(){this._stream.close(),this._isClosed=!0}
-/**
-     * encoding()
-     *
-     * the stream encoding.
-     */encoding(){return this._encoding}equals(t){let e=!1;if(t instanceof un){const r=t;e=super.equals(r)&&this.encoding()===r.encoding()}return e}
+     */async close(){this._stream.close(),this._isClosed=!0}equals(t){let e=!1;if(t instanceof un){const r=t;e=super.equals(r)&&this.encoding===r.encoding}return e}
 /**
      * hasNext()
      *
      * determines if there is still data left to be read.
-     */async hasNext(){if(!this._fileSize){const t=this.file().stats;this._fileSize=t.size}return this._bytesRead<this._fileSize}
+     */async hasNext(){return this._bytesRead<this._fileSize}
 /**
      * next()
      *
@@ -1052,9 +1042,9 @@ constructor(t,r={encoding:"utf-8"}){super(t),this._encoding=r.encoding,this._isC
      * @param size the size of data to get in bytes.
      * @param encoding the encoding
      * @return the data.
-     */async next(t=64){if(this._isClosed)throw new on;if(!this._fileSize){const t=this.file().stats;this._fileSize=t.size}t=t>un.MAX_BYTES?un.MAX_BYTES:t;const e=this._stream.read(t);if(e)return this._bytesRead+=t,e.toString(this.encoding());
+     */async next(t=64){if(this._isClosed)throw new on;t=t>un.MAX_BYTES?un.MAX_BYTES:t;const e=this._stream.read(t);if(e)return this._bytesRead+=t,e.toString(this.encoding);
 // no data to read.
-throw new cn}}
+throw new cn("No data to read")}}
 // the maximum byte size supported is 1GiB
 un.MAX_BYTES=1073741824;
 /**
@@ -1147,7 +1137,7 @@ let r,n;return r=e?{arguments:e.arguments?e.arguments:[],fork:!!e.fork&&e.fork,c
  *
  * A FileWriter
  */
-class extends an{constructor(t,r={encoding:"utf-8",batch:{size:30}}){super(t),this._isClosed=!1,this._numWrites=0,this._encoding=r.encoding,this._stream=e.createWriteStream(this.file().path.toString(),{encoding:this._encoding,autoClose:!0}),this._batchWrites=!!(r.batch&&r.batch.size>0),this._batchWrites?(this._stream.cork(),this._batchSize=Math.abs(r.batch.size),this._streamIsCorked=!0):(this._batchSize=null,this._streamIsCorked=!1)}
+class extends an{constructor(t,r={encoding:"utf-8",batch:{size:30}}){super(t,r.encoding),this._isClosed=!1,this._numWrites=0,this._stream=e.createWriteStream(this.file.path.toString(),{encoding:this.encoding,autoClose:!0}),this._batchWrites=!!(r.batch&&r.batch.size>0),this._batchWrites?(this._stream.cork(),this._batchSize=Math.abs(r.batch.size),this._streamIsCorked=!0):(this._batchSize=null,this._streamIsCorked=!1)}
 /**
      * _batchIsFill()
      *
@@ -1166,11 +1156,6 @@ this._numWrites>0&&this._numWrites%this._batchSize==0}
      *
      * corks the stream.
      */_corkStream(){this._streamIsCorked||(this._stream.cork(),this._streamIsCorked=!0)}
-/**
-    * encoding()
-    *
-    * the stream encoding.
-    */encoding(){return this._encoding}
 /**
      * _flush()
      *

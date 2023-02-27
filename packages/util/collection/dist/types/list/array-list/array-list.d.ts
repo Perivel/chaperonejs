@@ -10,7 +10,7 @@ export declare class ArrayList<T> extends List<T> implements ArrayListInterface<
     private items;
     private readonly comparator;
     private _iteratorPos;
-    constructor(values?: T[], comparator?: Comparator<T> | null);
+    constructor(values?: T[], comparator?: Comparator<T>);
     [Symbol.iterator](): Iterator<T, T | undefined, T | undefined>;
     /**
      * add()
@@ -42,6 +42,22 @@ export declare class ArrayList<T> extends List<T> implements ArrayListInterface<
      * @throws OutOfBoundsException when the index is out of bounds.
      */
     get(index: number): T;
+    /**
+     * indexOf()
+     *
+     * gets the index of the first occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the first occurance of the suspect or -1 if it does not exist.
+     */
+    indexOf(suspect: T): number;
+    /**
+     * lastIndexOf()
+     *
+     * gets the index of the last occurance of suspect.
+     * @param suspect the suspect to check for.
+     * @returns the index of the last occurance of the suspect or -1 if it does not exist.
+     */
+    lastIndexOf(suspect: T): number;
     /**
      * remove()
      *

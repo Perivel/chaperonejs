@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { File } from '../../file';
 import { FileStream } from './../file-stream';
 import { FileWriterOptions } from './file-writer-options.interface';
@@ -10,7 +9,6 @@ import { FileWriterInterface } from './file-writer.interface';
  */
 export declare class FileWriter extends FileStream implements FileWriterInterface {
     private readonly _stream;
-    private readonly _encoding;
     private _isClosed;
     private _streamIsCorked;
     private readonly _batchWrites;
@@ -36,12 +34,6 @@ export declare class FileWriter extends FileStream implements FileWriterInterfac
      * corks the stream.
      */
     private _corkStream;
-    /**
-    * encoding()
-    *
-    * the stream encoding.
-    */
-    encoding(): BufferEncoding;
     /**
      * _flush()
      *
