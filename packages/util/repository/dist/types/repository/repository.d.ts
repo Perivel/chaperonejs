@@ -12,14 +12,14 @@ export declare abstract class Repository implements RepositoryInterface {
      * removes an item from the repository.
      * @param item the item to remove
      */
-    abstract remove(item: any): Promise<void>;
+    abstract remove(item: any): Promise<any>;
     /**
      * save()
      *
      * save() persists an item to the repository.
      * @param item the item to persist.
      */
-    abstract save(item: any): Promise<void>;
+    abstract save(item: any): Promise<any>;
     /**
      * size()
      *

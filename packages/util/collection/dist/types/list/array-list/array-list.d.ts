@@ -1,12 +1,13 @@
-import { Comparator } from '@chaperone/util';
-import { List } from './../list';
-import { ArrayListInterface } from './array-list.interface';
+import { Comparator } from "@chaperone/util";
+import { List } from "./../list";
+import { ArrayListInterface } from "./array-list.interface";
+import { Findable, FinderFn } from "../../interfaces";
 /**
  * ArrayList
  *
  * An Array List.
  */
-export declare class ArrayList<T> extends List<T> implements ArrayListInterface<T>, Iterable<T> {
+export declare class ArrayList<T> extends List<T> implements ArrayListInterface<T>, Iterable<T>, Findable<T> {
     private items;
     private readonly comparator;
     private _iteratorPos;
@@ -33,6 +34,9 @@ export declare class ArrayList<T> extends List<T> implements ArrayListInterface<
      * clears the array list.
      */
     clear(): void;
+    find(predicate: FinderFn<T>): T | null;
+    findAll(predicate: FinderFn<T>): ArrayList<T>;
+    findLast(predicate: FinderFn<T>): T | null;
     /**
      * get()
      *

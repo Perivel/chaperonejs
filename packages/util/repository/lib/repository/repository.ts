@@ -16,7 +16,7 @@ export abstract class Repository implements RepositoryInterface {
    * @param item the item to remove
    */
 
-  public abstract remove(item: any): Promise<void>;
+  public abstract remove(item: any): Promise<any>;
 
   /**
    * save()

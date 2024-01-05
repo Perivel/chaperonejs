@@ -12,7 +12,7 @@ export interface RepositoryInterface {
    * @param item The item to remove
    */
 
-  remove(item: any): Promise<void>;
+  remove(item: any): Promise<any>;
 
   /**
    * save()

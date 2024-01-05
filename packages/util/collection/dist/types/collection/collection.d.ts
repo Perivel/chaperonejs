@@ -23,16 +23,16 @@ export declare abstract class Collection<T> implements CollectionInterface<T> {
      */
     abstract contains(item: T): boolean;
     /**
-       * clear()
-       *
-       * clears the collection.
-       */
+     * clear()
+     *
+     * clears the collection.
+     */
     clear(): void;
     /**
-       * isEmpty
-       *
-       * determines if the collection is empty.
-       */
+     * isEmpty
+     *
+     * determines if the collection is empty.
+     */
     get isEmpty(): boolean;
     /**
      * setSize()
@@ -42,10 +42,10 @@ export declare abstract class Collection<T> implements CollectionInterface<T> {
      */
     protected setSize(newSize: number): void;
     /**
-       * toArray()
-       *
-       * converts the collection to an array.
-       */
+     * toArray()
+     *
+     * converts the collection to an array.
+     */
     abstract toArray(): Array<T>;
 }
 //# sourceMappingURL=collection.d.ts.map

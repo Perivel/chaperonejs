@@ -302,15 +302,15 @@ const e=f;Object.getOwnPropertyDescriptor(e,"promises")&&Object.defineProperty(t
  */
 class Zr{_size;constructor(){this._size=0}get size(){return this._size}
 /**
-       * clear()
-       *
-       * clears the collection.
-       */clear(){this.setSize(0)}
+     * clear()
+     *
+     * clears the collection.
+     */clear(){this.setSize(0)}
 /**
-       * isEmpty
-       *
-       * determines if the collection is empty.
-       */get isEmpty(){return 0===this.size}
+     * isEmpty
+     *
+     * determines if the collection is empty.
+     */get isEmpty(){return 0===this.size}
 /**
      * setSize()
      *

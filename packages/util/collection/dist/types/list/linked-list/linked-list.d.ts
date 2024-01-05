@@ -1,12 +1,13 @@
-import { Comparator } from '@chaperone/util';
+import { Comparator } from "@chaperone/util";
 import { List } from "../list";
 import { LinkedListInterface } from "./linked-list.interface";
+import { Findable, FinderFn } from "../../interfaces";
 /**
  * LinkedList
  *
  * A Linked List.
  */
-export declare class LinkedList<T> extends List<T> implements LinkedListInterface<T>, Iterable<T> {
+export declare class LinkedList<T> extends List<T> implements LinkedListInterface<T>, Iterable<T>, Findable<T> {
     private head;
     private readonly comparator;
     private iteratorNode;
@@ -50,6 +51,38 @@ export declare class LinkedList<T> extends List<T> implements LinkedListInterfac
      * clears the linked list.
      */
     clear(): void;
+    find(predicate: FinderFn<T>): T | null;
+    /**
+     * findValue(
+     *
+     * a helper function to recursively find the first list item to satisfy the predicate function.
+     * @param head the head of the list to search
+     * @param predicate the predicate function
+     * @returns the first item on the list to satisfy the predicate function.
+     */
+    private findValue;
+    findAll(predicate: FinderFn<T>): LinkedList<T>;
+    /**
+     * findAllVlaues()
+     *
+     * finds all the values in the list that satisfies the predicate.
+     * @param resultlist the linked list containing all the results of the search.
+     * @param head the head of the list to search
+     * @param predicate the predicate function
+     * @returns a linked list containing the items that satisfy the predicate.
+     */
+    private findAllValues;
+    findLast(predicate: FinderFn<T>): T | null;
+    /**
+     * findLastValue()
+     *
+     *
+     * @param head the head of the list to search
+     * @param current the current last value.
+     * @param predicate the predicate function.
+     * @returns the last value in the list to satisfy the predicate.
+     */
+    private findLastValue;
     /**
      * get()
      *
@@ -70,7 +103,7 @@ export declare class LinkedList<T> extends List<T> implements LinkedListInterfac
      */
     private getValue;
     /**
-    * indexOf()
+     * indexOf()
      *
      * gets the index of the first occurance of suspect.
      * @param suspect the suspect to check for.

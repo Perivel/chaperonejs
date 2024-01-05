@@ -10,14 +10,15 @@ export interface RepositoryInterface {
      * removes an item from the repository.
      * @param item The item to remove
      */
-    remove(item: any): Promise<void>;
+    remove(item: any): Promise<any>;
     /**
      * save()
      *
      * save() persists an item to the repository.
      * @param item the item to persist.
+     * @returns the saved item.
      */
-    save(item: any): Promise<void>;
+    save(item: any): Promise<any>;
     /**
      * size()
      *
