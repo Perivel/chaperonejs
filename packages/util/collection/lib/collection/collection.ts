@@ -2,7 +2,7 @@ import { CollectionInterface } from "./collection.interface";
 
 /**
  * Collection
- * 
+ *
  * A Generic collection class
  */
 
@@ -36,20 +36,20 @@ export abstract class Collection<T> implements CollectionInterface<T> {
   public abstract contains(item: T): boolean;
 
   /**
-     * clear()
-     * 
-     * clears the collection.
-     */
+   * clear()
+   *
+   * clears the collection.
+   */
 
   public clear(): void {
     this.setSize(0);
   }
 
   /**
-     * isEmpty
-     * 
-     * determines if the collection is empty.
-     */
+   * isEmpty
+   *
+   * determines if the collection is empty.
+   */
 
   public get isEmpty(): boolean {
     return this.size === 0.0;
@@ -57,7 +57,7 @@ export abstract class Collection<T> implements CollectionInterface<T> {
 
   /**
    * setSize()
-   * 
+   *
    * sets the size of the collection.
    * @param newSize the new size to set
    */
@@ -66,10 +66,10 @@ export abstract class Collection<T> implements CollectionInterface<T> {
   }
 
   /**
-     * toArray()
-     * 
-     * converts the collection to an array.
-     */
+   * toArray()
+   *
+   * converts the collection to an array.
+   */
 
   public abstract toArray(): Array<T>;
 }

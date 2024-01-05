@@ -1,7 +1,7 @@
 import { DateTimeInterface } from "./datetime.interface";
 import { Equatable } from "../../common";
 import { Timezone } from "../../geography";
-import { Duration } from '../duration';
+import { Duration } from "../duration";
 /**
  * DateTime
  *
@@ -59,6 +59,12 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      * @returns a number between 1 and 31
      */
     get day(): number;
+    /**
+     * epoch
+     *
+     * gets the epoch value
+     */
+    get epoch(): number;
     /**
      * hour
      *

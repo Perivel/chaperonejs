@@ -66,13 +66,13 @@ class m extends c{constructor(a="Color Error"){super(a)}}
  * Hex
  *
  * A Hex color value.
- */class F{_value;
+ */class d{_value;
 /**
      * Creates a Hex instance.
      * @param value the hex value.
      * @throws HexException when the hex value is invalid.
      */
-constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals(a){let l=!1;if(a instanceof F){const n=a;l=this.value===n.value}return l}serialize(){return this.value}toString(){return this.serialize()}
+constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals(a){let l=!1;if(a instanceof d){const n=a;l=this.value===n.value}return l}serialize(){return this.value}toString(){return this.serialize()}
 /**
      * value()
      *
@@ -82,7 +82,7 @@ constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals
  * RGBAException
  *
  * An RGBA value error.
- */class d extends m{constructor(a="RGBA Error"){super(a)}}
+ */class F extends m{constructor(a="RGBA Error"){super(a)}}
 /**
  * RGBA
  *
@@ -98,7 +98,7 @@ constructor(l){if(l=l.toUpperCase(),!a.isHex(l))throw new E;this._value=l}equals
      */
 constructor(a,l,n,h=1){if(a=Math.floor(a),l=Math.floor(l),n=Math.floor(n),!(a>=0&&a<=255&&l>=0&&l<=255&&n>=0&&n<=255&&h>=0&&h<=1))
 // invalid.
-throw new d;
+throw new F;
 // valid RGBA.
 this._a=h,this._b=n,this._g=l,this._r=a}
 /**
@@ -158,7 +158,7 @@ this._a=h,this._b=n,this._g=l,this._r=a}
      * Creates a Color value.
      * @param value the value of the color.
      */
-constructor(l){if(l instanceof k)this._rgba=l,this._hex=new F(a.rgbaToHex({r:this._rgba.r,g:this._rgba.g,b:this._rgba.b,a:this._rgba.a}));else{this._hex=l;const n=a.hexToRgba(this._hex.value);this._rgba=new k(n.r,n.g,n.b,n.a)}}
+constructor(l){if(l instanceof k)this._rgba=l,this._hex=new d(a.rgbaToHex({r:this._rgba.r,g:this._rgba.g,b:this._rgba.b,a:this._rgba.a}));else{this._hex=l;const n=a.hexToRgba(this._hex.value);this._rgba=new k(n.r,n.g,n.b,n.a)}}
 /**
      * Black()
      *
@@ -180,7 +180,7 @@ constructor(l){if(l instanceof k)this._rgba=l,this._hex=new F(a.rgbaToHex({r:thi
      * @param v the hex value.
      * @returns a Color representing the Hex value provided.
      * @throws HexException when the Hex value is invalid.
-     */static FromHex(a){const l=new F(a);return new y(l)}
+     */static FromHex(a){const l=new d(a);return new y(l)}
 /**
      * FromRGBA()
      *
@@ -589,6 +589,11 @@ constructor(a,l,h,e=0,t=0,i=0,s=0,r=D.UTC()){if(this.date=n.DateTime.fromObject(
      * gets the day of the month of the DateTime.
      * @returns a number between 1 and 31
      */get day(){return this.date.day}
+/**
+     * epoch
+     *
+     * gets the epoch value
+     */get epoch(){return this.date.toMillis()}
 /**
      * hour
      *
@@ -1137,7 +1142,7 @@ if(this._phoneParser=i.parsePhoneNumber(a,{regionCode:l}),!this._phoneParser.val
      * @param value the decimal value to convert.
      * @param numPlaces the number of decimal places.
      * @returns the converted integer value.
-     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}exports.BaseException=c,exports.BaseFormatter=U,exports.CharacterSet=o,exports.Color=y,exports.ColorException=m,exports.Coordinates=A,exports.Country=I,exports.CountryException=v,exports.Currency=la,exports.DateException=P,exports.DateTime=O,exports.Duration=K,exports.DurationException=L,exports.EmailAddress=Z,exports.EmailAddressException=G,exports.HTMLSanitizer=aa,exports.Hash=w,exports.Hex=F,exports.HexException=E,exports.Id=J,exports.IdException=R,exports.InvalidArgumentException=g,exports.IsoLanguage=Y,exports.IsoLanguageException=W,exports.Locality=T,exports.LocalityException=S,exports.MethodUndefinedException=class extends c{constructor(a="Method undefined."){super(a)}},exports.Money=ha,exports.MoneyException=na,exports.NetworkException=
+     */_toInteger(a,l=2){return Math.round(a*Math.pow(10,l))}toString(){return`${this.currency.symbol}${this.amount} ${this.currency.name}`}}exports.BaseException=c,exports.BaseFormatter=U,exports.CharacterSet=o,exports.Color=y,exports.ColorException=m,exports.Coordinates=A,exports.Country=I,exports.CountryException=v,exports.Currency=la,exports.DateException=P,exports.DateTime=O,exports.Duration=K,exports.DurationException=L,exports.EmailAddress=Z,exports.EmailAddressException=G,exports.HTMLSanitizer=aa,exports.Hash=w,exports.Hex=d,exports.HexException=E,exports.Id=J,exports.IdException=R,exports.InvalidArgumentException=g,exports.IsoLanguage=Y,exports.IsoLanguageException=W,exports.Locality=T,exports.LocalityException=S,exports.MethodUndefinedException=class extends c{constructor(a="Method undefined."){super(a)}},exports.Money=ha,exports.MoneyException=na,exports.NetworkException=
 /**
  * NetworkException
  *
@@ -1157,7 +1162,7 @@ class extends c{constructor(a="Network Error"){super(a)}}
  * @param a the first operand
  * @param b the second operand.
  * @returns -1 if a < b. 0 if a = b. 1 if a > b
- */,exports.OutOfBoundsException=class extends g{constructor(a="Argument out of bounds."){super(a)}},exports.PhoneNumber=X,exports.PhoneNumberException=Q,exports.PostalCode=j,exports.PostalCodeException=_,exports.RGBA=k,exports.RGBAException=d,exports.Random=class{constructor(){
+ */,exports.OutOfBoundsException=class extends g{constructor(a="Argument out of bounds."){super(a)}},exports.PhoneNumber=X,exports.PhoneNumberException=Q,exports.PostalCode=j,exports.PostalCodeException=_,exports.RGBA=k,exports.RGBAException=F,exports.Random=class{constructor(){
 
 }
 /**

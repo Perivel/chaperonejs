@@ -1,147 +1,152 @@
 import { DurationInterface } from "../duration";
 import { Timezone } from "../../geography";
 
-
-
 export interface DateTimeInterface {
+  /**
+   * add()
+   *
+   * add() adds the duration to the datetime.
+   * @param duration the duration to add.
+   */
 
-    /**
-     * add()
-     *
-     * add() adds the duration to the datetime.
-     * @param duration the duration to add.
-     */
+  add(duration: DurationInterface): DateTimeInterface;
 
-    add(duration: DurationInterface): DateTimeInterface;
+  /**
+   * day
+   *
+   * gets the day of the month of the DateTime.
+   * @returns a number between 1 and 31
+   */
 
-    /**
-     * day
-     *
-     * gets the day of the month of the DateTime.
-     * @returns a number between 1 and 31
-     */
+  readonly day: number;
 
-    readonly day: number;
+  /**
+   * epoch
+   *
+   * gets the epoch value
+   */
 
-    /**
-     * hour
-     * 
-     * gets the hour.
-     * @note hours are zero-based (0-23)
-     */
+  readonly epoch: number;
 
-    readonly hour: number;
+  /**
+   * hour
+   *
+   * gets the hour.
+   * @note hours are zero-based (0-23)
+   */
 
-    /**
-     * isAfter()
-     *
-     * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
-     * @param suspect The suspect to be compared.
-     */
+  readonly hour: number;
 
-    isAfter(suspect: any): boolean;
+  /**
+   * isAfter()
+   *
+   * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
+   * @param suspect The suspect to be compared.
+   */
 
-    /**
-     * isBefore()
-     *
-     * isBefore() compares the instance to the suspect, to determine if the instance is before the suspect.
-     * @param suspect The suspect to be compared to.
-     */
+  isAfter(suspect: any): boolean;
 
-    isBefore(suspect: any): boolean;
+  /**
+   * isBefore()
+   *
+   * isBefore() compares the instance to the suspect, to determine if the instance is before the suspect.
+   * @param suspect The suspect to be compared to.
+   */
 
-    /**
-     * milisecond
-     * 
-     * gets the milisecond (0-999)
-     */
+  isBefore(suspect: any): boolean;
 
-    readonly milisecond: number;
+  /**
+   * milisecond
+   *
+   * gets the milisecond (0-999)
+   */
 
-    /**
-     * minute
-     * 
-     * gets the minute.
-     * @note minutes are zero-based (0-59)
-     */
+  readonly milisecond: number;
 
-    readonly minute: number;
+  /**
+   * minute
+   *
+   * gets the minute.
+   * @note minutes are zero-based (0-59)
+   */
 
-    /**
-     * month
-     *
-     * gets the month part of the DateTime.
-     * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
-     */
+  readonly minute: number;
 
-    readonly month: number;
+  /**
+   * month
+   *
+   * gets the month part of the DateTime.
+   * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
+   */
 
-    /**
-     * second
-     * 
-     * gets the second
-     * @note seconds are zero-based (0-59)
-     */
-    
-    readonly second: number;
+  readonly month: number;
 
-    /**
-     * subtract()
-     *
-     * subtract() subtracts a duration form the date time.
-     * @param duration the duratin to subtract.
-     */
+  /**
+   * second
+   *
+   * gets the second
+   * @note seconds are zero-based (0-59)
+   */
 
-    subtract(duration: DurationInterface): DateTimeInterface;
+  readonly second: number;
 
-    /**
-     * timezone
-     *
-     * gets the timezone of the DateTime.
-     */
+  /**
+   * subtract()
+   *
+   * subtract() subtracts a duration form the date time.
+   * @param duration the duratin to subtract.
+   */
 
-    readonly timezone: Timezone;
+  subtract(duration: DurationInterface): DateTimeInterface;
 
-    /**
-     * toTimezone()
-     *
-     * toTimezone() converts a DateTime to the specified Timezone.
-     * @param timezone
-     */
+  /**
+   * timezone
+   *
+   * gets the timezone of the DateTime.
+   */
 
-    toTimezone(timezone: Timezone): DateTimeInterface;
+  readonly timezone: Timezone;
 
-    /**
-     * toUtc()
-     *
-     * toUtc() converts a DateTime to UTC.
-     */
+  /**
+   * toTimezone()
+   *
+   * toTimezone() converts a DateTime to the specified Timezone.
+   * @param timezone
+   */
 
-    toUtc(): DateTimeInterface;
+  toTimezone(timezone: Timezone): DateTimeInterface;
 
-    /**
-     * isoString()
-     *
-     * isoString() gets a UTC string for a DateTime.
-     */
+  /**
+   * toUtc()
+   *
+   * toUtc() converts a DateTime to UTC.
+   */
 
-    isoString(): string;
+  toUtc(): DateTimeInterface;
 
-    /**
-     * value
-     *
-     * gets the value of the DateTime.
-     */
+  /**
+   * isoString()
+   *
+   * isoString() gets a UTC string for a DateTime.
+   */
 
-    readonly value: Date;
+  isoString(): string;
 
-    /**
-     * year
-     *
-     * gets the year portion of the DateTime.
-     *
-     * @returns number
-     */
+  /**
+   * value
+   *
+   * gets the value of the DateTime.
+   */
 
-    readonly year: number;
+  readonly value: Date;
+
+  /**
+   * year
+   *
+   * gets the year portion of the DateTime.
+   *
+   * @returns number
+   */
+
+  readonly year: number;
 }

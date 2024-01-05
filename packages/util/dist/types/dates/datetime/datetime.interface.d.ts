@@ -16,6 +16,12 @@ export interface DateTimeInterface {
      */
     readonly day: number;
     /**
+     * epoch
+     *
+     * gets the epoch value
+     */
+    readonly epoch: number;
+    /**
      * hour
      *
      * gets the hour.

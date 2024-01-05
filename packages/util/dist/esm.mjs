@@ -643,6 +643,11 @@ constructor(a,l,n,h=0,e=0,i=0,s=0,r=Y.UTC()){if(this.date=t.fromObject({year:a,m
      * @returns a number between 1 and 31
      */get day(){return this.date.day}
 /**
+     * epoch
+     *
+     * gets the epoch value
+     */get epoch(){return this.date.toMillis()}
+/**
      * hour
      *
      * gets the hour.

@@ -1,16 +1,25 @@
-import { Comparator, ComparisonResult, OutOfBoundsException } from '@chaperone/util';
+import {
+  Comparator,
+  ComparisonResult,
+  OutOfBoundsException,
+} from "@chaperone/util";
 import { List } from "../list";
-import { ListIterator } from './../list-iterator';
+import { ListIterator } from "./../list-iterator";
 import { Node } from "../../node";
 import { LinkedListInterface } from "./linked-list.interface";
+import { Findable, FinderFn } from "../../interfaces";
+import { CollectionInterface } from "../../collection";
 
 /**
  * LinkedList
- * 
+ *
  * A Linked List.
  */
 
-export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, Iterable<T> {
+export class LinkedList<T>
+  extends List<T>
+  implements LinkedListInterface<T>, Iterable<T>, Findable<T>
+{
   private head: Node<T> | null;
   private readonly comparator: Comparator<T> | null;
   private iteratorNode: Node<T> | null;
@@ -28,7 +37,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
 
   /**
    * add()
-   * 
+   *
    * adds the value to the list.
    * @param value the value to add to the list.
    */
@@ -46,7 +55,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
 
   /**
    * addToEnd()
-   * 
+   *
    * adds the newNode to the end of the list.
    * @param node the current node
    * @param newNode the node to insert.
@@ -62,7 +71,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
 
   /**
    * contains()
-   * 
+   *
    * determines if the item is in the list.
    * @param value the item to search for.
    * @returns TRUE if the item is in the list. FALSE if it is not.
@@ -71,38 +80,35 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
   public contains(value: T): boolean {
     if (!this.isEmpty) {
       return this.containsValue(this.head, value);
-    }
-    else {
+    } else {
       return false;
     }
   }
 
   /**
    * containsValue()
-   * 
+   *
    * determines if the list ontains the specified value.
    * @param head the head of the list to search.
    * @param value The value to search for.
-   * @returns 
+   * @returns
    */
 
   private containsValue(head: Node<T> | null, value: T): boolean {
     if (head) {
       if (head.compareTo(value) === ComparisonResult.Same) {
         return true;
-      }
-      else {
+      } else {
         return this.containsValue(head.next, value);
       }
-    }
-    else {
+    } else {
       return false;
     }
   }
 
   /**
    * clear()
-   * 
+   *
    * clears the linked list.
    */
 
@@ -111,9 +117,92 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
     super.clear();
   }
 
+  public find(predicate: FinderFn<T>): T | null {
+    return this.findValue(this.head, predicate);
+  }
+
+  /**
+   * findValue(
+   *
+   * a helper function to recursively find the first list item to satisfy the predicate function.
+   * @param head the head of the list to search
+   * @param predicate the predicate function
+   * @returns the first item on the list to satisfy the predicate function.
+   */
+  private findValue(head: Node<T> | null, predicate: FinderFn<T>): T | null {
+    if (head) {
+      if (predicate(head.value)) {
+        return head.value;
+      } else {
+        return this.findValue(head.next, predicate);
+      }
+    } else {
+      return null;
+    }
+  }
+
+  public findAll(predicate: FinderFn<T>): LinkedList<T> {
+    return this.findAllValues(new LinkedList<T>(), this.head, predicate);
+  }
+
+  /**
+   * findAllVlaues()
+   *
+   * finds all the values in the list that satisfies the predicate.
+   * @param resultlist the linked list containing all the results of the search.
+   * @param head the head of the list to search
+   * @param predicate the predicate function
+   * @returns a linked list containing the items that satisfy the predicate.
+   */
+
+  private findAllValues(
+    resultlist: LinkedList<T>,
+    head: Node<T> | null,
+    predicate: FinderFn<T>
+  ): LinkedList<T> {
+    if (head) {
+      if (predicate(head.value)) {
+        resultlist.add(head.value);
+      }
+      return this.findAllValues(resultlist, head.next, predicate);
+    } else {
+      return resultlist;
+    }
+  }
+
+  public findLast(predicate: FinderFn<T>): T | null {
+    return this.findLastValue(this.head, null, predicate);
+  }
+
+  /**
+   * findLastValue()
+   *
+   *
+   * @param head the head of the list to search
+   * @param current the current last value.
+   * @param predicate the predicate function.
+   * @returns the last value in the list to satisfy the predicate.
+   */
+
+  private findLastValue(
+    head: Node<T> | null,
+    current: T | null,
+    predicate: FinderFn<T>
+  ): T | null {
+    if (head) {
+      let res = current;
+      if (predicate(head.value)) {
+        res = head.value;
+      }
+      return this.findLastValue(head.next, res, predicate);
+    } else {
+      return current;
+    }
+  }
+
   /**
    * get()
-   * 
+   *
    * gets the value at the specified index.
    * @param index the index of the value to retrieve.
    * @returns the value at the specified index.
@@ -121,17 +210,16 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
    */
 
   public get(index: number): T {
-    if (!this.isEmpty && (index >= 0) && (index <= this.size)) {
+    if (!this.isEmpty && index >= 0 && index <= this.size) {
       return this.getValue(this.head!, 0, index);
-    }
-    else {
+    } else {
       throw new OutOfBoundsException();
     }
   }
 
   /**
    * getValue()
-   * 
+   *
    * recursively gets the value at the specified target index.
    * @param head the head of the list.
    * @param index the current index
@@ -142,15 +230,14 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
   private getValue(head: Node<T>, index: number, target: number): T {
     if (index === target) {
       return head.value;
-    }
-    else {
+    } else {
       return this.getValue(head.next!, index++, target);
     }
   }
 
   /**
-  * indexOf()
-   * 
+   * indexOf()
+   *
    * gets the index of the first occurance of suspect.
    * @param suspect the suspect to check for.
    * @returns the index of the first occurance of the suspect or -1 if it does not exist.
@@ -166,20 +253,18 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
       do {
         if (node!.compareTo(suspect) === ComparisonResult.Same) {
           index = current;
-        }
-        else {
+        } else {
           current++;
           node = node!.next;
         }
-      }
-      while ((index < 0) && (current < this.size));
+      } while (index < 0 && current < this.size);
     }
     return index;
   }
 
   /**
    * lastIndexOf()
-   * 
+   *
    * gets the index of the last occurance of suspect.
    * @param suspect the suspect to check for.
    * @returns the index of the last occurance of the suspect or -1 if it does not exist.
@@ -198,8 +283,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
         }
         current++;
         node = node!.next;
-      }
-      while (node !== null)
+      } while (node !== null);
     }
 
     return index;
@@ -207,7 +291,7 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
 
   /**
    * remove()
-   * 
+   *
    * removes the value at the specified index.
    * @param index the index of the value to remove.
    * @returns the removed items.
@@ -215,18 +299,17 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
    */
 
   public remove(index: number): T {
-    if (!this.isEmpty && (index >= 0) && (index < this.size)) {
+    if (!this.isEmpty && index >= 0 && index < this.size) {
       return this.reemoveValue(this.head!, null, 0, index);
-    }
-    else {
-      // out of bounds 
+    } else {
+      // out of bounds
       throw new OutOfBoundsException();
     }
   }
 
   /**
    * removeValue()
-   * 
+   *
    * removes the value at the specified index.
    * @param currentNode the current node
    * @param previousNode the previous node.
@@ -235,23 +318,31 @@ export class LinkedList<T> extends List<T> implements LinkedListInterface<T>, It
    * @returns the removed item.
    */
 
-  private reemoveValue(currentNode: Node<T>, previousNode: Node<T> | null, currentIndex: number, targetIndex: number): T {
+  private reemoveValue(
+    currentNode: Node<T>,
+    previousNode: Node<T> | null,
+    currentIndex: number,
+    targetIndex: number
+  ): T {
     if (currentIndex === targetIndex) {
       // remove the current node.
       if (previousNode) {
         // we are in the tail of the list.
         previousNode.next = currentNode.next;
-      }
-      else {
+      } else {
         // we are at the head of the list.
         this.head = currentNode.next;
       }
       this.setSize(this.size - 1);
       return currentNode.value;
-    }
-    else {
+    } else {
       // go to the next node.
-      return this.reemoveValue(currentNode.next!, currentNode, currentIndex++, targetIndex);
+      return this.reemoveValue(
+        currentNode.next!,
+        currentNode,
+        currentIndex++,
+        targetIndex
+      );
     }
   }
 
