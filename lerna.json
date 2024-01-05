@@ -1,11 +1,15 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useNx": true,
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "useWorkspaces": true,
-  "version": "0.1.21",
+  "version": "0.2.0",
   "npmClient": "yarn",
   "publish": {
-    "ignoreChanges": ["*.md"]
+    "ignoreChanges": [
+      "*.md"
+    ]
   }
 }
